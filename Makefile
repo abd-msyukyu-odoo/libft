@@ -6,13 +6,14 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/04 13:53:29 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/04 14:34:25 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libft.a
 
-C_FILES		= ft_memset.c
+C_FILES		= ft_memset.c \
+			  ft_bzero.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
