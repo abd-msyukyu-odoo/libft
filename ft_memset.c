@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:05:56 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/04 15:45:26 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/04 15:53:51 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void		*ft_memset(void *b, int c, size_t len)
 	i = 0;
 	d = (unsigned char *)b;
 	while (i < len)
-		*(d + i++) = byte;
+		*(d + i++) = check;
 	return (b);
 }
