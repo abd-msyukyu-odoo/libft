@@ -6,11 +6,10 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 12:39:47 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/05 13:08:38 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/05 14:26:34 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 void		*ft_memmove(void *dst, const void *src, size_t len)
