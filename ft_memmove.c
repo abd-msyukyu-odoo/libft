@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 12:57:55 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/05 13:07:49 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/05 12:39:47 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/05 13:08:38 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include <string.h>
+#include "libft.h"
 
-void		*ft_memset(void *b, int c, size_t len);
-void		ft_bzero(void *s, size_t n);
-void		*ft_memcpy(void *dst, const void *src, size_t n);
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void		*ft_memmove(void *dst, const void *src, size_t len);
-#endif
+void		*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*d;
+
+	if (dst < src)
+		return (ft_memcpy(dst, src, len));
+	d = (unsigned char *)dst;
+	while (len > 0)
+	{
+		--len;
+		*(d + len) = *((unsigned char *)src + len);
+	}
+	return (dst);
+}

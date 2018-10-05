@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/04 15:52:45 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/05 13:07:25 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME		= libft.a
 C_FILES		= ft_memset.c \
 			  ft_bzero.c \
 			  ft_memcpy.c \
-			  ft_memccpy.c
+			  ft_memccpy.c \
+			  ft_memmove.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
