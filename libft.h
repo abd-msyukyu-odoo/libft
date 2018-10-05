@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 12:57:55 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/05 15:14:13 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/05 15:22:10 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *s1);
+char		*ft_strcpy(char *dst, const char *src);
 #endif

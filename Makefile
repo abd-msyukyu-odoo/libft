@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/05 15:13:57 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/05 15:21:29 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ C_FILES		= ft_memset.c \
 			  ft_memchr.c \
 			  ft_memcmp.c \
 			  ft_strlen.c \
-			  ft_strdup.c
+			  ft_strdup.c \
+			  ft_strcpy.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
