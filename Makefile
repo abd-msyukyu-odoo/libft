@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/06 17:23:29 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/06 19:36:34 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ C_FILES		= ft_memset.c \
 			  ft_strcmp.c \
 			  ft_strncmp.c \
 			  ft_atoi.c \
-			  ft_isalpha.c
+			  ft_isalpha.c \
+			  ft_isdigit.c \
+			  ft_isalnum.c \
+			  ft_isascii.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
