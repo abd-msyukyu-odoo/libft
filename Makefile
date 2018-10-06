@@ -27,7 +27,8 @@ C_FILES		= ft_memset.c \
 			  ft_strncat.c \
 			  ft_strlcat.c \
 			  ft_strchr.c \
-			  ft_strrchr.c
+			  ft_strrchr.c \
+			  ft_strstr.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
