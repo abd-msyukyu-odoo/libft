@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 15:06:31 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/06 20:21:22 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/06 20:09:45 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/06 20:18:58 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+char		*ft_strnew(size_t size)
 {
-	char		*out;
-	size_t		i;
-
-	out = ft_strnew(ft_strlen(s1));
-	if (out == NULL)
-		return (out);
-	i = -sizeof(char);
-	while (s1[++i] != '\0')
-		out[i] = s1[i];
-	out[i] = '\0';
-	return (out);
+	return ((char *)ft_memalloc(size + 1));
 }

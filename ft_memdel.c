@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 15:06:31 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/06 20:21:22 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/06 20:11:22 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/06 20:12:36 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char		*ft_strdup(const char *s1)
+void		ft_memdel(void **ap)
 {
-	char		*out;
-	size_t		i;
-
-	out = ft_strnew(ft_strlen(s1));
-	if (out == NULL)
-		return (out);
-	i = -sizeof(char);
-	while (s1[++i] != '\0')
-		out[i] = s1[i];
-	out[i] = '\0';
-	return (out);
+	free(*ap);
 }

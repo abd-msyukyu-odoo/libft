@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/06 19:48:07 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/06 20:13:03 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,10 @@ C_FILES		= ft_memset.c \
 			  ft_isascii.c \
 			  ft_isprint.c \
 			  ft_toupper.c \
-			  ft_tolower.c
+			  ft_tolower.c \
+			  ft_memalloc.c \
+			  ft_memdel.c \
+			  ft_strnew.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
