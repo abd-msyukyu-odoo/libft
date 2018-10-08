@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 15:31:23 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 15:57:16 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/08 16:36:38 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ char		*ft_strtrim(char const *s)
 	l = ft_strlen(s + prefix) + prefix;
 	while (l > prefix && (s[--l] == ' ' || s[l] == '\n' || s[l] == '\t'))
 		;
-	l = (l == prefix) ? 0 : l - prefix + 1;
+	l = (l == prefix) ? 0 : l - prefix + sizeof(char);
 	return (ft_strsub(s, prefix, l));
 }
