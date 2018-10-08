@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 15:06:31 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/06 20:21:22 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/08 13:41:45 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ char		*ft_strdup(const char *s1)
 	i = -sizeof(char);
 	while (s1[++i] != '\0')
 		out[i] = s1[i];
-	out[i] = '\0';
 	return (out);
 }

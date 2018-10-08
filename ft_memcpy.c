@@ -6,11 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 14:39:10 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/05 14:26:54 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/08 13:22:40 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 void		*ft_memcpy(void *dst, const void *src, size_t n)
 {
