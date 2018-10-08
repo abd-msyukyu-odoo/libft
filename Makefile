@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/08 12:30:56 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/08 15:10:53 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,9 @@ C_FILES		= ft_memset.c \
 			  ft_strmap.c \
 			  ft_strmapi.c \
 			  ft_strequ.c \
-			  ft_strnequ.c
+			  ft_strnequ.c \
+			  ft_strsub.c \
+			  ft_strjoin.c
 
 O_FILES		= $(C_FILES:.c=.o)
 

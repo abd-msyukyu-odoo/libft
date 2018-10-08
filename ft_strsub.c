@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 12:29:51 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 14:34:01 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/08 14:22:22 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/08 15:20:13 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_strnequ(char const *s1, char const *s2, size_t n)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	if (s1 == NULL)
-	{
-		if (s2 == NULL)
-			return (1);
-		return (0);
-	}
-	else if (s2 == NULL)
-		return (0);
-	return (ft_strncmp(s1, s2, n) == 0);
+	char		*out;
+
+	if (s == NULL)
+		return (NULL);
+	out = ft_strnew(len);
+	if (out == NULL)
+		return (out);
+	return ((char *)ft_memmove(out, s + sizeof(char) * start, len));
 }
