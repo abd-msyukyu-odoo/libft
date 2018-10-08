@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/08 16:56:44 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/08 16:59:47 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ C_FILES		= ft_memset.c \
 			  ft_strsplit.c \
 			  ft_itoa.c \
 			  ft_putchar.c \
-			  ft_putstr.c
+			  ft_putstr.c \
+			  ft_putendl.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
