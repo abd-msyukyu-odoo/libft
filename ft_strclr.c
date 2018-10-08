@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 11:29:15 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 11:29:16 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/08 12:04:04 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_strclr(char *s)
 
 	if (s == NULL)
 		return ;
-	i = -1;
+	i = -sizeof(char);
 	while (s[++i] != '\0')
 		s[i] = '\0';
 }

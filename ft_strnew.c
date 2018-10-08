@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 20:09:45 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/06 20:18:58 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/08 12:03:48 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char		*ft_strnew(size_t size)
 {
-	return ((char *)ft_memalloc(size + 1));
+	return ((char *)ft_memalloc(size + sizeof(char)));
 }

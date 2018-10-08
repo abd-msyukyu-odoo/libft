@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 11:28:57 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 12:04:31 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/08 11:58:34 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/08 12:19:14 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_striter(char *s, void (*f)(char *))
+char		*ft_strmap(const char *s, char (*f)(char))
 {
+	char		*out;
 	size_t		i;
 
 	if (s == NULL || f == NULL)
-		return ;
+		return (NULL);
+	out = ft_strnew(ft_strlen(s));
+	if (out == NULL)
+		return (out);
 	i = -sizeof(char);
 	while (s[++i] != '\0')
-		f(s + i);
+		out[i] = f(s[i]);
+	return (out);
 }
