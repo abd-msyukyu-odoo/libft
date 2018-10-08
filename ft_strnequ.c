@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/06 16:40:33 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 12:43:07 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/08 12:29:51 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/08 12:43:45 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_strncmp(const char *s1, const char *s2, size_t n)
+int			ft_strnequ(const char *s1, const char *s2, size_t n)
 {
-	size_t		i;
-	int			r;
-
-	r = 0;
-	i = -sizeof(char);
-	while (s1[++i] != '\0' && s2[i] != '\0' && r == 0 && i < n)
-		r = (unsigned char)s1[i] - (unsigned char)s2[i];
-	if (i == n)
-		return (r);
-	return ((r == 0) ? (unsigned char)s1[i] - (unsigned char)s2[i] : r);
+	if (s1 == NULL)
+	{
+		if (s2 == NULL)
+			return (1);
+		return (0);
+	}
+	else if (s2 == NULL)
+		return (0);
+	return (ft_strncmp(s1, s2, n) == 0);
 }
