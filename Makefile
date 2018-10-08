@@ -43,7 +43,9 @@ C_FILES		= ft_memset.c \
 			  ft_memalloc.c \
 			  ft_memdel.c \
 			  ft_strnew.c \
-			  ft_strdel.c
+			  ft_strdel.c \
+			  ft_strclr.c \
+			  ft_striter.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
