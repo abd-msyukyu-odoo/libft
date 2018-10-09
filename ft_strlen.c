@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:59:36 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 13:24:37 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/09 12:32:20 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t		ft_strlen(const char *s)
 {
 	size_t	len;
 
-	len = -sizeof(char);
+	len = -1;
 	while (s[++len] != '\0')
 		;
 	return (len);

@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 11:58:34 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 14:32:11 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/09 12:47:19 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*ft_strmap(char const *s, char (*f)(char))
 	out = ft_strnew(ft_strlen(s));
 	if (out == NULL)
 		return (out);
-	i = -sizeof(char);
+	i = -1;
 	while (s[++i] != '\0')
 		out[i] = f(s[i]);
 	return (out);

@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 11:28:57 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 13:32:02 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/09 12:46:52 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_striter(char *s, void (*f)(char *))
 
 	if (s == NULL || f == NULL)
 		return ;
-	i = -sizeof(char);
+	i = -1;
 	while (s[++i] != '\0')
 		f(s + i);
 }

@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 20:02:47 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/08 13:31:06 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/09 12:45:55 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		*ft_memalloc(size_t size)
 	out = malloc(size);
 	if (out == NULL)
 		return (out);
-	i = -sizeof(unsigned char);
+	i = -1;
 	while (++i < size)
 		out[i] = 0;
 	return (out);
