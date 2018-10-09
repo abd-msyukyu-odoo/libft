@@ -33,9 +33,18 @@ static size_t	ft_strsplitsize(char const *s, char c)
 char			**ft_strsplit(char const *s, char c)
 {
 	char		**out;
+	size_t		i;
 
 	out = (char **)malloc(ft_strsplitsize(s, c));
 	if (out == NULL)
 		return (out);
-	
+	i = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			++i;
+		if (s[i] == '\0')
+			break;
+
+	}
 }
