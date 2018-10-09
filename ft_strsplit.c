@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 16:00:44 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 14:38:52 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/09 15:02:17 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ static size_t	ft_strsplitsize(char const *s, char c)
 	if (s == NULL)
 		return (splitsize);
 	i = -1;
+	while (s[++i] == c)
+		;
 	while (s[++i] != '\0')
 	{
-		if (s[i] == c && s[i + 1] != c &&
-				s[i + 1] != '\0')
+		if (s[i + 1] == '\0' || (s[i] == c && s[i + 1] != c))
 			splitsize += sizeof(char *);
 	}
 	return (splitsize);
