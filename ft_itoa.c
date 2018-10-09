@@ -5,21 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/09 15:37:49 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 15:46:50 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/09 16:46:11 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/09 16:46:46 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_itoa_rec(int n, int count)
-{
-	char	*str;
-
-	
-}
-
 char		*ft_itoa(int n)
 {
-	
+	return (ft_itoa2(n));
 }
