@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 15:37:49 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 16:45:25 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:57:27 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char		*ft_itoa_rec(long n, size_t count)
 
 	if (n < 10 && n > -10)
 	{
-		if (!(str = ft_strnew(count + ((n < 0) ? 1 : 0))))
+		if (!(str = ft_strnew(count + ((n < 0) ? 2 : 1))))
 			return (NULL);
 		if (n < 0)
 			str[count + 1] = '-';
@@ -30,12 +30,14 @@ static char		*ft_itoa_rec(long n, size_t count)
 	return (str);
 }
 
-static void		ft_strrev(char *str)
+static char		*ft_strrev(char *str)
 {
 	size_t		len;
 	size_t		i;
 	char		tmp;
 
+	if (str == NULL)
+		return (NULL);
 	len = ft_strlen(str);
 	i = -1;
 	while (--len > ++i)
@@ -44,6 +46,7 @@ static void		ft_strrev(char *str)
 		str[i] = str[len];
 		str[len] = tmp;
 	}
+	return (str);
 }
 
 char			*ft_itoa2(long n)
