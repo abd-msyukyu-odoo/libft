@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 12:57:55 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 12:21:06 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/10 13:16:40 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char		*ft_strtrim(char const *s);
 char		**ft_strsplit(char const *s, char c);
 char		*ft_itoa(int n);
 char		*ft_itoa2(long n);
+char		*ft_strrev(char *str);
 void		ft_putchar(char c);
 void		ft_putstr(char const *s);
 void		ft_putendl(char const *s);

@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/10 12:04:26 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/10 13:16:02 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ C_FILES		= ft_memset.c \
 			  ft_strsplit.c \
 			  ft_itoa.c \
 			  ft_itoa2.c \
+			  ft_strrev.c \
 			  ft_putchar.c \
 			  ft_putstr.c \
 			  ft_putendl.c \

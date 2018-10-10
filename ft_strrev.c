@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa2.c                                         :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/10 12:49:56 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 13:15:23 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/10 13:14:43 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/10 13:15:40 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_itoa_rec(long n, size_t count)
+char		*ft_strrev(char *str)
 {
-	char	*str;
+	size_t		len;
+	size_t		i;
+	char		tmp;
 
-	if (n < 10 && n > -10)
+	if (str == NULL)
+		return (NULL);
+	len = ft_strlen(str);
+	i = -1;
+	while (--len > ++i)
 	{
-		if (!(str = ft_strnew(count + ((n < 0) ? 2 : 1))))
-			return (NULL);
-		if (n < 0)
-			str[count + 1] = '-';
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
 	}
-	else
-		str = ft_itoa_rec(n / 10, count + 1);
-	if (str != NULL)
-		str[count] = ((n < 0) ? -1 : 1) * (n % 10) + '0';
 	return (str);
-}
-
-char			*ft_itoa2(long n)
-{
-	return (ft_strrev(ft_itoa_rec(n, 0)));
 }
