@@ -6,11 +6,12 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 16:00:44 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 15:02:17 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/10 14:24:02 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static size_t	ft_strsplitsize(char const *s, char c)
 {
@@ -50,9 +51,11 @@ char			**ft_strsplit(char const *s, char c)
 		len_word = 0;
 		while (s[i + len_word] != c && s[i + len_word] != '\0')
 			++len_word;
-		if (len_word > 0)
-			if ((out[words++] = ft_strsub2(s, i, len_word)) == NULL)
-				return (NULL);
+		if (len_word > 0 && !((out[words++] = ft_strsub2(s, i, len_word))))
+		{
+			free(out);
+			return (NULL);
+		}
 		i += len_word;
 	}
 	return (out);
