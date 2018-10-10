@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 16:57:52 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 11:54:10 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/10 11:49:21 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/10 12:12:40 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void		ft_putendl(char const *s)
+void		ft_putstr_fd(char const *s, int fd)
 {
-	ft_putendl_fd(s, 1);
+	if (s != NULL)
+		write(fd, s, ft_strlen(s));
 }

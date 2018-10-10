@@ -6,23 +6,13 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 11:24:06 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 11:40:58 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/10 12:10:30 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void		ft_putnbr(int n)
 {
-	char digit;
-
-	if (n < 10 && n > -10)
-	{
-		if (n < 0)
-			write(1, "-", 1);
-	}
-	else
-		ft_putnbr(n / 10);
-	digit = ((n < 0) ? -1 : 1) * (n % 10) + '0';
-	write(1, &digit, 1);
+	ft_putnbr2_fd(n, 1);
 }

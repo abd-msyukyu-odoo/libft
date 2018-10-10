@@ -6,15 +6,13 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 16:54:00 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 13:42:01 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/10 11:51:28 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
 void		ft_putstr(char const *s)
 {
-	if (s != NULL)
-		write(1, s, ft_strlen(s));
+	ft_putstr_fd(s, 1);
 }

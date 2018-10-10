@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr2_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 16:57:52 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 11:54:10 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/10 11:58:19 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/10 11:59:55 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putendl(char const *s)
+void		ft_putnbr2_fd(long n, int fd)
 {
-	ft_putendl_fd(s, 1);
+	if (n < 10 && n > -10)
+	{
+		if (n < 0)
+			ft_putchar_fd('-', fd);
+	}
+	else
+		ft_putnbr2_fd(n / 10, fd);
+	ft_putchar_fd(((n < 0) ? -1 : 1) * (n % 10) + '0', fd);
 }
