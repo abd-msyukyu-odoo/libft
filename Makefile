@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/11 16:25:25 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/11 16:58:00 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ C_FILES		= ft_memset.c \
 			  ft_strcmp.c \
 			  ft_strncmp.c \
 			  ft_atoi.c \
+			  ft_atoi2.c \
 			  ft_isalpha.c \
 			  ft_isdigit.c \
 			  ft_isalnum.c \

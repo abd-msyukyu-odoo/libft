@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 13:23:28 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 14:14:46 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/11 16:42:30 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*new;
 
-	new = ft_memalloc(sizeof(t_list));
+	new = (t_list *)ft_memalloc(sizeof(t_list));
 	if (new == NULL)
 		return (NULL);
 	new->next = NULL;
