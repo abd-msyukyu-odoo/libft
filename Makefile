@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/11 15:56:02 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/11 16:25:25 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,9 @@ C_FILES		= ft_memset.c \
 			  ft_lstdel_content.c \
 			  ft_lstadd.c \
 			  ft_lstiter.c \
-			  ft_lstmap.c
+			  ft_lstmap.c \
+			  ft_swap_int.c \
+			  ft_sort_int.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
