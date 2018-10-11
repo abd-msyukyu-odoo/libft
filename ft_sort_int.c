@@ -17,17 +17,15 @@ void		ft_sort_int(long tab[], size_t s, size_t e)
 	size_t		es;
 	size_t		ee;
 	size_t		sg;
-	long		p;
 
 	es = s;
 	ee = s;
 	sg = e;
-	p = tab[s];
 	while (ee < sg)
 	{
-		if (tab[ee] < p)
+		if (tab[ee] < tab[es])
 			ft_swap_int(tab + ee++, tab + es++);
-		else if (tab[ee] == p)
+		else if (tab[ee] == tab[es])
 			++ee;
 		else
 			ft_swap_int(tab + ee, tab + --sg);
