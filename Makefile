@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/10 14:14:18 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/11 13:15:20 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,9 @@ C_FILES		= ft_memset.c \
 			  ft_putendl_fd.c \
 			  ft_putnbr_fd.c \
 			  ft_putnbr2_fd.c \
-			  ft_lstnew.c
+			  ft_lstnew.c \
+			  ft_lstdelone.c \
+			  ft_lstdel.c
 
 O_FILES		= $(C_FILES:.c=.o)
 
