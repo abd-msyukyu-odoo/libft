@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 12:21:21 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 12:47:33 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/12 14:33:46 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char		*out;
-	size_t		i;
+	char			*out;
+	unsigned int	i;
 
 	if (s == NULL || f == NULL)
 		return (NULL);
@@ -25,8 +25,8 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	while (s[i] != '\0')
 	{
-		out[i] = f((unsigned int)i, s[i]);
-		if ((unsigned int)++i == 0)
+		out[i] = f(i, s[i]);
+		if (++i == 0)
 			return (out);
 	}
 	return (out);

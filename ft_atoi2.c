@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:56:45 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/11 16:57:03 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/12 14:29:44 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ long		ft_atoi2(const char *str)
 		result = result * 10 + sign * (str[i++] - '0');
 		if (tmp != 0 && (tmp ^ result) < 0)
 			return ((result < 0) ?
-					(int)((~((long)0)) >> 1) : (int)(~((~((long)0)) >> 1)));
+					((~((long)0)) >> 1) : (~((~((long)0)) >> 1)));
 	}
 	return (result);
 }

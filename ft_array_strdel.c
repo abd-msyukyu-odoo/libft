@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_array_strdel.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/06 16:40:33 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/12 14:32:43 by dabeloos         ###   ########.fr       */
+/*   Created: 2018/10/12 14:40:43 by dabeloos          #+#    #+#             */
+/*   Updated: 2018/10/12 15:16:04 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
+#include <stdlib.h>
 
-int			ft_strncmp(const char *s1, const char *s2, size_t n)
+void		ft_array_strdel(char ***arr)
 {
 	size_t		i;
-	int			r;
 
-	r = 0;
+	if (arr == NULL)
+		return ;
 	i = -1;
-	while (s1[++i] != '\0' && r == 0 && i < n)
-		r = (unsigned char)s1[i] - (unsigned char)s2[i];
-	if (i == n)
-		return (r);
-	return ((r == 0) ? (unsigned char)s1[i] - (unsigned char)s2[i] : r);
+	while ((*arr)[++i] != NULL)
+	{
+		free((*arr)[i]);
+	}
+	free(*arr);
 }
