@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 14:40:43 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/12 15:16:04 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/12 15:24:25 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void		ft_array_strdel(char ***arr)
 		free((*arr)[i]);
 	}
 	free(*arr);
+	*arr = NULL;
 }
