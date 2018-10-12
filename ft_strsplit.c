@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 16:00:44 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/12 15:17:15 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/12 16:16:19 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,20 @@ char			**ft_strsplit(char const *s, char c)
 	size_t		len_word;
 
 	out = (s == NULL) ? NULL : (char **)ft_memalloc(ft_strsplitsize(s, c));
-	if ((i = 0) == 0 && out == NULL)
-		return (out);
+	i = 0;
 	words = 0;
-	while (s[i] != '\0')
+	while (out != NULL && s[i] != '\0')
 	{
 		while (s[i] == c)
 			++i;
 		len_word = 0;
 		while (s[i + len_word] != c && s[i + len_word] != '\0')
 			++len_word;
-		if (len_word > 0 && !((out[words++] = ft_strsub2(s, i, len_word))))
-		{
+		if (len_word > 0 && !(out[words++] = ft_strsub2(s, i, len_word)))
 			ft_array_strdel(&out);
-			return (NULL);
-		}
 		i += len_word;
 	}
-	out[words] = NULL;
+	if (out != NULL)
+		out[words] = NULL;
 	return (out);
 }
