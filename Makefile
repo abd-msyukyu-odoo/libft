@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/12 15:16:58 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/16 13:09:49 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ O_FILES		= $(C_FILES:.c=.o)
 FLAGS		= -c -Wall -Wextra -Werror
 
 $(NAME):
-			gcc $(FLAGS) $(C_FILES)
+			gcc $(FLAGS) $(C_FILES) -I includes
 			ar -rcs $(NAME) $(O_FILES)
 
 all:		$(NAME)
