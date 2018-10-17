@@ -6,7 +6,7 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/16 13:09:49 by dabeloos         ###   ########.fr        #
+#    Updated: 2018/10/17 09:44:27 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,3 +98,5 @@ fclean:		clean
 			rm -f $(NAME)
 
 re:			fclean all
+
+.PHONY: clean fclean all re

@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:14:56 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/11 15:57:45 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/17 09:45:51 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	t_list		*first;
 	t_list		*track;
 
-	if (lst == NULL)
+	if (lst == NULL || f == NULL)
 		return (NULL);
 	first = f(lst);
 	if (first == NULL)
