@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 12:01:57 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 12:02:54 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/19 15:59:15 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void		ft_putnbr_fd(int n, int fd)
 {
-	ft_putnbr2_fd(n, fd);
+	ft_putnbr2_fd((long)n, fd);
 }

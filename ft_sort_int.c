@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:05:37 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/11 16:24:57 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/19 15:45:12 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		ft_sort_int(long tab[], size_t s, size_t e)
 	size_t		ee;
 	size_t		sg;
 
+	if (tab == NULL)
+		return ;
 	es = s;
 	ee = s;
 	sg = e;
