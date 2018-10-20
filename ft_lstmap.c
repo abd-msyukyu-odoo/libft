@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:14:56 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/17 09:45:51 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:36:38 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,21 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 
 	if (lst == NULL || f == NULL)
 		return (NULL);
-	first = f(lst);
+	first = ft_lstnew(lst->content, lst->content_size);
 	if (first == NULL)
 		return (NULL);
+	first = f(first);
 	track = first;
 	while ((lst = lst->next) != NULL)
 	{
-		track->next = f(lst);
+		track->next = ft_lstnew(lst->content, lst->content_size);
 		track = track->next;
 		if (track == NULL)
 		{
 			ft_lstdel(&first, ft_lstdel_content);
 			return (NULL);
 		}
+		track = f(track);
 	}
 	return (first);
 }

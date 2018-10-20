@@ -6,11 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:56:45 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/12 14:29:44 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:21:57 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 long		ft_atoi2(const char *str)
 {

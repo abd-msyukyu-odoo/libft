@@ -6,11 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 11:29:15 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/17 09:40:19 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:40:27 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void		ft_strclr(char *s)
 {
