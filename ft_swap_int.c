@@ -6,11 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:22:56 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/19 15:47:44 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:59:02 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void		ft_swap_int(long *a, long *b)
 {

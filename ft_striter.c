@@ -6,11 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 11:28:57 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/09 12:46:52 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:41:06 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void		ft_striter(char *s, void (*f)(char *))
 {

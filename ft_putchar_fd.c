@@ -6,10 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 11:47:20 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/10 11:48:22 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:39:47 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <unistd.h>
 
 void		ft_putchar_fd(char c, int fd)
