@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static ssize_t	ft_index_of(const char *src, int c)
+ssize_t	ft_index_of(const char *src, int c)
 {
 	size_t		i;
 
