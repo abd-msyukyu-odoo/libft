@@ -6,11 +6,11 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/19 14:26:14 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/25 15:51:09 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/25 15:52:31 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 

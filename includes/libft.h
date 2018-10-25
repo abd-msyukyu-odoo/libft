@@ -6,7 +6,7 @@
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 12:57:55 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/25 15:49:07 by dabeloos         ###   ########.fr       */
+/*   Updated: 2018/10/25 15:52:47 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #  define OPEN_NAX 256
 # endif
 # ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
+#  define BUFF_SIZE 128
 # endif
 
 typedef struct		s_list
