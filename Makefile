@@ -6,98 +6,165 @@
 #    By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 12:40:14 by dabeloos          #+#    #+#              #
-#    Updated: 2018/10/25 15:51:42 by dabeloos         ###   ########.fr        #
+#    Updated: 2019/03/05 17:08:37 by dabeloos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libft.a
 
-C_FILES		= ft_memset.c \
-			  ft_bzero.c \
-			  ft_memcpy.c \
-			  ft_memccpy.c \
-			  ft_memmove.c \
-			  ft_memchr.c \
-			  ft_memcmp.c \
-			  ft_strlen.c \
-			  ft_strdup.c \
-			  ft_strcpy.c \
-			  ft_strncpy.c \
-			  ft_strcat.c \
-			  ft_strncat.c \
-			  ft_strlcat.c \
-			  ft_strchr.c \
-			  ft_strrchr.c \
-			  ft_strstr.c \
-			  ft_strnstr.c \
-			  ft_strcmp.c \
-			  ft_strncmp.c \
-			  ft_atoi.c \
-			  ft_atoi2.c \
-			  ft_isalpha.c \
-			  ft_isdigit.c \
-			  ft_isalnum.c \
-			  ft_isascii.c \
-			  ft_isprint.c \
-			  ft_toupper.c \
-			  ft_tolower.c \
-			  ft_memalloc.c \
-			  ft_memdel.c \
-			  ft_strnew.c \
-			  ft_strdel.c \
-			  ft_strclr.c \
-			  ft_striter.c \
-			  ft_striteri.c \
-			  ft_strmap.c \
-			  ft_strmapi.c \
-			  ft_strequ.c \
-			  ft_strnequ.c \
-			  ft_strsub.c \
-			  ft_strsub2.c \
-			  ft_strjoin.c \
-			  ft_strtrim.c \
-			  ft_strsplit.c \
-			  ft_itoa.c \
-			  ft_itoa2.c \
-			  ft_strrev.c \
-			  ft_putchar.c \
-			  ft_putstr.c \
-			  ft_putendl.c \
-			  ft_putnbr.c \
-			  ft_putnbr2.c \
-			  ft_putchar_fd.c \
-			  ft_putstr_fd.c \
-			  ft_putendl_fd.c \
-			  ft_putnbr_fd.c \
-			  ft_putnbr2_fd.c \
-			  ft_lstnew.c \
-			  ft_lstdelone.c \
-			  ft_lstdel.c \
-			  ft_lstdel_content.c \
-			  ft_lstadd.c \
-			  ft_lstiter.c \
-			  ft_lstmap.c \
-			  ft_swap_int.c \
-			  ft_sort_int.c \
-			  ft_array_strdel.c \
-			  ft_index_of.c \
-			  get_next_line.c
+CC			= gcc
 
-O_FILES		= $(C_FILES:.c=.o)
+CFLAGS		= -Wall -Wextra -Werror
 
-FLAGS		= -c -Wall -Wextra -Werror
+CHEAD		= ./includes
 
-$(NAME):
-			gcc $(FLAGS) $(C_FILES) -I includes
-			ar -rcs $(NAME) $(O_FILES)
+O_FILES		= ft_memset.o \
+			  ft_bzero.o \
+			  ft_memcpy.o \
+			  ft_memccpy.o \
+			  ft_memmove.o \
+			  ft_memchr.o \
+			  ft_memcmp.o \
+			  ft_strlen.o \
+			  ft_strdup.o \
+			  ft_strcpy.o \
+			  ft_strncpy.o \
+			  ft_strcat.o \
+			  ft_strncat.o \
+			  ft_strlcat.o \
+			  ft_strchr.o \
+			  ft_strrchr.o \
+			  ft_strstr.o \
+			  ft_strnstr.o \
+			  ft_strcmp.o \
+			  ft_strncmp.o \
+			  ft_atoi.o \
+			  ft_atoi2.o \
+			  ft_isalpha.o \
+			  ft_isdigit.o \
+			  ft_isalnum.o \
+			  ft_isascii.o \
+			  ft_isprint.o \
+			  ft_toupper.o \
+			  ft_tolower.o \
+			  ft_memalloc.o \
+			  ft_memdel.o \
+			  ft_strnew.o \
+			  ft_strdel.o \
+			  ft_strclr.o \
+			  ft_striter.o \
+			  ft_striteri.o \
+			  ft_strmap.o \
+			  ft_strmapi.o \
+			  ft_strequ.o \
+			  ft_strnequ.o \
+			  ft_strsub.o \
+			  ft_strsub2.o \
+			  ft_strjoin.o \
+			  ft_strtrim.o \
+			  ft_strsplit.o \
+			  ft_itoa.o \
+			  ft_itoa2.o \
+			  ft_strrev.o \
+			  ft_putchar.o \
+			  ft_putstr.o \
+			  ft_putendl.o \
+			  ft_putnbr.o \
+			  ft_putnbr2.o \
+			  ft_putchar_fd.o \
+			  ft_putstr_fd.o \
+			  ft_putendl_fd.o \
+			  ft_putnbr_fd.o \
+			  ft_putnbr2_fd.o \
+			  ft_lstnew.o \
+			  ft_lstdelone.o \
+			  ft_lstdel.o \
+			  ft_lstdel_content.o \
+			  ft_lstadd.o \
+			  ft_lstiter.o \
+			  ft_lstmap.o \
+			  ft_swap_int.o \
+			  ft_sort_int.o \
+			  ft_array_strdel.o \
+			  ft_index_of.o \
+			  get_next_line.o
+
+PRINTFHEAD	= ./ft_printf/includes
+
+MAIN_F		= apply_ornament.o \
+			  justify.o \
+			  bases.o \
+			  decode_format.o \
+			  init_clean.o \
+			  inspect_flags.o \
+			  inspect_flags_support.o \
+			  printf.o
+
+HANDLERS_F	= handle_c.o \
+			  handle_d.o \
+			  handle_f.o \
+			  handle_i.o \
+			  handle_o.o \
+			  handle_p.o \
+			  handle_pctg.o \
+			  handle_s.o \
+			  handle_u.o \
+			  handle_x.o \
+			  handle_xmaj.o
+
+FLOATS_F	= float_bits_extraction.o \
+			  float_extraction.o \
+			  float_extraction_support.o
+
+CONVERS_F	= char_conversion.o \
+			  float_bits_conversion.o \
+			  float_conversion.o \
+			  signed_conversion.o \
+			  str_conversion.o \
+			  unsigned_conversion.o
+
+POLYADIC_F	= pf_boot.o \
+			  pf_extrema.o \
+			  pf_decimal_formatting.o \
+			  pf_operations.o \
+			  pf_manager.o \
+			  pf_decimal_formatting_support.o \
+			  pf_print_recursion.o \
+			  pf_init_clean.o
+
+PRINTF_F	= $(addprefix ./ft_printf/main/, $(MAIN_F)) \
+			  $(addprefix ./ft_printf/handlers/, $(HANDLERS_F)) \
+			  $(addprefix ./ft_printf/floats/, $(FLOATS_F)) \
+			  $(addprefix ./ft_printf/conversions/, $(CONVERS_F)) \
+			  $(addprefix ./ft_printf/polyadic_float/, $(POLYADIC_F))
+
+END_E		= \033[00m
+RED_E		= \033[01;31m
+GREEN_E		= \033[01;32m
+YELLOW_E	= \033[01;33m
+PURPLE_E	= \033[01;35m
+CYAN_E		= \033[01;36m
+WHITE_E		= \033[01;37m
+BOLD_E		= \033[1m
+UNDERLINE_E	= \033[4m
+
+$(NAME):	$(O_FILES) $(PRINTF_F)
+			@ar -rcs $@ $^
+			@echo "$(GREEN_E)end compilation$(END_E)"
 
 all:		$(NAME)
 
+%.o:		%.c
+			@$(CC) $(CFLAGS) -c -o $@ $< -I$(CHEAD) -I$(PRINTFHEAD)
+
 clean:
-			rm -f $(O_FILES)
+			@rm -f $(O_FILES)
+			@rm -f $(PRINTF_F)
+			@echo "$(PURPLE_E)end clean$(END_E)"
 
 fclean:		clean
-			rm -f $(NAME)
+			@rm -f $(NAME)
+			@echo "$(RED_E)end fclean$(END_E)"
 
 re:			fclean all
 
