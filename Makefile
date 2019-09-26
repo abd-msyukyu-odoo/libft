@@ -183,7 +183,7 @@ all:		$(NAME)
 
 %.o:		%.c
 			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD) \
-				-I$(READHEAD)
+				-I$(READHEAD) -I$(MEMNGHEAD)
 
 clean:
 			@rm -f $(O_FILES)
