@@ -170,8 +170,7 @@ all:		$(NAME)
 			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD)
 
 clean:
-			@rm -f $(O_FILES)
-			@rm -f $(PRINTF_F)
+			@rm -f $(ALL_F)
 			@echo "$(PURPLE_E)end clean$(END_E)"
 
 fclean:		clean
