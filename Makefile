@@ -136,7 +136,7 @@ POLYADIC_F	= pf_boot \
 			  pf_print_recursion \
 			  pf_init_clean
 
-ALL_F		= $(addsuffix .o, \
+O_FILES		= $(addsuffix .o, \
 					$(addprefix ./ft_basic/, \
 						$(addprefix char/, $(CHAR_F)) \
 						$(addprefix int/, $(INT_F)) \
@@ -160,7 +160,7 @@ WHITE_E		= \033[01;37m
 BOLD_E		= \033[1m
 UNDERLINE_E	= \033[4m
 
-$(NAME):	$(ALL_F)
+$(NAME):	$(O_FILES)
 			@ar -rcs $@ $^
 			@echo "$(GREEN_E)end compilation$(END_E)"
 
@@ -170,7 +170,7 @@ all:		$(NAME)
 			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD)
 
 clean:
-			@rm -f $(ALL_F)
+			@rm -f $(O_FILES)
 			@echo "$(PURPLE_E)end clean$(END_E)"
 
 fclean:		clean
