@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "basic.h"
 
 void		ft_sort_int(long tab[], size_t s, size_t e)
 {

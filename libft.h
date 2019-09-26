@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/06 16:51:58 by dabeloos          #+#    #+#             */
-/*   Updated: 2018/10/11 16:57:46 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/09/26 18:06:41 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/09/26 18:06:43 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#ifndef LIBFT_H
+# define LIBFT_H
+# include "basic.h"
+# include "printf.h"
 
-int			ft_atoi(const char *str)
-{
-	return ((int)ft_atoi2(str));
-}
+#endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "basic.h"
 
 static size_t	ft_strsplitsize(char const *s, char c)
 {

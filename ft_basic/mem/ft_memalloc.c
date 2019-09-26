@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "basic.h"
 #include <stdlib.h>
 
 void		*ft_memalloc(size_t size)
