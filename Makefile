@@ -155,7 +155,7 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix floats/, $(FLOATS_F)) \
 						$(addprefix conversions/, $(CONVERS_F)) \
 						$(addprefix polyadic_float/, $(POLYADIC_F))) \
-					$(addprefix ./ft_reader/, \
+					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))))
 
 END_E		= \033[00m
