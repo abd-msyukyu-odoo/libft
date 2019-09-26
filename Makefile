@@ -16,127 +16,139 @@ CC			= gcc
 
 CFLAGS		= -Wall -Wextra -Werror
 
-CHEAD		= ./includes
+BASICHEAD	= ./ft_basic/includes
 
-O_FILES		= ft_memset.o \
-			  ft_bzero.o \
-			  ft_memcpy.o \
-			  ft_memccpy.o \
-			  ft_memmove.o \
-			  ft_memchr.o \
-			  ft_memcmp.o \
-			  ft_strlen.o \
-			  ft_strdup.o \
-			  ft_strcpy.o \
-			  ft_strncpy.o \
-			  ft_strcat.o \
-			  ft_strncat.o \
-			  ft_strlcat.o \
-			  ft_strchr.o \
-			  ft_strrchr.o \
-			  ft_strstr.o \
-			  ft_strnstr.o \
-			  ft_strcmp.o \
-			  ft_strncmp.o \
-			  ft_atoi.o \
-			  ft_atoi2.o \
-			  ft_isalpha.o \
-			  ft_isdigit.o \
-			  ft_isalnum.o \
-			  ft_isascii.o \
-			  ft_isprint.o \
-			  ft_toupper.o \
-			  ft_tolower.o \
-			  ft_memalloc.o \
-			  ft_memdel.o \
-			  ft_strnew.o \
-			  ft_strdel.o \
-			  ft_strclr.o \
-			  ft_striter.o \
-			  ft_striteri.o \
-			  ft_strmap.o \
-			  ft_strmapi.o \
-			  ft_strequ.o \
-			  ft_strnequ.o \
-			  ft_strsub.o \
-			  ft_strsub2.o \
-			  ft_strjoin.o \
-			  ft_strtrim.o \
-			  ft_strsplit.o \
-			  ft_itoa.o \
-			  ft_itoa2.o \
-			  ft_strrev.o \
-			  ft_putchar.o \
-			  ft_putstr.o \
-			  ft_putendl.o \
-			  ft_putnbr.o \
-			  ft_putnbr2.o \
-			  ft_putchar_fd.o \
-			  ft_putstr_fd.o \
-			  ft_putendl_fd.o \
-			  ft_putnbr_fd.o \
-			  ft_putnbr2_fd.o \
-			  ft_lstnew.o \
-			  ft_lstdelone.o \
-			  ft_lstdel.o \
-			  ft_lstdel_content.o \
-			  ft_lstadd.o \
-			  ft_lstiter.o \
-			  ft_lstmap.o \
-			  ft_swap_int.o \
-			  ft_sort_int.o \
-			  ft_array_strdel.o \
-			  ft_index_of.o \
-			  get_next_line.o
+CHAR_F		= ft_isalpha \
+			  ft_isdigit \
+			  ft_isalnum \
+			  ft_isascii \
+			  ft_isprint \
+			  ft_toupper \
+			  ft_tolower
+
+INT_F		= ft_itoa \
+			  ft_itoa2 \
+			  ft_swap_int \
+			  ft_sort_int
+
+LST_F		= ft_lstnew \
+			  ft_lstdelone \
+			  ft_lstdel \
+			  ft_lstdel_content \
+			  ft_lstadd \
+			  ft_lstiter \
+			  ft_lstmap
+
+MEM_F		= ft_memset \
+			  ft_bzero \
+			  ft_memcpy \
+			  ft_memccpy \
+			  ft_memmove \
+			  ft_memchr \
+			  ft_memcmp \
+			  ft_memalloc \
+			  ft_memdel
+
+PUT_F		= ft_putchar \
+			  ft_putstr \
+			  ft_putendl \
+			  ft_putnbr \
+			  ft_putnbr2 \
+			  ft_putchar_fd \
+			  ft_putstr_fd \
+			  ft_putendl_fd \
+			  ft_putnbr_fd \
+			  ft_putnbr2_fd
+
+STR_F		= ft_strlen \
+			  ft_strdup \
+			  ft_strcpy \
+			  ft_strncpy \
+			  ft_strcat \
+			  ft_strncat \
+			  ft_strlcat \
+			  ft_strchr \
+			  ft_strrchr \
+			  ft_strstr \
+			  ft_strnstr \
+			  ft_strcmp \
+			  ft_strncmp \
+			  ft_atoi \
+			  ft_atoi2 \
+			  ft_strnew \
+			  ft_strdel \
+			  ft_strclr \
+			  ft_striter \
+			  ft_striteri \
+			  ft_strmap \
+			  ft_strmapi \
+			  ft_strequ \
+			  ft_strnequ \
+			  ft_strsub \
+			  ft_strsub2 \
+			  ft_strjoin \
+			  ft_strtrim \
+			  ft_strsplit \
+			  ft_strrev \
+			  ft_strdel_ptr \
+			  ft_index_of
 
 PRINTFHEAD	= ./ft_printf/includes
 
-MAIN_F		= apply_ornament.o \
-			  justify.o \
-			  bases.o \
-			  decode_format.o \
-			  init_clean.o \
-			  inspect_flags.o \
-			  inspect_flags_support.o \
-			  printf.o
+MAIN_F		= apply_ornament \
+			  justify \
+			  bases \
+			  decode_format \
+			  init_clean \
+			  inspect_flags \
+			  inspect_flags_support \
+			  printf
 
-HANDLERS_F	= handle_c.o \
-			  handle_d.o \
-			  handle_f.o \
-			  handle_i.o \
-			  handle_o.o \
-			  handle_p.o \
-			  handle_pctg.o \
-			  handle_s.o \
-			  handle_u.o \
-			  handle_x.o \
-			  handle_xmaj.o
+HANDLERS_F	= handle_c \
+			  handle_d \
+			  handle_f \
+			  handle_i \
+			  handle_o \
+			  handle_p \
+			  handle_pctg \
+			  handle_s \
+			  handle_u \
+			  handle_x \
+			  handle_xmaj
 
-FLOATS_F	= float_bits_extraction.o \
-			  float_extraction.o \
-			  float_extraction_support.o
+FLOATS_F	= float_bits_extraction \
+			  float_extraction \
+			  float_extraction_support
 
-CONVERS_F	= char_conversion.o \
-			  float_bits_conversion.o \
-			  float_conversion.o \
-			  signed_conversion.o \
-			  str_conversion.o \
-			  unsigned_conversion.o
+CONVERS_F	= char_conversion \
+			  float_bits_conversion \
+			  float_conversion \
+			  signed_conversion \
+			  str_conversion \
+			  unsigned_conversion
 
-POLYADIC_F	= pf_boot.o \
-			  pf_extrema.o \
-			  pf_decimal_formatting.o \
-			  pf_operations.o \
-			  pf_manager.o \
-			  pf_decimal_formatting_support.o \
-			  pf_print_recursion.o \
-			  pf_init_clean.o
+POLYADIC_F	= pf_boot \
+			  pf_extrema \
+			  pf_decimal_formatting \
+			  pf_operations \
+			  pf_manager \
+			  pf_decimal_formatting_support \
+			  pf_print_recursion \
+			  pf_init_clean
 
-PRINTF_F	= $(addprefix ./ft_printf/main/, $(MAIN_F)) \
-			  $(addprefix ./ft_printf/handlers/, $(HANDLERS_F)) \
-			  $(addprefix ./ft_printf/floats/, $(FLOATS_F)) \
-			  $(addprefix ./ft_printf/conversions/, $(CONVERS_F)) \
-			  $(addprefix ./ft_printf/polyadic_float/, $(POLYADIC_F))
+ALL_F		= $(addsuffix .o, \
+					$(addprefix ./ft_basic/, \
+						$(addprefix char/, $(CHAR_F)) \
+						$(addprefix int/, $(INT_F)) \
+						$(addprefix lst/, $(LST_F)) \
+						$(addprefix mem/, $(MEM_F)) \
+						$(addprefix put/, $(PUT_F)) \
+						$(addprefix str/, $(STR_F))) \
+					$(addprefix ./ft_printf/, \
+						$(addprefix handlers/, $(HANDLERS_F)) \
+						$(addprefix floats/, $(FLOATS_F)) \
+						$(addprefix conversions/, $(CONVERS_F)) \
+						$(addprefix polyadic_float/, $(POLYADIC_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m
@@ -148,14 +160,14 @@ WHITE_E		= \033[01;37m
 BOLD_E		= \033[1m
 UNDERLINE_E	= \033[4m
 
-$(NAME):	$(O_FILES) $(PRINTF_F)
+$(NAME):	$(ALL_F)
 			@ar -rcs $@ $^
 			@echo "$(GREEN_E)end compilation$(END_E)"
 
 all:		$(NAME)
 
 %.o:		%.c
-			@$(CC) $(CFLAGS) -c -o $@ $< -I$(CHEAD) -I$(PRINTFHEAD)
+			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD)
 
 clean:
 			@rm -f $(O_FILES)

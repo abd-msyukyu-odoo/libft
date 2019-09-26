@@ -50,7 +50,7 @@ char			**ft_strsplit(char const *s, char c)
 		while (s[i + len_word] != c && s[i + len_word] != '\0')
 			++len_word;
 		if (len_word > 0 && !(out[words++] = ft_strsub2(s, i, len_word)))
-			ft_array_strdel(&out);
+			ft_strdel_ptr(&out);
 		i += len_word;
 	}
 	if (out != NULL)

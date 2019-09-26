@@ -15,12 +15,6 @@
 # include <string.h>
 # include <sys/types.h>
 # include <limits.h>
-# ifndef OPEN_MAX
-#  define OPEN_MAX 256
-# endif
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 128
-# endif
 
 typedef struct		s_list
 {
@@ -96,7 +90,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_swap_int(long *a, long *b);
 void				ft_sort_int(long tab[], size_t s, size_t e);
-void				ft_array_strdel(char ***arr);
+void				ft_strdel_ptr(char ***arr);
 ssize_t				ft_index_of(const char *src, int c);
-int					get_next_line(const int fd, char **line);
 #endif

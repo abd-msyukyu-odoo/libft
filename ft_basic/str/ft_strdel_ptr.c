@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array_strdel.c                                  :+:      :+:    :+:   */
+/*   ft_strdel_ptr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void		ft_array_strdel(char ***arr)
+void		ft_strdel_ptr(char ***arr)
 {
 	size_t		i;
 
