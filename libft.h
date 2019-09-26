@@ -13,6 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include "basic.h"
-# include "printf.h"
+# include "ft_printf.h"
+# include "memarray.h"
 
 #endif

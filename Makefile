@@ -142,6 +142,11 @@ READER_F	= reader \
 			  remain_editor \
 			  str_realloc_join
 
+MEMNGHEAD	= ./ft_memanager/includes
+
+MEMANAGER_F	= array \
+			  memarray
+
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./ft_basic/, \
 						$(addprefix char/, $(CHAR_F)) \
@@ -156,7 +161,9 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix conversions/, $(CONVERS_F)) \
 						$(addprefix polyadic_float/, $(POLYADIC_F))) \
 					$(addprefix ./ft_read/, \
-						$(addprefix reader/, $(READER_F))))
+						$(addprefix reader/, $(READER_F))) \
+					$(addprefix ./ft_memanager/, \
+						$(addprefix memanager/, $(MEMANAGER_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m
