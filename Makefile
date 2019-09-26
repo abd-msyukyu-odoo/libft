@@ -136,6 +136,12 @@ POLYADIC_F	= pf_boot \
 			  pf_print_recursion \
 			  pf_init_clean
 
+READHEAD	= ./ft_read/includes
+
+READER_F	= reader \
+			  remain_editor \
+			  str_realloc_join
+
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./ft_basic/, \
 						$(addprefix char/, $(CHAR_F)) \
@@ -148,7 +154,9 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix handlers/, $(HANDLERS_F)) \
 						$(addprefix floats/, $(FLOATS_F)) \
 						$(addprefix conversions/, $(CONVERS_F)) \
-						$(addprefix polyadic_float/, $(POLYADIC_F))))
+						$(addprefix polyadic_float/, $(POLYADIC_F))) \
+					$(addprefix ./ft_reader/, \
+						$(addprefix reader/, $(READER_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m
@@ -167,7 +175,8 @@ $(NAME):	$(O_FILES)
 all:		$(NAME)
 
 %.o:		%.c
-			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD)
+			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD) \
+				-I$(READHEAD)
 
 clean:
 			@rm -f $(O_FILES)
