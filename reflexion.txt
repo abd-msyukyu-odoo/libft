@@ -165,3 +165,38 @@ integrer le memory manager
 -> ajouter btree a la libft
 -> ? faire une hashmap
 -> restructurer la reflexion pour toute la libft
+
+---------------------------
+/////IMPORTANT\\\\\
+
+pour tout objet, creer un "constructeur" faisant usage du
+memory_manager -> plus de malloc
+
+-> pour les tableaux -> retirer le malloc de la structure, mais laisser
+	le malloc des items => il faudra les free 
+
+---------------------------
+
+reflexion wavl
+
+////IMPORTANT\\\\
+-> utiliser le memory_manager pour la gestion des nouveaux noeuds du btree
+	- fournir un memory manager externe pour la gestion
+		-> permet d'utiliser les fonctions de requete sans se preoccuper de la
+			taille derriere le memory manager
+		-> integrer un facteur d'augmentation de memoire
+	- envelopper le t_btree dans un conteneur ???
+
+root : up == NULL
+leaves : rank == 1
+parent of non-root rank = r : rank = r + (1 || 2)
+
+-> search : 
+	- standard binary search
+
+-> insertion :
+	- 
+
+-> deletion :
+	- 
+

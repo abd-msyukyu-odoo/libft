@@ -16,19 +16,23 @@
 # include "btree_ascii/named.h"
 # include "array/array.h"
 # include "basic_functions/basicft.h"
+# include "memory_manager/memanager.h"
 
-/*
-** named : pointer to a struct that has a t_named as its first member
-** left : left child in binary tree
-** right : right child in binary tree
-** cmp : comparison function used on named->key to sort the binary tree
-*/
-typedef struct			s_btree
+typedef struct			s_bnode
 {
 	t_named				*named;
 	struct s_btree		*left;
 	struct s_btree		*right;
+	struct s_btree		*up;
+	unsigned int		rank;
+}						t_bnode;
+
+typedef struct			s_btree
+{
+	t_bnode				*root;
 	int					(*cmp)(const char *s1, const char *s2);
+	t_memanager			*mmng;
+	t_memused			mused;
 }						t_btree;
 
 /*
