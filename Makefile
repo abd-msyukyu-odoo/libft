@@ -147,6 +147,8 @@ MEMANAGER_F	= memanager \
 			  memarray \
 			  memory_requests
 
+BTREE_F		= btree
+
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
 						$(addprefix char/, $(CHAR_F)) \
@@ -165,7 +167,9 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./array/, \
 						$(addprefix array/, $(ARRAY_F))) \
 					$(addprefix ./memory_manager/, \
-						$(addprefix memanager/, $(MEMANAGER_F))))
+						$(addprefix memanager/, $(MEMANAGER_F))) \
+					$(addprefix ./btree_ascii/, \
+						$(addprefix btree/, $(BTREE_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m
