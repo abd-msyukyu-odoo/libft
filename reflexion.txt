@@ -165,5 +165,3 @@ integrer le memory manager
 -> ajouter btree a la libft
 -> ? faire une hashmap
 -> restructurer la reflexion pour toute la libft
-
-chose
