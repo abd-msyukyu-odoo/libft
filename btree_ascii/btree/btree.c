@@ -26,3 +26,8 @@ int					ft_btree_construct_extmem(t_btree *btree,
 	return (1);
 }
 
+int					ft_btree_add(t_btree *btree, t_named *item)
+{
+
+	
+}

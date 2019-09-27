@@ -195,7 +195,13 @@ parent of non-root rank = r : rank = r + (1 || 2)
 	- standard binary search
 
 -> insertion :
-	- 
+	- search position where the new item should be
+	- new item -> rank = 1
+	- go up the tree and increment each parent if necessary until :
+		- root was incremented
+		- rank_parent > rank_last_incremented
+		- rank_last_incremented = rank_parent > rank_other_child + 1
+			- rotate the tree (1 or 2 times)
 
 -> deletion :
 	- 
