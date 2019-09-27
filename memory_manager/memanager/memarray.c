@@ -12,10 +12,6 @@
 
 #include "libft.h"
 
-/*
-** take all item pointer from array to fill [memitems] and put the last memitem
-** in [unused]
-*/
 static void					ft_memarray_configure_items(t_memarray *memarray,
 	unsigned int index, t_memitem *prev, unsigned int i_memarray)
 {
