@@ -1,6 +1,5 @@
 #include "array.h"
 #include "stdio.h"
-#include "memarray.h"
 
 /*
 make -C ../libft re

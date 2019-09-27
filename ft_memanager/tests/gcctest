@@ -1,4 +1,4 @@
-gcc -g -fsanitize=address -o test test_array.c ../sources/array.c ../sources/memarray.c -I../includes -I../libft -L../libft/ -lft 
+gcc -g -fsanitize=address -o test test_memanager.c ../../ft_array/array/array.c ../memanager/memanager.c -I../includes -I../../ft_array/includes -I../../ft_basic/includes -L../../ -lft 
 ./test
 rm test
 rm -rf test.dSYM
