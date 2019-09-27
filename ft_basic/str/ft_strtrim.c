@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#include "basicft.h"
 
 char		*ft_strtrim(char const *s)
 {

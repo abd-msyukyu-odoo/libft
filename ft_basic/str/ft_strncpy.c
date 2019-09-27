@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#include "basicft.h"
 
 char		*ft_strncpy(char *dst, const char *src, size_t len)
 {

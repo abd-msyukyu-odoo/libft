@@ -12,8 +12,9 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include "basic.h"
+# include "basicft.h"
 # include "ft_printf.h"
 # include "memarray.h"
+# include "array.h"
 
 #endif

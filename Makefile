@@ -142,10 +142,13 @@ READER_F	= reader \
 			  remain_editor \
 			  str_realloc_join
 
+ARRAYHEAD	= ./ft_array/includes
+
+ARRAY_F		= array
+
 MEMNGHEAD	= ./ft_memanager/includes
 
-MEMANAGER_F	= array \
-			  memarray
+MEMANAGER_F	= memanager
 
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./ft_basic/, \
@@ -162,6 +165,8 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix polyadic_float/, $(POLYADIC_F))) \
 					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))) \
+					$(addprefix ./ft_array/, \
+						$(addprefix array/, $(ARRAY_F))) \
 					$(addprefix ./ft_memanager/, \
 						$(addprefix memanager/, $(MEMANAGER_F))))
 
@@ -182,8 +187,11 @@ $(NAME):	$(O_FILES)
 all:		$(NAME)
 
 %.o:		%.c
-			@$(CC) $(CFLAGS) -c -o $@ $< -I$(BASICHEAD) -I$(PRINTFHEAD) \
-				-I$(READHEAD) -I$(MEMNGHEAD)
+			@$(CC) $(CFLAGS) -c -o $@ $<	-I$(BASICHEAD) \
+											-I$(PRINTFHEAD) \
+											-I$(READHEAD) \
+											-I$(ARRAYHEAD) \
+											-I$(MEMNGHEAD)
 
 clean:
 			@rm -f $(O_FILES)

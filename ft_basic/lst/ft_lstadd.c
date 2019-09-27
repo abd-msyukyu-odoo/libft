@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#include "basicft.h"
 
-void		ft_lstadd(t_list **alst, t_list *new)
+void		ft_lstadd(t_list **alst, t_list *elem)
 {
-	if (new == NULL || alst == NULL)
+	if (elem == NULL || alst == NULL)
 		return ;
 	if (*alst == NULL)
 	{
-		*alst = new;
-		new->next = NULL;
+		*alst = elem;
+		elem->next = NULL;
 		return ;
 	}
-	new->next = *alst;
-	*alst = new;
+	elem->next = *alst;
+	*alst = elem;
 }

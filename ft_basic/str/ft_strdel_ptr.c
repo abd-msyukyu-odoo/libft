@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#include "basicft.h"
 #include <stdlib.h>
 
 void		ft_strdel_ptr(char ***arr)
