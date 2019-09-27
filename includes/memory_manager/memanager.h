@@ -18,13 +18,16 @@
 /*
 ** item : pointer to data
 ** next : pointer to next memitem
+** next_oldest : cf oldest in t_memused
+** i_memarray : index of the memarray which possess this memitem
+** n_used : countdown of all contiguous memitems with the same memitems in
+** 		a t_memused
 */
 typedef struct			s_memitem
 {
 	void				*item;
 	struct s_memitem	*next;
 	struct s_memitem	*next_oldest;
-	struct s_memitem	*next_newest;
 	unsigned int		i_memarray;
 	unsigned int		n_used;
 }						t_memitem;
@@ -34,28 +37,35 @@ typedef struct			s_memitem
 ** oldest : Taken all contiguous memitems with the same i_memarray, the oldest
 ** 		one is an pointer of this LIFO (other elements are oldests with another
 ** 		i_memarray)
-** newest : contiguous item to oldest, with another i_memarray
 */
 typedef struct			s_memused
 {
 	t_memitem			*memitem;
 	t_memitem			*oldest;
-	t_memitem			*newest;
 }						t_memused;
 
+/*
+** array : memory allocation for data
+** memitems : memory allocation for memitems
+** unused : LIFO pointers to unused memitems
+** n_unused : length of unused
+*/
 typedef struct			s_memarray
 {
-	t_array				*array; // data
-	t_array				*memitems; // pointers to data
-	t_memitem			*unused; // all unused pointers to data
-	unsigned int		n_unused; // amount of unused memitems
+	t_array				*array;
+	t_array				*memitems;
+	t_memitem			*unused;
+	unsigned int		n_unused;
 }						t_memarray;
 
+/*
+** memarrays : array of pointers to t_memarray
+** i_available : smallest index in memarrays to t_memarray with n_unused > 0
+*/
 typedef struct			s_memanager
 {
 	t_array				*memarrays;
 	unsigned int		i_available;
-	// todo better dispatching of available memory
 }						t_memanager;
 
 /*
