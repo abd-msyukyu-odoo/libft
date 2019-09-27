@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 size_t			handle_i(va_list ap, t_str *head, t_mrk *mrk)
 {

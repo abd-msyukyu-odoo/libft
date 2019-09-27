@@ -12,10 +12,10 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include "basicft.h"
-# include "ft_printf.h"
-# include "reader.h"
-# include "array.h"
-# include "memanager.h"
+# include "basicft/basicft.h"
+# include "printf/ft_printf.h"
+# include "read/reader.h"
+# include "array/array.h"
+# include "memanager/memanager.h"
 
 #endif

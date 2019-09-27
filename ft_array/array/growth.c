@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "libft.h"
 
 int					ft_array_extend_size(t_array *array, unsigned int new_size)
 {

@@ -12,7 +12,7 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "ft_printf_support.h"
+# include "printf/ft_printf_support.h"
 
 int						ft_printf(const char *format, ...);
 

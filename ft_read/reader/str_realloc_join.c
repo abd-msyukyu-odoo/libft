@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reader.h"
+#include "libft.h"
 
 static unsigned char	ft_str_realloc(char **in, ssize_t old, ssize_t new,
 	ssize_t l)

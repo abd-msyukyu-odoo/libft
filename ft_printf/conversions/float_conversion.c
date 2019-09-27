@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void			float_tostr(PFMNG *in, t_str *head, t_mrk *mrk)
 {

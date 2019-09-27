@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "libft.h"
 
 unsigned int		ft_array_index(t_array *array, void *item)
 {

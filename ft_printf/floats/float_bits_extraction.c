@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static unsigned char	*uc_memcpy(unsigned char *dst, const void *src,
 		size_t n)

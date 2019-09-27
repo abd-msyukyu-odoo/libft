@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basicft.h"
+#include "libft.h"
 
 ssize_t	ft_index_of(const char *src, int c)
 {

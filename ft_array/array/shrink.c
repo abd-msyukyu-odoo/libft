@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "libft.h"
 
 int					ft_array_remove(t_array *array, unsigned int index,
 	void *removed)

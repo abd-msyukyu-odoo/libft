@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static void		ornate_signed(t_str *head, t_mrk *mrk, size_t i, char sign)
 {

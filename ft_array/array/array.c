@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "libft.h"
 
 t_array				*ft_array_construct(unsigned int size,
 	size_t sizeof_item)

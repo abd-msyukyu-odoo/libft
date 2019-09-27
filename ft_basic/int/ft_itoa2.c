@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basicft.h"
+#include "libft.h"
 
 static char		*ft_itoa_rec(long n, size_t i)
 {

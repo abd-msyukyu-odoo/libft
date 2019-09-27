@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memanager.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/27 16:16:07 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/09/27 16:16:08 by dabeloos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MEMANAGER_H
 # define MEMANAGER_H
 # include <stdlib.h>
-# include "array.h"
+# include "array/array.h"
 
 typedef struct			s_memitem
 {

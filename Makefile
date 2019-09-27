@@ -16,7 +16,7 @@ CC			= gcc
 
 CFLAGS		= -Wall -Wextra -Werror
 
-BASICHEAD	= ./includes/basicft
+GLOBALHEAD	= ./includes
 
 CHAR_F		= ft_isalpha \
 			  ft_isdigit \
@@ -93,8 +93,6 @@ STR_F		= ft_strlen \
 			  ft_strdel_ptr \
 			  ft_index_of
 
-PRINTFHEAD	= ./includes/printf
-
 MAIN_F		= apply_ornament \
 			  justify \
 			  bases \
@@ -136,20 +134,14 @@ POLYADIC_F	= pf_boot \
 			  pf_print_recursion \
 			  pf_init_clean
 
-READHEAD	= ./includes/read
-
 READER_F	= reader \
 			  remain_editor \
 			  str_realloc_join
-
-ARRAYHEAD	= ./includes/array
 
 ARRAY_F		= array \
 			  growth \
 			  search \
 			  shrink
-
-MEMNGHEAD	= ./includes/memanager
 
 MEMANAGER_F	= memanager \
 			  memarray \
@@ -192,11 +184,7 @@ $(NAME):	$(O_FILES)
 all:		$(NAME)
 
 %.o:		%.c
-			@$(CC) $(CFLAGS) -c -o $@ $<	-I$(BASICHEAD) \
-											-I$(PRINTFHEAD) \
-											-I$(READHEAD) \
-											-I$(ARRAYHEAD) \
-											-I$(MEMNGHEAD)
+			@$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
 
 clean:
 			@rm -f $(O_FILES)

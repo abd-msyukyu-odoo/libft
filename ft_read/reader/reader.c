@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reader.h"
+#include "libft.h"
 
 static unsigned char	ft_read_input(t_string *out, ssize_t *len, size_t sread)
 {

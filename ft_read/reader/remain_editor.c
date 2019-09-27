@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reader.h"
+#include "libft.h"
 
 unsigned char			ft_empty_until(t_string *out, ssize_t *len, char *rmn,
 		char end)

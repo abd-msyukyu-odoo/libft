@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 char			*copy_raw_ignore(char *cur, t_str *head, size_t start,
 		size_t *len)
