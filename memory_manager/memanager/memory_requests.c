@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory_requests.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/27 16:35:50 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/09/27 16:35:51 by dabeloos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int							ft_memanager_refill(t_memanager *memanager,
@@ -32,7 +44,7 @@ static void					*ft_memanager_get_same_memarray(t_memused *used,
 	t_memarray *memarray)
 {
 	t_memitem			*old;
-	
+
 	old = used->memitem;
 	if (!used->oldest)
 		used->oldest = memarray->unused;

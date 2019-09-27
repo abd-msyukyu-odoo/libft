@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memarray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/27 16:35:44 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/09/27 16:35:45 by dabeloos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
 ** take all item pointer from array to fill [memitems] and put the last memitem
 ** in [unused]
 */
-static void					ft_memarray_configure_items(t_memarray *memarray, 
+static void					ft_memarray_configure_items(t_memarray *memarray,
 	unsigned int index, t_memitem *prev, unsigned int i_memarray)
 {
 	t_memitem				*memitem;

@@ -43,7 +43,7 @@ t_array					*ft_array_construct(unsigned int size,
 void					ft_array_free(t_array *array);
 
 /*
-** this function should not be used externaly unless in case of controlled 
+** this function should not be used externaly unless in case of controlled
 ** high memory usage
 ** extend the number of elements that the array is able to store
 ** return :

@@ -76,7 +76,7 @@ t_memanager				*ft_memanager_construct(unsigned int size,
 	size_t sizeof_item);
 
 /*
-** this function should not be used externaly unless in case of controlled 
+** this function should not be used externaly unless in case of controlled
 ** high memory usage
 ** extend the number of elements that the memarray is able to store
 ** return :
