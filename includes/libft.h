@@ -14,7 +14,8 @@
 # define LIBFT_H
 # include "basicft.h"
 # include "ft_printf.h"
-# include "memanager.h"
+# include "reader.h"
 # include "array.h"
+# include "memanager.h"
 
 #endif

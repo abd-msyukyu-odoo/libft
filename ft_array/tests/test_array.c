@@ -1,12 +1,6 @@
-#include "array.h"
-#include "stdio.h"
+#include "libft.h"
+#include <stdio.h>
 
-/*
-make -C ../libft re
-make -C ../libft clean
-gcc -g -fsanitize=address -o test test_array.c ../sources/array.c ../sources/memarray.c -I../includes -I../libft -L../libft/ -lft 
-*/
-// -g -fsanitize=address
 char		*aa = "aaaaa";
 char		*bb = "bbbbb";
 char		*cc = "ccccc";

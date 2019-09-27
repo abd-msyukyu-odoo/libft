@@ -54,18 +54,6 @@ int						ft_array_extend_size(t_array *array,
 	unsigned int new_size);
 
 /*
-** this function should not be used externaly unless in case of controlled 
-** high memory usage
-** extend the number of elements that the array is able to store
-** skip a contained index so that data can be inserted later
-** return :
-**  1 : success
-**  0 : memory error
-*/
-int						ft_array_extend_size_skip(t_array *array,
-	unsigned int new_size, unsigned int skip_from);
-
-/*
 ** add at the end of the array
 ** return :
 ** 	1 : success
