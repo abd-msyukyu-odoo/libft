@@ -13,7 +13,7 @@
 #ifndef ARRAY_H
 # define ARRAY_H
 # include <stdlib.h>
-# include "basicft/basicft.h"
+# include "basic_functions/basicft.h"
 
 /*
 ** items : array of void*
