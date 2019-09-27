@@ -52,6 +52,7 @@ void			display_mem_status(t_memanager *ma, t_memused mu[2])
 	display_memused(&mu[0]);
 	printf("memused 1\n");
 	display_memused(&mu[1]);
+	printf("-------------------------------\n");
 }
 
 void			test_memanager_get(t_memanager *ma, t_memused *mu)
@@ -122,8 +123,8 @@ void			test_memanager()
 	t_memanager *ma;
 	t_memused mu[2];
 
-	mu[0] = (t_memused){NULL, NULL, NULL};
-	mu[1] = (t_memused){NULL, NULL, NULL};
+	mu[0] = (t_memused){NULL, NULL};
+	mu[1] = (t_memused){NULL, NULL};
 	ma = test_memanager_construct();
 	if (!ma)
 	{

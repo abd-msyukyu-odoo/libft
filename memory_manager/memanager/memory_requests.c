@@ -32,11 +32,8 @@ int							ft_memanager_refill(t_memanager *memanager,
 		memarray->n_unused += used->memitem->n_used;
 		if (used->memitem->i_memarray < memanager->i_available)
 			memanager->i_available = used->memitem->i_memarray;
-		used->memitem = tmp;//
+		used->memitem = tmp;
 		used->oldest = used->oldest->next_oldest;
-		// used->memitem = used->newest;
-		// if (used->newest)
-		// 	used->newest = used->newest->next_newest;
 		if (!used->memitem && used->oldest)
 			return (0);
 	}
@@ -62,8 +59,6 @@ static void					*ft_memanager_get_same_memarray(t_memused *used,
 static void					*ft_memanager_get_other_memarray(t_memused *used,
 	t_memarray *memarray)
 {
-	// used->memitem->next_newest = used->newest;
-	// used->newest = used->memitem;
 	memarray->unused->next_oldest = used->oldest;
 	used->oldest = memarray->unused;
 	memarray->unused = memarray->unused->next;
