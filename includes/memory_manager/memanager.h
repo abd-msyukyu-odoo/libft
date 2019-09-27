@@ -15,21 +15,32 @@
 # include <stdlib.h>
 # include "array/array.h"
 
+/*
+** item : pointer to data
+** next : pointer to next memitem
+*/
 typedef struct			s_memitem
 {
-	void				*item; // pointer to data
-	struct s_memitem	*next; // pointer to next memitem
+	void				*item;
+	struct s_memitem	*next;
 	struct s_memitem	*next_oldest;
 	struct s_memitem	*next_newest;
 	unsigned int		i_memarray;
 	unsigned int		n_used;
 }						t_memitem;
 
+/*
+** memitem : LIFO pointers to used memitems
+** oldest : Taken all contiguous memitems with the same i_memarray, the oldest
+** 		one is an pointer of this LIFO (other elements are oldests with another
+** 		i_memarray)
+** newest : contiguous item to oldest, with another i_memarray
+*/
 typedef struct			s_memused
 {
-	t_memitem			*memitem; // all used pointers to data
-	t_memitem			*oldest; // first added used pointer with same index
-	t_memitem			*newest; // last added used pointer with other index
+	t_memitem			*memitem;
+	t_memitem			*oldest;
+	t_memitem			*newest;
 }						t_memused;
 
 typedef struct			s_memarray
