@@ -148,7 +148,7 @@ MEMANAGER_F	= memanager \
 			  memory_requests
 
 O_FILES		= $(addsuffix .o, \
-					$(addprefix ./ft_basic/, \
+					$(addprefix ./basic_functions/, \
 						$(addprefix char/, $(CHAR_F)) \
 						$(addprefix int/, $(INT_F)) \
 						$(addprefix lst/, $(LST_F)) \
@@ -162,9 +162,9 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix polyadic_float/, $(POLYADIC_F))) \
 					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))) \
-					$(addprefix ./ft_array/, \
+					$(addprefix ./array/, \
 						$(addprefix array/, $(ARRAY_F))) \
-					$(addprefix ./ft_memanager/, \
+					$(addprefix ./memory_manager/, \
 						$(addprefix memanager/, $(MEMANAGER_F))))
 
 END_E		= \033[00m
