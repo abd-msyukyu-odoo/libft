@@ -38,16 +38,21 @@ int					ft_btree_construct_extmem(t_btree *btree,
 	return (1);
 }
 
+static int			ft_btree_construct_leaf(t_btree *btree, t_bnode *old_leaf,
+	t_bnode **leaf)
+{
+	*leaf = ft_memanager_get(btree->mmng, &btree->mused);
+	if (*leaf)
+		return (0);
+	ft_btree_initialize_leaf(*leaf, old_leaf, btree->mused.last);
+	return (1);
+}
+
 static int			ft_btree_construct_leaves(t_btree *btree, t_bnode *old_leaf)
 {
-	old_leaf->left = ft_memanager_get(btree->mmng, &btree->mused);
-	if (!old_leaf->left)
+	if (!ft_btree_construct_leaf(btree, old_leaf, &old_leaf->left) ||
+		!ft_btree_construct_leaf(btree, old_leaf, &old_leaf->right))
 		return (0);
-	ft_btree_initialize_leaf(old_leaf->left, old_leaf, btree->mused.last);
-	old_leaf->right = ft_memanager_get(btree->mmng, &btree->mused);
-	if (!old_leaf->right)
-		return (0);
-	ft_btree_initialize_leaf(old_leaf->right, old_leaf, btree->mused.last);
 	return (1);
 }
 
@@ -157,3 +162,4 @@ int					ft_btree_add(t_btree *btree, t_named *item)
 	ft_btree_rebalance(btree, cur);
 	return (1);
 }
+
