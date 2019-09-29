@@ -184,36 +184,50 @@ static int			ft_btree_cut_leaf(t_btree *btree, t_bnode *cut,
 	return (1);
 }
 
-static t_bnode		**ft_bnode_side(t_bnode *bnode)
+static t_bnode		**ft_btree_bnode_referent(t_btree *btree, t_bnode *bnode)
 {
+	if (btree->root == bnode)
+		return (&btree->root);
 	if (bnode->up->right == bnode)
-		return (&bnode->up->left);
-	return (&bnode->up->right);
+		return (&bnode->up->right);
+	return (&bnode->up->left);
 }
 
 static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 {
-	t_bnode			**side;
+	t_bnode			**referent;
 	t_bnode			*remain;
 
 	if (!ft_btree_cut_leaf(btree, cut, &remain))
 		return (0);
-	side = ft_bnode_side(cut);
+	referent = ft_btree_bnode_referent(btree, cut);
 	remain->up = cut->up;
-	*side = remain;
+	*referent = remain;
 	return (1);
+}
+
+static t_bnode		*ft_btree_get_min_bnode(t_btree *btree, t_bnode *bnode)
+{
+	while (bnode->left->rank)
+		bnode = bnode->left;
+	return (bnode);
 }
 
 static t_bnode		*ft_btree_remove_bnode(t_btree *btree, char *key)
 {
 	t_bnode			*target;
+	t_bnode			*swapper;
 
 	target = ft_btree_get_bnode(btree, key);
 	if (target)
 	{
 		if (ft_btree_cut_branch(btree, target))
 			return (target);
-		
+		swapper = ft_btree_get_min_bnode(btree, target->right);
+		target->named = swapper->named;
+		target = swapper;
+		ft_btree_cut_branch(btree, target);
+		// need rebalancing
 	}
 	return (target);
 }

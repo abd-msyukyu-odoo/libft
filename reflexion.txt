@@ -239,3 +239,4 @@ parent of non-root rank = r : rank = r + (1 || 2)
 	- if the item has at least 1 external child, 
 		deletion of this node and the external child (recovery)
 		the other child takes its place
+	- if the item has no internal child
