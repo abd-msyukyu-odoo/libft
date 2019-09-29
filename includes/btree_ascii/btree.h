@@ -21,9 +21,9 @@
 typedef struct			s_bnode
 {
 	t_named				*named;
-	struct s_btree		*left;
-	struct s_btree		*right;
-	struct s_btree		*up;
+	struct s_bnode		*left;
+	struct s_bnode		*right;
+	struct s_bnode		*up;
 	unsigned int		rank;
 }						t_bnode;
 

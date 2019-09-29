@@ -201,8 +201,11 @@ parent of non-root rank = r : rank = r + (1 || 2)
 		- root was incremented
 		- rank_parent > rank_last_incremented
 		- rank_last_incremented = rank_parent > rank_other_child + 1
-			- rotate the tree (1 or 2 times)
+			- rotate the tree (1 or 2 times) : method -> keep the weak side at the same level
+				- 1 rotation : weak side is centered -> rotate around it
+				- 2 rotations : weak side is to the side
+					- use the centered node of the strong side as the center of the 1st rotation
+					- then the sided node of the strong side as the center of the 2nd rotation
 
 -> deletion :
 	- 
-
