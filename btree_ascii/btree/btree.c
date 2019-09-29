@@ -163,3 +163,75 @@ int					ft_btree_add(t_btree *btree, t_named *item)
 	return (1);
 }
 
+static int			ft_btree_cut_leaf(t_btree *btree, t_bnode *cut,
+	t_bnode **remain)
+{
+	t_bnode			**dead_leaf;
+
+	if (!cut->left->rank)
+	{
+		*dead_leaf = cut->left;
+		*remain = cut->right;
+	}
+	else if (!cut->right->rank)
+	{
+		*dead_leaf = cut->right;
+		*remain = cut->left;
+	}
+	else
+		return (0);
+	ft_memused_recover(&btree->mused, *dead_leaf);
+	return (1);
+}
+
+static t_bnode		**ft_bnode_side(t_bnode *bnode)
+{
+	if (bnode->up->right == bnode)
+		return (&bnode->up->left);
+	return (&bnode->up->right);
+}
+
+static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
+{
+	t_bnode			**side;
+	t_bnode			*remain;
+
+	if (!ft_btree_cut_leaf(btree, cut, &remain))
+		return (0);
+	side = ft_bnode_side(cut);
+	remain->up = cut->up;
+	*side = remain;
+	return (1);
+}
+
+static t_bnode		*ft_btree_remove_bnode(t_btree *btree, char *key)
+{
+	t_bnode			*target;
+
+	target = ft_btree_get_bnode(btree, key);
+	if (target)
+	{
+		if (ft_btree_cut_branch(btree, target))
+			return (target);
+		
+	}
+	return (target);
+}
+
+t_named				*ft_btree_remove(t_btree *btree, char *key)
+{
+	t_bnode			*target;
+	t_named			*out;
+
+	if (!btree || !key)
+		return (NULL);
+	target = ft_btree_remove_bnode(btree, key);
+	if (target)
+	{
+		out = target->named;
+		ft_memused_recover(&btree->mused, target->memitem);
+	}
+	else
+		out = NULL;
+	return (out);
+}

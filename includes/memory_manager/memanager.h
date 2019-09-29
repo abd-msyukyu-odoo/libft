@@ -130,4 +130,7 @@ void					*ft_memanager_get(t_memanager *memanager,
 
 void					ft_memused_initialize(t_memused *memused);
 
+void					ft_memused_recover(t_memused *memused,
+	t_memitem *memitem);
+
 #endif
