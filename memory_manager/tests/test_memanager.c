@@ -123,8 +123,8 @@ void			test_memanager()
 	t_memanager *ma;
 	t_memused mu[2];
 
-	mu[0] = (t_memused){NULL, NULL};
-	mu[1] = (t_memused){NULL, NULL};
+	ft_memused_initialize(&mu[0]);
+	ft_memused_initialize(&mu[1]);
 	ma = test_memanager_construct();
 	if (!ma)
 	{

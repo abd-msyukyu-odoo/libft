@@ -177,6 +177,33 @@ memory_manager -> plus de malloc
 
 ---------------------------
 
+MEMUSED -> fonctions d'alteration
+-> pour rendre une seule addresse ?
+-> ajout d'une liste chainee a usage local
+-> permet de liberer et reutiliser des addresses
+	sans les rendre au memanager
+-> reste "consommee" jusqu'a la fin du process qui
+	utilise l'addresse, mais celui-ci ne fera
+	pas de requete a memanager tant qu'il peut se servir
+	dans cette liste-ci
+
+==> probleme : a reflechir
+-> chaque bnode possede son memitem
+	-> ajouter a memused un pointeur vers liste chainee
+	-> les fonctions de get vont d'abord vider cette liste
+	-> initaliseur de memused pour future evolution
+
+-> ne pas rendre les addresses supprimees et compter les
+	"fuites", ainsi que les elements du btree. Une fois une
+	certaine proportion atteinte d'addresses "perdues",
+	recopier le btree dans un nouveau et rendre l'ancien
+
+-> ne pas detruire les bnodes dont on retire les donnees,
+	-> les reutiliser des que besoin sans avoir besoin de les
+	reconstruire -> marche pas!
+---------------------------
+
+
 reflexion wavl
 
 ////IMPORTANT\\\\
@@ -208,4 +235,5 @@ parent of non-root rank = r : rank = r + (1 || 2)
 					- then the sided node of the strong side as the center of the 2nd rotation
 
 -> deletion :
-	- 
+	- search position of the item
+	- if the item has at least 1 external child, 

@@ -12,13 +12,15 @@
 
 #include "libft.h"
 
-static void			ft_btree_initialize_leaf(t_bnode *leaf, t_bnode *parent)
+static void			ft_btree_initialize_leaf(t_bnode *leaf, t_bnode *parent,
+	t_memitem *memitem)
 {
 	leaf->named = NULL;
 	leaf->left = NULL;
 	leaf->right = NULL;
 	leaf->rank = 0;
 	leaf->up = parent;
+	leaf->memitem = memitem;
 }
 
 int					ft_btree_construct_extmem(t_btree *btree,
@@ -26,11 +28,11 @@ int					ft_btree_construct_extmem(t_btree *btree,
 {
 	if (!btree || !bnode_mmng)
 		return (0);
-	btree->mused = (t_memused){NULL, NULL};
+	ft_memused_initialize(&btree->mused);
 	btree->root = (t_bnode*)ft_memanager_get(bnode_mmng, &btree->mused);
 	if (!btree->root)
 		return (0);
-	ft_btree_initialize_leaf(btree->root, NULL);
+	ft_btree_initialize_leaf(btree->root, NULL, btree->mused.last);
 	btree->cmp = ft_strcmp;
 	btree->mmng = bnode_mmng;
 	return (1);
@@ -39,11 +41,13 @@ int					ft_btree_construct_extmem(t_btree *btree,
 static int			ft_btree_construct_leaves(t_btree *btree, t_bnode *old_leaf)
 {
 	old_leaf->left = ft_memanager_get(btree->mmng, &btree->mused);
-	old_leaf->right = ft_memanager_get(btree->mmng, &btree->mused);
-	if (!old_leaf->left || !old_leaf->right)
+	if (!old_leaf->left)
 		return (0);
-	ft_btree_initialize_leaf(old_leaf->left, old_leaf);
-	ft_btree_initialize_leaf(old_leaf->right, old_leaf);
+	ft_btree_initialize_leaf(old_leaf->left, old_leaf, btree->mused.last);
+	old_leaf->right = ft_memanager_get(btree->mmng, &btree->mused);
+	if (!old_leaf->right)
+		return (0);
+	ft_btree_initialize_leaf(old_leaf->right, old_leaf, btree->mused.last);
 	return (1);
 }
 
@@ -73,34 +77,67 @@ t_named				*ft_btree_get(t_btree *btree, char *key)
 	return ((!target) ? NULL : target->named);
 }
 
-static int			ft_bnode_locate_sibling(t_bnode *child, t_bnode **sibling)
+static int			ft_bnode_sibling_spin(t_bnode *child, t_bnode **sibling)
 {
 	if (child->up->left == child)
 	{
 		*sibling = child->up->right;
-		return (-1);
+		return (1);
 	}
 	*sibling = child->up->left;
 	return (-1);
 }
 
-static void			ft_btree_rebalance(t_bnode *bn)
+static void			ft_btree_rotate(t_btree *btree, t_bnode *bn, int spin)
+{
+	t_bnode			*up;
+
+	up = bn->up;
+	bn->up = up->up;
+	up->up = bn;
+	if (btree->root == up)
+		btree->root = bn;
+	if (spin == 1)
+	{
+		up->left = bn->right;
+		bn->right->up = up;
+		bn->right = up;
+	}
+	else
+	{
+		up->right = bn->left;
+		bn->left->up = up;
+		bn->left = up;
+	}
+	up->rank--;
+	return ;
+}
+
+static void			ft_btree_rebalance(t_btree *btree, t_bnode *bn)
 {
 	t_bnode			*sib;
-	int				location;
+	int				spin;
 
 	while (bn->up)
 	{
 		if (bn->up->rank > bn->rank)
 			return ;
-		location = ft_bnode_get_sibling(bn, &sib);
+		spin = ft_bnode_sibling_spin(bn, &sib);
 		if (bn->rank == bn->up->rank && bn->rank > sib->rank + 1)
 		{
-			if (bn->right->rank - bn->left->rank == location)
-				return ;//1 rotations
+			if (bn->left->rank - bn->right->rank != spin)
+			{
+				sib = (spin == 1) ? bn->right : bn->left;
+				sib->rank++;
+				ft_btree_rotate(btree, sib, -1 * spin);
+				ft_btree_rotate(btree, sib, spin);
+			}
 			else
-				return ;//2 rotations
+				ft_btree_rotate(btree, bn, spin);
+			return ;
 		}
+		bn->up->rank++;
+		bn = bn->up;
 	}
 }
 
@@ -117,6 +154,6 @@ int					ft_btree_add(t_btree *btree, t_named *item)
 		return (0);
 	cur->named = item;
 	cur->rank = 1;
-	ft_btree_rebalance(cur);
+	ft_btree_rebalance(btree, cur);
 	return (1);
 }

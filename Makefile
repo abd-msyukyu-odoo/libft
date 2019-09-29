@@ -145,7 +145,8 @@ ARRAY_F		= array \
 
 MEMANAGER_F	= memanager \
 			  memarray \
-			  memory_requests
+			  memory_requests \
+			  memused
 
 BTREE_F		= btree
 

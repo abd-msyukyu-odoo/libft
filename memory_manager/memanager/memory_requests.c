@@ -53,7 +53,8 @@ static void					*ft_memanager_get_same_memarray(t_memused *used,
 	memarray->n_unused--;
 	used->memitem->next = old;
 	used->memitem->n_used = (!old) ? 1 : old->n_used + 1;
-	return (used->memitem->item);
+	used->last = used->memitem;
+	return (used->last->item);
 }
 
 static void					*ft_memanager_get_other_memarray(t_memused *used,
@@ -66,7 +67,8 @@ static void					*ft_memanager_get_other_memarray(t_memused *used,
 	used->oldest->next = used->memitem;
 	used->memitem = used->oldest;
 	used->memitem->n_used = 1;
-	return (used->memitem->item);
+	used->last = used->memitem;
+	return (used->last->item);
 }
 
 void						*ft_memanager_get(t_memanager *memanager,
@@ -74,6 +76,12 @@ void						*ft_memanager_get(t_memanager *memanager,
 {
 	t_memarray			*memarray;
 
+	if (used->recovery)
+	{
+		used->last = used->recovery;
+		used->recovery = used->recovery->next_recovery;
+		return (used->last->item);
+	}
 	memarray = *(t_memarray**)ft_array_get(memanager->memarrays,
 		memanager->i_available);
 	while (!memarray->n_unused)
