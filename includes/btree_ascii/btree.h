@@ -37,68 +37,101 @@ typedef struct			s_btree
 }						t_btree;
 
 /*
-** create a t_btree instance
-** return :
-** 	t_btree* : created instance
-** 	NULL : error
+** fill the empty btree, so it can be used
+**
+** @before: btree should be empty
+**
+** @param: btree : empty t_btree*
+** @param: bnode_mmng : t_memanager* in charge of supplying t_bnode*
+**
+** @return: 1 : success
+** @return: 0 : memory error
+** @return: -1 : param error
 */
-t_btree					*ft_btree_construct(t_named *named);
+int						ft_btree_construct_extmem(t_btree *btree,
+	t_memanager *bnode_mmng);
 
 /*
-** free the t_btree instance, but not the items
+** refill btree->mmng with t_bnode* stored within btree->mused
+**
+** @after: btree cannot be used anymore unless reconstructed
+**
+** @param: btree : to be destroyed t_btree*
 */
-void					ft_btree_free(t_btree *btree);
+void					ft_btree_free_extmem(t_btree *btree);
 
 /*
-** add item to the btree only if its key is not already present
-** return :
-** 	1 : success
-** 	-1 : btree was not modified
-** 	0 : error
+** get *t_named which has key
+**
+** @param: btree : to search in
+** @param: key : to be searched for
+**
+** @return: t_named* which has key
+** @return: NULL : btree does not contain key
 */
-int						ft_btree_add(t_btree *btree, t_named *item);
-
-/*
-** get t_named item with key
-** return :
-** 	t_named* : item with key
-** 	NULL : btree does not contains key
-*/
-t_named					*ft_btree_get_named(t_btree *btree, char *key);
-
-/*
-** replace item only if its key is already present
-** return :
-** 	t_named* : previous item with key
-** 	NULL : btree does not contains key
-*/
-t_named					*ft_btree_replace(t_btree *btree, t_named *item);
+t_named					*ft_btree_get(t_btree *btree, char *key);
 
 /*
 ** check if btree contains key
-** return :
-** 	1 : btree contains key
-** 	0 : btree does not contain key
+**
+** @param: btree : to search in
+** @param: key : to be searched for
+**
+** @return: 1 : btree does contain key
+** @return: 0 : btree does not contain key
 */
 int						ft_btree_contains(t_btree *btree, char *key);
 
 /*
-** remove item with key from the btree
-** return :
-** 	t_named* : removed item
-** 	NULL : btree does not contains key
+** add item to btree only if item->key is not already present
+**
+** @param: btree : to be modified
+** @param: item : to be added
+**
+** @return: 1 : success
+** @return: 0 : memory error
+** @return: -1 : param error
+** @return: -2 : error item->key is already present
+*/
+int						ft_btree_add(t_btree *btree, t_named *item);
+
+/*
+** replace item from btree only if item->key is already present
+**
+** @param: btree : to be modified
+** @param: item : to be added
+**
+** @return: t_named* which was removed
+** @return: NULL : error
+*/
+t_named					*ft_btree_replace(t_btree *btree, t_named *item);
+
+/*
+** remove item from btree if item->key is already present
+**
+** @param: btree : to be modified
+** @param: key : to be searched for
+**
+** @return: t_named* which was removed
+** @return: NULL : error
 */
 t_named					*ft_btree_remove(t_btree *btree, char *key);
 
 /*
-** fill new_btree with all items from old_btree
+** fill new with items from old
+**
+** @param: old : source
+** @param: new : destination
+**
+** @return: 1 : success
+** @return: 0 : memory error
+** @return: -1 : param error
 ** return :
 ** 	1 : success
 ** 	-1 : btree was not modified
 ** 	0 : error
 */
-int						ft_btree_fill_copy(t_btree *old_btree,
-							t_btree *new_btree);
+int						ft_btree_fill_copy(t_btree *old, t_btree *new);
 
 /*
 ** fill array with all items from btree

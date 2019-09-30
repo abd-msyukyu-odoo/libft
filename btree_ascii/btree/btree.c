@@ -27,7 +27,7 @@ int					ft_btree_construct_extmem(t_btree *btree,
 	t_memanager *bnode_mmng)
 {
 	if (!btree || !bnode_mmng)
-		return (0);
+		return (-1);
 	ft_memused_initialize(&btree->mused);
 	btree->root = (t_bnode*)ft_memanager_get(bnode_mmng, &btree->mused);
 	if (!btree->root)
@@ -36,6 +36,11 @@ int					ft_btree_construct_extmem(t_btree *btree,
 	btree->cmp = ft_strcmp;
 	btree->mmng = bnode_mmng;
 	return (1);
+}
+
+void				ft_btree_free_extmem(t_btree *btree)
+{
+	ft_memanager_refill(btree->mmng, &btree->mused);
 }
 
 static int			ft_btree_construct_leaf(t_btree *btree, t_bnode *old_leaf,
@@ -79,7 +84,7 @@ t_named				*ft_btree_get(t_btree *btree, char *key)
 	if (!btree || !key)
 		return (NULL);
 	target = ft_btree_get_bnode(btree, key);
-	return ((!target) ? NULL : target->named);
+	return ((!target->rank) ? NULL : target->named);
 }
 
 int					ft_btree_contains(t_btree *btree, char *key)

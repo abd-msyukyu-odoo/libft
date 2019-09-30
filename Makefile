@@ -189,7 +189,7 @@ $(NAME):	$(O_FILES)
 all:		$(NAME)
 
 %.o:		%.c
-			@$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
+			$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
 
 clean:
 			@rm -f $(O_FILES)
