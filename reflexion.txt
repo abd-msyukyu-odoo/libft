@@ -201,6 +201,15 @@ MEMUSED -> fonctions d'alteration
 -> ne pas detruire les bnodes dont on retire les donnees,
 	-> les reutiliser des que besoin sans avoir besoin de les
 	reconstruire -> marche pas!
+
+
+-> reutiliser le concept de filler pour le memory manager
+	-> permettra de gerer les tableaux et structures a 
+	taille variable
+	-> penser a retirer les fonctions de recovery
+		-> on pourra rendre toute addresse n'importe quand
+			avec le nouveau systeme
+
 ---------------------------
 
 
