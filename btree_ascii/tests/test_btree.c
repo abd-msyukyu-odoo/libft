@@ -24,7 +24,8 @@ int				display_bnode(void *receiver, void *sent)
 	cur = (t_bnode*)sent;
 	printf("%s\n", cur->named->key);
 	if (receiver)
-		printf("	left= %s\n	right= %s\n", cur->left, cur->right);
+		printf("	left= %s\n	right= %s\n", char_bnode(cur->left),
+			char_bnode(cur->right));
 	return (1);
 }
 
