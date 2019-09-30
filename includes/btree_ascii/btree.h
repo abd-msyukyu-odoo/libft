@@ -126,19 +126,18 @@ t_named					*ft_btree_remove(t_btree *btree, char *key);
 ** @return: 1 : success
 ** @return: 0 : memory error
 ** @return: -1 : param error
-** return :
-** 	1 : success
-** 	-1 : btree was not modified
-** 	0 : error
 */
 int						ft_btree_fill_copy(t_btree *old, t_btree *new);
 
 /*
-** fill array with all items from btree
-** return :
-** 	1 : success
-** 	-1 : array was not modified
-** 	0 : error
+** fill array with items from btree
+**
+** @param: btree : source
+** @param: new : destination
+**
+** @return: 1 : success
+** @return: 0 : memory error
+** @return: -1 : param error
 */
 int						ft_btree_fill_array(t_btree *btree, t_array *array);
 
