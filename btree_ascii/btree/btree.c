@@ -82,6 +82,11 @@ t_named				*ft_btree_get(t_btree *btree, char *key)
 	return ((!target) ? NULL : target->named);
 }
 
+int					ft_btree_contains(t_btree *btree, char *key)
+{
+	return (ft_btree_get_btree(btree, key) != NULL);
+}
+
 static int			ft_bnode_has_two_leaves(t_bnode *bnode)
 {
 	if (!bnode->left || !bnode->right)
@@ -201,19 +206,34 @@ static void			ft_btree_rebalance_deleted(t_btree *btree, t_bnode *bn)
 
 int					ft_btree_add(t_btree *btree, t_named *item)
 {
-	t_bnode			*cur;
+	t_bnode			*target;
 
 	if (!btree || !item || !item->key)
 		return (-1);
-	cur = ft_btree_get_bnode(btree, item->key);
-	if (cur->rank)
+	target = ft_btree_get_bnode(btree, item->key);
+	if (target->rank)
 		return (-2);
-	if (!ft_btree_construct_leaves(btree, cur))
+	if (!ft_btree_construct_leaves(btree, target))
 		return (0);
-	cur->named = item;
-	cur->rank = 1;
-	ft_btree_rebalance_added(btree, cur);
+	target->named = item;
+	target->rank = 1;
+	ft_btree_rebalance_added(btree, target);
 	return (1);
+}
+
+t_named				*ft_btree_replace(t_btree *btree, t_named *item)
+{
+	t_bnode			*target;
+	t_named			*out;
+
+	if (!btree || !item || !item->key)
+		return (NULL);
+	target = ft_btree_get_bnode(btree, item->key);
+	if (!target->rank)
+		return (NULL);
+	out = target->named;
+	target->named = item;
+	return (out);
 }
 
 static int			ft_btree_cut_leaf(t_btree *btree, t_bnode *cut,
@@ -301,4 +321,27 @@ t_named				*ft_btree_remove(t_btree *btree, char *key)
 	else
 		out = NULL;
 	return (out);
+}
+
+static int			ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
+	int (*f)(void *receiver, void *sent))
+{
+	int				out;
+
+	out = f(receiver, sent->named);
+	if (out > 0 && sent->left->rank)
+		out = ft_btree_bnode_iteration(receiver, sent->left, f);
+	if (out > 0 && sent->right->rank)
+		out = ft_btree_bnode_iteration(receiver, sent->right, f);
+	return (out);
+}
+
+int					ft_btree_fill_copy(t_btree *old, t_btree *new)
+{
+	return (ft_btree_bnode_iteration(new, old->root, ft_btree_add));
+}
+
+int					ft_btree_fill_array(t_btree *btree, t_array *array)
+{
+	return (ft_btree_bnode_iteration(array, btree->root, ft_array_add));
 }

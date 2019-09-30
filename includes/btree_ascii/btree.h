@@ -80,7 +80,7 @@ t_named					*ft_btree_replace(t_btree *btree, t_named *item);
 ** 	1 : btree contains key
 ** 	0 : btree does not contain key
 */
-unsigned int			ft_btree_contains(t_btree *btree, char *key);
+int						ft_btree_contains(t_btree *btree, char *key);
 
 /*
 ** remove item with key from the btree
