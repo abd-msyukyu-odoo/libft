@@ -118,6 +118,21 @@ t_named					*ft_btree_replace(t_btree *btree, t_named *item);
 t_named					*ft_btree_remove(t_btree *btree, char *key);
 
 /*
+** apply f on each node starting from sent in sorted order, using receiver
+** as the appliation tool
+**
+** @param: receiver : tool used in the process of f
+** @param: sent : the current element from a t_btree*
+** @param: f : the application function
+**
+** @return: 1 : success
+** @return: 0 : memory error
+** @return: -1 : error
+*/
+int						ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
+	int (*f)(void *receiver, void *sent));
+
+/*
 ** fill new with items from old
 **
 ** @param: old : source

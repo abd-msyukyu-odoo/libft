@@ -338,7 +338,7 @@ static int			ft_array_add_typecast(void *receiver, void *sent)
 	return (ft_array_add((t_array*)receiver, (t_named*)sent));
 }
 
-static int			ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
+int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 	int (*f)(void *receiver, void *sent))
 {
 	int				out;
