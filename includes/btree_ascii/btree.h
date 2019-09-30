@@ -24,7 +24,7 @@ typedef struct			s_bnode
 	struct s_bnode		*left;
 	struct s_bnode		*right;
 	struct s_bnode		*up;
-	unsigned int		rank;
+	int					rank;
 	t_memitem			*memitem;
 }						t_bnode;
 

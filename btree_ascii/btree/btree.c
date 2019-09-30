@@ -89,7 +89,7 @@ t_named				*ft_btree_get(t_btree *btree, char *key)
 
 int					ft_btree_contains(t_btree *btree, char *key)
 {
-	return (ft_btree_get_btree(btree, key) != NULL);
+	return (ft_btree_get_bnode(btree, key) != NULL);
 }
 
 static int			ft_bnode_has_two_leaves(t_bnode *bnode)
@@ -244,21 +244,21 @@ t_named				*ft_btree_replace(t_btree *btree, t_named *item)
 static int			ft_btree_cut_leaf(t_btree *btree, t_bnode *cut,
 	t_bnode **remain)
 {
-	t_bnode			**dead_leaf;
+	t_bnode			*dead_leaf;
 
 	if (!cut->left->rank)
 	{
-		*dead_leaf = cut->left;
+		dead_leaf = cut->left;
 		*remain = cut->right;
 	}
 	else if (!cut->right->rank)
 	{
-		*dead_leaf = cut->right;
+		dead_leaf = cut->right;
 		*remain = cut->left;
 	}
 	else
 		return (0);
-	ft_memused_recover(&btree->mused, *dead_leaf);
+	ft_memused_recover(&btree->mused, dead_leaf->memitem);
 	return (1);
 }
 
@@ -285,7 +285,7 @@ static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 	return (1);
 }
 
-static t_bnode		*ft_btree_get_min_bnode(t_btree *btree, t_bnode *bnode)
+static t_bnode		*ft_btree_get_min_bnode(t_bnode *bnode)
 {
 	while (bnode->left->rank)
 		bnode = bnode->left;
@@ -302,7 +302,7 @@ static t_bnode		*ft_btree_remove_bnode(t_btree *btree, char *key)
 	{
 		if (ft_btree_cut_branch(btree, target))
 			return (target);
-		swapper = ft_btree_get_min_bnode(btree, target->right);
+		swapper = ft_btree_get_min_bnode(target->right);
 		target->named = swapper->named;
 		target = swapper;
 		ft_btree_cut_branch(btree, target);
@@ -328,6 +328,16 @@ t_named				*ft_btree_remove(t_btree *btree, char *key)
 	return (out);
 }
 
+static int			ft_btree_add_typecast(void *receiver, void *sent)
+{
+	return (ft_btree_add((t_btree*)receiver, (t_named*)sent));
+}
+
+static int			ft_array_add_typecast(void *receiver, void *sent)
+{
+	return (ft_array_add((t_array*)receiver, (t_named*)sent));
+}
+
 static int			ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 	int (*f)(void *receiver, void *sent))
 {
@@ -343,10 +353,11 @@ static int			ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 
 int					ft_btree_fill_copy(t_btree *old, t_btree *new)
 {
-	return (ft_btree_bnode_iteration(new, old->root, ft_btree_add));
+	return (ft_btree_bnode_iteration(new, old->root, ft_btree_add_typecast));
 }
 
 int					ft_btree_fill_array(t_btree *btree, t_array *array)
 {
-	return (ft_btree_bnode_iteration(array, btree->root, ft_array_add));
+	return (ft_btree_bnode_iteration(array, btree->root,
+		ft_array_add_typecast));
 }
