@@ -162,7 +162,8 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix handlers/, $(HANDLERS_F)) \
 						$(addprefix floats/, $(FLOATS_F)) \
 						$(addprefix conversions/, $(CONVERS_F)) \
-						$(addprefix polyadic_float/, $(POLYADIC_F))) \
+						$(addprefix polyadic_float/, $(POLYADIC_F)) \
+						$(addprefix main/, $(MAIN_F))) \
 					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))) \
 					$(addprefix ./array/, \

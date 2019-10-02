@@ -84,8 +84,15 @@ int				main(void)
 		data = ft_memanager_get(datas, &mudatas);
 		data->named = (t_named){&(in[i])};
 		data->ext = "ext";
-		ft_btree_add(btree, (t_named*)data);
+		printf("%d\n", ft_btree_add(btree, (t_named*)data));
 	}
+	if (!btree)
+		printf("btree null\n");
+	else
+	{
+		printf("root %s\n", btree->root->named->key);
+	}
+	
 	display_btree(btree, 1);
 
 	ft_memanager_free(bnodes);

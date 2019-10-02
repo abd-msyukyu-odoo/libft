@@ -47,7 +47,7 @@ static int			ft_btree_construct_leaf(t_btree *btree, t_bnode *old_leaf,
 	t_bnode **leaf)
 {
 	*leaf = ft_memanager_get(btree->mmng, &btree->mused);
-	if (*leaf)
+	if (!*leaf)
 		return (0);
 	ft_btree_initialize_leaf(*leaf, old_leaf, btree->mused.last);
 	return (1);
