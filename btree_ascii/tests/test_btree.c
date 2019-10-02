@@ -19,14 +19,15 @@ char			*char_bnode(t_bnode *bn)
 
 int				display_bnode(void *receiver, void *sent)
 {
-	t_bnode		*cur;
+	t_named		*cur;
 
-	cur = (t_bnode*)sent;
-	printf("%s\n", cur->named->key);
+	cur = (t_named*)sent;
 	if (receiver)
-		printf("	left= %s\n	right= %s\n", char_bnode(cur->left),
-			char_bnode(cur->right));
-	return (1);
+	{
+		printf("%s\n", cur->key);
+		return (1);
+	}
+	return (0);
 }
 
 void			display_btree(t_btree *b, int verbose)
@@ -84,7 +85,8 @@ int				main(void)
 		data = ft_memanager_get(datas, &mudatas);
 		data->named = (t_named){&(in[i])};
 		data->ext = "ext";
-		printf("%d\n", ft_btree_add(btree, (t_named*)data));
+		printf("added : %s || status : %d\n\n", data->named.key, ft_btree_add(btree, (t_named*)data));
+		printf("------------------------------\n\n");
 	}
 	if (!btree)
 		printf("btree null\n");

@@ -66,13 +66,32 @@ static t_bnode		*ft_btree_get_bnode(t_btree *btree, char *key)
 	t_bnode			*cur;
 	int				cmpr;
 
+	ft_printf("searching for %s\n\n", key);
 	cur = btree->root;
 	while (cur->rank && (cmpr = btree->cmp(key, cur->named->key)))
 	{
+		ft_printf("key : %s\n", cur->named->key);
+		ft_printf("rank : %d\n", cur->rank);
+		t_bnode *tmp;
+		tmp = cur;
 		if (cmpr < 0)
+		{
 			cur = cur->left;
+			ft_printf("left\n\n");
+		}
 		else
+		{
 			cur = cur->right;
+			ft_printf("right\n\n");
+		}
+		//
+		if (cur->right == tmp || cur->left == tmp)
+		{
+			ft_printf("key : %s\n", cur->named->key);
+			ft_printf("rank : %d\n", cur->rank);
+			ft_printf("error loop");
+			exit(-1);
+		}
 	}
 	return (cur);
 }
@@ -99,6 +118,16 @@ static int			ft_bnode_has_two_leaves(t_bnode *bnode)
 	return (!bnode->left->rank && !bnode->right->rank);
 }
 
+static t_bnode		**ft_bnode_up_side(t_bnode *child)
+{
+	if (!child->up)
+		return (NULL);
+	if (child->up->left == child)
+		return (&child->up->left);
+	else
+		return (&child->up->right);
+}
+
 static int			ft_bnode_sibling_spin(t_bnode *child, t_bnode **sibling)
 {
 	if (child->up->left == child)
@@ -113,12 +142,21 @@ static int			ft_bnode_sibling_spin(t_bnode *child, t_bnode **sibling)
 static void			ft_btree_rotate(t_btree *btree, t_bnode *bn, int spin)
 {
 	t_bnode			*up;
+	t_bnode			**up_side;
 
 	up = bn->up;
+	if (btree->root == up)
+	{
+		btree->root = bn;
+		ft_printf("switch root\n");
+	}
+	else
+	{
+		up_side = ft_bnode_up_side(up);
+		*up_side = bn;
+	}
 	bn->up = up->up;
 	up->up = bn;
-	if (btree->root == up)
-		btree->root = bn;
 	if (spin == 1)
 	{
 		up->left = bn->right;
@@ -145,15 +183,19 @@ static void			ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)
 		spin = ft_bnode_sibling_spin(bn, &sib);
 		if (bn->rank == bn->up->rank && bn->rank > sib->rank + 1)
 		{
-			if (bn->left->rank - bn->right->rank != spin)
+			if ((bn->left->rank - bn->right->rank ^ spin) < 0)
 			{
+				ft_printf("double rotation\n");
 				sib = (spin == 1) ? bn->right : bn->left;
 				sib->rank++;
 				ft_btree_rotate(btree, sib, -1 * spin);
 				ft_btree_rotate(btree, sib, spin);
 			}
 			else
+			{
+				ft_printf("simple rotation\n");
 				ft_btree_rotate(btree, bn, spin);
+			}
 			return ;
 		}
 		bn->up->rank++;
@@ -191,7 +233,7 @@ static void			ft_btree_rebalance_deleted(t_btree *btree, t_bnode *bn)
 		spin = ft_bnode_sibling_spin(bn, &sib);
 		if (sib->rank - bn->rank == 2)
 		{
-			if (sib->left->rank - sib->right->rank == spin)
+			if ((sib->left->rank - sib->right->rank ^ spin) > 0)
 			{
 				ft_btree_rebalance_deleted_double_rotate(btree, bn, sib, spin);
 				return ;
@@ -343,9 +385,11 @@ int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 {
 	int				out;
 
-	out = f(receiver, sent->named);
-	if (out > 0 && sent->left->rank)
+	out = 1;
+	if (sent->left->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->left, f);
+	if (out > 0)
+		out = f(receiver, sent->named);
 	if (out > 0 && sent->right->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->right, f);
 	return (out);
