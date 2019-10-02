@@ -1,4 +1,5 @@
+rm log
 gcc -g -fsanitize=address -o test test_btree.c -I../../includes -L../../ -lft 
-./test
+./test > log
 rm test
 rm -rf test.dSYM

@@ -145,7 +145,7 @@ static void			ft_btree_rotate(t_btree *btree, t_bnode *bn, int spin)
 
 	up = bn->up;
 	referent = ft_btree_bnode_referent(btree, up);
-	if (up->up == btree->root)
+	if (up == btree->root)
 		ft_printf("switching root\n");
 	*referent = bn;
 	bn->up = up->up;
@@ -213,7 +213,7 @@ static void			ft_btree_rebalance_deleted_single_rotate(t_btree *btree,
 	sib->up->rank++;
 	ft_btree_rotate(btree, sib->up, -1 * spin);
 	if (ft_bnode_has_two_leaves(bn))
-		bn->rank--;
+		bn->rank = 1;
 }
 
 static void			ft_btree_rebalance_deleted(t_btree *btree, t_bnode *bn)
@@ -221,19 +221,31 @@ static void			ft_btree_rebalance_deleted(t_btree *btree, t_bnode *bn)
 	t_bnode			*sib;
 	int				spin;
 
-	while (bn->up && bn->up->rank - bn->rank == 3)
+	while (bn->up && bn->up->rank - bn->rank >= 3)
 	{
+		ft_printf("trigger rebalancing\n");
+		if (bn->up->rank - bn->rank > 3)
+		{
+			ft_printf("error : rank diff : %d = %d - %d\n",
+				bn->up->rank - bn->rank,
+				bn->up->rank,
+				bn->rank);
+			exit(-1);
+		}
 		spin = ft_bnode_sibling_spin(bn, &sib);
 		if (sib->rank - bn->rank == 2)
 		{
-			if ((sib->left->rank - sib->right->rank ^ spin) > 0)
+			ft_printf("trigger complex rebalancing\n");
+			if (sib->left->rank - sib->right->rank == spin)
 			{
+				ft_printf("double rotation\n");
 				ft_btree_rebalance_deleted_double_rotate(btree, bn, sib, spin);
 				return ;
 			}
 			sib = (spin == 1) ? sib->right : sib->left;
 			if (sib->up->rank - sib->rank == 1)
 			{
+				ft_printf("simple rotation\n");
 				ft_btree_rebalance_deleted_single_rotate(btree, bn, sib, spin);
 				return ;
 			}
@@ -307,6 +319,17 @@ static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 	referent = ft_btree_bnode_referent(btree, cut);
 	remain->up = cut->up;
 	*referent = remain;
+	ft_printf("rank deleted : %d | remain : %d | up : %d\n",
+		cut->rank, remain->rank, remain->up->rank);
+	if (!remain->rank && btree->root != remain)
+	{
+		ft_bnode_sibling_spin(remain, &cut);
+		if (!cut->rank)
+		{
+			ft_printf("demote leaf : previous : %d\n", remain->up->rank);
+			remain->up->rank = 1;
+		}
+	}
 	ft_btree_rebalance_deleted(btree, remain);
 	return (1);
 }
@@ -322,18 +345,21 @@ static t_bnode		*ft_btree_remove_bnode(t_btree *btree, char *key)
 {
 	t_bnode			*target;
 	t_bnode			*swapper;
+	t_named			*named;
 
 	target = ft_btree_get_bnode(btree, key);
-	if (target)
+	if (target->rank)
 	{
 		if (ft_btree_cut_branch(btree, target))
 			return (target);
 		swapper = ft_btree_get_min_bnode(target->right);
+		named = target->named;
 		target->named = swapper->named;
+		swapper->named = named;
 		target = swapper;
 		ft_btree_cut_branch(btree, target);
 	}
-	return (target);
+	return ((target->rank) ? target : NULL);
 }
 
 t_named				*ft_btree_remove(t_btree *btree, char *key)

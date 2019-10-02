@@ -258,3 +258,6 @@ reflexion probleme btree remove
 
 -> probleme -> rank pas bien mis a jour
 	en cas de deletion
+	-> voir log
+		-> symptomes : une difference de rank de 3 persiste
+			apres un rebalancing
