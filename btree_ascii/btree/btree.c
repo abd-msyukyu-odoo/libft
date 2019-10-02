@@ -118,14 +118,13 @@ static int			ft_bnode_has_two_leaves(t_bnode *bnode)
 	return (!bnode->left->rank && !bnode->right->rank);
 }
 
-static t_bnode		**ft_bnode_up_side(t_bnode *child)
+static t_bnode		**ft_btree_bnode_referent(t_btree *btree, t_bnode *bnode)
 {
-	if (!child->up)
-		return (NULL);
-	if (child->up->left == child)
-		return (&child->up->left);
-	else
-		return (&child->up->right);
+	if (btree->root == bnode)
+		return (&btree->root);
+	if (bnode->up->right == bnode)
+		return (&bnode->up->right);
+	return (&bnode->up->left);
 }
 
 static int			ft_bnode_sibling_spin(t_bnode *child, t_bnode **sibling)
@@ -142,19 +141,13 @@ static int			ft_bnode_sibling_spin(t_bnode *child, t_bnode **sibling)
 static void			ft_btree_rotate(t_btree *btree, t_bnode *bn, int spin)
 {
 	t_bnode			*up;
-	t_bnode			**up_side;
+	t_bnode			**referent;
 
 	up = bn->up;
-	if (btree->root == up)
-	{
-		btree->root = bn;
-		ft_printf("switch root\n");
-	}
-	else
-	{
-		up_side = ft_bnode_up_side(up);
-		*up_side = bn;
-	}
+	referent = ft_btree_bnode_referent(btree, up);
+	if (up->up == btree->root)
+		ft_printf("switching root\n");
+	*referent = bn;
 	bn->up = up->up;
 	up->up = bn;
 	if (spin == 1)
@@ -304,15 +297,6 @@ static int			ft_btree_cut_leaf(t_btree *btree, t_bnode *cut,
 	return (1);
 }
 
-static t_bnode		**ft_btree_bnode_referent(t_btree *btree, t_bnode *bnode)
-{
-	if (btree->root == bnode)
-		return (&btree->root);
-	if (bnode->up->right == bnode)
-		return (&bnode->up->right);
-	return (&bnode->up->left);
-}
-
 static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 {
 	t_bnode			**referent;
@@ -385,8 +369,8 @@ int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 {
 	int				out;
 
-	out = 1;
-	if (sent->left->rank)
+	out = (sent->rank) ? 1 : 0;
+	if (out > 0 && sent->left->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->left, f);
 	if (out > 0)
 		out = f(receiver, sent->named);

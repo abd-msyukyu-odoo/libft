@@ -8,6 +8,8 @@ typedef struct	s_test_btree
 }				t_data;
 
 char			*in = "hivadeyfbcgopzwxklmjtunqsr";
+char			*order = "abcdefghijklmnopqrstuvwxyz";
+char			*inorder = "zyxwvutsrqponmlkjihgfedcba";
 
 char			*char_bnode(t_bnode *bn)
 {
@@ -71,6 +73,7 @@ int				main(void)
 	t_memused	mudatas;
 	t_memused	mubtrees;
 	t_data		*data;
+	char		*key;
 
 	bnodes = memanager_construct_bnode();
 	datas = memanager_construct_data();
@@ -85,7 +88,8 @@ int				main(void)
 		data = ft_memanager_get(datas, &mudatas);
 		data->named = (t_named){&(in[i])};
 		data->ext = "ext";
-		printf("added : %s || status : %d\n\n", data->named.key, ft_btree_add(btree, (t_named*)data));
+		printf("added : %s || status : %d\n\n", data->named.key,
+			ft_btree_add(btree, (t_named*)data));
 		printf("------------------------------\n\n");
 	}
 	if (!btree)
@@ -95,6 +99,17 @@ int				main(void)
 		printf("root %s\n", btree->root->named->key);
 	}
 	
+	display_btree(btree, 1);
+
+	for (int i = 0; i < 26; i++)
+	{
+		key = &in[i];
+		data = (t_data*)ft_btree_remove(btree, key);
+		printf("removed : %s || status : %s\n\n", key,
+			(!data) ? "(null)" : data->named.key);
+		printf("------------------------------\n\n");
+	}
+
 	display_btree(btree, 1);
 
 	ft_memanager_free(bnodes);

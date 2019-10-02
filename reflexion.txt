@@ -249,3 +249,12 @@ parent of non-root rank = r : rank = r + (1 || 2)
 		deletion of this node and the external child (recovery)
 		the other child takes its place
 	- if the item has no internal child
+
+
+
+-----------------------------------
+
+reflexion probleme btree remove
+
+-> probleme -> rank pas bien mis a jour
+	en cas de deletion
