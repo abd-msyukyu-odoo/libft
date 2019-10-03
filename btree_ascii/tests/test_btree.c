@@ -100,7 +100,7 @@ int				main(void)
 	
 	display_btree(btree, 1);
 
-	for (int i = 0; i <26; i++)
+	for (int i = 0; i < 26; i++)
 	{
 		key = &in[i];
 		data = (t_data*)ft_btree_remove(btree, key);

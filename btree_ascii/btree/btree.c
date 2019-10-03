@@ -204,6 +204,7 @@ static void			ft_btree_rebalance_deleted_double_rotate(t_btree *btree,
 	bn->rank++;
 	ft_btree_rotate(btree, bn, spin);
 	ft_btree_rotate(btree, bn, -1 * spin);
+	bn->rank++;
 }
 
 static void			ft_btree_rebalance_deleted_single_rotate(t_btree *btree,
@@ -340,9 +341,12 @@ static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 	remain->up = cut->up;
 	*referent = remain;
 	t_bnode			*sib;
-	ft_bnode_sibling_spin(remain, &sib);
-	printf("rank deleted : %d | remain : %d | sibling : %d | up : %d\n",
-		cut->rank, remain->rank, sib->rank, remain->up->rank);
+	if (btree->root != remain)
+	{
+		ft_bnode_sibling_spin(remain, &sib);
+		printf("rank deleted : %d | remain : %d | sibling : %d | up : %d\n",
+			cut->rank, remain->rank, sib->rank, remain->up->rank);
+	}
 	ft_btree_rebalance_deleted(btree, remain);
 	return (1);
 }

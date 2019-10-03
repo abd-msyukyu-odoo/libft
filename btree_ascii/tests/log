@@ -700,6 +700,7 @@ rank deleted : 2 | remain : 1 | sibling : 2 | up : 4
 trigger detection : 1 | up : 4
 first demote
 trigger detection : 3 | up : 6
+second demote
 first demote
 removing : bcgopzwxklmjtunqsr || status : bcgopzwxklmjtunqsr
 
@@ -807,22 +808,27 @@ rank : 5
 right
 
 key : unqsr
-rank : 2
+rank : 3
 right
 
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+trigger detection : 2 | up : 5
+double rotation
+switching root
 removing : xklmjtunqsr || status : xklmjtunqsr
 
 ------------------------------
 
 searching for klmjtunqsr
 
-key : sr
+key : qsr
 rank : 5
 left
 
 key : lmjtunqsr
-rank : 4
+rank : 3
 left
 
 key : jtunqsr
@@ -831,66 +837,36 @@ right
 
 rank deleted : 1 | remain : 0 | sibling : 0 | up : 2
 demote leaf : previous : 2
-trigger detection : 1 | up : 4
-double rotation
 removing : klmjtunqsr || status : klmjtunqsr
 
 ------------------------------
 
 searching for lmjtunqsr
 
-key : sr
+key : qsr
 rank : 5
 left
 
-key : mjtunqsr
-rank : 3
-left
-
-rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
+rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
 removing : lmjtunqsr || status : lmjtunqsr
 
 ------------------------------
 
 searching for mjtunqsr
 
-key : sr
+key : qsr
 rank : 5
 left
 
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+trigger detection : 2 | up : 5
+first demote
 removing : mjtunqsr || status : mjtunqsr
 
 ------------------------------
 
 searching for jtunqsr
 
-key : sr
-rank : 5
-left
-
-key : nqsr
-rank : 3
-left
-
-rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
-trigger detection : 0 | up : 3
-simple rotation
-removing : jtunqsr || status : jtunqsr
-
-------------------------------
-
-searching for tunqsr
-
-key : sr
-rank : 5
-right
-
-key : unqsr
-rank : 2
-left
-
-rank deleted : 1 | remain : 0 | sibling : 0 | up : 2
-demote leaf : previous : 2
-trigger detection : 1 | up : 5
-error : rank diff : 4 = 5 - 1
+key : qsr
