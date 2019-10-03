@@ -15,6 +15,9 @@
 # include <string.h>
 # include <sys/types.h>
 # include <limits.h>
+# ifdef _WIN32
+#  include <crtdefs.h>
+# endif
 
 typedef struct		s_list
 {
