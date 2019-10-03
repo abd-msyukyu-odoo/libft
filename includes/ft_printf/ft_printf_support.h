@@ -13,7 +13,11 @@
 #ifndef FT_PRINTF_SUPPORT_H
 # define FT_PRINTF_SUPPORT_H
 # include <stdarg.h>
-# include <unistd.h>
+# ifdef _WIN32
+#  include <io.h>
+# else
+# 	include <unistd.h>
+# endif
 # include <stdlib.h>
 # include <stdint.h>
 # include "ft_printf/polyadic_float.h"

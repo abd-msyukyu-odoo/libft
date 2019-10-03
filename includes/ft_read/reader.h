@@ -15,7 +15,12 @@
 
 # include <stdlib.h>
 # include <sys/types.h>
-# include <unistd.h>
+# ifdef _WIN32
+#  include <io.h>
+   typedef long ssize_t;
+# else
+# 	include <unistd.h>
+# endif
 # ifndef YREAD_SIZE
 #  define YREAD_SIZE 256
 # endif

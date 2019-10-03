@@ -216,11 +216,30 @@ static void			ft_btree_rebalance_deleted_single_rotate(t_btree *btree,
 		bn->rank = 1;
 }
 
+static int			ft_btree_rebalance_deleted_to_leaf(t_btree *btree, t_bnode *remain)
+{
+	t_bnode			*bn;
+
+	if (!remain->rank && btree->root != remain)
+	{
+		ft_bnode_sibling_spin(remain, &bn);
+		if (!bn->rank)
+		{
+			ft_printf("demote leaf : previous : %d\n", remain->up->rank);
+			remain->up->rank = 1;
+			return (1);
+		}
+	}
+	return (0);
+}
+
 static void			ft_btree_rebalance_deleted(t_btree *btree, t_bnode *bn)
 {
 	t_bnode			*sib;
 	int				spin;
 
+	if (ft_btree_rebalance_deleted_to_leaf(btree, bn))
+		bn = bn->up;
 	while (bn->up && bn->up->rank - bn->rank >= 3)
 	{
 		ft_printf("trigger rebalancing\n");
@@ -321,15 +340,6 @@ static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 	*referent = remain;
 	ft_printf("rank deleted : %d | remain : %d | up : %d\n",
 		cut->rank, remain->rank, remain->up->rank);
-	if (!remain->rank && btree->root != remain)
-	{
-		ft_bnode_sibling_spin(remain, &cut);
-		if (!cut->rank)
-		{
-			ft_printf("demote leaf : previous : %d\n", remain->up->rank);
-			remain->up->rank = 1;
-		}
-	}
 	ft_btree_rebalance_deleted(btree, remain);
 	return (1);
 }
