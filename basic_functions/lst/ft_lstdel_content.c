@@ -14,7 +14,6 @@
 
 void		ft_lstdel_content(void *content, size_t content_size)
 {
-	if (content != NULL)
+	if (content != NULL && content_size > 0)
 		ft_memdel(&content);
-	content_size = 0;
 }

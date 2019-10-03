@@ -22,7 +22,7 @@
 */
 typedef struct			s_array
 {
-	void				*items;
+	char				*items;
 	unsigned int		n_items;
 	unsigned int		size;
 	size_t				sizeof_item;

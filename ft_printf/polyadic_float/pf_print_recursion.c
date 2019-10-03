@@ -23,7 +23,7 @@ void			rank_tostr(t_str *head, t_mrk *mrk, PFPMNG mng,
 	size_t		index;
 
 	index = -1;
-	while (++index < rank_size - mng.cur->size)
+	while (++index < (size_t)rank_size - (size_t)mng.cur->size)
 		mng.cur->value /= (ULL)mrk->base;
 	index = -1;
 	while (++index < mng.cur->size)

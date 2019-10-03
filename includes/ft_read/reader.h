@@ -17,7 +17,7 @@
 # include <sys/types.h>
 # ifdef _WIN32
 #  include <io.h>
-   typedef long ssize_t;
+#  include <crtdefs.h>
 # else
 # 	include <unistd.h>
 # endif

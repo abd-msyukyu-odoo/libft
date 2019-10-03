@@ -176,7 +176,7 @@ static void			ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)
 		spin = ft_bnode_sibling_spin(bn, &sib);
 		if (bn->rank == bn->up->rank && bn->rank > sib->rank + 1)
 		{
-			if ((bn->left->rank - bn->right->rank ^ spin) < 0)
+			if (((bn->left->rank - bn->right->rank) ^ spin) < 0)
 			{
 				ft_printf("double rotation\n");
 				sib = (spin == 1) ? bn->right : bn->left;

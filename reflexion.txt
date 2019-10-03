@@ -261,3 +261,14 @@ reflexion probleme btree remove
 	-> voir log
 		-> symptomes : une difference de rank de 3 persiste
 			apres un rebalancing
+
+
+------------------------------------
+
+-> tester btree remove
+	-> retrouver comment utiliser le makefile windows
+
+-> implementer memory manager
+
+-> tester printf avec des pointeurs et des floats sur windows
+-> tester array avec les modifs char

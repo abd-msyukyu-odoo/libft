@@ -14,7 +14,7 @@
 
 int					ft_array_extend_size(t_array *array, unsigned int new_size)
 {
-	void			*items;
+	char			*items;
 
 	if (new_size <= array->size)
 		return (0);
@@ -30,7 +30,7 @@ int					ft_array_extend_size(t_array *array, unsigned int new_size)
 static int			ft_array_extend_size_skip(t_array *array,
 	unsigned int new_size, unsigned int skip_from)
 {
-	void			*items;
+	char			*items;
 
 	if (new_size <= array->size || skip_from >= array->n_items)
 		return (0);
