@@ -584,7 +584,7 @@ key : lmjtunqsr
 rank : 6
 left
 
-rank deleted : 1 | remain : 0 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
 removing : hivadeyfbcgopzwxklmjtunqsr || status : hivadeyfbcgopzwxklmjtunqsr
 
 ------------------------------
@@ -595,9 +595,8 @@ key : lmjtunqsr
 rank : 6
 left
 
-rank deleted : 2 | remain : 1 | up : 4
-trigger rebalancing
-trigger complex rebalancing
+rank deleted : 2 | remain : 1 | sibling : 3 | up : 4
+trigger detection : 1 | up : 4
 simple rotation
 removing : ivadeyfbcgopzwxklmjtunqsr || status : ivadeyfbcgopzwxklmjtunqsr
 
@@ -609,7 +608,7 @@ key : lmjtunqsr
 rank : 6
 right
 
-rank deleted : 2 | remain : 1 | up : 3
+rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
 removing : vadeyfbcgopzwxklmjtunqsr || status : vadeyfbcgopzwxklmjtunqsr
 
 ------------------------------
@@ -628,7 +627,7 @@ key : bcgopzwxklmjtunqsr
 rank : 2
 left
 
-rank deleted : 1 | remain : 0 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
 removing : adeyfbcgopzwxklmjtunqsr || status : adeyfbcgopzwxklmjtunqsr
 
 ------------------------------
@@ -639,7 +638,7 @@ key : lmjtunqsr
 rank : 6
 left
 
-rank deleted : 1 | remain : 0 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
 removing : deyfbcgopzwxklmjtunqsr || status : deyfbcgopzwxklmjtunqsr
 
 ------------------------------
@@ -650,7 +649,7 @@ key : lmjtunqsr
 rank : 6
 left
 
-rank deleted : 2 | remain : 1 | up : 3
+rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
 removing : eyfbcgopzwxklmjtunqsr || status : eyfbcgopzwxklmjtunqsr
 
 ------------------------------
@@ -665,10 +664,10 @@ key : wxklmjtunqsr
 rank : 5
 right
 
-rank deleted : 1 | remain : 0 | up : 3
-trigger rebalancing
-trigger rebalancing
-trigger complex rebalancing
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+trigger detection : 2 | up : 5
 double rotation
 removing : yfbcgopzwxklmjtunqsr || status : yfbcgopzwxklmjtunqsr
 
@@ -680,8 +679,9 @@ key : lmjtunqsr
 rank : 6
 left
 
-rank deleted : 1 | remain : 0 | up : 3
-trigger rebalancing
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
 removing : fbcgopzwxklmjtunqsr || status : fbcgopzwxklmjtunqsr
 
 ------------------------------
@@ -696,9 +696,11 @@ key : gopzwxklmjtunqsr
 rank : 4
 left
 
-rank deleted : 2 | remain : 1 | up : 4
-trigger rebalancing
-trigger rebalancing
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 4
+trigger detection : 1 | up : 4
+first demote
+trigger detection : 3 | up : 6
+first demote
 removing : bcgopzwxklmjtunqsr || status : bcgopzwxklmjtunqsr
 
 ------------------------------
@@ -713,9 +715,8 @@ key : gopzwxklmjtunqsr
 rank : 3
 left
 
-rank deleted : 1 | remain : 0 | up : 3
-trigger rebalancing
-trigger complex rebalancing
+rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
+trigger detection : 0 | up : 3
 simple rotation
 removing : cgopzwxklmjtunqsr || status : cgopzwxklmjtunqsr
 
@@ -731,10 +732,10 @@ key : jtunqsr
 rank : 3
 left
 
-rank deleted : 1 | remain : 0 | up : 3
-trigger rebalancing
-trigger rebalancing
-trigger complex rebalancing
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+trigger detection : 2 | up : 5
 simple rotation
 switching root
 removing : gopzwxklmjtunqsr || status : gopzwxklmjtunqsr
@@ -751,7 +752,7 @@ key : lmjtunqsr
 rank : 4
 right
 
-rank deleted : 1 | remain : 0 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
 removing : opzwxklmjtunqsr || status : opzwxklmjtunqsr
 
 ------------------------------
@@ -766,7 +767,7 @@ key : lmjtunqsr
 rank : 4
 right
 
-rank deleted : 2 | remain : 1 | up : 3
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
 removing : pzwxklmjtunqsr || status : pzwxklmjtunqsr
 
 ------------------------------
@@ -781,7 +782,7 @@ key : wxklmjtunqsr
 rank : 3
 right
 
-rank deleted : 2 | remain : 1 | up : 3
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
 removing : zwxklmjtunqsr || status : zwxklmjtunqsr
 
 ------------------------------
@@ -792,9 +793,8 @@ key : sr
 rank : 5
 right
 
-rank deleted : 1 | remain : 0 | up : 3
-trigger rebalancing
-trigger complex rebalancing
+rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
+trigger detection : 0 | up : 3
 double rotation
 removing : wxklmjtunqsr || status : wxklmjtunqsr
 
@@ -810,7 +810,7 @@ key : unqsr
 rank : 2
 right
 
-rank deleted : 1 | remain : 0 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
 removing : xklmjtunqsr || status : xklmjtunqsr
 
 ------------------------------
@@ -829,8 +829,10 @@ key : jtunqsr
 rank : 2
 right
 
-rank deleted : 1 | remain : 0 | up : 2
+rank deleted : 1 | remain : 0 | sibling : 0 | up : 2
 demote leaf : previous : 2
+trigger detection : 1 | up : 4
+double rotation
 removing : klmjtunqsr || status : klmjtunqsr
 
 ------------------------------
@@ -841,7 +843,11 @@ key : sr
 rank : 5
 left
 
-rank deleted : 2 | remain : 1 | up : 3
+key : mjtunqsr
+rank : 3
+left
+
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
 removing : lmjtunqsr || status : lmjtunqsr
 
 ------------------------------
@@ -852,8 +858,7 @@ key : sr
 rank : 5
 left
 
-rank deleted : 1 | remain : 0 | up : 3
-trigger rebalancing
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
 removing : mjtunqsr || status : mjtunqsr
 
 ------------------------------
@@ -865,9 +870,27 @@ rank : 5
 left
 
 key : nqsr
-rank : 4
+rank : 3
 left
 
-rank deleted : 1 | remain : 0 | up : 4
-trigger rebalancing
-error : rank diff : 4 = 4 - 0
+rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
+trigger detection : 0 | up : 3
+simple rotation
+removing : jtunqsr || status : jtunqsr
+
+------------------------------
+
+searching for tunqsr
+
+key : sr
+rank : 5
+right
+
+key : unqsr
+rank : 2
+left
+
+rank deleted : 1 | remain : 0 | sibling : 0 | up : 2
+demote leaf : previous : 2
+trigger detection : 1 | up : 5
+error : rank diff : 4 = 5 - 1

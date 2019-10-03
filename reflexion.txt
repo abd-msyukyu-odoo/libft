@@ -271,4 +271,11 @@ reflexion probleme btree remove
 -> implementer memory manager
 
 -> tester printf avec des pointeurs et des floats sur windows
+		-> semble ne pas fonctionner sur windows
 -> tester array avec les modifs char
+
+
+-> bug de reranking hypothese : 
+	-> lors de la double rotation, on part trop bas dans
+		l'arbre pour le rebalancing, ca trigger pas
+		-> on saute la diff de 3 juste au dessus
