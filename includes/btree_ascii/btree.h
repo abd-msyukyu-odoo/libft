@@ -12,7 +12,6 @@
 
 #ifndef BTREE_H
 # define BTREE_H
-# include <stdlib.h>
 # include "btree_ascii/named.h"
 # include "array/array.h"
 # include "basic_functions/basicft.h"
@@ -155,5 +154,20 @@ int						ft_btree_fill_copy(t_btree *old, t_btree *new);
 ** @return: -1 : param error
 */
 int						ft_btree_fill_array(t_btree *btree, t_array *array);
+
+/*
+** internal functions
+*/
+int						ft_btree_construct_leaves(t_btree *btree,
+	t_bnode *old_leaf);
+t_bnode					*ft_btree_get_bnode(t_btree *btree, char *key);
+t_bnode					*ft_btree_get_min_bnode(t_bnode *bnode);
+t_bnode					**ft_btree_bnode_referent(t_btree *btree,
+	t_bnode *bnode);
+int						ft_bnode_sibling_spin(t_bnode *child,
+	t_bnode **sibling);
+void					ft_btree_rotate(t_btree *btree, t_bnode *bn, int spin);
+int						ft_bnode_has_two_leaves(t_bnode *bnode);
+void					ft_btree_rebalance_deleted(t_btree *btree, t_bnode *bn);
 
 #endif

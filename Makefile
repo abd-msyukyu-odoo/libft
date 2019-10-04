@@ -148,7 +148,13 @@ MEMANAGER_F	= memanager \
 			  memory_requests \
 			  memused
 
-BTREE_F		= btree
+BTREE_F		= btree \
+			  growth \
+			  iterator \
+			  rebalance_deleted \
+			  search \
+			  shrink \
+			  utils
 
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
