@@ -279,3 +279,5 @@ reflexion probleme btree remove
 	-> lors de la double rotation, on part trop bas dans
 		l'arbre pour le rebalancing, ca trigger pas
 		-> on saute la diff de 3 juste au dessus
+
+------------------------------------

@@ -59,8 +59,17 @@ t_memanager		*memanager_construct_btree()
 {
 	t_memanager *ma;
 
-	ma = ft_memanager_construct(1, sizeof(t_btree));
+	ma = ft_memanager_construct(2, sizeof(t_btree));
 	return (ma);
+}
+
+void			display_array(t_array *a)
+{
+	for (int i = 0; i < a->n_items; ++i)
+	{
+		ft_printf("%s \n", *(char**)ft_array_get(a, i));
+	}
+	ft_printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
 }
 
 int				main(void)
@@ -69,6 +78,7 @@ int				main(void)
 	t_memanager *datas;
 	t_memanager *btrees;
 	t_btree		*btree;
+	t_btree		*copy;
 	t_memused	mudatas;
 	t_memused	mubtrees;
 	t_data		*data;
@@ -100,6 +110,22 @@ int				main(void)
 	
 	display_btree(btree, 1);
 
+	copy = ft_memanager_get(btrees, &mubtrees);
+	ft_btree_construct_extmem(copy, bnodes);
+	ft_btree_fill_copy(btree, copy);
+
+	ft_printf("\ncopy : \n\n");
+
+	display_btree(copy, 1);
+
+	t_array			*recipient;
+	recipient = ft_array_construct(5, sizeof(t_data));
+	ft_btree_fill_array(btree, recipient);
+
+	ft_printf("\narray : \n\n");
+
+	display_array(recipient);
+
 	for (int i = 0; i < 26; i++)
 	{
 		key = &in[i];
@@ -111,6 +137,7 @@ int				main(void)
 
 	display_btree(btree, 1);
 
+	ft_array_free(recipient);
 	ft_memanager_free(bnodes);
 	ft_memanager_free(datas);
 	ft_memanager_free(btrees);
