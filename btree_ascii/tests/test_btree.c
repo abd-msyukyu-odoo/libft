@@ -25,7 +25,7 @@ int				display_bnode(void *receiver, void *sent)
 	cur = (t_named*)sent;
 	if (receiver)
 	{
-		printf("%s\n", cur->key);
+		ft_printf("%s\n", cur->key);
 		return (1);
 	}
 	return (0);
@@ -87,26 +87,26 @@ int				main(void)
 		data = ft_memanager_get(datas, &mudatas);
 		data->named = (t_named){&(in[i])};
 		data->ext = "ext";
-		printf("added : %s || status : %d\n\n", data->named.key,
+		ft_printf("added : %s || status : %d\n\n", data->named.key,
 			ft_btree_add(btree, (t_named*)data));
-		printf("------------------------------\n\n");
+		ft_printf("------------------------------\n\n");
 	}
 	if (!btree)
-		printf("btree null\n");
+		ft_printf("btree null\n");
 	else
 	{
-		printf("root %s\n", btree->root->named->key);
+		ft_printf("root %s\n", btree->root->named->key);
 	}
 	
 	display_btree(btree, 1);
 
-	for (int i = 0; i < 26; i++)
+	for (int i = 25; i > -1; i--)
 	{
 		key = &in[i];
 		data = (t_data*)ft_btree_remove(btree, key);
-		printf("removing : %s || status : %s\n\n", key,
+		ft_printf("removing : %s || status : %s\n\n", key,
 			(!data) ? "(null)" : data->named.key);
-		printf("------------------------------\n\n");
+		ft_printf("------------------------------\n\n");
 	}
 
 	display_btree(btree, 1);
@@ -114,4 +114,5 @@ int				main(void)
 	ft_memanager_free(bnodes);
 	ft_memanager_free(datas);
 	ft_memanager_free(btrees);
+	return (0);
 }

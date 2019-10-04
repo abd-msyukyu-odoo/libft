@@ -578,284 +578,171 @@ wxklmjtunqsr
 xklmjtunqsr
 yfbcgopzwxklmjtunqsr
 zwxklmjtunqsr
-searching for hivadeyfbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
-removing : hivadeyfbcgopzwxklmjtunqsr || status : hivadeyfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for ivadeyfbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-rank deleted : 2 | remain : 1 | sibling : 3 | up : 4
-trigger detection : 1 | up : 4
-simple rotation
-removing : ivadeyfbcgopzwxklmjtunqsr || status : ivadeyfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for vadeyfbcgopzwxklmjtunqsr
+searching for r
 
 key : lmjtunqsr
 rank : 6
 right
 
-rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
-removing : vadeyfbcgopzwxklmjtunqsr || status : vadeyfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for adeyfbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-key : deyfbcgopzwxklmjtunqsr
-rank : 4
-left
-
-key : bcgopzwxklmjtunqsr
-rank : 2
-left
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
-removing : adeyfbcgopzwxklmjtunqsr || status : adeyfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for deyfbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
-removing : deyfbcgopzwxklmjtunqsr || status : deyfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for eyfbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
-removing : eyfbcgopzwxklmjtunqsr || status : eyfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for yfbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-right
-
-key : wxklmjtunqsr
-rank : 5
-right
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
-trigger detection : 0 | up : 3
-first demote
-trigger detection : 2 | up : 5
-double rotation
-removing : yfbcgopzwxklmjtunqsr || status : yfbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for fbcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
-trigger detection : 0 | up : 3
-first demote
-removing : fbcgopzwxklmjtunqsr || status : fbcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for bcgopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 6
-left
-
-key : gopzwxklmjtunqsr
-rank : 4
-left
-
-rank deleted : 2 | remain : 1 | sibling : 2 | up : 4
-trigger detection : 1 | up : 4
-first demote
-trigger detection : 3 | up : 6
-second demote
-first demote
-removing : bcgopzwxklmjtunqsr || status : bcgopzwxklmjtunqsr
-
-------------------------------
-
-searching for cgopzwxklmjtunqsr
-
-key : lmjtunqsr
+key : vadeyfbcgopzwxklmjtunqsr
 rank : 5
 left
 
-key : gopzwxklmjtunqsr
-rank : 3
-left
-
-rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
-trigger detection : 0 | up : 3
-simple rotation
-removing : cgopzwxklmjtunqsr || status : cgopzwxklmjtunqsr
-
-------------------------------
-
-searching for gopzwxklmjtunqsr
-
-key : lmjtunqsr
-rank : 5
-left
-
-key : jtunqsr
-rank : 3
-left
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
-trigger detection : 0 | up : 3
-first demote
-trigger detection : 2 | up : 5
-simple rotation
-switching root
-removing : gopzwxklmjtunqsr || status : gopzwxklmjtunqsr
-
-------------------------------
-
-searching for opzwxklmjtunqsr
-
-key : sr
-rank : 5
-left
-
-key : lmjtunqsr
+key : opzwxklmjtunqsr
 rank : 4
 right
 
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
-removing : opzwxklmjtunqsr || status : opzwxklmjtunqsr
-
-------------------------------
-
-searching for pzwxklmjtunqsr
-
 key : sr
-rank : 5
+rank : 3
 left
-
-key : lmjtunqsr
-rank : 4
-right
-
-rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
-removing : pzwxklmjtunqsr || status : pzwxklmjtunqsr
-
-------------------------------
-
-searching for zwxklmjtunqsr
-
-key : sr
-rank : 5
-right
-
-key : wxklmjtunqsr
-rank : 3
-right
-
-rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
-removing : zwxklmjtunqsr || status : zwxklmjtunqsr
-
-------------------------------
-
-searching for wxklmjtunqsr
-
-key : sr
-rank : 5
-right
-
-rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
-trigger detection : 0 | up : 3
-double rotation
-removing : wxklmjtunqsr || status : wxklmjtunqsr
-
-------------------------------
-
-searching for xklmjtunqsr
-
-key : sr
-rank : 5
-right
-
-key : unqsr
-rank : 3
-right
-
-rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
-trigger detection : 0 | up : 3
-first demote
-trigger detection : 2 | up : 5
-double rotation
-switching root
-removing : xklmjtunqsr || status : xklmjtunqsr
-
-------------------------------
-
-searching for klmjtunqsr
 
 key : qsr
+rank : 2
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+removing : r || status : r
+
+------------------------------
+
+searching for sr
+
+key : lmjtunqsr
+rank : 6
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
 rank : 5
 left
 
+key : opzwxklmjtunqsr
+rank : 4
+right
+
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
+removing : sr || status : sr
+
+------------------------------
+
+searching for qsr
+
 key : lmjtunqsr
+rank : 6
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : opzwxklmjtunqsr
+rank : 4
+right
+
+key : tunqsr
 rank : 3
 left
 
-key : jtunqsr
+rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
+removing : qsr || status : qsr
+
+------------------------------
+
+searching for nqsr
+
+key : lmjtunqsr
+rank : 6
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : opzwxklmjtunqsr
+rank : 4
+left
+
+key : mjtunqsr
 rank : 2
 right
 
 rank deleted : 1 | remain : 0 | sibling : 0 | up : 2
 demote leaf : previous : 2
-removing : klmjtunqsr || status : klmjtunqsr
+trigger detection : 1 | up : 4
+second demote
+first demote
+removing : nqsr || status : nqsr
 
 ------------------------------
 
-searching for lmjtunqsr
+searching for unqsr
 
-key : qsr
+key : lmjtunqsr
+rank : 6
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
 rank : 5
 left
 
+key : opzwxklmjtunqsr
+rank : 3
+right
+
+key : tunqsr
+rank : 2
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+removing : unqsr || status : unqsr
+
+------------------------------
+
+searching for tunqsr
+
+key : lmjtunqsr
+rank : 6
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : opzwxklmjtunqsr
+rank : 3
+right
+
 rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
-removing : lmjtunqsr || status : lmjtunqsr
+removing : tunqsr || status : tunqsr
+
+------------------------------
+
+searching for jtunqsr
+
+key : lmjtunqsr
+rank : 6
+left
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 4
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+removing : jtunqsr || status : jtunqsr
 
 ------------------------------
 
 searching for mjtunqsr
 
-key : qsr
+key : lmjtunqsr
+rank : 6
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
 rank : 5
+left
+
+key : opzwxklmjtunqsr
+rank : 3
 left
 
 rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
@@ -867,6 +754,267 @@ removing : mjtunqsr || status : mjtunqsr
 
 ------------------------------
 
-searching for jtunqsr
+searching for lmjtunqsr
 
-key : qsr
+rank deleted : 2 | remain : 1 | sibling : 3 | up : 4
+trigger detection : 1 | up : 4
+double rotation
+removing : lmjtunqsr || status : lmjtunqsr
+
+------------------------------
+
+searching for klmjtunqsr
+
+key : opzwxklmjtunqsr
+rank : 6
+left
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 4
+right
+
+rank deleted : 2 | remain : 1 | sibling : 3 | up : 4
+trigger detection : 1 | up : 4
+simple rotation
+removing : klmjtunqsr || status : klmjtunqsr
+
+------------------------------
+
+searching for xklmjtunqsr
+
+key : opzwxklmjtunqsr
+rank : 6
+right
+
+key : wxklmjtunqsr
+rank : 4
+right
+
+key : yfbcgopzwxklmjtunqsr
+rank : 2
+left
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+removing : xklmjtunqsr || status : xklmjtunqsr
+
+------------------------------
+
+searching for wxklmjtunqsr
+
+key : opzwxklmjtunqsr
+rank : 6
+right
+
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 4
+trigger detection : 1 | up : 4
+first demote
+trigger detection : 3 | up : 6
+first demote
+removing : wxklmjtunqsr || status : wxklmjtunqsr
+
+------------------------------
+
+searching for zwxklmjtunqsr
+
+key : opzwxklmjtunqsr
+rank : 5
+right
+
+key : yfbcgopzwxklmjtunqsr
+rank : 3
+right
+
+rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
+trigger detection : 0 | up : 3
+simple rotation
+removing : zwxklmjtunqsr || status : zwxklmjtunqsr
+
+------------------------------
+
+searching for pzwxklmjtunqsr
+
+key : opzwxklmjtunqsr
+rank : 5
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
+rank : 3
+left
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+trigger detection : 2 | up : 5
+double rotation
+switching root
+removing : pzwxklmjtunqsr || status : pzwxklmjtunqsr
+
+------------------------------
+
+searching for opzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 5
+right
+
+rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
+removing : opzwxklmjtunqsr || status : opzwxklmjtunqsr
+
+------------------------------
+
+searching for gopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : deyfbcgopzwxklmjtunqsr
+rank : 3
+right
+
+key : fbcgopzwxklmjtunqsr
+rank : 2
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+removing : gopzwxklmjtunqsr || status : gopzwxklmjtunqsr
+
+------------------------------
+
+searching for cgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : deyfbcgopzwxklmjtunqsr
+rank : 3
+left
+
+key : bcgopzwxklmjtunqsr
+rank : 2
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 2
+removing : cgopzwxklmjtunqsr || status : cgopzwxklmjtunqsr
+
+------------------------------
+
+searching for bcgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : deyfbcgopzwxklmjtunqsr
+rank : 3
+left
+
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 3
+removing : bcgopzwxklmjtunqsr || status : bcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for fbcgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 5
+left
+
+key : deyfbcgopzwxklmjtunqsr
+rank : 3
+right
+
+rank deleted : 2 | remain : 1 | sibling : 1 | up : 3
+removing : fbcgopzwxklmjtunqsr || status : fbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for yfbcgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 5
+right
+
+key : vadeyfbcgopzwxklmjtunqsr
+rank : 3
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+trigger detection : 2 | up : 5
+first demote
+removing : yfbcgopzwxklmjtunqsr || status : yfbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for eyfbcgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 4
+left
+
+key : deyfbcgopzwxklmjtunqsr
+rank : 3
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+removing : eyfbcgopzwxklmjtunqsr || status : eyfbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for deyfbcgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 4
+left
+
+rank deleted : 2 | remain : 1 | sibling : 2 | up : 4
+trigger detection : 1 | up : 4
+first demote
+removing : deyfbcgopzwxklmjtunqsr || status : deyfbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for adeyfbcgopzwxklmjtunqsr
+
+key : hivadeyfbcgopzwxklmjtunqsr
+rank : 3
+left
+
+rank deleted : 1 | remain : 0 | sibling : 2 | up : 3
+trigger detection : 0 | up : 3
+double rotation
+switching root
+removing : adeyfbcgopzwxklmjtunqsr || status : adeyfbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for vadeyfbcgopzwxklmjtunqsr
+
+key : ivadeyfbcgopzwxklmjtunqsr
+rank : 3
+right
+
+rank deleted : 1 | remain : 0 | sibling : 1 | up : 3
+trigger detection : 0 | up : 3
+first demote
+removing : vadeyfbcgopzwxklmjtunqsr || status : vadeyfbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for ivadeyfbcgopzwxklmjtunqsr
+
+removing : ivadeyfbcgopzwxklmjtunqsr || status : ivadeyfbcgopzwxklmjtunqsr
+
+------------------------------
+
+searching for hivadeyfbcgopzwxklmjtunqsr
+
+removing : hivadeyfbcgopzwxklmjtunqsr || status : hivadeyfbcgopzwxklmjtunqsr
+
+------------------------------
+
