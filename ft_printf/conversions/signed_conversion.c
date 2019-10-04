@@ -67,7 +67,7 @@ void			int_tostr(intmax_t in, t_str *head, t_mrk *mrk, size_t index)
 		return ;
 	i = (mrk->mfw > mrk->precision) ? mrk->mfw : mrk->precision;
 	prefix = (mrk->plus || mrk->blank) ? 1 : 0;
-	head->len = (i > 1 + prefix) ? i : 1 + prefix;
+	head->len = (i > 1 + (size_t)prefix) ? i : 1 + (size_t)prefix;
 	head->txt = (char*)malloc(sizeof(char) * head->len);
 	if (!head->txt)
 		return ;

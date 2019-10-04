@@ -25,6 +25,7 @@ static void					ft_memarray_configure_items(t_memarray *memarray,
 		memitem->i_memarray = i_memarray;
 		memitem->n_used = 0;
 		memitem->next_oldest = NULL;
+		memitem->next_recovery = NULL;
 		prev = memitem;
 		++index;
 	}

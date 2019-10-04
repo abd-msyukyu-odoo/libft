@@ -17,7 +17,7 @@ size_t			handle_p(va_list ap, t_str *head, t_mrk *mrk)
 	mrk->base = 16;
 	mrk->hashtag = 1;
 	mrk->len_prefix = 2;
-	uint_tostr((unsigned long)va_arg(ap, void*), head, mrk, 0);
+	uint_tostr((uintmax_t)va_arg(ap, void*), head, mrk, 0);
 	if (!head->txt && head->len != 0)
 		return (0);
 	if (head->len == 0)

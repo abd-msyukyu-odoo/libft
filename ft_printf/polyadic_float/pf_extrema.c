@@ -40,7 +40,7 @@ unsigned char	pf_extrema(t_dbl *dbl, t_str *head, t_mrk *mrk)
 		}
 		else
 			src = "nan";
-		head->len = (mrk->mfw > 3 + sign) ? mrk->mfw : 3 + sign;
+		head->len = (mrk->mfw > 3 + (size_t)sign) ? mrk->mfw : 3 + (size_t)sign;
 		head->txt = (char*)malloc(sizeof(char) * head->len);
 		if (!head->txt)
 			return (2);

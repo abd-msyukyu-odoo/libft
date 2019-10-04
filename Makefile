@@ -145,7 +145,16 @@ ARRAY_F		= array \
 
 MEMANAGER_F	= memanager \
 			  memarray \
-			  memory_requests
+			  memory_requests \
+			  memused
+
+BTREE_F		= btree \
+			  growth \
+			  iterator \
+			  rebalance_deleted \
+			  search \
+			  shrink \
+			  utils
 
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
@@ -159,13 +168,16 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix handlers/, $(HANDLERS_F)) \
 						$(addprefix floats/, $(FLOATS_F)) \
 						$(addprefix conversions/, $(CONVERS_F)) \
-						$(addprefix polyadic_float/, $(POLYADIC_F))) \
+						$(addprefix polyadic_float/, $(POLYADIC_F)) \
+						$(addprefix main/, $(MAIN_F))) \
 					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))) \
 					$(addprefix ./array/, \
 						$(addprefix array/, $(ARRAY_F))) \
 					$(addprefix ./memory_manager/, \
-						$(addprefix memanager/, $(MEMANAGER_F))))
+						$(addprefix memanager/, $(MEMANAGER_F))) \
+					$(addprefix ./btree_ascii/, \
+						$(addprefix btree/, $(BTREE_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m
@@ -184,7 +196,7 @@ $(NAME):	$(O_FILES)
 all:		$(NAME)
 
 %.o:		%.c
-			@$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
+			$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
 
 clean:
 			@rm -f $(O_FILES)

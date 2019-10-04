@@ -28,6 +28,7 @@ typedef struct			s_memitem
 	void				*item;
 	struct s_memitem	*next;
 	struct s_memitem	*next_oldest;
+	struct s_memitem	*next_recovery;
 	unsigned int		i_memarray;
 	unsigned int		n_used;
 }						t_memitem;
@@ -42,6 +43,8 @@ typedef struct			s_memused
 {
 	t_memitem			*memitem;
 	t_memitem			*oldest;
+	t_memitem			*recovery;
+	t_memitem			*last;
 }						t_memused;
 
 /*
@@ -124,5 +127,10 @@ int						ft_memanager_refill(t_memanager *memanager,
 */
 void					*ft_memanager_get(t_memanager *memanager,
 	t_memused *used);
+
+void					ft_memused_initialize(t_memused *memused);
+
+void					ft_memused_recover(t_memused *memused,
+	t_memitem *memitem);
 
 #endif

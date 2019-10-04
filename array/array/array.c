@@ -48,3 +48,33 @@ void				ft_array_free(t_array *array)
 	free(array->items);
 	free(array);
 }
+
+int					ft_array_construct_extmem(t_array *array,
+	unsigned int size)
+{
+	if (!array)
+		return (0);
+	if (size > 0)
+	{
+		array->items = malloc(size * sizeof(void*));
+		array->size = size;
+		array->sizeof_item = sizeof(void*);
+	}
+	else
+	{
+		array->items = malloc(sizeof(void*));
+		array->size = 1;
+		array->sizeof_item = sizeof(void*);
+	}
+	if (!array->items)
+		return (0);
+	array->n_items = 0;
+	return (1);
+}
+
+void				ft_array_free_extmem(t_array *array)
+{
+	if (!array)
+		return ;
+	free(array->items);
+}

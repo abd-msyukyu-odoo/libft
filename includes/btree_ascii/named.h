@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   named.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 18:06:41 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/09/26 18:06:43 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/06/25 11:40:16 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/06/25 11:40:18 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include "basic_functions/basicft.h"
-# include "ft_printf/ft_printf.h"
-# include "ft_read/reader.h"
-# include "array/array.h"
-# include "memory_manager/memanager.h"
-# include "btree_ascii/btree.h"
-# include <stdio.h>
+#ifndef NAMED_H
+# define NAMED_H
+
+typedef struct					s_named
+{
+	char						*key;
+}								t_named;
 
 #endif

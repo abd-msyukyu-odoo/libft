@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   memused.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 18:06:41 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/09/26 18:06:43 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/09/29 19:26:40 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/09/29 19:26:41 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include "basic_functions/basicft.h"
-# include "ft_printf/ft_printf.h"
-# include "ft_read/reader.h"
-# include "array/array.h"
-# include "memory_manager/memanager.h"
-# include "btree_ascii/btree.h"
-# include <stdio.h>
+#include "libft.h"
 
-#endif
+void				ft_memused_initialize(t_memused *memused)
+{
+	memused->memitem = NULL;
+	memused->oldest = NULL;
+	memused->recovery = NULL;
+	memused->last = NULL;
+}
+
+void				ft_memused_recover(t_memused *memused, t_memitem *memitem)
+{
+	memitem->next_recovery = memused->recovery;
+	memused->recovery = memitem;
+}
