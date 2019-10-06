@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int					ft_array_extend_size(t_array *array, unsigned int new_size)
+int					ft_array_extend_size(t_array *array, size_t new_size)
 {
 	char			*items;
 
@@ -28,7 +28,7 @@ int					ft_array_extend_size(t_array *array, unsigned int new_size)
 }
 
 static int			ft_array_extend_size_skip(t_array *array,
-	unsigned int new_size, unsigned int skip_from)
+	size_t new_size, size_t skip_from)
 {
 	char			*items;
 
@@ -60,10 +60,10 @@ int					ft_array_add(t_array *array, void *item)
 	return (1);
 }
 
-int					ft_array_insert(t_array *array, unsigned int index,
+int					ft_array_insert(t_array *array, size_t index,
 	void *item)
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (index > array->n_items)
 		return (0);

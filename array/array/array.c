@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_array				*ft_array_construct(unsigned int size,
+t_array				*ft_array_construct(size_t size,
 	size_t sizeof_item)
 {
 	t_array			*out;
@@ -50,7 +50,7 @@ void				ft_array_free(t_array *array)
 }
 
 int					ft_array_construct_extmem(t_array *array,
-	unsigned int size)
+	size_t size)
 {
 	if (!array)
 		return (0);

@@ -29,8 +29,8 @@ typedef struct			s_memitem
 	struct s_memitem	*next;
 	struct s_memitem	*next_oldest;
 	struct s_memitem	*next_recovery;
-	unsigned int		i_memarray;
-	unsigned int		n_used;
+	size_t				i_memarray;
+	size_t				n_used;
 }						t_memitem;
 
 /*
@@ -58,7 +58,7 @@ typedef struct			s_memarray
 	t_array				*array;
 	t_array				*memitems;
 	t_memitem			*unused;
-	unsigned int		n_unused;
+	size_t				n_unused;
 }						t_memarray;
 
 /*
@@ -68,7 +68,7 @@ typedef struct			s_memarray
 typedef struct			s_memanager
 {
 	t_array				*memarrays;
-	unsigned int		i_available;
+	size_t				i_available;
 }						t_memanager;
 
 /*
@@ -87,8 +87,8 @@ void					ft_memanager_free(t_memanager *memanager);
 **  t_memarray* : created instance
 **  NULL : memory error
 */
-t_memarray				*ft_memarray_construct(unsigned int size,
-	size_t sizeof_item, unsigned int memindex);
+t_memarray				*ft_memarray_construct(size_t size,
+	size_t sizeof_item, size_t memindex);
 
 /*
 ** create a t_memanager instance
@@ -96,7 +96,7 @@ t_memarray				*ft_memarray_construct(unsigned int size,
 **  t_memanager* : created instance
 **  NULL : memory error
 */
-t_memanager				*ft_memanager_construct(unsigned int size,
+t_memanager				*ft_memanager_construct(size_t size,
 	size_t sizeof_item);
 
 /*
@@ -108,7 +108,7 @@ t_memanager				*ft_memanager_construct(unsigned int size,
 **  0 : memory error
 */
 int						ft_memanager_extend_size(t_memanager *memanager,
-	unsigned int new_size);
+	size_t new_size);
 
 /*
 ** "free" the previously used items so that the memarray can provide them

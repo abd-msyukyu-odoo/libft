@@ -10,11 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "memory_manager/memanager2.h"
 #include "libft.h"
 
-static void					ft_memarray_configure_items(t_memarray *memarray,
-	size_t index, t_memitem *prev, size_t i_memarray)
+static void					ft_memarray_configure_items(t_memarray *memarray)
 {
+	t_memjump				*first;
+	t_memjump				*last;
+
+	memarray->memory->n_items = memarray->memory->size;
+	first = (t_memjump*)ft_array_get(memarray->memory, 0);
+	last = (t_memjump*)ft_array_get(memarray->memory, memarray->memory->size
+		- sizeof(t_memjump));
+	ft_memjump_initialize(first, NULL, last);
+
 	t_memitem				*memitem;
 
 	while (index < memarray->array->size)
@@ -37,8 +46,7 @@ void						ft_memarray_free(t_memarray *memarray)
 {
 	if (!memarray)
 		return ;
-	ft_array_free(memarray->array);
-	ft_array_free(memarray->memitems);
+	ft_array_free(memarray->memory);
 	free(memarray);
 }
 
@@ -48,18 +56,21 @@ static t_memarray			*ft_memarray_error(t_memarray *memarray)
 	return (NULL);
 }
 
-t_memarray					*ft_memarray_construct(size_t size,
-	size_t sizeof_item, size_t memindex)
+size_t						ft_memarray_minimal_size(void)
+{
+	return (sizeof(t_memcache) + 2 * sizeof(t_memjump));
+}
+
+t_memarray					*ft_memarray_construct(size_t size)
 {
 	t_memarray				*out;
 
 	out = (t_memarray*)malloc(sizeof(t_memarray));
 	if (!out)
 		return (NULL);
-	out->array = ft_array_construct(size, sizeof_item);
-	out->memitems = ft_array_construct(size, sizeof(t_memitem));
-	if (!out->array || !out->memitems)
+	out->memory = ft_array_construct(size / sizeof(char), sizeof(char));
+	if (!out->memory)
 		return (ft_memarray_error(out));
-	ft_memarray_configure_items(out, 0, NULL, memindex);
+	ft_memarray_configure_items(out);
 	return (out);
 }

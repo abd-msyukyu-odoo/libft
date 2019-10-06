@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-unsigned int		ft_array_index(t_array *array, void *item)
+size_t				ft_array_index(t_array *array, void *item)
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (item == NULL)
 		return (array->n_items);
@@ -34,7 +34,7 @@ int					ft_array_contains(t_array *array, void *item)
 	return (ft_array_index(array, item) != array->n_items);
 }
 
-void				*ft_array_get(t_array *array, unsigned int index)
+void				*ft_array_get(t_array *array, size_t index)
 {
 	if (index >= array->n_items)
 		return (NULL);

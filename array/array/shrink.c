@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int					ft_array_remove(t_array *array, unsigned int index,
+int					ft_array_remove(t_array *array, size_t index,
 	void *removed)
 {
 	if (index >= array->n_items)
@@ -30,7 +30,7 @@ int					ft_array_remove(t_array *array, unsigned int index,
 
 int					ft_array_remove_first(t_array *array, void *item)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = ft_array_index(array, item);
 	return (ft_array_remove(array, i, NULL) != 0);

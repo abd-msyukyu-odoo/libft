@@ -281,3 +281,31 @@ reflexion probleme btree remove
 		-> on saute la diff de 3 juste au dessus
 
 ------------------------------------
+
+nouveau memory manager : 
+
+-> faire en sorte que le btree soit utilisable avec une fonction
+	de comparaison externe et un type de comparaison externe
+
+-> comment stocker la memoire disponible et y acceder rapidement
+	-> arbre binaire de tailles disponibles aboutissant a une liste chainee
+		d'elements pointant vers une meme taille
+		-> stockage de l'arbre binaire dans un memory manager vieille version
+		-> probleme : acces memoire de temps logarithmique vis a vis des differentes tailles
+			-> on match des qu'on trouve une memoire plus grande que ce dont on a besoin
+				-> pire des cas = logarithmique, meilleur = quasi instantane
+		-> probleme : operations de modifications de l'arbre sont de complexite logarithmique
+	-> cache memoire avec certaines tailles pre-enregistrees (a chaque taille le dernier plus
+		petit connu qui peut contenir cette taille)
+		-> tableau pour les tailles jusque 256 KiB (19 pointeurs)
+		 
+
+
+-> rendre la memoire : retrouver rapidement le bloc d'appartenance
+	(en cas de multiples blocs)
+	-> arbre binaire special avec fonction de comparaison speciale ?
+-> reflexion sur rendre plusieurs pointeurs a la fois de maniere efficace
+	+ fonctions de array qui travaillent avec memarray et pas avec malloc, 
+	tout en gardant l'extension possible de la meme facon
+-> adapter btree au nouveau memory manager
+-> utiliser le premier type de memory manager en support du 2eme ?
