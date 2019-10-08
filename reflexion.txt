@@ -295,9 +295,30 @@ nouveau memory manager :
 			-> on match des qu'on trouve une memoire plus grande que ce dont on a besoin
 				-> pire des cas = logarithmique, meilleur = quasi instantane
 		-> probleme : operations de modifications de l'arbre sont de complexite logarithmique
-	-> cache memoire avec certaines tailles pre-enregistrees (a chaque taille le dernier plus
-		petit connu qui peut contenir cette taille)
-		-> tableau pour les tailles jusque 256 KiB (19 pointeurs)
+		-> probleme : si la recherche passe par les "petits" et qu'on ne trouve pas de resultat
+			-> pas un probleme, si ce cas arrive, il faut un nouveau bloc memoire
+	-> cache memoire ?
+
+-> un arbre binaire a comparaison de tailles pour avoir un acces memoire
+	chaque noeud doit etre un arbre binaire a comparaison d'addresse
+	-> donner le premier acces memoire qui match peu importe la fragmentation
+	-> donner une addresse (4 log t + 2 log a) :
+		- retirer de l'arbre la taille voulue (2 log t)
+			- retirer root
+		- ajouter le jumper en memoire
+			- si pas la place, on conserve le jumper precedent (mini fragmentation)
+			- adapter le jumper precedent et le jumper suivant
+		- ajouter a l'arbre la taille restante (2 log t + 2 log a)
+		- si pas la taille voulue, refaire un bloc (avec au minimum la taille voulue)
+	-> rendre une addresse (6 log t + 6 log a)
+		- trouver les addresses voisines (4 log t + 4 log a)
+			- si present :
+				- retirer de l'arbre binaire (pas refaire la recherche)
+				- fusion des jumpers (si 2 presents, faire une double fusion)
+				- ajouter la nouvelle taille a l'arbre (2 log t + 2 log a)
+			- sinon : 
+				- ajouter a l'arbre la taille courante (2 log t + 2 log a)
+
 		 
 
 
@@ -309,3 +330,19 @@ nouveau memory manager :
 	tout en gardant l'extension possible de la meme facon
 -> adapter btree au nouveau memory manager
 -> utiliser le premier type de memory manager en support du 2eme ?
+
+
+
+-> reflexion courante : regarder dans btree ce qui doit etre change
+	pour que named devienne void
+	-> a priori ca fonctionne, mettre named en void, ajuster partout
+		-> mettre la fonction de comparaison en argument de fonction
+		-> l'externe doit jauger lui meme de la faisabilite de ses choix
+		-> permet la generalisation du btree
+
+-> adapter le btree
+	-> repasser la sequence de test
+-> faire les fonctions de comparaison intervalle d'addresses et
+	addresses
+
+	-> choisir le type de conversion pour comparer les pointeurs -> uintmax_t ou uintptr_t
