@@ -38,7 +38,7 @@ static void			ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)
 	}
 }
 
-int					ft_btree_add(t_btree *btree, t_named *item)
+int					ft_btree_add(t_btree *btree, void *item)
 {
 	t_bnode			*target;
 

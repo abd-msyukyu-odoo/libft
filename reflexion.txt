@@ -346,3 +346,5 @@ nouveau memory manager :
 	addresses
 
 	-> choisir le type de conversion pour comparer les pointeurs -> uintmax_t ou uintptr_t
+
+-> wip growth.c (btree done)

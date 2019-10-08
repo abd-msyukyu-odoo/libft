@@ -19,7 +19,7 @@
 
 typedef struct			s_bnode
 {
-	t_named				*named;
+	void				*named;
 	struct s_bnode		*left;
 	struct s_bnode		*right;
 	struct s_bnode		*up;
@@ -30,7 +30,7 @@ typedef struct			s_bnode
 typedef struct			s_btree
 {
 	t_bnode				*root;
-	int					(*cmp)(const char *s1, const char *s2);
+	int					(*cmp)(void *s1, void *s2);
 	t_memanager			*mmng;
 	t_memused			mused;
 }						t_btree;
@@ -48,7 +48,7 @@ typedef struct			s_btree
 ** @return: -1 : param error
 */
 int						ft_btree_construct_extmem(t_btree *btree,
-	t_memanager *bnode_mmng);
+	t_memanager *bnode_mmng, int (*cmp)(void *s1, void *s2));
 
 /*
 ** refill btree->mmng with t_bnode* stored within btree->mused

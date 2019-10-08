@@ -24,7 +24,7 @@ static void			ft_btree_initialize_leaf(t_bnode *leaf, t_bnode *parent,
 }
 
 int					ft_btree_construct_extmem(t_btree *btree,
-	t_memanager *bnode_mmng)
+	t_memanager *bnode_mmng, int (*cmp)(void *s1, void *s2))
 {
 	if (!btree || !bnode_mmng)
 		return (-1);
@@ -33,7 +33,7 @@ int					ft_btree_construct_extmem(t_btree *btree,
 	if (!btree->root)
 		return (0);
 	ft_btree_initialize_leaf(btree->root, NULL, btree->mused.last);
-	btree->cmp = ft_strcmp;
+	btree->cmp = cmp;
 	btree->mmng = bnode_mmng;
 	return (1);
 }

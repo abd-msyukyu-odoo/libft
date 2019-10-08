@@ -91,7 +91,7 @@ int				main(void)
 	ft_memused_initialize(&mubtrees);
 
 	btree = ft_memanager_get(btrees, &mubtrees);
-	ft_btree_construct_extmem(btree, bnodes);
+	ft_btree_construct_extmem(btree, bnodes, ft_strcmp);
 	for (int i = 0; i < 26; i++)
 	{
 		data = ft_memanager_get(datas, &mudatas);
@@ -111,7 +111,7 @@ int				main(void)
 	display_btree(btree, 1);
 
 	copy = ft_memanager_get(btrees, &mubtrees);
-	ft_btree_construct_extmem(copy, bnodes);
+	ft_btree_construct_extmem(copy, bnodes, ft_strcmp);
 	ft_btree_fill_copy(btree, copy);
 
 	ft_printf("\ncopy : \n\n");
