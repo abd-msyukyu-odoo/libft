@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-t_bnode				*ft_btree_get_bnode(t_btree *btree, char *key)
+t_bnode				*ft_btree_get_bnode(t_btree *btree, void *key)
 {
 	t_bnode			*cur;
 	int				cmpr;
 
 	cur = btree->root;
-	while (cur->rank && (cmpr = btree->cmp(key, cur->named->key)))
+	while (cur->rank && (cmpr = btree->cmp(key, cur->named)))
 	{
 		if (cmpr < 0)
 			cur = cur->left;
@@ -28,7 +28,7 @@ t_bnode				*ft_btree_get_bnode(t_btree *btree, char *key)
 	return (cur);
 }
 
-t_named				*ft_btree_get(t_btree *btree, char *key)
+t_named				*ft_btree_get(t_btree *btree, void *key)
 {
 	t_bnode			*target;
 
@@ -38,7 +38,7 @@ t_named				*ft_btree_get(t_btree *btree, char *key)
 	return ((!target->rank) ? NULL : target->named);
 }
 
-int					ft_btree_contains(t_btree *btree, char *key)
+int					ft_btree_contains(t_btree *btree, void *key)
 {
 	return (ft_btree_get_bnode(btree, key) != NULL);
 }

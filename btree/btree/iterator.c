@@ -14,12 +14,12 @@
 
 static int			ft_btree_add_typecast(void *receiver, void *sent)
 {
-	return (ft_btree_add((t_btree*)receiver, (t_named*)sent));
+	return (ft_btree_add((t_btree*)receiver, sent));
 }
 
 static int			ft_array_add_typecast(void *receiver, void *sent)
 {
-	return (ft_array_add((t_array*)receiver, (t_named*)sent));
+	return (ft_array_add((t_array*)receiver, sent));
 }
 
 int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
@@ -31,15 +31,15 @@ int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 	if (out > 0 && sent->left->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->left, f);
 	if (out > 0)
-		out = f(receiver, sent->named);
+		out = f(receiver, sent);
 	if (out > 0 && sent->right->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->right, f);
 	return (out);
 }
 
-int					ft_btree_fill_copy(t_btree *old, t_btree *new)
+int					ft_btree_fill_copy(t_btree *old, t_btree *new_bt)
 {
-	return (ft_btree_bnode_iteration(new, old->root, ft_btree_add_typecast));
+	return (ft_btree_bnode_iteration(new_bt, old->root, ft_btree_add_typecast));
 }
 
 int					ft_btree_fill_array(t_btree *btree, t_array *array)

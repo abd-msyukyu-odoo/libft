@@ -42,9 +42,9 @@ int					ft_btree_add(t_btree *btree, void *item)
 {
 	t_bnode			*target;
 
-	if (!btree || !item || !item->key)
+	if (!btree || !item)
 		return (-1);
-	target = ft_btree_get_bnode(btree, item->key);
+	target = ft_btree_get_bnode(btree, item);
 	if (target->rank)
 		return (-2);
 	if (!ft_btree_construct_leaves(btree, target))
@@ -55,14 +55,14 @@ int					ft_btree_add(t_btree *btree, void *item)
 	return (1);
 }
 
-t_named				*ft_btree_replace(t_btree *btree, t_named *item)
+void				*ft_btree_replace(t_btree *btree, void *item)
 {
 	t_bnode			*target;
-	t_named			*out;
+	void			*out;
 
-	if (!btree || !item || !item->key)
+	if (!btree || !item)
 		return (NULL);
-	target = ft_btree_get_bnode(btree, item->key);
+	target = ft_btree_get_bnode(btree, item);
 	if (!target->rank)
 		return (NULL);
 	out = target->named;

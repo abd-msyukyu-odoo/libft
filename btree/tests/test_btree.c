@@ -1,5 +1,10 @@
 #include "libft.h"
 
+typedef struct					s_named
+{
+	char						*key;
+}								t_named;
+
 typedef struct	s_test_btree
 {
 	t_named		named;
@@ -15,7 +20,7 @@ char			*char_bnode(t_bnode *bn)
 	if (!bn->rank)
 		return ("(null)");
 	else
-		return (bn->named->key);
+		return (((t_named*)bn->named)->key);
 }
 
 int				display_bnode(void *receiver, void *sent)
@@ -105,7 +110,7 @@ int				main(void)
 		ft_printf("btree null\n");
 	else
 	{
-		ft_printf("root %s\n", btree->root->named->key);
+		ft_printf("root %s\n", ((t_named*)btree->root->named)->key);
 	}
 	
 	display_btree(btree, 1);

@@ -176,7 +176,7 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix array/, $(ARRAY_F))) \
 					$(addprefix ./memory_manager/, \
 						$(addprefix memanager/, $(MEMANAGER_F))) \
-					$(addprefix ./btree_ascii/, \
+					$(addprefix ./btree/, \
 						$(addprefix btree/, $(BTREE_F))))
 
 END_E		= \033[00m

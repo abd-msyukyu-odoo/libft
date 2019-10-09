@@ -12,7 +12,6 @@
 
 #ifndef BTREE_H
 # define BTREE_H
-# include "btree_ascii/named.h"
 # include "array/array.h"
 # include "basic_functions/basicft.h"
 # include "memory_manager/memanager.h"
@@ -68,7 +67,7 @@ void					ft_btree_free_extmem(t_btree *btree);
 ** @return: t_named* which has key
 ** @return: NULL : btree does not contain key
 */
-t_named					*ft_btree_get(t_btree *btree, char *key);
+void					*ft_btree_get(t_btree *btree, void *key);
 
 /*
 ** check if btree contains key
@@ -79,7 +78,7 @@ t_named					*ft_btree_get(t_btree *btree, char *key);
 ** @return: 1 : btree does contain key
 ** @return: 0 : btree does not contain key
 */
-int						ft_btree_contains(t_btree *btree, char *key);
+int						ft_btree_contains(t_btree *btree, void *key);
 
 /*
 ** add item to btree only if item->key is not already present
@@ -92,7 +91,7 @@ int						ft_btree_contains(t_btree *btree, char *key);
 ** @return: -1 : param error
 ** @return: -2 : error item->key is already present
 */
-int						ft_btree_add(t_btree *btree, t_named *item);
+int						ft_btree_add(t_btree *btree, void *item);
 
 /*
 ** replace item from btree only if item->key is already present
@@ -103,7 +102,7 @@ int						ft_btree_add(t_btree *btree, t_named *item);
 ** @return: t_named* which was removed
 ** @return: NULL : error
 */
-t_named					*ft_btree_replace(t_btree *btree, t_named *item);
+void					*ft_btree_replace(t_btree *btree, void *item);
 
 /*
 ** remove item from btree if item->key is already present
@@ -114,7 +113,7 @@ t_named					*ft_btree_replace(t_btree *btree, t_named *item);
 ** @return: t_named* which was removed
 ** @return: NULL : error
 */
-t_named					*ft_btree_remove(t_btree *btree, char *key);
+void					*ft_btree_remove(t_btree *btree, void *key);
 
 /*
 ** apply f on each node starting from sent in sorted order, using receiver
@@ -141,7 +140,7 @@ int						ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 ** @return: 0 : memory error
 ** @return: -1 : param error
 */
-int						ft_btree_fill_copy(t_btree *old, t_btree *new);
+int						ft_btree_fill_copy(t_btree *old, t_btree *new_bt);
 
 /*
 ** fill array with items from btree
@@ -160,7 +159,7 @@ int						ft_btree_fill_array(t_btree *btree, t_array *array);
 */
 int						ft_btree_construct_leaves(t_btree *btree,
 	t_bnode *old_leaf);
-t_bnode					*ft_btree_get_bnode(t_btree *btree, char *key);
+t_bnode					*ft_btree_get_bnode(t_btree *btree, void *key);
 t_bnode					*ft_btree_get_min_bnode(t_bnode *bnode);
 t_bnode					**ft_btree_bnode_referent(t_btree *btree,
 	t_bnode *bnode);

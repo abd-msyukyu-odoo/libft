@@ -47,11 +47,11 @@ static int			ft_btree_cut_branch(t_btree *btree, t_bnode *cut)
 	return (1);
 }
 
-static t_bnode		*ft_btree_remove_bnode(t_btree *btree, char *key)
+static t_bnode		*ft_btree_remove_bnode(t_btree *btree, void *key)
 {
 	t_bnode			*target;
 	t_bnode			*swapper;
-	t_named			*named;
+	void			*named;
 
 	target = ft_btree_get_bnode(btree, key);
 	if (target->rank)
@@ -68,10 +68,10 @@ static t_bnode		*ft_btree_remove_bnode(t_btree *btree, char *key)
 	return ((target->rank) ? target : NULL);
 }
 
-t_named				*ft_btree_remove(t_btree *btree, char *key)
+void				*ft_btree_remove(t_btree *btree, void *key)
 {
 	t_bnode			*target;
-	t_named			*out;
+	void			*out;
 
 	if (!btree || !key)
 		return (NULL);

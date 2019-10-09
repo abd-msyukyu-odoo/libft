@@ -55,7 +55,7 @@ typedef struct			s_find_end
 ** str_realloc_join.c
 */
 unsigned char			ft_str_over_realloc(t_string *in, ssize_t old,
-							ssize_t new);
+							ssize_t new_s);
 ssize_t					ft_str_join(t_string *des, ssize_t ld, char *src,
 							ssize_t ls);
 
