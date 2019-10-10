@@ -284,7 +284,7 @@ reflexion probleme btree remove
 
 nouveau memory manager : 
 
--> faire en sorte que le btree soit utilisable avec une fonction
+OK -> faire en sorte que le btree soit utilisable avec une fonction
 	de comparaison externe et un type de comparaison externe
 
 -> comment stocker la memoire disponible et y acceder rapidement
