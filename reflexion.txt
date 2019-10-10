@@ -349,3 +349,5 @@ nouveau memory manager :
 
 -> tester un btree trie par taille (size_t)
 -> tester un btree trie par addresse
+
+-> segfault construction de tableau copie de btree size_t
