@@ -347,8 +347,5 @@ nouveau memory manager :
 
 	-> choisir le type de conversion pour comparer les pointeurs -> uintmax_t ou uintptr_t
 
--> probleme : les fonction d'ajout et de remplacement donne l'objet
- et pas la clef (pas d'acces a la clef ?)
-
- -> probleme : la fonction d'acces a un node utilise l'objet et pas la clef
-	(pas d'acces a la clef ?)
+-> tester un btree trie par taille (size_t)
+-> tester un btree trie par addresse
