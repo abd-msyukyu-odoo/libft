@@ -38,21 +38,6 @@ t_array					*ft_array_construct(size_t size,
 	size_t sizeof_item);
 
 /*
-** use an existing t_array instance to store pointers.
-** WARNING : must use ft_array_free_extmem to free
-** return :
-**  1 : success
-**  0 : memory error
-*/
-int						ft_array_construct_extmem(t_array *array,
-	size_t size);
-
-/*
-** free all non-external memory of the t_array instance
-*/
-void					ft_array_free_extmem(t_array *array);
-
-/*
 ** free the t_array instance, but not the items
 */
 void					ft_array_free(t_array *array);

@@ -96,7 +96,7 @@ t_typearray				*ft_typearray_construct(size_t size,
 **  t_typemanager* : created instance
 **  NULL : memory error
 */
-t_typemanager				*ft_typemanager_construct(size_t size,
+t_typemanager			*ft_typemanager_construct(size_t size,
 	size_t sizeof_item);
 
 /*

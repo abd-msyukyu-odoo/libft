@@ -349,3 +349,28 @@ OK -> faire en sorte que le btree soit utilisable avec une fonction
 
 -> tester un btree trie par taille (size_t)
 -> tester un btree trie par addresse
+
+
+
+-> faire un btree qui utilise un memory manager et pas de typemanager?
+-> faire un array qui utilise un memory manager et pas de malloc ni typemanager
+
+
+typemanager = *1 malloc (itself)(opt)
+				-> 2* malloc (1*array(opt) and 1*addresses(n))
+					-> 2*n malloc (1*array and 1*memory chunk)
+			init = 5* malloc
+
+memanager = *1 malloc (itself)
+				-> 3* typemanager(btree)
+					- btree
+						- 1* size btree
+						- k* sizes
+					- bnode
+						- ~8*k* (sizes & addresses)
+					- sizedbtree struct
+						- k* sizes
+				-> 3* typeused(btree)(opt)
+				-> 2* malloc (1*array and 1*addresses(n))
+					-> 2*n malloc (1*array and 1*memory chunk)
+			init = 20* malloc

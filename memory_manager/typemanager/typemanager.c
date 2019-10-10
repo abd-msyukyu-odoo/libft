@@ -55,10 +55,10 @@ t_typemanager					*ft_typemanager_construct(size_t size,
 	return (out);
 }
 
-int							ft_typemanager_extend_size(
+int								ft_typemanager_extend_size(
 	t_typemanager *typemanager, size_t new_size)
 {
-	t_typearray				**injector;
+	t_typearray					**injector;
 
 	injector = (t_typearray**)ft_array_inject(typemanager->typearrays);
 	if (!injector || !(*injector = ft_typearray_construct(new_size,
