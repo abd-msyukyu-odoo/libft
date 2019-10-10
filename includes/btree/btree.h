@@ -154,6 +154,8 @@ int						ft_btree_fill_copy(t_btree *old, t_btree *new_bt);
 */
 int						ft_btree_fill_array(t_btree *btree, t_array *array);
 
+int						ft_btree_cmp_ascii(void *s1, void *s2);
+
 /*
 ** internal functions
 */

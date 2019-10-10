@@ -28,7 +28,7 @@ t_bnode				*ft_btree_get_bnode(t_btree *btree, void *key)
 	return (cur);
 }
 
-t_named				*ft_btree_get(t_btree *btree, void *key)
+void				*ft_btree_get(t_btree *btree, void *key)
 {
 	t_bnode			*target;
 

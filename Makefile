@@ -154,7 +154,8 @@ BTREE_F		= btree \
 			  rebalance_deleted \
 			  search \
 			  shrink \
-			  utils
+			  utils \
+			  comparable
 
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
