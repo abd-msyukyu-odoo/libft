@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <stdio.h>
 
 typedef struct					s_named
 {
@@ -49,7 +50,7 @@ int				display_bnode(void *receiver, void *sent)
 	cur = (t_named*)sent;
 	if (receiver)
 	{
-		ft_printf("%s\n", cur->key);
+		printf("%s\n", cur->key);
 		return (1);
 	}
 	return (0);
@@ -62,7 +63,7 @@ int				display_szbnode(void *receiver, void *sent)
 	cur = (t_numbered*)sent;
 	if (receiver)
 	{
-		ft_printf("%zu\n", cur->key);
+		printf("%zu\n", cur->key);
 		return (1);
 	}
 	return (0);
@@ -73,9 +74,9 @@ int				remove_bnode(void *receiver, void *sent)
 	void		*rec;
 
 	rec = ft_btree_remove((t_btree*)receiver, sent);
-	ft_printf("removing : %p || status : %p\n\n", sent,
+	printf("removing : %p || status : %p\n\n", sent,
 		rec);
-	ft_printf("------------------------------\n\n");
+	printf("------------------------------\n\n");
 	return (1);
 }
 
@@ -91,7 +92,7 @@ int				display_pbnode(void *receiver, void *sent)
 	cur = (t_numbered*)sent;
 	if (receiver)
 	{
-		ft_printf("%p\n", cur);
+		printf("%p\n", cur);
 		return (1);
 	}
 	return (0);
@@ -121,35 +122,35 @@ void			display_szbtree(t_btree *b, int verbose)
 		display_szbnode);
 }
 
-t_memanager		*memanager_construct_data()
+t_typemanager		*typemanager_construct_data()
 {
-	t_memanager	*ma;
+	t_typemanager	*ma;
 
-	ma = ft_memanager_construct(26, sizeof(t_data));
+	ma = ft_typemanager_construct(26, sizeof(t_data));
 	return (ma);
 }
 
-t_memanager		*memanager_construct_szdata()
+t_typemanager		*typemanager_construct_szdata()
 {
-	t_memanager *ma;
+	t_typemanager *ma;
 
-	ma = ft_memanager_construct(26, sizeof(t_szdata));
+	ma = ft_typemanager_construct(26, sizeof(t_szdata));
 	return (ma);
 }
 
-t_memanager		*memanager_construct_bnode()
+t_typemanager		*typemanager_construct_bnode()
 {
-	t_memanager *ma;
+	t_typemanager *ma;
 
-	ma = ft_memanager_construct(26, sizeof(t_bnode));
+	ma = ft_typemanager_construct(26, sizeof(t_bnode));
 	return (ma);
 }
 
-t_memanager		*memanager_construct_btree()
+t_typemanager		*typemanager_construct_btree()
 {
-	t_memanager *ma;
+	t_typemanager *ma;
 
-	ma = ft_memanager_construct(2, sizeof(t_btree));
+	ma = ft_typemanager_construct(2, sizeof(t_btree));
 	return (ma);
 }
 
@@ -157,73 +158,73 @@ void			display_array(t_array *a)
 {
 	for (int i = 0; i < a->n_items; ++i)
 	{
-		ft_printf("%s \n", *(char**)ft_array_get(a, i));
+		printf("%s \n", *(char**)ft_array_get(a, i));
 	}
-	ft_printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
 }
 
 void			display_szarray(t_array *a)
 {
 	for (int i = 0; i < a->n_items; ++i)
 	{
-		ft_printf("%zu \n", *(size_t*)ft_array_get(a, i));
+		printf("%zu \n", *(size_t*)ft_array_get(a, i));
 	}
-	ft_printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
 }
 
 void			display_parray(t_array *a)
 {
 	for (int i = 0; i < a->n_items; ++i)
 	{
-		ft_printf("%p \n", ft_array_get(a, i));
+		printf("%p \n", ft_array_get(a, i));
 	}
-	ft_printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
 }
 
 void			test_ptr_btree(void)
 {
-	t_memanager *bnodes;
-	t_memanager *datas;
-	t_memanager *btrees;
+	t_typemanager *bnodes;
+	t_typemanager *datas;
+	t_typemanager *btrees;
 	t_btree		*btree;
 	t_btree		*copy;
-	t_memused	mudatas;
-	t_memused	mubtrees;
+	t_typeused	mudatas;
+	t_typeused	mubtrees;
 	t_szdata	*data;
 	t_szdata	*data2;
 	size_t		key;
 
-	bnodes = memanager_construct_bnode();
-	datas = memanager_construct_szdata();
-	btrees = memanager_construct_btree();
-	ft_memused_initialize(&mudatas);
-	ft_memused_initialize(&mubtrees);
+	bnodes = typemanager_construct_bnode();
+	datas = typemanager_construct_szdata();
+	btrees = typemanager_construct_btree();
+	ft_typeused_initialize(&mudatas);
+	ft_typeused_initialize(&mubtrees);
 
-	btree = ft_memanager_get(btrees, &mubtrees);
+	btree = ft_typemanager_get(btrees, &mubtrees);
 	ft_btree_construct_extmem(btree, bnodes, ft_btree_cmp_addr);
 	for (int i = 0; i < 26; i++)
 	{
-		data = ft_memanager_get(datas, &mudatas);
+		data = ft_typemanager_get(datas, &mudatas);
 		data->numbered = (t_numbered){(size_t)((i % 7 + 2 * i) * (i % 3 + 4 * i) / (i % 5 + 1))};
 		data->ext = "ext";
-		ft_printf("added : %p || status : %d\n\n", data,
+		printf("added : %p || status : %d\n\n", data,
 			ft_btree_add(btree, (t_numbered*)data));
-		ft_printf("------------------------------\n\n");
+		printf("------------------------------\n\n");
 	}
 	if (!btree)
-		ft_printf("btree null\n");
+		printf("btree null\n");
 	else
 	{
-		ft_printf("root %p\n", btree->root->named);
+		printf("root %p\n", btree->root->named);
 	}
 	
 	display_pbtree(btree, 1);
 
-	copy = ft_memanager_get(btrees, &mubtrees);
+	copy = ft_typemanager_get(btrees, &mubtrees);
 	ft_btree_construct_extmem(copy, bnodes, ft_btree_cmp_addr);
 	ft_btree_fill_copy(btree, copy);
 
-	ft_printf("\ncopy : \n\n");
+	printf("\ncopy : \n\n");
 
 	display_pbtree(copy, 1);
 
@@ -231,7 +232,7 @@ void			test_ptr_btree(void)
 	recipient = ft_array_construct(5, sizeof(t_szdata));
 	ft_btree_fill_array(btree, recipient);
 
-	ft_printf("\narray : \n\n");
+	printf("\narray : \n\n");
 
 	display_parray(recipient);
 
@@ -240,54 +241,54 @@ void			test_ptr_btree(void)
 	display_pbtree(btree, 1);
 
 	ft_array_free(recipient);
-	ft_memanager_free(bnodes);
-	ft_memanager_free(datas);
-	ft_memanager_free(btrees);
+	ft_typemanager_free(bnodes);
+	ft_typemanager_free(datas);
+	ft_typemanager_free(btrees);
 }
 
 void			test_size_t_btree(void)
 {
-	t_memanager *bnodes;
-	t_memanager *datas;
-	t_memanager *btrees;
+	t_typemanager *bnodes;
+	t_typemanager *datas;
+	t_typemanager *btrees;
 	t_btree		*btree;
 	t_btree		*copy;
-	t_memused	mudatas;
-	t_memused	mubtrees;
+	t_typeused	mudatas;
+	t_typeused	mubtrees;
 	t_szdata	*data;
 	size_t		key;
 
-	bnodes = memanager_construct_bnode();
-	datas = memanager_construct_szdata();
-	btrees = memanager_construct_btree();
-	ft_memused_initialize(&mudatas);
-	ft_memused_initialize(&mubtrees);
+	bnodes = typemanager_construct_bnode();
+	datas = typemanager_construct_szdata();
+	btrees = typemanager_construct_btree();
+	ft_typeused_initialize(&mudatas);
+	ft_typeused_initialize(&mubtrees);
 
-	btree = ft_memanager_get(btrees, &mubtrees);
+	btree = ft_typemanager_get(btrees, &mubtrees);
 	ft_btree_construct_extmem(btree, bnodes, ft_btree_cmp_size);
 	for (int i = 0; i < 26; i++)
 	{
-		data = ft_memanager_get(datas, &mudatas);
+		data = ft_typemanager_get(datas, &mudatas);
 		data->numbered = (t_numbered){(size_t)((i % 7 + 2 * i) * (i % 3 + 4 * i) / (i % 5 + 1))};
 		data->ext = "ext";
-		ft_printf("added : %zu || status : %d\n\n", data->numbered.key,
+		printf("added : %zu || status : %d\n\n", data->numbered.key,
 			ft_btree_add(btree, (t_numbered*)data));
-		ft_printf("------------------------------\n\n");
+		printf("------------------------------\n\n");
 	}
 	if (!btree)
-		ft_printf("btree null\n");
+		printf("btree null\n");
 	else
 	{
-		ft_printf("root %zu\n", ((t_numbered*)btree->root->named)->key);
+		printf("root %zu\n", ((t_numbered*)btree->root->named)->key);
 	}
 	
 	display_szbtree(btree, 1);
 
-	copy = ft_memanager_get(btrees, &mubtrees);
+	copy = ft_typemanager_get(btrees, &mubtrees);
 	ft_btree_construct_extmem(copy, bnodes, ft_btree_cmp_size);
 	ft_btree_fill_copy(btree, copy);
 
-	ft_printf("\ncopy : \n\n");
+	printf("\ncopy : \n\n");
 
 	display_szbtree(copy, 1);
 
@@ -295,7 +296,7 @@ void			test_size_t_btree(void)
 	recipient = ft_array_construct(5, sizeof(t_szdata));
 	ft_btree_fill_array(btree, recipient);
 
-	ft_printf("\narray : \n\n");
+	printf("\narray : \n\n");
 
 	display_szarray(recipient);
 
@@ -303,62 +304,62 @@ void			test_size_t_btree(void)
 	{
 		key = (i % 7 + 2 * i) * (i % 3 + 4 * i) / (i % 5 + 1);
 		data = (t_szdata*)ft_btree_remove(btree, &key);
-		ft_printf("removing : %zu || status : %zu\n\n", key,
+		printf("removing : %zu || status : %zu\n\n", key,
 			(!data) ? 777777 : data->numbered.key);
-		ft_printf("------------------------------\n\n");
+		printf("------------------------------\n\n");
 	}
 
 	display_szbtree(btree, 1);
 
 	ft_array_free(recipient);
-	ft_memanager_free(bnodes);
-	ft_memanager_free(datas);
-	ft_memanager_free(btrees);
+	ft_typemanager_free(bnodes);
+	ft_typemanager_free(datas);
+	ft_typemanager_free(btrees);
 }
 
 void			test_ascii_btree(void)
 {
-	t_memanager *bnodes;
-	t_memanager *datas;
-	t_memanager *btrees;
+	t_typemanager *bnodes;
+	t_typemanager *datas;
+	t_typemanager *btrees;
 	t_btree		*btree;
 	t_btree		*copy;
-	t_memused	mudatas;
-	t_memused	mubtrees;
+	t_typeused	mudatas;
+	t_typeused	mubtrees;
 	t_data		*data;
 	char		*key;
 
-	bnodes = memanager_construct_bnode();
-	datas = memanager_construct_data();
-	btrees = memanager_construct_btree();
-	ft_memused_initialize(&mudatas);
-	ft_memused_initialize(&mubtrees);
+	bnodes = typemanager_construct_bnode();
+	datas = typemanager_construct_data();
+	btrees = typemanager_construct_btree();
+	ft_typeused_initialize(&mudatas);
+	ft_typeused_initialize(&mubtrees);
 
-	btree = ft_memanager_get(btrees, &mubtrees);
+	btree = ft_typemanager_get(btrees, &mubtrees);
 	ft_btree_construct_extmem(btree, bnodes, ft_btree_cmp_ascii);
 	for (int i = 0; i < 26; i++)
 	{
-		data = ft_memanager_get(datas, &mudatas);
+		data = ft_typemanager_get(datas, &mudatas);
 		data->named = (t_named){&(in[i])};
 		data->ext = "ext";
-		ft_printf("added : %s || status : %d\n\n", data->named.key,
+		printf("added : %s || status : %d\n\n", data->named.key,
 			ft_btree_add(btree, (t_named*)data));
-		ft_printf("------------------------------\n\n");
+		printf("------------------------------\n\n");
 	}
 	if (!btree)
-		ft_printf("btree null\n");
+		printf("btree null\n");
 	else
 	{
-		ft_printf("root %s\n", ((t_named*)btree->root->named)->key);
+		printf("root %s\n", ((t_named*)btree->root->named)->key);
 	}
 	
 	display_btree(btree, 1);
 
-	copy = ft_memanager_get(btrees, &mubtrees);
+	copy = ft_typemanager_get(btrees, &mubtrees);
 	ft_btree_construct_extmem(copy, bnodes, ft_btree_cmp_ascii);
 	ft_btree_fill_copy(btree, copy);
 
-	ft_printf("\ncopy : \n\n");
+	printf("\ncopy : \n\n");
 
 	display_btree(copy, 1);
 
@@ -366,7 +367,7 @@ void			test_ascii_btree(void)
 	recipient = ft_array_construct(5, sizeof(t_data));
 	ft_btree_fill_array(btree, recipient);
 
-	ft_printf("\narray : \n\n");
+	printf("\narray : \n\n");
 
 	display_array(recipient);
 
@@ -374,23 +375,23 @@ void			test_ascii_btree(void)
 	{
 		key = &in[i];
 		data = (t_data*)ft_btree_remove(btree, &key);
-		ft_printf("removing : %s || status : %s\n\n", key,
+		printf("removing : %s || status : %s\n\n", key,
 			(!data) ? "(null)" : data->named.key);
-		ft_printf("------------------------------\n\n");
+		printf("------------------------------\n\n");
 	}
 
 	display_btree(btree, 1);
 
 	ft_array_free(recipient);
-	ft_memanager_free(bnodes);
-	ft_memanager_free(datas);
-	ft_memanager_free(btrees);
+	ft_typemanager_free(bnodes);
+	ft_typemanager_free(datas);
+	ft_typemanager_free(btrees);
 }
 
 int				main(void)
 {
 	test_ascii_btree();
-	//test_size_t_btree();
-	//test_ptr_btree();
+	test_size_t_btree();
+	test_ptr_btree();
 	return (0);
 }

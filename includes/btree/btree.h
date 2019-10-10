@@ -14,7 +14,7 @@
 # define BTREE_H
 # include "array/array.h"
 # include "basic_functions/basicft.h"
-# include "memory_manager/memanager.h"
+# include "memory_manager/typemanager.h"
 
 /*
 ** named should be a pointer to a struct which respect the following :
@@ -28,7 +28,7 @@ typedef struct			s_bnode
 	struct s_bnode		*right;
 	struct s_bnode		*up;
 	int					rank;
-	t_memitem			*memitem;
+	t_typeitem			*typeitem;
 }						t_bnode;
 
 /*
@@ -39,8 +39,8 @@ typedef struct			s_btree
 {
 	t_bnode				*root;
 	int					(*cmp)(void *s1, void *s2);
-	t_memanager			*mmng;
-	t_memused			mused;
+	t_typemanager		*tmng;
+	t_typeused			tused;
 }						t_btree;
 
 /*
@@ -49,14 +49,14 @@ typedef struct			s_btree
 ** @before: btree should be empty
 **
 ** @param: btree : empty t_btree*
-** @param: bnode_mmng : t_memanager* in charge of supplying t_bnode*
+** @param: bnode_mmng : t_typemanager* in charge of supplying t_bnode*
 **
 ** @return: 1 : success
 ** @return: 0 : memory error
 ** @return: -1 : param error
 */
 int						ft_btree_construct_extmem(t_btree *btree,
-	t_memanager *bnode_mmng, int (*cmp)(void *s1, void *s2));
+	t_typemanager *bnode_tmng, int (*cmp)(void *s1, void *s2));
 
 /*
 ** refill btree->mmng with t_bnode* stored within btree->mused

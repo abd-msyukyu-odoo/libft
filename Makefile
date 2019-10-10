@@ -143,10 +143,10 @@ ARRAY_F		= array \
 			  search \
 			  shrink
 
-MEMANAGER_F	= memanager \
-			  memarray \
-			  memory_requests \
-			  memused
+TYPEMNG_F	= typemanager \
+			  typearray \
+			  type_requests \
+			  typeused
 
 BTREE_F		= btree \
 			  growth \
@@ -176,7 +176,7 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./array/, \
 						$(addprefix array/, $(ARRAY_F))) \
 					$(addprefix ./memory_manager/, \
-						$(addprefix memanager/, $(MEMANAGER_F))) \
+						$(addprefix typemanager/, $(TYPEMNG_F))) \
 					$(addprefix ./btree/, \
 						$(addprefix btree/, $(BTREE_F))))
 

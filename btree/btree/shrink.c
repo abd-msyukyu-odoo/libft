@@ -29,7 +29,7 @@ static int			ft_btree_cut_leaf(t_btree *btree, t_bnode *cut,
 	}
 	else
 		return (0);
-	ft_memused_recover(&btree->mused, dead_leaf->memitem);
+	ft_typeused_recover(&btree->tused, dead_leaf->typeitem);
 	return (1);
 }
 
@@ -79,7 +79,7 @@ void				*ft_btree_remove(t_btree *btree, void *key)
 	if (target)
 	{
 		out = target->named;
-		ft_memused_recover(&btree->mused, target->memitem);
+		ft_typeused_recover(&btree->tused, target->typeitem);
 	}
 	else
 		out = NULL;

@@ -16,7 +16,7 @@
 # include "ft_printf/ft_printf.h"
 # include "ft_read/reader.h"
 # include "array/array.h"
-# include "memory_manager/memanager.h"
+# include "memory_manager/typemanager.h"
 # include "btree/btree.h"
 
 #endif

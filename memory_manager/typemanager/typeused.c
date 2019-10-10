@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memused.c                                          :+:      :+:    :+:   */
+/*   typeused.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,17 @@
 
 #include "libft.h"
 
-void				ft_memused_initialize(t_memused *memused)
+void				ft_typeused_initialize(t_typeused *typeused)
 {
-	memused->memitem = NULL;
-	memused->oldest = NULL;
-	memused->recovery = NULL;
-	memused->last = NULL;
+	typeused->typeitem = NULL;
+	typeused->oldest = NULL;
+	typeused->recovery = NULL;
+	typeused->last = NULL;
 }
 
-void				ft_memused_recover(t_memused *memused, t_memitem *memitem)
+void				ft_typeused_recover(t_typeused *typeused,
+	t_typeitem *typeitem)
 {
-	memitem->next_recovery = memused->recovery;
-	memused->recovery = memitem;
+	typeitem->next_recovery = typeused->recovery;
+	typeused->recovery = typeitem;
 }
