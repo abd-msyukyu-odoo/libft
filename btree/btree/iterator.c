@@ -31,7 +31,7 @@ int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 	if (out > 0 && sent->left->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->left, f);
 	if (out > 0)
-		out = f(receiver, sent);
+		out = f(receiver, sent->named);
 	if (out > 0 && sent->right->rank)
 		out = ft_btree_bnode_iteration(receiver, sent->right, f);
 	return (out);

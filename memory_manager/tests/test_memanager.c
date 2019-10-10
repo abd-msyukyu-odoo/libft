@@ -26,7 +26,7 @@ void			display_memused(t_memused *mu)
 	cur = mu->memitem;
 	while (cur)
 	{
-		printf("	%s\n	%u : i_memarray\n	%u : n_used\n\n",
+		printf("	%s\n	%zu : i_memarray\n	%zu : n_used\n\n",
 			*(char**)cur->item, cur->i_memarray, cur->n_used);
 		if (cur == cur->next)
 			break ;
@@ -44,7 +44,7 @@ void			display_mem_status(t_memanager *ma, t_memused mu[2])
 	i = 0;
 	while (i < ma->memarrays->n_items)
 	{
-		printf("%d : %u available\n", i,
+		printf("%d : %zu available\n", i,
 			(*(t_memarray**)ft_array_get(ma->memarrays, i))->n_unused);
 		i++;
 	}

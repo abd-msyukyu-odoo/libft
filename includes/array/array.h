@@ -104,7 +104,7 @@ int						ft_array_remove(t_array *array, size_t index,
 ** 	unsigned int : index of item
 ** 	array->n_items : array does not contain item
 */
-unsigned int			ft_array_index(t_array *array, void *item);
+size_t					ft_array_index(t_array *array, void *item);
 
 /*
 ** get the item at index

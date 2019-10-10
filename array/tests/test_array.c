@@ -17,7 +17,7 @@ void			display_array(t_array *a)
 	{
 		printf("%s \n", *(char**)ft_array_get(a, i));
 	}
-	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %zu\nsize : %zu\n", a->n_items, a->size);
 }
 
 t_array			*test_construct_array()
@@ -85,7 +85,7 @@ void			test_array_index(void)
 	a = test_construct_array();
 	fill_array(a);
 	display_array(a);
-	printf("first : %d\nthird : %d\nlast: %d\nfake : %d\n",
+	printf("first : %zu\nthird : %zu\nlast: %zu\nfake : %zu\n",
 		ft_array_index(a, &aa),
 		ft_array_index(a, &cc),
 		ft_array_index(a, &ff),

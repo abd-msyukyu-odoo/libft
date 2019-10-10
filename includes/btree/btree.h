@@ -16,6 +16,11 @@
 # include "basic_functions/basicft.h"
 # include "memory_manager/memanager.h"
 
+/*
+** named should be a pointer to a struct which respect the following :
+** the first element should be of a type which differentiate it from others
+** elements of the same type
+*/
 typedef struct			s_bnode
 {
 	void				*named;
@@ -26,6 +31,10 @@ typedef struct			s_bnode
 	t_memitem			*memitem;
 }						t_bnode;
 
+/*
+** cmp is a custom function which make use of the first element of
+** t_bnode->named to sort the elements 
+*/
 typedef struct			s_btree
 {
 	t_bnode				*root;
@@ -59,12 +68,12 @@ int						ft_btree_construct_extmem(t_btree *btree,
 void					ft_btree_free_extmem(t_btree *btree);
 
 /*
-** get *t_named which has key
+** get object which has key
 **
 ** @param: btree : to search in
-** @param: key : to be searched for
+** @param: key : to be searched for (pointer to type of t_bnode->named->"first")
 **
-** @return: t_named* which has key
+** @return: objet which has key
 ** @return: NULL : btree does not contain key
 */
 void					*ft_btree_get(t_btree *btree, void *key);
@@ -73,7 +82,7 @@ void					*ft_btree_get(t_btree *btree, void *key);
 ** check if btree contains key
 **
 ** @param: btree : to search in
-** @param: key : to be searched for
+** @param: key : to be searched for (pointer to type of t_bnode->named->"first")
 **
 ** @return: 1 : btree does contain key
 ** @return: 0 : btree does not contain key
@@ -99,7 +108,7 @@ int						ft_btree_add(t_btree *btree, void *item);
 ** @param: btree : to be modified
 ** @param: item : to be added
 **
-** @return: t_named* which was removed
+** @return: object which was removed
 ** @return: NULL : error
 */
 void					*ft_btree_replace(t_btree *btree, void *item);
@@ -108,9 +117,9 @@ void					*ft_btree_replace(t_btree *btree, void *item);
 ** remove item from btree if item->key is already present
 **
 ** @param: btree : to be modified
-** @param: key : to be searched for
+** @param: key : to be searched for (pointer to type of t_bnode->named->"first")
 **
-** @return: t_named* which was removed
+** @return: object which was removed
 ** @return: NULL : error
 */
 void					*ft_btree_remove(t_btree *btree, void *key);
@@ -155,6 +164,8 @@ int						ft_btree_fill_copy(t_btree *old, t_btree *new_bt);
 int						ft_btree_fill_array(t_btree *btree, t_array *array);
 
 int						ft_btree_cmp_ascii(void *s1, void *s2);
+int						ft_btree_cmp_size(void *s1, void *s2);
+int						ft_btree_cmp_addr(void *s1, void *s2);
 
 /*
 ** internal functions
