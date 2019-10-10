@@ -68,12 +68,49 @@ int				display_szbnode(void *receiver, void *sent)
 	return (0);
 }
 
+int				remove_bnode(void *receiver, void *sent)
+{
+	void		*rec;
+
+	rec = ft_btree_remove((t_btree*)receiver, sent);
+	ft_printf("removing : %p || status : %p\n\n", sent,
+		rec);
+	ft_printf("------------------------------\n\n");
+	return (1);
+}
+
+void			remove_btree(t_btree *from, t_btree *to)
+{
+	ft_btree_bnode_iteration(to, from->root, remove_bnode);
+}
+
+int				display_pbnode(void *receiver, void *sent)
+{
+	t_numbered		*cur;
+
+	cur = (t_numbered*)sent;
+	if (receiver)
+	{
+		ft_printf("%p\n", cur);
+		return (1);
+	}
+	return (0);
+}
+
 void			display_btree(t_btree *b, int verbose)
 {
 	if (!b)
 		return ;
 	ft_btree_bnode_iteration((verbose) ? &verbose : NULL, b->root,
 		display_bnode);
+}
+
+void			display_pbtree(t_btree *b, int verbose)
+{
+	if (!b)
+		return ;
+	ft_btree_bnode_iteration((verbose) ? &verbose : NULL, b->root,
+		display_pbnode);
 }
 
 void			display_szbtree(t_btree *b, int verbose)
@@ -134,6 +171,80 @@ void			display_szarray(t_array *a)
 	ft_printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
 }
 
+void			display_parray(t_array *a)
+{
+	for (int i = 0; i < a->n_items; ++i)
+	{
+		ft_printf("%p \n", ft_array_get(a, i));
+	}
+	ft_printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+}
+
+void			test_ptr_btree(void)
+{
+	t_memanager *bnodes;
+	t_memanager *datas;
+	t_memanager *btrees;
+	t_btree		*btree;
+	t_btree		*copy;
+	t_memused	mudatas;
+	t_memused	mubtrees;
+	t_szdata	*data;
+	t_szdata	*data2;
+	size_t		key;
+
+	bnodes = memanager_construct_bnode();
+	datas = memanager_construct_szdata();
+	btrees = memanager_construct_btree();
+	ft_memused_initialize(&mudatas);
+	ft_memused_initialize(&mubtrees);
+
+	btree = ft_memanager_get(btrees, &mubtrees);
+	ft_btree_construct_extmem(btree, bnodes, ft_btree_cmp_addr);
+	for (int i = 0; i < 26; i++)
+	{
+		data = ft_memanager_get(datas, &mudatas);
+		data->numbered = (t_numbered){(size_t)((i % 7 + 2 * i) * (i % 3 + 4 * i) / (i % 5 + 1))};
+		data->ext = "ext";
+		ft_printf("added : %p || status : %d\n\n", data,
+			ft_btree_add(btree, (t_numbered*)data));
+		ft_printf("------------------------------\n\n");
+	}
+	if (!btree)
+		ft_printf("btree null\n");
+	else
+	{
+		ft_printf("root %p\n", btree->root->named);
+	}
+	
+	display_pbtree(btree, 1);
+
+	copy = ft_memanager_get(btrees, &mubtrees);
+	ft_btree_construct_extmem(copy, bnodes, ft_btree_cmp_addr);
+	ft_btree_fill_copy(btree, copy);
+
+	ft_printf("\ncopy : \n\n");
+
+	display_pbtree(copy, 1);
+
+	t_array			*recipient;
+	recipient = ft_array_construct(5, sizeof(t_szdata));
+	ft_btree_fill_array(btree, recipient);
+
+	ft_printf("\narray : \n\n");
+
+	display_parray(recipient);
+
+	remove_btree(copy, btree);
+
+	display_pbtree(btree, 1);
+
+	ft_array_free(recipient);
+	ft_memanager_free(bnodes);
+	ft_memanager_free(datas);
+	ft_memanager_free(btrees);
+}
+
 void			test_size_t_btree(void)
 {
 	t_memanager *bnodes;
@@ -186,7 +297,7 @@ void			test_size_t_btree(void)
 
 	ft_printf("\narray : \n\n");
 
-	display_array(recipient);
+	display_szarray(recipient);
 
 	for (int i = 0; i < 26; i++)
 	{
@@ -278,7 +389,8 @@ void			test_ascii_btree(void)
 
 int				main(void)
 {
-	//test_ascii_btree();
-	test_size_t_btree();
+	test_ascii_btree();
+	//test_size_t_btree();
+	//test_ptr_btree();
 	return (0);
 }
