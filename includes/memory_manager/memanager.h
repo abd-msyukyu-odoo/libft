@@ -16,6 +16,9 @@
 # include "array/array.h"
 # include "memory_manager/typemanager.h"
 # include "btree/tbtree.h"
+# define MMNG_DEFAULT_SIZE_COUNT	256
+# define MMNG_DEFAULT_ADDR_COUNT	2048
+# define MMNG_DEFAULT_CHUNK_SIZE	262144
 
 typedef struct			s_key_stbtree
 {

@@ -18,5 +18,6 @@
 # include "array/array.h"
 # include "memory_manager/typemanager.h"
 # include "btree/tbtree.h"
+# include "memory_manager/memanager.h"
 
 #endif
