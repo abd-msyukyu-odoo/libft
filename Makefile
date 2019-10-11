@@ -148,14 +148,17 @@ TYPEMNG_F	= typemanager \
 			  type_requests \
 			  typeused
 
-BTREE_F		= btree \
-			  growth \
+BTREE_F		= comparable \
+			  replace \
 			  iterator \
 			  rebalance_deleted \
+			  rebalance_added \
 			  search \
+			  utils
+
+TBTREE_F	= tbtree \
 			  shrink \
-			  utils \
-			  comparable
+			  growth
 
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
@@ -178,7 +181,8 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./memory_manager/, \
 						$(addprefix typemanager/, $(TYPEMNG_F))) \
 					$(addprefix ./btree/, \
-						$(addprefix btree/, $(BTREE_F))))
+						$(addprefix btree/, $(BTREE_F)) \
+						$(addprefix tbtree/, $(TBTREE_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m

@@ -352,25 +352,33 @@ OK -> faire en sorte que le btree soit utilisable avec une fonction
 
 
 
--> faire un btree qui utilise un memory manager et pas de typemanager?
+-> faire un btree qui utilise un memory manager et pas de typemanager
 -> faire un array qui utilise un memory manager et pas de malloc ni typemanager
 
 
 typemanager = *1 malloc (itself)(opt)
 				-> 2* malloc (1*array(opt) and 1*addresses(n))
 					-> 2*n malloc (1*array and 1*memory chunk)
-			init = 5* malloc
+					-> 2*n malloc (1*array (memitems) and 1*memitems chunk)
+			init = 7* malloc(5*)
 
 memanager = *1 malloc (itself)
 				-> 3* typemanager(btree)
 					- btree
-						- 1* size btree
+						- 1* size btree (opt)
 						- k* sizes
 					- bnode
 						- ~8*k* (sizes & addresses)
 					- sizedbtree struct
 						- k* sizes
 				-> 3* typeused(btree)(opt)
-				-> 2* malloc (1*array and 1*addresses(n))
+				-> 2* malloc (1*array(opt) and 1*addresses(n))
 					-> 2*n malloc (1*array and 1*memory chunk)
-			init = 20* malloc
+			init = 29* malloc(19*)
+
+-> tous les malloc "opt" sont uniques, au debut du programme, et permettent de reduire la
+	taille de la structure memanager
+	-> osef de faire 10 malloc au debut
+	-> osef que memanager soit petit -> par contre pour la syntaxe c'est plus agreable,
+		toujours des -> au lieu de . + evite de devoir faire des fonctions alternatives
+		pour ne pas faire les mallocs

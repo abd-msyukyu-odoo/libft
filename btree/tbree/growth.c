@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comparable.c                                       :+:      :+:    :+:   */
+/*   growth.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 13:49:32 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/10/10 13:49:33 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/10/04 16:05:10 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/10/04 16:05:11 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_btree_cmp_ascii(void *s1, void *s2)
+int					ft_tbtree_add(t_tbtree *tbtree, void *item)
 {
-	return (ft_strcmp(*(char**)s1, *(char**)s2));
-}
+	t_tbnode			*target;
 
-int					ft_btree_cmp_size(void *s1, void *s2)
-{
-	if (*(size_t*)s1 < *(size_t*)s2)
+	if (!tbtree || !item)
 		return (-1);
-	else if (*(size_t*)s1 == *(size_t*)s2)
+	target = (t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, item);
+	if (target->bnode.rank)
+		return (-2);
+	if (!ft_tbtree_construct_leaves(tbtree, target))
 		return (0);
-	else
-		return (1);
-}
-
-int					ft_btree_cmp_addr(void *s1, void *s2)
-{
-	if ((uintmax_t)s1 < (uintmax_t)s2)
-		return (-1);
-	else if (s1 == s2)
-		return (0);
-	else
-		return (1);
+	target->bnode.named = item;
+	target->bnode.rank = 1;
+	ft_btree_rebalance_added((t_btree*)tbtree, (t_bnode*)target);
+	return (1);
 }

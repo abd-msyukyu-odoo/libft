@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static int			ft_btree_add_typecast(void *receiver, void *sent)
+static int			ft_tbtree_add_typecast(void *receiver, void *sent)
 {
-	return (ft_btree_add((t_btree*)receiver, sent));
+	return (ft_tbtree_add((t_tbtree*)receiver, sent));
 }
 
 static int			ft_array_add_typecast(void *receiver, void *sent)
@@ -37,9 +37,10 @@ int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 	return (out);
 }
 
-int					ft_btree_fill_copy(t_btree *old, t_btree *new_bt)
+int					ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt)
 {
-	return (ft_btree_bnode_iteration(new_bt, old->root, ft_btree_add_typecast));
+	return (ft_btree_bnode_iteration(new_tbt, old->root,
+		ft_tbtree_add_typecast));
 }
 
 int					ft_btree_fill_array(t_btree *btree, t_array *array)
