@@ -49,8 +49,8 @@ typedef struct			s_tbtree
 ** @return: 0 : memory error
 ** @return: -1 : param error
 */
-int						ft_btree_construct(t_btree *btree,
-	t_typemanager *bnode_tmng, int (*cmp)(void *s1, void *s2));
+int						ft_tbtree_construct(t_tbtree *tbtree,
+	t_typemanager *tbnode_tmng, int (*cmp)(void *s1, void *s2));
 
 /*
 ** refill btree->mmng with t_bnode* stored within btree->mused
@@ -59,7 +59,7 @@ int						ft_btree_construct(t_btree *btree,
 **
 ** @param: btree : to be destroyed t_btree*
 */
-void					ft_btree_free(t_btree *btree);
+void					ft_tbtree_free(t_tbtree *tbtree);
 
 /*
 ** add item to tbtree only if item->key is not already present
@@ -86,9 +86,21 @@ int						ft_tbtree_add(t_tbtree *tbtree, void *item);
 void					*ft_tbtree_remove(t_tbtree *tbtree, void *key);
 
 /*
+** fill new with items from old
+**
+** @param: old : source
+** @param: new : destination
+**
+** @return: 1 : success
+** @return: 0 : memory error
+** @return: -1 : param error
+*/
+int						ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt);
+
+/*
 ** internal functions
 */
-int						ft_btree_construct_leaves(t_btree *btree,
-	t_bnode *old_leaf);
+int						ft_tbtree_construct_leaves(t_tbtree *tbtree,
+	t_tbnode *old_leaf);
 
 #endif

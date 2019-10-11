@@ -79,18 +79,6 @@ int						ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 	int (*f)(void *receiver, void *sent));
 
 /*
-** fill new with items from old
-**
-** @param: old : source
-** @param: new : destination
-**
-** @return: 1 : success
-** @return: 0 : memory error
-** @return: -1 : param error
-*/
-int						ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt);
-
-/*
 ** fill array with items from btree
 **
 ** @param: btree : source

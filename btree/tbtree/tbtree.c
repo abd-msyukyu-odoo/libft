@@ -19,7 +19,7 @@ static void			ft_tbtree_initialize_leaf(t_tbnode *leaf, t_tbnode *parent,
 	leaf->bnode.left = NULL;
 	leaf->bnode.right = NULL;
 	leaf->bnode.rank = 0;
-	leaf->bnode.up = parent;
+	leaf->bnode.up = (t_bnode*)parent;
 	leaf->typeitem = typeitem;
 }
 
@@ -59,9 +59,9 @@ int					ft_tbtree_construct_leaves(t_tbtree *tbtree,
 	t_tbnode *old_leaf)
 {
 	if (!ft_tbtree_construct_leaf(tbtree, old_leaf,
-		&(t_tbnode*)old_leaf->bnode.left) ||
+		(t_tbnode**)&old_leaf->bnode.left) ||
 		!ft_tbtree_construct_leaf(tbtree, old_leaf,
-		&(t_tbnode*)old_leaf->bnode.right))
+		(t_tbnode**)&old_leaf->bnode.right))
 		return (0);
 	return (1);
 }

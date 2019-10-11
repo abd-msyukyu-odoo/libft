@@ -40,7 +40,8 @@ static int			ft_tbtree_cut_branch(t_tbtree *tbtree, t_tbnode *cut)
 
 	if (!ft_tbtree_cut_leaf(tbtree, cut, &remain))
 		return (0);
-	referent = ft_btree_bnode_referent((t_btree*)tbtree, (t_bnode*)cut);
+	referent = (t_tbnode**)ft_btree_bnode_referent((t_btree*)tbtree,
+		(t_bnode*)cut);
 	remain->bnode.up = cut->bnode.up;
 	*referent = remain;
 	ft_btree_rebalance_deleted((t_btree*)tbtree, (t_bnode*)remain);
@@ -53,12 +54,12 @@ static t_tbnode		*ft_tbtree_remove_tbnode(t_tbtree *tbtree, void *key)
 	t_tbnode		*swapper;
 	void			*named;
 
-	target = ft_tbtree_get_tbnode(tbtree, key);
+	target = (t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, key);
 	if (target->bnode.rank)
 	{
 		if (ft_tbtree_cut_branch(tbtree, target))
 			return (target);
-		swapper = ft_btree_get_min_bnode(target->bnode.right);
+		swapper = (t_tbnode*)ft_btree_get_min_bnode(target->bnode.right);
 		named = target->bnode.named;
 		target->bnode.named = swapper->bnode.named;
 		swapper->bnode.named = named;
