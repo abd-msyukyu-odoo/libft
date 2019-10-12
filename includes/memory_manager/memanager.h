@@ -29,6 +29,7 @@ typedef struct			s_stbtree
 {
 	t_key_stbtree		size;
 	t_tbtree			*addr_tbt;
+	t_typeitem			*typeitem;
 }						t_stbtree;
 
 typedef struct			s_memjump
@@ -39,14 +40,14 @@ typedef struct			s_memjump
 
 typedef struct			s_memanager
 {
-	t_typemanager		*tbtree_mng;
-	t_typeused			*tbtree_used;
-	t_typemanager		*tbnode_mng;
-	t_typeused			*tbnode_used;
+	t_typeused			stbtree_used;
+	t_typeused			tbtree_used;
+	t_typeused			tbnode_used;
 	t_typemanager		*stbtree_mng;
-	t_typeused			*stbtree_used;
-	t_array				*memarrays;
+	t_typemanager		*tbtree_mng;
+	t_typemanager		*tbnode_mng;
 	t_tbtree			*stbtree_tbt;
+	t_array				*memarrays;
 }						t_memanager;
 
 #endif

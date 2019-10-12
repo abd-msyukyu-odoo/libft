@@ -12,24 +12,69 @@
 
 #include "libft.h"
 
-static int				ft_memanager_validate_amounts(size_t sizes,
+int						ft_memanager_validate_amounts(size_t sizes,
 	size_t addresses, size_t chunk_size)
 {
-	if (!sizes || addresses < 2 || !chunk_size)
-		return (-1);
+	if (!sizes || addresses < sizes || chunk_size < addresses ||
+		chunk_size < sizeof(t_memjump))
+		return (-1); // general dimensions condition
 	if (addresses / 3 < sizes)
-		return (-2);
-	//verifier qu'on peut contenir sizes differentes avec addresses separees par
-	//des memjumps (trop severe) -> ajuster en interne ?
-	if (chunk_size / sizes * 2 - 1 < sizes)
-		return (-3);
+		return (-2); // btree condition (at least 1 address per size + 2 non-set childs)
+	if (chunk_size - addresses < sizeof(t_memjump) ||
+		(chunk_size - addresses - sizeof(t_memjump)) / sizeof(t_memjump) <
+		sizes)
+		return (-3); // underflow condition
+	if (sizes > (size_t)1 << (sizeof(size_t) / 2 + 1))
+		return (-4); // overflow condition
+	if (chunk_size - addresses - sizeof(t_memjump) - sizeof(t_memjump) * sizes <
+		sizes / 2 * (sizes - 1))
+		return (-5); // chunk_size is too small compared to sizes & addresses
 	return (1);
+}
+
+void					ft_memanager_free(t_memanager *memanager)
+{
+	size_t				i;
+
+	if (!memanager)
+		return ;
+	if (memanager->memarrays)
+	{
+		i = 0;
+		while (i < memanager->memarrays->n_items)
+		{
+			ft_array_free(*(t_array**)ft_array_get(memanager->memarrays, i));
+			++i;
+		}
+		ft_array_free(memanager->memarrays);
+	}
+	if (memanager->stbtree_mng)
+		ft_typemanager_free(memanager->stbtree_mng);
+	if (memanager->tbtree_mng)
+		ft_typemanager_free(memanager->tbtree_mng);
+	if (memanager->tbnode_mng)
+		ft_typemanager_free(memanager->tbnode_mng);
+	free(memanager);
+}
+
+static t_memanager		*ft_memanager_error(t_memanager *memanager)
+{
+	ft_memanager_free(memanager);
+	return (NULL);
 }
 
 t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
 	size_t chunk_size)
 {
-	
+	t_memanager			*out;
+	if (ft_memanager_validate_amounts(sizes, addresses, chunk_size) < 0)
+		return (NULL);
+	out = (t_memanager*)malloc(sizeof(t_memanager));
+	if (!out)
+		return (NULL);
+	if (!ft_memanager_initialize(out, sizes, addresses, chunk_size))
+		return (ft_memanager_error(out));
+	return (out);
 }
 
 t_memanager				*ft_memanager_construct_default(void)
@@ -38,3 +83,5 @@ t_memanager				*ft_memanager_construct_default(void)
 		MMNG_DEFAULT_ADDR_COUNT,
 		MMNG_DEFAULT_CHUNK_SIZE));
 }
+
+//add method to extend size depending on external request -> custom block if very big
