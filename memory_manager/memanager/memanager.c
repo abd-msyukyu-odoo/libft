@@ -67,13 +67,26 @@ t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
 	size_t chunk_size)
 {
 	t_memanager			*out;
+	t_array				**injector;
+
 	if (ft_memanager_validate_amounts(sizes, addresses, chunk_size) < 0)
 		return (NULL);
 	out = (t_memanager*)malloc(sizeof(t_memanager));
 	if (!out)
 		return (NULL);
-	if (!ft_memanager_initialize(out, sizes, addresses, chunk_size))
+	if (!(out->tbtree_mng = ft_typemanager_construct(sizes + 1,
+		sizeof(t_tbtree))) ||
+		!(out->tbnode_mng = ft_typemanager_construct(sizes + addresses,
+		sizeof(t_tbnode))) ||
+		!(out->stbtree_mng = ft_typemanager_construct(sizes,
+		sizeof(t_stbtree))) ||
+		!(out->memarrays = ft_array_construct(1, sizeof(t_array*))) ||
+		!(injector = (t_array**)ft_array_inject(out->memarrays)) ||
+		!(*injector = ft_array_construct(chunk_size, sizeof(char)))
 		return (ft_memanager_error(out));
+	ft_typeused_initialize(&out->stbtree_used);
+	ft_typeused_initialize(&out->tbnode_used);
+	ft_typeused_initialize(&out->tbtree_used);
 	return (out);
 }
 
