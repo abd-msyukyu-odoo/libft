@@ -187,13 +187,8 @@ t_memanager				*ft_memanager_construct_default(void)
 		MMNG_DEFAULT_CHUNK_SIZE));
 }
 
-int						ft_memanager_refill(t_memanager *memanager, void* addr)
-{
-
-}
-
 static void				*ft_memanager_get_as_is(t_memanager *memanager,
-	size_t sizeof_item, t_tbnode *tbnode_stbtree)
+	t_tbnode *tbnode_stbtree)
 {
 	t_stbtree			*stbtree;
 	t_tbnode			*container;
@@ -201,7 +196,7 @@ static void				*ft_memanager_get_as_is(t_memanager *memanager,
 
 	stbtree = (t_stbtree*)tbnode_stbtree->bnode.named;
 	container = ft_tbtree_remove_ext_tbnode(stbtree->addr_tbt,
-		stbtree->addr_tbt->btree.root);
+		(t_tbnode*)stbtree->addr_tbt->btree.root);
 	out = container->bnode.named;
 	if (!stbtree->addr_tbt->btree.root->rank)
 	{
@@ -243,7 +238,7 @@ static void				*ft_memanager_get_cut(t_memanager *memanager,
 {
 	void				*out;
 
-	out = ft_memanager_get_as_is(memanager, sizeof_item, tbnode_stbtree);
+	out = ft_memanager_get_as_is(memanager, tbnode_stbtree);
 	if (!ft_memanager_set_cut(memanager, sizeof_item, out))
 		return (NULL);
 	return (out);
@@ -293,6 +288,80 @@ void					*ft_memanager_get(t_memanager *memanager,
 	if (((t_stbtree*)tbnode_stbtree->bnode.named)->size.key - sizeof_item >
 		sizeof(t_memjump))
 		return (ft_memanager_get_cut(memanager, sizeof_item, tbnode_stbtree));
-	return (ft_memanager_get_as_is(memanager,
-		((t_stbtree*)tbnode_stbtree->bnode.named)->size.key, tbnode_stbtree));
+	return (ft_memanager_get_as_is(memanager, tbnode_stbtree));
+}
+
+static t_memjump		*ft_memanager_refill_right(t_memanager *memanager,
+	void *addr)
+	//penser a ajouter des flags en arguments pour savoir si on atteind le bord du chunk
+{
+	void				*out;
+	t_memjump			*start;
+	t_memjump			*end;
+	t_tbnode			*tbnode_stbtree;
+	size_t				*sizeof_out;
+
+	start = (t_memjump*)((char*)addr - sizeof(t_memjump));
+	start = start->next;
+	if (!(end = start->next))
+		return (start);
+	out = (void*)((char*)start + sizeof(t_memjump));
+	sizeof_out = (size_t)((char*)end - (char*)out);
+	tbnode_stbtree = (t_tbnode*)ft_btree_get_bnode(
+		(t_btree*)memanager->stbtree_tbt, &sizeof_out);
+	if (!tbnode_stbtree->bnode.rank)
+		return (start);
+	ft_memanager_get_as_is(memanager, tbnode_stbtree);
+	return (end);
+}
+
+static t_memjump		*ft_memanager_refill_left(t_memanager *memanager,
+	void *addr)
+{
+	void				*out;
+	t_memjump			*end;
+	t_memjump			*start;
+	t_tbnode			*tbnode_stbtree;
+	size_t				*sizeof_out;
+
+	end = (t_memjump*)((char*)addr - sizeof(t_memjump));
+	if (!(start = end->prev))
+		return (end);
+	out = (void*)((char*)start + sizeof(t_memjump));
+	sizeof_out = (size_t)((char*)end - (char*)out);
+	tbnode_stbtree = (t_tbnode*)ft_btree_get_bnode(
+		(t_btree*)memanager->stbtree_tbt, &sizeof_out);
+	if (!tbnode_stbtree->bnode.rank)
+		return (end);
+	ft_memanager_get_as_is(memanager, tbnode_stbtree);
+	return (start);
+}
+
+int						ft_memanager_refill(t_memanager *memanager, void *addr)
+{
+	t_memjump			*left;
+	t_memjump			*right;
+	size_t				*i_memarray_ptr;
+	size_t				*i_new_memarray_ptr;
+	t_array				**memarray;
+
+	left = ft_memanager_refill_left(memanager, addr);
+	right = ft_memanager_refill_right(memanager, addr);
+	left->next = right;
+	right->prev = left;
+	addr = (void*)((char*)left + sizeof(t_memjump));
+	if (!left->prev && !right->next)
+	{
+		i_memarray_ptr = (size_t*)((char*)left - sizeof(size_t));
+		memarray = (t_array**)ft_array_get(memanager->memarrays,
+			*i_memarray_ptr);
+		ft_array_free(*memarray);
+		ft_array_remove(memanager->memarrays,
+			memanager->memarrays->n_items - 1, (void*)memarray);
+		i_new_memarray_ptr = (size_t*)ft_array_get(*memarray, 0);
+		*i_new_memarray_ptr = *i_memarray_ptr;
+		return (2);
+	}
+	return (ft_memanager_add_addr(memanager, addr,
+		(size_t)((char*)right - (char*)addr)));
 }
