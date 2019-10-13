@@ -102,5 +102,9 @@ int						ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt);
 */
 int						ft_tbtree_construct_leaves(t_tbtree *tbtree,
 	t_tbnode *old_leaf);
+t_tbnode				*ft_tbtree_remove_ext_tbnode(t_tbtree *tbtree,
+	t_tbnode *target);
+int						ft_tbtree_add_ext_tbnode(t_tbtree *tbtree, t_tbnode *target,
+	void *item);
 
 #endif

@@ -48,13 +48,12 @@ static int			ft_tbtree_cut_branch(t_tbtree *tbtree, t_tbnode *cut)
 	return (1);
 }
 
-static t_tbnode		*ft_tbtree_remove_tbnode(t_tbtree *tbtree, void *key)
+t_tbnode			*ft_tbtree_remove_ext_tbnode(t_tbtree *tbtree,
+	t_tbnode *target)
 {
-	t_tbnode		*target;
 	t_tbnode		*swapper;
 	void			*named;
 
-	target = (t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, key);
 	if (target->bnode.rank)
 	{
 		if (ft_tbtree_cut_branch(tbtree, target))
@@ -76,7 +75,8 @@ void				*ft_tbtree_remove(t_tbtree *tbtree, void *key)
 
 	if (!tbtree || !key)
 		return (NULL);
-	target = ft_tbtree_remove_tbnode(tbtree, key);
+	target = ft_tbtree_remove_ext_tbnode(tbtree,
+		(t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, key));
 	if (target)
 	{
 		out = target->bnode.named;

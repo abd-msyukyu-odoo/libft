@@ -99,6 +99,8 @@ int						ft_btree_cmp_addr(void *s1, void *s2);
 */
 t_bnode					*ft_btree_get_bnode(t_btree *btree, void *key);
 t_bnode					*ft_btree_get_min_bnode(t_bnode *bnode);
+t_bnode					*ft_btree_get_min_equal_or_greater_bnode(t_btree *btree,
+	void *key);
 t_bnode					**ft_btree_bnode_referent(t_btree *btree,
 	t_bnode *bnode);
 int						ft_bnode_sibling_spin(t_bnode *child,

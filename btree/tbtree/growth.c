@@ -12,13 +12,9 @@
 
 #include "libft.h"
 
-int					ft_tbtree_add(t_tbtree *tbtree, void *item)
+int					ft_tbtree_add_ext_tbnode(t_tbtree *tbtree, t_tbnode *target,
+	void *item)
 {
-	t_tbnode			*target;
-
-	if (!tbtree || !item)
-		return (-1);
-	target = (t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, item);
 	if (target->bnode.rank)
 		return (-2);
 	if (!ft_tbtree_construct_leaves(tbtree, target))
@@ -27,4 +23,14 @@ int					ft_tbtree_add(t_tbtree *tbtree, void *item)
 	target->bnode.rank = 1;
 	ft_btree_rebalance_added((t_btree*)tbtree, (t_bnode*)target);
 	return (1);
+}
+
+int					ft_tbtree_add(t_tbtree *tbtree, void *item)
+{
+	t_tbnode			*target;
+
+	if (!tbtree || !item)
+		return (-1);
+	target = (t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, item);
+	ft_tbtree_add_ext_tbnode(tbtree, target, item);
 }

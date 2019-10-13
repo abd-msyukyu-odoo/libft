@@ -60,8 +60,8 @@ int								ft_typemanager_extend_size(
 {
 	t_typearray					**injector;
 
-	injector = (t_typearray**)ft_array_inject(typemanager->typearrays);
-	if (!injector || !(*injector = ft_typearray_construct(new_size,
+	if (!(injector = (t_typearray**)ft_array_inject(typemanager->typearrays)) ||
+		!(*injector = ft_typearray_construct(new_size,
 		(*(t_typearray**)ft_array_get(typemanager->typearrays,
 			0))->array->sizeof_item,
 		typemanager->typearrays->n_items - 1)))
