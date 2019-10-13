@@ -38,11 +38,17 @@ typedef struct			s_memjump
 	struct s_memjump	*prev;
 }						t_memjump;
 
+typedef struct			s_memstart
+{
+	t_memjump			memjump;
+	size_t				i_memarray;
+}						t_memstart;
+
 typedef struct			s_memanager
 {
 	t_typeused			stbtree_used;
 	t_typeused			tbtree_used;
-	t_typeused			tbnode_used;
+	size_t				chunk_size;
 	t_typemanager		*stbtree_mng;
 	t_typemanager		*tbtree_mng;
 	t_typemanager		*tbnode_mng;

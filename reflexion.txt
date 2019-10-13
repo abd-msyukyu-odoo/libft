@@ -382,3 +382,14 @@ memanager = *1 malloc (itself)
 	-> osef que memanager soit petit -> par contre pour la syntaxe c'est plus agreable,
 		toujours des -> au lieu de . + evite de devoir faire des fonctions alternatives
 		pour ne pas faire les mallocs
+
+
+
+2 choses a verifier : augmentation de taille du typearray ( peut etre pas faire 1 par 1)
++ au moment de rendre un pointeur, si un jumper est le premier du tableau, verif
+si le second est le dernier -> si oui, liberer le chunk (vrai free)
+	-> strategie de limitation d'usage de la ram si non-necessaire
+	-> jumper de debut special avec index du tableau chunk memory histoire de
+	pouvoir le free
+
+	//add method to extend size depending on external request -> custom block if very big
