@@ -100,17 +100,17 @@ static t_array				*ft_memanager_initialize_memarray(
 	t_array				*memarray;
 	t_memjump			*start;
 	t_memjump			*end;
-	size_t				*i_memarray_ptr;
+	size_t				*i_memarray_p;
 
 	memarray = *(t_array**)ft_array_get(memanager->memarrays, 0);
 	memarray->n_items = memarray->size;
-	i_memarray_ptr = (size_t*)ft_array_get(memarray, 0);
+	i_memarray_p = (size_t*)ft_array_get(memarray, 0);
 	start = (t_memjump*)ft_array_get(memarray, sizeof(size_t));
 	end = (t_memjump*)ft_array_get(memarray,
 		memarray->size - sizeof(t_memjump));
-	if (!i_memarray_ptr || !start || !end)
+	if (!i_memarray_p || !start || !end)
 		return (NULL);
-	*i_memarray_ptr = i_memarray;
+	*i_memarray_p = i_memarray;
 	start->prev = NULL;
 	end->next = NULL;
 	start->next = end;
@@ -340,8 +340,8 @@ int						ft_memanager_refill(t_memanager *memanager, void *addr)
 {
 	t_memjump			*left;
 	t_memjump			*right;
-	size_t				*i_memarray_ptr;
-	size_t				*i_new_memarray_ptr;
+	size_t				*i_memarray_p;
+	size_t				*i_new_memarray_p;
 	t_array				**memarray;
 
 	left = ft_memanager_refill_left(memanager, addr);
@@ -351,14 +351,14 @@ int						ft_memanager_refill(t_memanager *memanager, void *addr)
 	addr = (void*)((char*)left + sizeof(t_memjump));
 	if (!left->prev && !right->next)
 	{
-		i_memarray_ptr = (size_t*)((char*)left - sizeof(size_t));
-		memarray = (t_array**)ft_array_get(memanager->memarrays,
-			*i_memarray_ptr);
+		i_memarray_p = (size_t*)((char*)left - sizeof(size_t));
+		memarray = (t_array**)ft_array_get(memanager->memarrays, *i_memarray_p);
 		ft_array_free(*memarray);
+		*memarray = NULL;
 		ft_array_remove(memanager->memarrays,
 			memanager->memarrays->n_items - 1, (void*)memarray);
-		i_new_memarray_ptr = (size_t*)ft_array_get(*memarray, 0);
-		*i_new_memarray_ptr = *i_memarray_ptr;
+		i_new_memarray_p = (size_t*)ft_array_get(*memarray, 0);
+		*i_new_memarray_p = *i_memarray_p;
 		return (2);
 	}
 	return (ft_memanager_add_addr(memanager, addr,
