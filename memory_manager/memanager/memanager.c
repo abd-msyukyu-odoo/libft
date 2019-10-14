@@ -293,7 +293,6 @@ void					*ft_memanager_get(t_memanager *memanager,
 
 static t_memjump		*ft_memanager_refill_right(t_memanager *memanager,
 	void *addr)
-	//penser a ajouter des flags en arguments pour savoir si on atteind le bord du chunk
 {
 	void				*out;
 	t_memjump			*start;
