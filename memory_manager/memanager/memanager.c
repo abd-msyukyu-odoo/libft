@@ -88,10 +88,11 @@ static int				ft_memanager_add_addr(t_memanager *memanager,
 {
 	t_stbtree			*stbtree;
 
-	if (!(stbtree = ft_btree_get(memanager->stbtree_tbt, &sizeof_addr)) &&
+	if (!(stbtree = ft_btree_get((t_btree*)memanager->stbtree_tbt,
+		&sizeof_addr)) &&
 		!(stbtree = ft_stbtree_construct(memanager, sizeof_addr)))
 		return (0);
-	return (ft_tbtree_add(stbtree, addr));
+	return (ft_tbtree_add(stbtree->addr_tbt, addr));
 }
 
 static t_array				*ft_memanager_initialize_memarray(
@@ -202,7 +203,8 @@ static void				*ft_memanager_get_as_is(t_memanager *memanager,
 	{
 		tbnode_stbtree = ft_tbtree_remove_ext_tbnode(memanager->stbtree_tbt,
 			tbnode_stbtree);
-		ft_typeused_recover(&memanager->tbnode_mng, tbnode_stbtree->typeitem);
+		ft_typeused_recover(&memanager->stbtree_tbt->tused,
+			tbnode_stbtree->typeitem);
 		ft_typemanager_refill(stbtree->addr_tbt->tmng,
 			&stbtree->addr_tbt->tused);
 		ft_typeused_recover(&memanager->stbtree_used, stbtree->stbt_typeitem);
@@ -247,7 +249,6 @@ static void				*ft_memanager_get_cut(t_memanager *memanager,
 static void				*ft_memanager_get_extended(t_memanager *memanager,
 	size_t sizeof_item)
 {
-	t_stbtree			*stbtree;
 	t_array				*memarray;
 	void				*out;
 
@@ -298,7 +299,7 @@ static t_memjump		*ft_memanager_refill_right(t_memanager *memanager,
 	t_memjump			*start;
 	t_memjump			*end;
 	t_tbnode			*tbnode_stbtree;
-	size_t				*sizeof_out;
+	size_t				sizeof_out;
 
 	start = (t_memjump*)((char*)addr - sizeof(t_memjump));
 	start = start->next;
@@ -321,7 +322,7 @@ static t_memjump		*ft_memanager_refill_left(t_memanager *memanager,
 	t_memjump			*end;
 	t_memjump			*start;
 	t_tbnode			*tbnode_stbtree;
-	size_t				*sizeof_out;
+	size_t				sizeof_out;
 
 	end = (t_memjump*)((char*)addr - sizeof(t_memjump));
 	if (!(start = end->prev))

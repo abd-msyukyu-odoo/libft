@@ -32,5 +32,5 @@ int					ft_tbtree_add(t_tbtree *tbtree, void *item)
 	if (!tbtree || !item)
 		return (-1);
 	target = (t_tbnode*)ft_btree_get_bnode((t_btree*)tbtree, item);
-	ft_tbtree_add_ext_tbnode(tbtree, target, item);
+	return (ft_tbtree_add_ext_tbnode(tbtree, target, item));
 }

@@ -51,4 +51,22 @@ typedef struct			s_memanager
 	t_array				*memarrays;
 }						t_memanager;
 
+int						ft_memanager_validate_amounts(size_t sizes,
+	size_t addresses, size_t chunk_size);
+
+void					ft_memanager_free(t_memanager *memanager);
+
+t_array					*ft_memanager_extend_size(
+	t_memanager *memanager, size_t chunk_size);
+
+t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
+	size_t chunk_size);
+
+t_memanager				*ft_memanager_construct_default(void);
+
+void					*ft_memanager_get(t_memanager *memanager,
+	size_t sizeof_item);
+
+int						ft_memanager_refill(t_memanager *memanager, void *addr);
+
 #endif

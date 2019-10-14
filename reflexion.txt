@@ -393,3 +393,5 @@ si le second est le dernier -> si oui, liberer le chunk (vrai free)
 	-> jumper de debut special avec index du tableau chunk memory histoire de
 	pouvoir le free
 
+phase de test :
+	

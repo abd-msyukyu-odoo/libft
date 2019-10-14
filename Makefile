@@ -160,6 +160,8 @@ TBTREE_F	= tbtree \
 			  shrink \
 			  growth
 
+MEMNG_F		= memanager
+
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
 						$(addprefix char/, $(CHAR_F)) \
@@ -179,7 +181,8 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./array/, \
 						$(addprefix array/, $(ARRAY_F))) \
 					$(addprefix ./memory_manager/, \
-						$(addprefix typemanager/, $(TYPEMNG_F))) \
+						$(addprefix typemanager/, $(TYPEMNG_F)) \
+						$(addprefix memanager/, $(MEMNG_F))) \
 					$(addprefix ./btree/, \
 						$(addprefix btree/, $(BTREE_F)) \
 						$(addprefix tbtree/, $(TBTREE_F))))
