@@ -160,7 +160,7 @@ void			display_array(t_array *a)
 	{
 		printf("%s \n", *(char**)ft_array_get(a, i));
 	}
-	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %zu\nsize : %zu\n", a->n_items, a->size);
 }
 
 void			display_szarray(t_array *a)
@@ -169,7 +169,7 @@ void			display_szarray(t_array *a)
 	{
 		printf("%zu \n", *(size_t*)ft_array_get(a, i));
 	}
-	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %zu\nsize : %zu\n", a->n_items, a->size);
 }
 
 void			display_parray(t_array *a)
@@ -178,7 +178,7 @@ void			display_parray(t_array *a)
 	{
 		printf("%p \n", ft_array_get(a, i));
 	}
-	printf("n_items : %d\nsize : %d\n", a->n_items, a->size);
+	printf("n_items : %zu\nsize : %zu\n", a->n_items, a->size);
 }
 
 void			test_ptr_btree(void)

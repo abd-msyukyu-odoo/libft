@@ -90,7 +90,8 @@ static int				ft_memanager_add_addr(t_memanager *memanager,
 
 	if (!(stbtree = ft_btree_get((t_btree*)memanager->stbtree_tbt,
 		&sizeof_addr)) &&
-		!(stbtree = ft_stbtree_construct(memanager, sizeof_addr)))
+		(!(stbtree = ft_stbtree_construct(memanager, sizeof_addr)) ||
+		(1 > ft_tbtree_add(memanager->stbtree_tbt, stbtree))))
 		return (0);
 	return (ft_tbtree_add(stbtree->addr_tbt, addr));
 }

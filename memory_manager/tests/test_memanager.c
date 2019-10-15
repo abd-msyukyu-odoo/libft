@@ -39,8 +39,6 @@ int				display_bnode_stbtree(void *receiver, void *sent)
 
 void			display_stbtree_tbt(t_btree *btree, int verbose)
 {
-	if (!btree)
-		return ;
 	printf("--------btree display--------\n");
 	ft_btree_bnode_iteration((verbose) ? &verbose : NULL, btree->root,
 		display_bnode_stbtree);
@@ -126,7 +124,7 @@ void			test_memanager()
 		return ;
 	}
 	//fill_memanager(mem);
-	display_memanager(mem, 0);
+	display_memanager(mem, 1);
 	ft_memanager_free(mem);
 }
 
