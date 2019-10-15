@@ -95,7 +95,7 @@ static int				ft_memanager_add_addr(t_memanager *memanager,
 	return (ft_tbtree_add(stbtree->addr_tbt, addr));
 }
 
-static t_array				*ft_memanager_initialize_memarray(
+static t_array			*ft_memanager_initialize_memarray(
 	t_memanager *memanager, size_t i_memarray)
 {
 	t_array				*memarray;
