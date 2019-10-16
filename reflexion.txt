@@ -395,3 +395,12 @@ si le second est le dernier -> si oui, liberer le chunk (vrai free)
 
 phase de test :
 	
+
+
+
+
+-> stocker des distances a la place des addresses dans les jumpers
+
+-> faire une hashmap pour les addresses a la place du btree
+
+-> compiler la libft avec -O3

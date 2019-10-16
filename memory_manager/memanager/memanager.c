@@ -23,7 +23,7 @@ int						ft_memanager_validate_amounts(size_t sizes,
 		(chunk_size - addresses - sizeof(t_memjump) - sizeof(size_t)) /
 		sizeof(t_memjump) < sizes)
 		return (-3); // underflow condition -> 1st condition : see get_extended (3 jumpers)
-	if (sizes > (size_t)1 << (sizeof(size_t) / 2 + 1))
+	if (sizes > ((size_t)1 << (4 * sizeof(size_t) + 1)))
 		return (-4); // overflow condition
 	if (chunk_size - addresses - sizeof(t_memjump) - sizeof(size_t) -
 		sizeof(t_memjump) * sizes < sizes / 2 * (sizes - 1))
@@ -363,7 +363,7 @@ static t_memjump		*ft_memanager_refill_left(t_memanager *memanager,
 		return (start);
 	return (end);
 }
-#include <stdio.h>
+
 int						ft_memanager_refill(t_memanager *memanager, void *addr)
 {
 	t_memjump			*left;

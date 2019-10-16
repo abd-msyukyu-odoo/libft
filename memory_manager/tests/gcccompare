@@ -1,0 +1,4 @@
+gcc -O3 -o test compare_memanager_malloc.c -I../../includes -L../../ -lft 
+./test
+rm test
+rm -rf test.dSYM
