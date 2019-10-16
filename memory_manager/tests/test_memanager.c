@@ -51,6 +51,8 @@ int				contains_addr(t_memanager *memanager,
 	t_stbtree	*stbtree;
 
 	stbtree = (t_stbtree*)ft_btree_get((t_btree*)memanager->stbtree_tbt, &size);
+	if (!stbtree)
+		return (0);
 	return (ft_btree_contains((t_btree*)stbtree->addr_tbt, addr));
 }
 
@@ -65,7 +67,7 @@ void			display_memarray(t_array *memarray, t_memanager *memanager,
 	addr = (void*)((char*)cur + sizeof(t_memjump));
 	while (cur->next)
 	{
-		size = (size_t)((char*)cur->next - (char*)cur);
+		size = (size_t)((char*)cur->next - (char*)addr);
 		printf("	%p	size : %zu	%s\n", addr, size,
 			(verbose && contains_addr(memanager, addr, size)) ? "free" : "");
 		cur = cur->next;
@@ -91,7 +93,7 @@ void			display_memarrays(t_memanager *memanager, int verbose)
 void			display_memanager(t_memanager *memanager, int verbose)
 {
 	display_stbtree_tbt((t_btree*)memanager->stbtree_tbt, verbose);
-	//display_memarrays(memanager, verbose);
+	display_memarrays(memanager, verbose);
 	return ;
 }
 
@@ -123,7 +125,7 @@ void			test_memanager()
 		printf("construct error\n");
 		return ;
 	}
-	//fill_memanager(mem);
+	fill_memanager(mem);
 	display_memanager(mem, 1);
 	ft_memanager_free(mem);
 }

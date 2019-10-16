@@ -116,7 +116,7 @@ static t_array			*ft_memanager_initialize_memarray(
 	start->prev = NULL;
 	end->next = NULL;
 	start->next = end;
-	end->prev = (t_memjump*)start;
+	end->prev = start;
 	return (memarray);
 }
 
