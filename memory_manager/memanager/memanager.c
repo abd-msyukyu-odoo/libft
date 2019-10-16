@@ -189,17 +189,14 @@ t_memanager				*ft_memanager_construct_default(void)
 		MMNG_DEFAULT_CHUNK_SIZE));
 }
 
-static void				*ft_memanager_get_as_is(t_memanager *memanager,
-	t_tbnode *tbnode_stbtree)
+static void				*ft_memanager_get_as_is_specific(t_memanager *memanager,
+	t_tbnode *tbnode_stbtree, t_tbnode *tbnode_addr)
 {
 	t_stbtree			*stbtree;
-	t_tbnode			*container;
 	void				*out;
 
 	stbtree = (t_stbtree*)tbnode_stbtree->bnode.named;
-	container = ft_tbtree_remove_ext_tbnode(stbtree->addr_tbt,
-		(t_tbnode*)stbtree->addr_tbt->btree.root);
-	out = container->bnode.named;
+	out = tbnode_addr->bnode.named;
 	if (!stbtree->addr_tbt->btree.root->rank)
 	{
 		tbnode_stbtree = ft_tbtree_remove_ext_tbnode(memanager->stbtree_tbt,
@@ -212,8 +209,37 @@ static void				*ft_memanager_get_as_is(t_memanager *memanager,
 		ft_typeused_recover(&memanager->tbtree_used, stbtree->tbt_typeitem);
 	}
 	else
-		ft_typeused_recover(&stbtree->addr_tbt->tused, container->typeitem);
+		ft_typeused_recover(&stbtree->addr_tbt->tused, tbnode_addr->typeitem);
 	return (out);
+}
+
+static void				*ft_memanager_get_as_is_addr(t_memanager *memanager,
+	t_tbnode *tbnode_stbtree, void *addr)
+{
+	t_stbtree			*stbtree;
+	t_tbnode			*tbnode_addr;
+
+	stbtree = (t_stbtree*)tbnode_stbtree->bnode.named;
+	tbnode_addr = (t_tbnode*)ft_btree_get_bnode((t_btree*)stbtree->addr_tbt,
+		addr);
+	if (!tbnode_addr->bnode.rank)
+		return (NULL);
+	tbnode_addr = ft_tbtree_remove_ext_tbnode(stbtree->addr_tbt, tbnode_addr);
+	return (ft_memanager_get_as_is_specific(memanager, tbnode_stbtree,
+		tbnode_addr));
+}
+
+static void				*ft_memanager_get_as_is(t_memanager *memanager,
+	t_tbnode *tbnode_stbtree)
+{
+	t_stbtree			*stbtree;
+	t_tbnode			*tbnode_addr;
+
+	stbtree = (t_stbtree*)tbnode_stbtree->bnode.named;
+	tbnode_addr = ft_tbtree_remove_ext_tbnode(stbtree->addr_tbt,
+		(t_tbnode*)stbtree->addr_tbt->btree.root);
+	return (ft_memanager_get_as_is_specific(memanager, tbnode_stbtree,
+		tbnode_addr));
 }
 
 static int				ft_memanager_set_cut(t_memanager *memanager,
@@ -310,10 +336,10 @@ static t_memjump		*ft_memanager_refill_right(t_memanager *memanager,
 	sizeof_out = (size_t)((char*)end - (char*)out);
 	tbnode_stbtree = (t_tbnode*)ft_btree_get_bnode(
 		(t_btree*)memanager->stbtree_tbt, &sizeof_out);
-	if (!tbnode_stbtree->bnode.rank)
-		return (start);
-	ft_memanager_get_as_is(memanager, tbnode_stbtree);
-	return (end);
+	if (tbnode_stbtree->bnode.rank &&
+		ft_memanager_get_as_is_addr(memanager, tbnode_stbtree, out))
+		return (end);
+	return (start);
 }
 
 static t_memjump		*ft_memanager_refill_left(t_memanager *memanager,
@@ -332,17 +358,17 @@ static t_memjump		*ft_memanager_refill_left(t_memanager *memanager,
 	sizeof_out = (size_t)((char*)end - (char*)out);
 	tbnode_stbtree = (t_tbnode*)ft_btree_get_bnode(
 		(t_btree*)memanager->stbtree_tbt, &sizeof_out);
-	if (!tbnode_stbtree->bnode.rank)
-		return (end);
-	ft_memanager_get_as_is(memanager, tbnode_stbtree);
-	return (start);
+	if (tbnode_stbtree->bnode.rank &&
+		ft_memanager_get_as_is_addr(memanager, tbnode_stbtree, out))
+		return (start);
+	return (end);
 }
-
+#include <stdio.h>
 int						ft_memanager_refill(t_memanager *memanager, void *addr)
 {
 	t_memjump			*left;
 	t_memjump			*right;
-	size_t				*i_memarray_p;
+	size_t				i_memarray_p;
 	size_t				*i_new_memarray_p;
 	t_array				**memarray;
 
@@ -353,14 +379,17 @@ int						ft_memanager_refill(t_memanager *memanager, void *addr)
 	addr = (void*)((char*)left + sizeof(t_memjump));
 	if (!left->prev && !right->next)
 	{
-		i_memarray_p = (size_t*)((char*)left - sizeof(size_t));
-		memarray = (t_array**)ft_array_get(memanager->memarrays, *i_memarray_p);
+		i_memarray_p = *(size_t*)((char*)left - sizeof(size_t));
+		memarray = (t_array**)ft_array_get(memanager->memarrays, i_memarray_p);
 		ft_array_free(*memarray);
 		*memarray = NULL;
 		ft_array_remove(memanager->memarrays,
 			memanager->memarrays->n_items - 1, (void*)memarray);
-		i_new_memarray_p = (size_t*)ft_array_get(*memarray, 0);
-		*i_new_memarray_p = *i_memarray_p;
+		if (i_memarray_p < memanager->memarrays->n_items)
+		{
+			i_new_memarray_p = (size_t*)ft_array_get(*memarray, 0);
+			*i_new_memarray_p = i_memarray_p;
+		}
 		return (2);
 	}
 	return (ft_memanager_add_addr(memanager, addr,

@@ -30,7 +30,7 @@ int				display_bnode_stbtree(void *receiver, void *sent)
 	if (receiver)
 	{
 		printf("---------stbtree---------\n");
-		printf("size : %zu\n", stbtree->size.key);
+		printf("%zu\n", stbtree->size.key);
 		ft_btree_bnode_iteration(padding, stbtree->addr_tbt->btree.root,
 			display_bnode_addr);
 	}
@@ -39,7 +39,7 @@ int				display_bnode_stbtree(void *receiver, void *sent)
 
 void			display_stbtree_tbt(t_btree *btree, int verbose)
 {
-	printf("--------btree display--------\n");
+	printf("_________btree display_________________________________\n");
 	ft_btree_bnode_iteration((verbose) ? &verbose : NULL, btree->root,
 		display_bnode_stbtree);
 	return ;
@@ -68,7 +68,7 @@ void			display_memarray(t_array *memarray, t_memanager *memanager,
 	{
 		addr = (void*)((char*)cur + sizeof(t_memjump));
 		size = (size_t)((char*)cur->next - (char*)addr);
-		printf("	%p	size : %zu	%s\n", addr, size,
+		printf("	%p	%zu	%s\n", addr, size,
 			(verbose && contains_addr(memanager, addr, size)) ? "free" : "");
 		cur = cur->next;
 	}
@@ -78,11 +78,12 @@ void			display_memarrays(t_memanager *memanager, int verbose)
 {
 	size_t		i;
 
-	printf("--------memarrays display--------\n");
+	printf("_________memarrays display_____________________________\n");
 	i = 0;
 	while (i < memanager->memarrays->n_items)
 	{
-		printf("---------block %zu---------\n", i);
+		printf("---------block-----------\n");
+		printf("%zu\n", i);
 		display_memarray(*(t_array**)ft_array_get(memanager->memarrays, i),
 			memanager, verbose);
 		i++;
@@ -92,7 +93,7 @@ void			display_memarrays(t_memanager *memanager, int verbose)
 
 void			display_memanager(t_memanager *memanager, int verbose)
 {
-	printf("========display memanager========\n");
+	printf("\n=========memanager display=============================\n");
 	display_stbtree_tbt((t_btree*)memanager->stbtree_tbt, verbose);
 	display_memarrays(memanager, verbose);
 	return ;
@@ -122,6 +123,26 @@ void			fill_memanager(t_memanager *m)
 	ft_strcpy(e, "abcde");
 	*sz = (size_t)-780565;
 	*i = -153;
+	void *big = ft_memanager_get(m, 1000);
+	display_memanager(m, 1);
+	///returning ptr
+	printf("\n\nrefill\n\n");
+	ft_memanager_refill(m, a);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, b);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, c);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, big);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, d);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, e);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, sz);
+	display_memanager(m, 1);
+	ft_memanager_refill(m, i);
+	display_memanager(m, 1);
 }
 
 void			test_memanager()
@@ -135,7 +156,8 @@ void			test_memanager()
 		return ;
 	}
 	fill_memanager(mem);
-	display_memanager(mem, 1);
+	printf("\n\ntry again\n\n");
+	fill_memanager(mem);
 	ft_memanager_free(mem);
 }
 
