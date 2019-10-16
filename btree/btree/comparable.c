@@ -31,7 +31,7 @@ int					ft_btree_cmp_addr(void *s1, void *s2)
 {
 	if ((uintmax_t)s1 < (uintmax_t)s2)
 		return (-1);
-	else if (s1 == s2)
+	else if ((uintmax_t)s1 == (uintmax_t)s2)
 		return (0);
 	else
 		return (1);

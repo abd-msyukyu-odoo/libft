@@ -64,9 +64,9 @@ void			display_memarray(t_array *memarray, t_memanager *memanager,
 	size_t		size;
 
 	cur = (t_memjump*)ft_array_get(memarray, sizeof(size_t));
-	addr = (void*)((char*)cur + sizeof(t_memjump));
 	while (cur->next)
 	{
+		addr = (void*)((char*)cur + sizeof(t_memjump));
 		size = (size_t)((char*)cur->next - (char*)addr);
 		printf("	%p	size : %zu	%s\n", addr, size,
 			(verbose && contains_addr(memanager, addr, size)) ? "free" : "");
@@ -92,6 +92,7 @@ void			display_memarrays(t_memanager *memanager, int verbose)
 
 void			display_memanager(t_memanager *memanager, int verbose)
 {
+	printf("========display memanager========\n");
 	display_stbtree_tbt((t_btree*)memanager->stbtree_tbt, verbose);
 	display_memarrays(memanager, verbose);
 	return ;
@@ -99,13 +100,21 @@ void			display_memanager(t_memanager *memanager, int verbose)
 
 void			fill_memanager(t_memanager *m)
 {
+	display_memanager(m, 1);
 	char *a = ft_memanager_get(m, 2*sizeof(char));
+	display_memanager(m, 1);
 	char *b = ft_memanager_get(m, 3*sizeof(char));
+	display_memanager(m, 1);
 	char *c = ft_memanager_get(m, 4*sizeof(char));
+	display_memanager(m, 1);
 	char *d = ft_memanager_get(m, 5*sizeof(char));
+	display_memanager(m, 1);
 	char *e = ft_memanager_get(m, 6*sizeof(char));
+	display_memanager(m, 1);
 	size_t *sz = ft_memanager_get(m, sizeof(size_t));
+	display_memanager(m, 1);
 	int	*i = ft_memanager_get(m, sizeof(int));
+	display_memanager(m, 1);
 	ft_strcpy(a, "a");
 	ft_strcpy(b, "ab");
 	ft_strcpy(c, "abc");

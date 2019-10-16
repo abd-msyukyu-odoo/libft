@@ -40,7 +40,10 @@ void				*ft_btree_get(t_btree *btree, void *key)
 
 int					ft_btree_contains(t_btree *btree, void *key)
 {
-	return (ft_btree_get_bnode(btree, key) != NULL);
+	t_bnode			*bnode;
+
+	bnode = ft_btree_get_bnode(btree, key);
+	return (bnode->rank != 0);
 }
 
 t_bnode				*ft_btree_get_min_bnode(t_bnode *bnode)

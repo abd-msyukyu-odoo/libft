@@ -104,7 +104,7 @@ static t_array			*ft_memanager_initialize_memarray(
 	t_memjump			*end;
 	size_t				*i_memarray_p;
 
-	memarray = *(t_array**)ft_array_get(memanager->memarrays, 0);
+	memarray = *(t_array**)ft_array_get(memanager->memarrays, i_memarray);
 	memarray->n_items = memarray->size;
 	i_memarray_p = (size_t*)ft_array_get(memarray, 0);
 	start = (t_memjump*)ft_array_get(memarray, sizeof(size_t));
@@ -121,11 +121,11 @@ static t_array			*ft_memanager_initialize_memarray(
 }
 
 static int				ft_memanager_initialize_first_memarray(
-	t_memanager *memanager, size_t i_memarray)
+	t_memanager *memanager)
 {
 	t_array				*memarray;
 
-	memarray = ft_memanager_initialize_memarray(memanager, i_memarray);
+	memarray = ft_memanager_initialize_memarray(memanager, 0);
 	return (ft_memanager_add_addr(memanager,
 		ft_array_get(memarray, sizeof(t_memjump) + sizeof(size_t)),
 		memarray->size - 2 * sizeof(t_memjump) - sizeof(size_t)));
@@ -177,7 +177,7 @@ t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
 	ft_typeused_initialize(&out->tbtree_used);
 	out->chunk_size = chunk_size;
 	if (1 > ft_memanager_initialize_stbtree(out) ||
-		1 > ft_memanager_initialize_first_memarray(out, 0))
+		1 > ft_memanager_initialize_first_memarray(out))
 		return (ft_memanager_error(out));
 	return (out);
 }
