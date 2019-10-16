@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #define CMP_MMNG_INSTANCES 800000
-#define CMP_MMNG_SIZES 1
+#define CMP_MMNG_SIZES 200
 
 clock_t		begin;
 clock_t		end;
