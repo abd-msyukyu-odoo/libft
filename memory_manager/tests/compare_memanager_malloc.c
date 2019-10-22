@@ -1,8 +1,8 @@
 #include "libft.h"
 #include <stdio.h>
 #include <time.h>
-#define CMP_MMNG_INSTANCES 800000
-#define CMP_MMNG_SIZES 200
+#define CMP_MMNG_INSTANCES 20000
+#define CMP_MMNG_SIZES 100
 
 clock_t		begin;
 clock_t		end;
@@ -14,21 +14,21 @@ void			basic_malloc()
 
 	printf("malloc :\n");
 	sum = 0;
-		begin = clock();
 	for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
 	{
+		begin = clock();
 		test[i] = malloc(sizeof(char) * (1 + i % CMP_MMNG_SIZES));
-	}
 		end = clock();
 		sum += (double)(end - begin);
-	// for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
-	// {
-	// 	begin = clock();
-	// 	free(test[i]);
-	// 	test[i] = malloc(sizeof(char) * (CMP_MMNG_SIZES - i % CMP_MMNG_SIZES));
-	// 	end = clock();
-	// 	sum += (double)(end - begin);
-	// }
+	}
+	for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
+	{
+		begin = clock();
+		free(test[i]);
+		test[i] = malloc(sizeof(char) * (CMP_MMNG_SIZES - i % CMP_MMNG_SIZES));
+		end = clock();
+		sum += (double)(end - begin);
+	}
 	printf("malloc(s) : %f\n", sum);
 	begin = clock();
 	for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
@@ -51,26 +51,26 @@ void			basic_memanager()
 	sum = (double)(end - begin);
 	printf("time init : %f\n", sum);
 	sum_refill = 0;
-		begin = clock();
 	for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
 	{
+		begin = clock();
 		test[i] = ft_memanager_get(mng, sizeof(char) * (1 + i % CMP_MMNG_SIZES));
-	}
 		end = clock();
 		sum += (double)(end - begin);
-	// for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
-	// {
-	// 	begin = clock();
-	// 	ft_memanager_refill(mng, test[i]);
-	// 	// end = clock();
-	// 	// sum_refill += (double)(end - begin);
-	// 	// sum += (double)(end - begin);
-	// 	// begin = clock();
-	// 	test[i] = ft_memanager_get(mng, sizeof(char) * (CMP_MMNG_SIZES - i % CMP_MMNG_SIZES));
-	// 	end = clock();
-	// 	sum += (double)(end - begin);
-	// }
-	//printf("refill : %f\n", sum_refill);
+	}
+	for (int i = 0; i < CMP_MMNG_INSTANCES; i++)
+	{
+		begin = clock();
+		ft_memanager_refill(mng, test[i]);
+		end = clock();
+		sum_refill += (double)(end - begin);
+		sum += (double)(end - begin);
+		begin = clock();
+		test[i] = ft_memanager_get(mng, sizeof(char) * (CMP_MMNG_SIZES - i % CMP_MMNG_SIZES));
+		end = clock();
+		sum += (double)(end - begin);
+	}
+	printf("refill : %f\n", sum_refill);
 	printf("malloc(s) : %f\n", sum);
 	begin = clock();
 	ft_memanager_free(mng);
