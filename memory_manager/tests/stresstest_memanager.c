@@ -1,5 +1,5 @@
 #include "libft.h"
-#define CMP_MMNG_INSTANCES 20000
+#define CMP_MMNG_INSTANCES 800000
 #define CMP_MMNG_SIZES 100
 
 void			basic_memanager()
