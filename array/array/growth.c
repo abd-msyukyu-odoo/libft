@@ -42,7 +42,6 @@ static int			ft_array_extend_size_skip(t_array *array,
 		array->sizeof_item * (array->n_items - skip_from));
 	free(array->items);
 	array->items = items;
-	array->n_items++;
 	array->size = new_size;
 	return (1);
 }
