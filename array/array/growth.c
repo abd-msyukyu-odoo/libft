@@ -71,9 +71,12 @@ int					ft_array_insert(t_array *array, unsigned int index,
 	if (index == array->n_items)
 		return (ft_array_add(array, item));
 	i = array->n_items;
-	if (array->n_items >= array->size && !ft_array_extend_size_skip(array,
-		2 * array->size, index))
+	if (array->n_items >= array->size)
+	{
+		if (!ft_array_extend_size_skip(array,
+			2 * array->size, index))
 		return (0);
+	}
 	else
 		while (i-- > index)
 			ft_memmove(&array->items[(i + 1) * array->sizeof_item],
