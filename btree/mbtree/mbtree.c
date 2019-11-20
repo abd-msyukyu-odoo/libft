@@ -28,7 +28,7 @@ t_mbtree			*ft_mbtree_construct(t_memanager *mmng,
 	ft_mbtree_initialize_leaf(mbtree->btree.root, NULL);
 	mbtree->btree.cmp = cmp;
 	mbtree->mmng = mmng;
-	return (1);
+	return (mbtree);
 }
 
 static void			ft_mbtree_free_iteration(t_memanager *mmng, t_bnode *bnode)
@@ -44,6 +44,7 @@ static void			ft_mbtree_free_iteration(t_memanager *mmng, t_bnode *bnode)
 void				ft_mbtree_free(t_mbtree *mbtree)
 {
 	ft_mbtree_free_iteration(mbtree->mmng, mbtree->btree.root);
+	ft_memanager_refill(mbtree->mmng, mbtree);
 }
 
 static int			ft_mbtree_construct_leaf(t_mbtree *mbtree,

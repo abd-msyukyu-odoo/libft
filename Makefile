@@ -151,6 +151,9 @@ TYPEMNG_F	= typemanager \
 BTREE_F		= comparable \
 			  replace \
 			  iterator \
+			  iterator_array \
+			  iterator_mbtree \
+			  iterator_tbtree \
 			  rebalance_deleted \
 			  rebalance_added \
 			  search \

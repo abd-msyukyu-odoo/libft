@@ -1,4 +1,3 @@
-rm log
 gcc -g -fsanitize=address -o test test_tbtree.c -I../../includes -L../../ -lft 
 ./test
 rm test

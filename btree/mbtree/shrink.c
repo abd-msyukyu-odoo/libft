@@ -40,7 +40,7 @@ static int			ft_mbtree_cut_branch(t_mbtree *mbtree, t_bnode *cut)
 
 	if (!ft_mbtree_cut_leaf(mbtree, cut, &remain))
 		return (0);
-	referent = ft_btree_bnode_referent(mbtree, cut);
+	referent = ft_btree_bnode_referent((t_btree*)mbtree, cut);
 	remain->up = cut->up;
 	*referent = remain;
 	ft_btree_rebalance_deleted((t_btree*)mbtree, remain);

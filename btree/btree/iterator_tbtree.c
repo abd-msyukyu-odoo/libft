@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator.c                                         :+:      :+:    :+:   */
+/*   iterator_tbtree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/04 16:21:09 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/10/04 16:21:13 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 19:00:39 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 19:00:40 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
-	int (*f)(void *receiver, void *sent))
+static int			ft_tbtree_add_typecast(void *receiver, void *sent)
 {
-	int				out;
+	return (ft_tbtree_add((t_tbtree*)receiver, sent));
+}
 
-	out = (sent->rank) ? 1 : 0;
-	if (out > 0 && sent->left->rank)
-		out = ft_btree_bnode_iteration(receiver, sent->left, f);
-	if (out > 0)
-		out = f(receiver, sent->named);
-	if (out > 0 && sent->right->rank)
-		out = ft_btree_bnode_iteration(receiver, sent->right, f);
-	return (out);
+int					ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt)
+{
+	return (ft_btree_bnode_iteration(new_tbt, old->root,
+		ft_tbtree_add_typecast));
 }

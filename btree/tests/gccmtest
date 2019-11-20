@@ -1,0 +1,4 @@
+gcc -g -fsanitize=address -o test test_mbtree.c -I../../includes -L../../ -lft 
+./test
+rm test
+rm -rf test.dSYM
