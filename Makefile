@@ -160,6 +160,11 @@ TBTREE_F	= tbtree \
 			  shrink \
 			  growth
 
+MBTREE_F	= mbtree \
+			  shrink \
+			  growth \
+			  initialize
+
 MEMNG_F		= memanager
 
 O_FILES		= $(addsuffix .o, \
@@ -185,7 +190,8 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix memanager/, $(MEMNG_F))) \
 					$(addprefix ./btree/, \
 						$(addprefix btree/, $(BTREE_F)) \
-						$(addprefix tbtree/, $(TBTREE_F))))
+						$(addprefix tbtree/, $(TBTREE_F)) \
+						$(addprefix mbtree/, $(MBTREE_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m

@@ -21,8 +21,8 @@ typedef struct			s_mbtree
 	t_memanager			*mmng;
 }						t_mbtree;
 
-int						ft_mbtree_construct(t_mbtree *mbtree,
-	t_memanager *mmng, int (*cmp)(void *s1, void *s2));
+t_mbtree				*ft_mbtree_construct(t_memanager *mmng,
+	int (*cmp)(void *s1, void *s2));
 
 void					ft_mbtree_free(t_mbtree *mbtree);
 
@@ -40,7 +40,10 @@ int						ft_mbtree_construct_leaves(t_mbtree *mbtree,
 	t_bnode *old_leaf);
 t_bnode					*ft_mbtree_remove_ext_bnode(t_mbtree *mbtree,
 	t_bnode *target);
-int						ft_mbtree_add_ext_bnode(t_mbtree *mbtree, t_bnode *target,
-	void *item);
+int						ft_mbtree_add_ext_bnode(t_mbtree *mbtree,
+	t_bnode *target, void *item);
+
+void					ft_mbtree_initialize_leaf(t_bnode *leaf,
+	t_bnode *parent);
 
 #endif
