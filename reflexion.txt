@@ -404,3 +404,10 @@ phase de test :
 -> faire une hashmap pour les addresses a la place du btree
 
 -> compiler la libft avec -O3
+
+
+
+-------------------------------------------------------------
+
+
+hashmap -> 

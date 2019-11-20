@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   hashmap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 18:06:41 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/09/26 18:06:43 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 20:27:03 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 20:27:04 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef HASHMAP_H
+# define HASHMAP_H
+# include <stdlib.h>
 # include "basic_functions/basicft.h"
-# include "ft_printf/ft_printf.h"
-# include "ft_read/reader.h"
 # include "array/array.h"
-# include "memory_manager/typemanager.h"
-# include "btree/tbtree.h"
-# include "memory_manager/memanager.h"
-# include "btree/mbtree.h"
-# include "array/marray.h"
-# include "hashmap/hashmap.h"
-# include "hashmap/mhashmap.h"
+# include "btree/btree.h"
+
+typedef struct			s_hmap
+{
+	t_array				*array;
+	size_t				(*hash)(void *s, size_t size);
+}						t_hmap;
+
+size_t					ft_hmap_hash_ascii(void *s, size_t size);
+size_t					ft_hmap_hash_addr(void *s, size_t size);
+size_t					ft_hmap_hash_nbr(void *s, size_t size);
 
 #endif
