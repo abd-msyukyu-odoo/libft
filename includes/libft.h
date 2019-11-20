@@ -19,5 +19,6 @@
 # include "memory_manager/typemanager.h"
 # include "btree/tbtree.h"
 # include "memory_manager/memanager.h"
+# include "btree/mbtree.h"
 
 #endif
