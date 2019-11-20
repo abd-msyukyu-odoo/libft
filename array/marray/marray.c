@@ -17,7 +17,7 @@ t_marray			*ft_marray_construct(t_memanager *mmng, size_t size,
 {
 	t_marray			*out;
 
-	if (!mmng || !(out = (t_array*)ft_memanager_get(mmng, sizeof(t_marray))))
+	if (!mmng || !(out = (t_marray*)ft_memanager_get(mmng, sizeof(t_marray))))
 		return (NULL);
 	if (size > 0 && sizeof_item > 0)
 	{

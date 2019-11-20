@@ -143,6 +143,9 @@ ARRAY_F		= array \
 			  search \
 			  shrink
 
+MARRAY_F	= marray \
+			  growth
+
 TYPEMNG_F	= typemanager \
 			  typearray \
 			  type_requests \
@@ -187,7 +190,8 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))) \
 					$(addprefix ./array/, \
-						$(addprefix array/, $(ARRAY_F))) \
+						$(addprefix array/, $(ARRAY_F)) \
+						$(addprefix marray/, $(MARRAY_F))) \
 					$(addprefix ./memory_manager/, \
 						$(addprefix typemanager/, $(TYPEMNG_F)) \
 						$(addprefix memanager/, $(MEMNG_F))) \

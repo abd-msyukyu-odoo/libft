@@ -20,7 +20,7 @@ int					ft_marray_extend_size(t_marray *marray, size_t new_size)
 	array = (t_array*)marray;
 	if (new_size <= array->size)
 		return (0);
-	if (!(items = ft_memanager_refill(marray->mmng,
+	if (!(items = ft_memanager_get(marray->mmng,
 		new_size * array->sizeof_item)))
 		return (0);
 	ft_memmove(items, array->items, array->sizeof_item * array->n_items);
@@ -39,7 +39,7 @@ static int			ft_marray_extend_size_skip(t_marray *marray,
 	array = (t_array*)marray;
 	if (new_size <= array->size || skip_from >= array->n_items)
 		return (0);
-	if (!(items = ft_memanager_refill(marray->mmng,
+	if (!(items = ft_memanager_get(marray->mmng,
 		new_size * array->sizeof_item)))
 		return (0);
 	ft_memmove(items, array->items, array->sizeof_item * skip_from);
