@@ -410,4 +410,4 @@ phase de test :
 -------------------------------------------------------------
 
 
-hashmap -> 
+hashmap -> add / remove / contains / get (btree) / 
