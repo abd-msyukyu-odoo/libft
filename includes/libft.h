@@ -20,5 +20,6 @@
 # include "btree/tbtree.h"
 # include "memory_manager/memanager.h"
 # include "btree/mbtree.h"
+# include "array/marray.h"
 
 #endif

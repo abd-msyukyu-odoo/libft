@@ -43,6 +43,8 @@ static void			ft_mbtree_free_iteration(t_memanager *mmng, t_bnode *bnode)
 
 void				ft_mbtree_free(t_mbtree *mbtree)
 {
+	if (!mbtree)
+		return ;
 	ft_mbtree_free_iteration(mbtree->mmng, mbtree->btree.root);
 	ft_memanager_refill(mbtree->mmng, mbtree);
 }
