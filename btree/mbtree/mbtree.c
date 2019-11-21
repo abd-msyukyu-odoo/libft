@@ -20,14 +20,8 @@ t_mbtree			*ft_mbtree_construct(t_memanager *mmng,
 	if (!mmng)
 		return (NULL);
 	mbtree = (t_mbtree*)ft_memanager_get(mmng, sizeof(t_mbtree));
-	if (!mbtree)
+	if (!ft_mbtree_initialize(mbtree, mmng, cmp))
 		return (NULL);
-	mbtree->btree.root = (t_bnode*)ft_memanager_get(mmng, sizeof(t_bnode));
-	if (!mbtree->btree.root)
-		return (NULL);
-	ft_mbtree_initialize_leaf(mbtree->btree.root, NULL);
-	mbtree->btree.cmp = cmp;
-	mbtree->mmng = mmng;
 	return (mbtree);
 }
 

@@ -10,4 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+int					ft_mhmap_remove(t_mhmap *mhmap, void *item)
+{
+	t_mbtree		*mbtree;
+
+	mbtree = ft_mhmap_get(mhmap, item);
+	if (!mbtree->mmng)
+		return (0);
+	return ((ft_mbtree_remove(mbtree, item)) ? 1 : 0);
+}

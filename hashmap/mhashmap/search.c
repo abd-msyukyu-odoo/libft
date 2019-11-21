@@ -20,8 +20,8 @@ t_mbtree			*ft_mhmap_get(t_mhmap *mhmap, void *item)
 
 int					ft_mhmap_contains(t_mhmap *mhmap, void *item)
 {
-	t_mbtree		*mbtree;
+	t_btree		*btree;
 
-	mbtree = ft_mhmap_get(mhmap, item);
-	return ((mbtree) ? ft_btree_contains((t_btree*)mbtree, item) : 0);
+	btree = (t_btree*)ft_mhmap_get(mhmap, item);
+	return ((btree->root) ? ft_btree_contains(btree, item) : 0);
 }

@@ -173,6 +173,14 @@ MBTREE_F	= mbtree \
 
 MEMNG_F		= memanager
 
+HMAP_F		= hashable
+
+MHMAP_F		= growth \
+			  iterator \
+			  mhashmap \
+			  search \
+			  shrink
+
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
 						$(addprefix char/, $(CHAR_F)) \
@@ -195,6 +203,9 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./memory_manager/, \
 						$(addprefix typemanager/, $(TYPEMNG_F)) \
 						$(addprefix memanager/, $(MEMNG_F))) \
+					$(addprefix ./hashmap/, \
+						$(addprefix hashmap/, $(HMAP_F)) \
+						$(addprefix mhashmap/, $(MHMAP_F))) \
 					$(addprefix ./btree/, \
 						$(addprefix btree/, $(BTREE_F)) \
 						$(addprefix tbtree/, $(TBTREE_F)) \

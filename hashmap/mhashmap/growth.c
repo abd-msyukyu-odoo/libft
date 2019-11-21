@@ -18,12 +18,8 @@ int					ft_mhmap_add(t_mhmap *mhmap, void *item)
 	t_bnode			*bnode;
 
 	mbtree = ft_mhmap_get(mhmap, item);
-	if (!mbtree)
-	{
-
-	}
-	bnode = ft_btree_get_bnode((t_btree*)mbtree, item);
+	if (!mbtree->mmng && !ft_mbtree_initialize(mbtree, mhmap->mmng,
+		ft_btree_cmp_addr))
+		return (0);
+	return (ft_mbtree_add(mbtree, item));
 }
-
-// -> faire que mhmap get renvoie un pointeur de pointeur pour pouvoir modifier
-//mbtree a distance sans devoir rechercher sa position
