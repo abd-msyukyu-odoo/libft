@@ -20,7 +20,7 @@ size_t				ft_hmap_hash_ascii(void *s, size_t size)
 
 	hash = 5381;
 	in = (char*)s;
-	while (c = (unsigned int)*in++)
+	while ((c = (unsigned int)*in++))
 		hash = ((hash << 5) + hash) + c;
 	return (hash % size);
 }

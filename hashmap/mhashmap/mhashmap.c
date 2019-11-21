@@ -13,7 +13,7 @@
 #include "libft.h"
 
 t_mhmap				*ft_mhmap_construct(t_memanager *mmng, size_t size,
-	int (*hash)(void *s, size_t size))
+	size_t (*hash)(void *s, size_t size))
 {
 	t_mhmap			*mhmap;
 
@@ -46,6 +46,6 @@ void				ft_mhmap_free(t_mhmap *mhmap)
 		mbtree = (t_mbtree*)ft_array_get(mhmap->hmap.array, i);
 		ft_mbtree_free(mbtree);
 	}
-	ft_marray_free(mhmap->hmap.array);
+	ft_marray_free((t_marray*)mhmap->hmap.array);
 	ft_memanager_refill(mhmap->mmng, mhmap);
 }

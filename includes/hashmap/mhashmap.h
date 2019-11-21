@@ -24,7 +24,7 @@ typedef struct			s_mhmap
 }						t_mhmap;
 
 t_mhmap					*ft_mhmap_construct(t_memanager *mmng, size_t size,
-	int (*hash)(void *s, size_t size));
+	size_t (*hash)(void *s, size_t size));
 
 void					ft_mhmap_free(t_mhmap *mhmap);
 

@@ -411,3 +411,12 @@ phase de test :
 
 
 hashmap -> add / remove / contains / get (btree) / 
+
+
+testing mhashmap :
+
+hashmap de 4, ajouter 10 elements -> tester la superposition, etc
+retirer des elements
+re-ajouter des elements sur des btree precedemment vides
+tester contains, tester get
+utiliser iteration pour l'affichage

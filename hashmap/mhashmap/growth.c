@@ -15,7 +15,6 @@
 int					ft_mhmap_add(t_mhmap *mhmap, void *item)
 {
 	t_mbtree		*mbtree;
-	t_bnode			*bnode;
 
 	mbtree = ft_mhmap_get(mhmap, item);
 	if (!mbtree->mmng && !ft_mbtree_initialize(mbtree, mhmap->mmng,
