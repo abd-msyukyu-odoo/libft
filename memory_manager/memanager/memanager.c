@@ -145,6 +145,8 @@ t_array					*ft_memanager_extend_size(
 {
 	t_array				**injector;
 
+	if (!memanager)
+		return (NULL);
 	if (!(injector = (t_array**)ft_array_inject(memanager->memarrays)) ||
 		!(*injector = ft_array_construct(chunk_size, sizeof(char))))
 		return (NULL);
@@ -309,6 +311,8 @@ void					*ft_memanager_get(t_memanager *memanager,
 		//dans les 3 cas : retrait de l'addresse (ou non-ajout /!\)
 	t_tbnode			*tbnode_stbtree;
 
+	if (!memanager || !sizeof_item)
+		return (NULL);
 	tbnode_stbtree = (t_tbnode*)ft_btree_get_min_equal_or_greater_bnode(
 		(t_btree*)memanager->stbtree_tbt, &sizeof_item);
 	if (!tbnode_stbtree->bnode.rank)
@@ -372,6 +376,8 @@ int						ft_memanager_refill(t_memanager *memanager, void *addr)
 	size_t				*i_new_memarray_p;
 	t_array				**memarray;
 
+	if (!memanager || !addr)
+		return (-1);
 	left = ft_memanager_refill_left(memanager, addr);
 	right = ft_memanager_refill_right(memanager, addr);
 	left->next = right;
