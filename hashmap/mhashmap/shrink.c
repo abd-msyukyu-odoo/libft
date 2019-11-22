@@ -16,6 +16,8 @@ int					ft_mhmap_remove(t_mhmap *mhmap, void *item)
 {
 	t_mbtree		*mbtree;
 
+	if (!mhmap || !item)
+		return (-1);
 	mbtree = ft_mhmap_get(mhmap, item);
 	if (!mbtree->mmng)
 		return (0);

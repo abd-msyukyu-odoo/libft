@@ -22,6 +22,8 @@ int					ft_mhmap_contains(t_mhmap *mhmap, void *item)
 {
 	t_btree		*btree;
 
+	if (!mhmap || !item)
+		return (-1);
 	btree = (t_btree*)ft_mhmap_get(mhmap, item);
 	return ((btree->root) ? ft_btree_contains(btree, item) : 0);
 }

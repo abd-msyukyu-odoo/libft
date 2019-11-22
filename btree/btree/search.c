@@ -42,6 +42,8 @@ int					ft_btree_contains(t_btree *btree, void *key)
 {
 	t_bnode			*bnode;
 
+	if (!btree || !key)
+		return (-1);
 	bnode = ft_btree_get_bnode(btree, key);
 	return (bnode->rank != 0);
 }
