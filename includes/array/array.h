@@ -125,4 +125,7 @@ int						ft_array_remove_first(t_array *array, void *item);
 */
 void					*ft_array_inject(t_array *array);
 
+int						ft_array_iteration(void *receiver, t_array *source,
+	int (*f)(void *receiver, void *sent));
+
 #endif

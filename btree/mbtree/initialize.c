@@ -24,7 +24,7 @@ void				ft_mbtree_initialize_leaf(t_bnode *leaf, t_bnode *parent)
 int					ft_mbtree_initialize(t_mbtree *mbtree, t_memanager *mmng,
 	int (*cmp)(void *s1, void *s2))
 {
-	if (!mbtree)
+	if (!mbtree || !mmng)
 		return (0);
 	mbtree->btree.root = (t_bnode*)ft_memanager_get(mmng, sizeof(t_bnode));
 	if (!mbtree->btree.root)

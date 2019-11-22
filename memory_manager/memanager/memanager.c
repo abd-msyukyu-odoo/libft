@@ -377,9 +377,9 @@ int						ft_memanager_refill(t_memanager *memanager, void *addr)
 	left->next = right;
 	right->prev = left;
 	addr = (void*)((char*)left + sizeof(t_memjump));
-	if (!left->prev && !right->next)
+	i_memarray_p = *(size_t*)((char*)left - sizeof(size_t));
+	if (!left->prev && !right->next && i_memarray_p)
 	{
-		i_memarray_p = *(size_t*)((char*)left - sizeof(size_t));
 		memarray = (t_array**)ft_array_get(memanager->memarrays, i_memarray_p);
 		ft_array_free(*memarray);
 		*memarray = NULL;

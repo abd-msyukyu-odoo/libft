@@ -12,39 +12,55 @@
 
 #include "libft.h"
 
-t_marray			*ft_marray_construct(t_memanager *mmng, size_t size, 
-	size_t sizeof_item)
+int					ft_marray_initialize(t_marray *marray, t_memanager *mmng,
+	size_t size, size_t sizeof_item)
 {
-	t_marray			*out;
-
-	if (!mmng || !(out = (t_marray*)ft_memanager_get(mmng, sizeof(t_marray))))
-		return (NULL);
+	if (!marray || !mmng)
+		return (0);
 	if (size > 0 && sizeof_item > 0)
 	{
-		out->array.items = ft_memanager_get(mmng, size * sizeof_item);
-		out->array.size = size;
-		out->array.sizeof_item = sizeof_item;
+		marray->array.items = ft_memanager_get(mmng, size * sizeof_item);
+		marray->array.size = size;
+		marray->array.sizeof_item = sizeof_item;
 	}
 	else
 	{
-		out->array.items = ft_memanager_get(mmng, sizeof(void*));
-		out->array.size = 1;
-		out->array.sizeof_item = sizeof(void*);
+		marray->array.items = ft_memanager_get(mmng, sizeof(void*));
+		marray->array.size = 1;
+		marray->array.sizeof_item = sizeof(void*);
 	}
-	if (!out->array.items)
-	{
-		ft_memanager_refill(mmng, out);
-		return (NULL);
-	}
-	out->array.n_items = 0;
-	out->mmng = mmng;
-	return (out);
+	if (!marray->array.items)
+		return (0);
+	marray->array.n_items = 0;
+	marray->mmng = mmng;
+	return (1);
 }
 
-void				ft_marray_free(t_marray *marray)
+t_marray			*ft_marray_construct(t_memanager *mmng, size_t size, 
+	size_t sizeof_item)
+{
+	t_marray		*marray;
+
+	if (!mmng ||
+		!(marray = (t_marray*)ft_memanager_get(mmng, sizeof(t_marray))))
+		return (NULL);
+	if (!ft_marray_initialize(marray, mmng, size, sizeof_item))
+	{
+		ft_memanager_refill(mmng, marray);
+		return (NULL);
+	}
+	return (marray);
+}
+
+void				ft_marray_empty(t_marray *marray)
 {
 	if (!marray)
 		return ;
 	ft_memanager_refill(marray->mmng, marray->array.items);
+}
+
+void				ft_marray_free(t_marray *marray)
+{
+	ft_marray_empty(marray);
 	ft_memanager_refill(marray->mmng, marray);
 }

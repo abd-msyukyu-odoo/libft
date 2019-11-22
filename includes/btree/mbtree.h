@@ -27,6 +27,8 @@ t_mbtree				*ft_mbtree_construct(t_memanager *mmng,
 int						ft_mbtree_initialize(t_mbtree *mbtree, t_memanager *mmng,
 	int (*cmp)(void *s1, void *s2));
 
+void					ft_mbtree_empty(t_mbtree *mbtree);
+
 void					ft_mbtree_free(t_mbtree *mbtree);
 
 int						ft_mbtree_add(t_mbtree *mbtree, void *item);

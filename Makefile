@@ -141,7 +141,8 @@ READER_F	= reader \
 ARRAY_F		= array \
 			  growth \
 			  search \
-			  shrink
+			  shrink \
+			  iterator
 
 MARRAY_F	= marray \
 			  growth

@@ -96,6 +96,7 @@ void			display_memanager(t_memanager *memanager, int verbose)
 	printf("\n=========memanager display=============================\n");
 	display_stbtree_tbt((t_btree*)memanager->stbtree_tbt, verbose);
 	display_memarrays(memanager, verbose);
+	printf("\n=========end display===================================\n");
 	return ;
 }
 
