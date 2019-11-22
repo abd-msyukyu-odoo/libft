@@ -195,8 +195,20 @@ void			test_mhmap(void)
 
 	printf("contains %s ? %d \n", saved->key, ft_mhmap_contains(m, saved));
 
-	ft_array_iteration(marray->mmng, (t_array*)marray, named_free);
+	for (int i = 0; i < 26; i++)
+	{
+		named = ft_memanager_get(mmng, sizeof(t_named));
+		if (!saved)
+			saved = named;
+		named->key = &(in[i]);
+		ft_marray_add(marray, &named);
+		printf("added : %s || status : %d\n\n", named->key,
+			ft_mhmap_add(m, named));
+		printf("------------------------------\n\n");
+	}
+	display_mhmap(m);
 
+	ft_array_iteration(marray->mmng, (t_array*)marray, named_free);
 	ft_mhmap_free(m);
 	ft_marray_free(marray);
 	display_memanager(mmng, 1);
