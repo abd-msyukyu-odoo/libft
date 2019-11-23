@@ -182,6 +182,10 @@ MHMAP_F		= growth \
 			  mhashmap \
 			  shrink
 
+THMAP_F		= growth \
+			  thashmap \
+			  shrink
+
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
 						$(addprefix char/, $(CHAR_F)) \
@@ -206,6 +210,7 @@ O_FILES		= $(addsuffix .o, \
 						$(addprefix memanager/, $(MEMNG_F))) \
 					$(addprefix ./hashmap/, \
 						$(addprefix hashmap/, $(HMAP_F)) \
+						$(addprefix thashmap/, $(THMAP_F)) \
 						$(addprefix mhashmap/, $(MHMAP_F))) \
 					$(addprefix ./btree/, \
 						$(addprefix btree/, $(BTREE_F)) \

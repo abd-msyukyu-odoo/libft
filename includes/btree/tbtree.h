@@ -49,7 +49,7 @@ typedef struct			s_tbtree
 ** @return: 0 : memory error
 ** @return: -1 : param error
 */
-int						ft_tbtree_construct(t_tbtree *tbtree,
+int						ft_tbtree_initialize(t_tbtree *tbtree,
 	t_typemanager *tbnode_tmng, int (*cmp)(void *s1, void *s2));
 
 /*

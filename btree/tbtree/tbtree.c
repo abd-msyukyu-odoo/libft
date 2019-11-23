@@ -23,10 +23,10 @@ static void			ft_tbtree_initialize_leaf(t_tbnode *leaf, t_tbnode *parent,
 	leaf->typeitem = typeitem;
 }
 
-int					ft_tbtree_construct(t_tbtree *tbtree,
+int					ft_tbtree_initialize(t_tbtree *tbtree,
 	t_typemanager *tbnode_tmng, int (*cmp)(void *s1, void *s2))
 {
-	if (!tbtree || !tbnode_tmng)
+	if (!tbtree || !tbnode_tmng || !cmp)
 		return (-1);
 	ft_typeused_initialize(&tbtree->tused);
 	tbtree->btree.root = (t_bnode*)ft_typemanager_get(tbnode_tmng,

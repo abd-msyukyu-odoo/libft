@@ -76,7 +76,7 @@ static t_stbtree		*ft_stbtree_construct(t_memanager *memanager,
 	stbtree->stbt_typeitem = memanager->stbtree_used.last;
 	if (!(stbtree->addr_tbt = ft_typemanager_get(memanager->tbtree_mng,
 		&memanager->tbtree_used)) ||
-		1 > ft_tbtree_construct(stbtree->addr_tbt, memanager->tbnode_mng,
+		1 > ft_tbtree_initialize(stbtree->addr_tbt, memanager->tbnode_mng,
 		ft_btree_cmp_addr))
 		return (NULL);
 	stbtree->tbt_typeitem = memanager->tbtree_used.last;
@@ -137,7 +137,7 @@ static int				ft_memanager_initialize_stbtree(t_memanager *memanager)
 	if (!(memanager->stbtree_tbt = ft_typemanager_get(memanager->tbtree_mng,
 		&memanager->tbtree_used)))
 		return (0);
-	return (ft_tbtree_construct(memanager->stbtree_tbt, memanager->tbnode_mng,
+	return (ft_tbtree_initialize(memanager->stbtree_tbt, memanager->tbnode_mng,
 		ft_btree_cmp_size));
 }
 

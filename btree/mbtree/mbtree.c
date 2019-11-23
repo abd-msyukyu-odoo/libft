@@ -20,29 +20,12 @@ t_mbtree			*ft_mbtree_construct(t_memanager *mmng,
 	if (!mmng ||
 		!(mbtree = (t_mbtree*)ft_memanager_get(mmng, sizeof(t_mbtree))))
 		return (NULL);
-	if (!ft_mbtree_initialize(mbtree, mmng, cmp))
+	if (1 > ft_mbtree_initialize(mbtree, mmng, cmp))
 	{
 		ft_memanager_refill(mmng, mbtree);
 		return (NULL);
 	}
 	return (mbtree);
-}
-
-static void			ft_mbtree_free_iteration(t_memanager *mmng, t_bnode *bnode)
-{
-	if (bnode->rank)
-	{
-		ft_mbtree_free_iteration(mmng, bnode->left);
-		ft_mbtree_free_iteration(mmng, bnode->right);
-	}
-	ft_memanager_refill(mmng, bnode);
-}
-
-void				ft_mbtree_empty(t_mbtree *mbtree)
-{
-	if (!mbtree)
-		return ;
-	ft_mbtree_free_iteration(mbtree->mmng, mbtree->btree.root);
 }
 
 void				ft_mbtree_free(t_mbtree *mbtree)

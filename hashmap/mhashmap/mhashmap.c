@@ -15,8 +15,8 @@
 int					ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng, 
 	size_t size, size_t (*hash)(void *s, size_t size))
 {
-	if (!mhmap || !mmng)
-		return (0);
+	if (!mhmap || !mmng || !hash)
+		return (-1);
 	mhmap->hmap.array = (t_array*)ft_marray_construct(mmng, size,
 		sizeof(t_mbtree));
 	if (!mhmap->hmap.array)
@@ -36,7 +36,7 @@ t_mhmap				*ft_mhmap_construct(t_memanager *mmng, size_t size,
 	if (!mmng ||
 		!(mhmap = (t_mhmap*)ft_memanager_get(mmng, sizeof(t_mhmap))))
 		return (NULL);
-	if (!ft_mhmap_initialize(mhmap, mmng, size, hash))
+	if (1 > ft_mhmap_initialize(mhmap, mmng, size, hash))
 	{
 		ft_memanager_refill(mmng, mhmap);
 		return (NULL);

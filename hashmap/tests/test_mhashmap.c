@@ -193,7 +193,7 @@ void			test_mhmap(void)
 
 	display_mhmap(m);
 
-	printf("contains %s ? %d \n", saved->key, ft_mhmap_contains(m, saved));
+	printf("contains %s ? %d \n", saved->key, ft_hmap_contains((t_hmap*)m, saved));
 
 	for (int i = 0; i < 26; i++)
 	{

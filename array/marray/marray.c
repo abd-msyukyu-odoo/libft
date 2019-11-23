@@ -16,7 +16,7 @@ int					ft_marray_initialize(t_marray *marray, t_memanager *mmng,
 	size_t size, size_t sizeof_item)
 {
 	if (!marray || !mmng)
-		return (0);
+		return (-1);
 	if (size > 0 && sizeof_item > 0)
 	{
 		marray->array.items = ft_memanager_get(mmng, size * sizeof_item);
@@ -44,7 +44,7 @@ t_marray			*ft_marray_construct(t_memanager *mmng, size_t size,
 	if (!mmng ||
 		!(marray = (t_marray*)ft_memanager_get(mmng, sizeof(t_marray))))
 		return (NULL);
-	if (!ft_marray_initialize(marray, mmng, size, sizeof_item))
+	if (1 > ft_marray_initialize(marray, mmng, size, sizeof_item))
 	{
 		ft_memanager_refill(mmng, marray);
 		return (NULL);

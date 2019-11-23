@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int					ft_thmap_construct(t_thmap *thmap,
+int					ft_thmap_initialize(t_thmap *thmap,
 	t_typemanager *tbnode_mng, t_array *array_tbtree,
 	size_t (*hash)(void *s, size_t size))
 {
-	if (!thmap || !tbnode_mng || !array_tbtree)
+	if (!thmap || !tbnode_mng || !array_tbtree || !hash)
 		return (-1);
 	thmap->hmap.array = array_tbtree;
 	thmap->hmap.hash = hash;

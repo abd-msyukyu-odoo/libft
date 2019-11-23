@@ -201,7 +201,7 @@ void			test_ptr_btree(void)
 	ft_typeused_initialize(&mubtrees);
 
 	btree = ft_typemanager_get(btrees, &mubtrees);
-	ft_tbtree_construct((t_tbtree*)btree, bnodes, ft_btree_cmp_addr);
+	ft_tbtree_initialize((t_tbtree*)btree, bnodes, ft_btree_cmp_addr);
 	for (int i = 0; i < 26; i++)
 	{
 		data = ft_typemanager_get(datas, &mudatas);
@@ -221,7 +221,7 @@ void			test_ptr_btree(void)
 	display_pbtree(btree, 1);
 
 	copy = ft_typemanager_get(btrees, &mubtrees);
-	ft_tbtree_construct((t_tbtree*)copy, bnodes, ft_btree_cmp_addr);
+	ft_tbtree_initialize((t_tbtree*)copy, bnodes, ft_btree_cmp_addr);
 	ft_btree_fill_tcopy(btree, (t_tbtree*)copy);
 
 	printf("\ncopy : \n\n");
@@ -265,7 +265,7 @@ void			test_size_t_btree(void)
 	ft_typeused_initialize(&mubtrees);
 
 	btree = ft_typemanager_get(btrees, &mubtrees);
-	ft_tbtree_construct((t_tbtree*)btree, bnodes, ft_btree_cmp_size);
+	ft_tbtree_initialize((t_tbtree*)btree, bnodes, ft_btree_cmp_size);
 	for (int i = 0; i < 26; i++)
 	{
 		data = ft_typemanager_get(datas, &mudatas);
@@ -285,7 +285,7 @@ void			test_size_t_btree(void)
 	display_szbtree(btree, 1);
 
 	copy = ft_typemanager_get(btrees, &mubtrees);
-	ft_tbtree_construct((t_tbtree*)copy, bnodes, ft_btree_cmp_size);
+	ft_tbtree_initialize((t_tbtree*)copy, bnodes, ft_btree_cmp_size);
 	ft_btree_fill_tcopy(btree, (t_tbtree*)copy);
 
 	printf("\ncopy : \n\n");
@@ -336,7 +336,7 @@ void			test_ascii_btree(void)
 	ft_typeused_initialize(&mubtrees);
 
 	btree = ft_typemanager_get(btrees, &mubtrees);
-	ft_tbtree_construct((t_tbtree*)btree, bnodes, ft_btree_cmp_ascii);
+	ft_tbtree_initialize((t_tbtree*)btree, bnodes, ft_btree_cmp_ascii);
 	for (int i = 0; i < 26; i++)
 	{
 		data = ft_typemanager_get(datas, &mudatas);
@@ -356,7 +356,7 @@ void			test_ascii_btree(void)
 	display_btree(btree, 1);
 
 	copy = ft_typemanager_get(btrees, &mubtrees);
-	ft_tbtree_construct((t_tbtree*)copy, bnodes, ft_btree_cmp_ascii);
+	ft_tbtree_initialize((t_tbtree*)copy, bnodes, ft_btree_cmp_ascii);
 	ft_btree_fill_tcopy(btree, (t_tbtree*)copy);
 
 	printf("\ncopy : \n\n");
