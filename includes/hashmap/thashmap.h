@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search.c                                           :+:      :+:    :+:   */
+/*   thashmap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 21:43:02 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/11/20 21:43:03 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/06/17 18:28:36 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/06/17 18:28:38 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef THASHMAP_H
+# define THASHMAP_H
+# include "hashmap/hashmap.h"
+# include "memory_manager/typemanager.h"
+# include "array/array.h"
+# include "btree/tbtree.h"
 
-t_mbtree			*ft_mhmap_get(t_mhmap *mhmap, void *item)
+typedef struct			s_thmap
 {
-	return ((t_mbtree*)ft_array_get(mhmap->hmap.array,
-		mhmap->hmap.hash(item, mhmap->hmap.array->size)));
-}
-
-int					ft_mhmap_contains(t_mhmap *mhmap, void *item)
-{
-	t_btree		*btree;
-
-	if (!mhmap || !item)
-		return (-1);
-	btree = (t_btree*)ft_mhmap_get(mhmap, item);
-	return ((btree->root) ? ft_btree_contains(btree, item) : 0);
-}
+	t_hmap				hmap;
+	t_typemanager		*tbnode_mng;
+}						t_thmap;
+#endif

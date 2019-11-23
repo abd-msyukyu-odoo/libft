@@ -420,3 +420,23 @@ retirer des elements
 re-ajouter des elements sur des btree precedemment vides
 tester contains, tester get
 utiliser iteration pour l'affichage
+
+-------------------------------------------------------------
+
+
+thashmap fournisseurs
+constructeur du "thashmap"
+-> recoit *array pre-configure de l'exterieur contenant des tbtree
+-> recoit *tbnode_mng (pour les nodes des tbtree)
+(comparaison par addresse)
+-> recoit *hash
+
+
+
+
+
+--------------------------------------------------------------
+
+questions : taille des hashmap, hashmap a supprimer/recreer
+
+

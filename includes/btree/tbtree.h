@@ -59,7 +59,7 @@ int						ft_tbtree_construct(t_tbtree *tbtree,
 **
 ** @param: btree : to be destroyed t_btree*
 */
-void					ft_tbtree_free(t_tbtree *tbtree);
+void					ft_tbtree_refill(t_tbtree *tbtree);
 
 /*
 ** add item to tbtree only if item->key is not already present

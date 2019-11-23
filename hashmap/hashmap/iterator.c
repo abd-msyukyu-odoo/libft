@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   growth.c                                           :+:      :+:    :+:   */
+/*   iterator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,15 +12,21 @@
 
 #include "libft.h"
 
-int					ft_mhmap_add(t_mhmap *mhmap, void *item)
+int					ft_hmap_bnode_iteration(void *receiver, t_hmap *source,
+	int (*f)(void *receiver, void *sent))
 {
-	t_mbtree		*mbtree;
+	size_t			i;
+	t_btree			*btree;
+	int				out;
 
-	if (!mhmap || !item)
-		return (-1);
-	mbtree = (t_mbtree*)ft_hmap_get((t_hmap*)mhmap, item);
-	if (!mbtree->mmng && !ft_mbtree_initialize(mbtree, mhmap->mmng,
-		ft_btree_cmp_addr))
-		return (0);
-	return (ft_mbtree_add(mbtree, item));
+	i = 0;
+	out = 1;
+	while (out && i < source->array->size)
+	{
+		btree = (t_btree*)ft_array_get(source->array, i);
+		if (btree->root && btree->root->rank)
+			out = ft_btree_bnode_iteration(receiver, btree->root, f);
+		++i;
+	}
+	return (out);
 }

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator.c                                         :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 21:42:58 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/11/20 21:42:59 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 21:43:02 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 21:43:03 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_mhmap_bnode_iteration(void *receiver, t_mhmap *source,
-	int (*f)(void *receiver, void *sent))
+t_btree				*ft_hmap_get(t_hmap *hmap, void *item)
 {
-	size_t			i;
-	t_mbtree		*mbtree;
-	int				out;
+	return ((t_btree*)ft_array_get(hmap->array,
+		hmap->hash(item, hmap->array->size)));
+}
 
-	i = 0;
-	out = 1;
-	while (out && i < source->hmap.array->size)
-	{
-		mbtree = (t_mbtree*)ft_array_get(source->hmap.array, i);
-		if (mbtree->btree.root && mbtree->btree.root->rank)
-			out = ft_btree_bnode_iteration(receiver, mbtree->btree.root, f);
-		++i;
-	}
-	return (out);
+int					ft_hmap_contains(t_hmap *hmap, void *item)
+{
+	t_btree		*btree;
+
+	if (!hmap || !item)
+		return (-1);
+	btree = (t_btree*)ft_hmap_get(hmap, item);
+	return ((btree->root) ? ft_btree_contains(btree, item) : 0);
 }

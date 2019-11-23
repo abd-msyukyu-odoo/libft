@@ -40,7 +40,7 @@ int					ft_tbtree_construct(t_tbtree *tbtree,
 	return (1);
 }
 
-void				ft_tbtree_free(t_tbtree *tbtree)
+void				ft_tbtree_refill(t_tbtree *tbtree)
 {
 	ft_typemanager_refill(tbtree->tmng, &tbtree->tused);
 }

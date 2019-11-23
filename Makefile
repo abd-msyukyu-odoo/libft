@@ -174,12 +174,12 @@ MBTREE_F	= mbtree \
 
 MEMNG_F		= memanager
 
-HMAP_F		= hashable
+HMAP_F		= hashable \
+			  search \
+			  iterator
 
 MHMAP_F		= growth \
-			  iterator \
 			  mhashmap \
-			  search \
 			  shrink
 
 O_FILES		= $(addsuffix .o, \

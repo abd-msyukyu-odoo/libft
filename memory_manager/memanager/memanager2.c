@@ -206,7 +206,8 @@ static void				*ft_memanager_get_as_is_specific(t_memanager *memanager,
 			tbnode_stbtree);
 		ft_typeused_recover(&memanager->stbtree_tbt->tused,
 			tbnode_stbtree->typeitem);
-		ft_tbtree_refill(stbtree->addr_tbt);
+		ft_typemanager_refill(stbtree->addr_tbt->tmng,
+			&stbtree->addr_tbt->tused);
 		ft_typeused_recover(&memanager->stbtree_used, stbtree->stbt_typeitem);
 		ft_typeused_recover(&memanager->tbtree_used, stbtree->tbt_typeitem);
 	}

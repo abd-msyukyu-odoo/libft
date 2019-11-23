@@ -19,9 +19,11 @@
 # include "memory_manager/typemanager.h"
 # include "btree/tbtree.h"
 # include "memory_manager/memanager.h"
+//# include "memory_manager/memanager2.h"
 # include "btree/mbtree.h"
 # include "array/marray.h"
 # include "hashmap/hashmap.h"
 # include "hashmap/mhashmap.h"
+# include "hashmap/thashmap.h"
 
 #endif

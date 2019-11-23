@@ -97,22 +97,22 @@ typedef struct					s_named
 	char						*key;
 }								t_named;
 
-int					display_mhmap_bnode_iteration(void *receiver, t_mhmap *source,
+int					display_hmap_bnode_iteration(void *receiver, t_hmap *source,
 	int (*f)(void *receiver, void *sent))
 {
 	size_t			i;
-	t_mbtree		*mbtree;
+	t_btree			*btree;
 	int				out;
 
 	i = 0;
 	out = 1;
-	while (out && i < source->hmap.array->size)
+	while (out && i < source->array->size)
 	{
-		mbtree = (t_mbtree*)ft_array_get(source->hmap.array, i);
-		if (mbtree->btree.root && mbtree->btree.root->rank)
+		btree = (t_btree*)ft_array_get(source->array, i);
+		if (btree->root && btree->root->rank)
 		{
 			printf("%zu \n", i);
-			out = ft_btree_bnode_iteration(receiver, mbtree->btree.root, f);
+			out = ft_btree_bnode_iteration(receiver, btree->root, f);
 		}
 		++i;
 	}
@@ -134,7 +134,7 @@ int				display_bnode(void *receiver, void *sent)
 
 void			display_mhmap(t_mhmap *m)
 {
-	display_mhmap_bnode_iteration(m, m, display_bnode);
+	display_hmap_bnode_iteration(m, (t_hmap*)m, display_bnode);
 	printf("n_items : %zu\nsize : %zu\n", m->hmap.array->n_items,
 		m->hmap.array->size);
 }

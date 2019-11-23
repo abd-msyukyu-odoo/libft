@@ -33,15 +33,8 @@ void					ft_mhmap_empty(t_mhmap *mhmap);
 
 void					ft_mhmap_free(t_mhmap *mhmap);
 
-t_mbtree				*ft_mhmap_get(t_mhmap *mhmap, void *item);
-
-int						ft_mhmap_contains(t_mhmap *mhmap, void *item);
-
 int						ft_mhmap_add(t_mhmap *mhmap, void *item);
 
 int						ft_mhmap_remove(t_mhmap *mhmap, void *item);
-
-int						ft_mhmap_bnode_iteration(void *receiver, t_mhmap *source,
-	int (*f)(void *receiver, void *sent));
 
 #endif
