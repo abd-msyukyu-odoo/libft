@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+// a changer en fonction de l'arbre binaire
 int					ft_hmap_bnode_iteration(void *receiver, t_hmap *source,
 	int (*f)(void *receiver, void *sent))
 {

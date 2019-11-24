@@ -16,22 +16,25 @@
 # include "array/array.h"
 # include "memory_manager/typemanager.h"
 # include "btree/tbtree.h"
-# define MMNG_DEFAULT_SIZE_COUNT	256
+# include "hashmap/thashmap.h"
+# define MMNG_DEFAULT_SIZE_COUNT	32
 # define MMNG_DEFAULT_ADDR_COUNT	2048
 # define MMNG_DEFAULT_CHUNK_SIZE	262144
+# define MMNG_DEFAULT_OVRLP_SIZE	1024
 
-typedef struct			s_key_stbtree
+typedef struct			s_key_sthmap
 {
 	size_t				key;
-}						t_key_stbtree;
+}						t_key_sthmap;
 
-typedef struct			s_stbtree
+typedef struct			s_sthmap
 {
-	t_key_stbtree		size;
-	t_tbtree			*addr_tbt;
-	t_typeitem			*stbt_typeitem;
-	t_typeitem			*tbt_typeitem;
-}						t_stbtree;
+	t_key_sthmap		size;
+	t_thmap				addr_thmap;
+	t_typeitem			*sthm_typeitem;
+	t_typeitem			*array_typeitem;
+	t_typeitem			*items_typeitem;
+}						t_sthmap;
 
 typedef struct			s_memjump
 {
@@ -41,32 +44,18 @@ typedef struct			s_memjump
 
 typedef struct			s_memanager
 {
-	t_typeused			stbtree_used;
-	t_typeused			tbtree_used;
+	t_typeused			sthm_used;
+	t_typeused			thm_used;
+	t_typeused			array_used;
+	t_typeused			items_used;
+	t_tbtree			sthmap_tbt;
 	size_t				chunk_size;
-	t_typemanager		*stbtree_mng;
-	t_typemanager		*tbtree_mng;
+	size_t				overlap;
+	t_typemanager		*sthm_mng;
+	t_typemanager		*array_mng;
+	t_typemanager		*items_mng;
 	t_typemanager		*tbnode_mng;
-	t_tbtree			*stbtree_tbt;
 	t_array				*memarrays;
 }						t_memanager;
-
-int						ft_memanager_validate_amounts(size_t sizes,
-	size_t addresses, size_t chunk_size);
-
-void					ft_memanager_free(t_memanager *memanager);
-
-t_array					*ft_memanager_extend_size(
-	t_memanager *memanager, size_t chunk_size);
-
-t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
-	size_t chunk_size);
-
-t_memanager				*ft_memanager_construct_default(void);
-
-void					*ft_memanager_get(t_memanager *memanager,
-	size_t sizeof_item);
-
-int						ft_memanager_refill(t_memanager *memanager, void *addr);
 
 #endif

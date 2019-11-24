@@ -128,6 +128,9 @@ int						ft_typemanager_refill(t_typemanager *typemanager,
 void					*ft_typemanager_get(t_typemanager *typemanager,
 	t_typeused *used);
 
+void					*ft_typemanager_get_typeitem(
+	t_typemanager *typemanager, t_typeused *used, t_typeitem **item);
+
 void					ft_typeused_initialize(t_typeused *typeused);
 
 void					ft_typeused_recover(t_typeused *typeused,

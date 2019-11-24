@@ -192,6 +192,8 @@ t_memanager				*ft_memanager_construct_default(void)
 		MMNG_DEFAULT_CHUNK_SIZE));
 }
 
+//done
+
 static void				*ft_memanager_get_as_is_specific(t_memanager *memanager,
 	t_tbnode *tbnode_stbtree, t_tbnode *tbnode_addr)
 {

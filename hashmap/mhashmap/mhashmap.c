@@ -25,7 +25,8 @@ int					ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng,
 	mhmap->hmap.array->n_items = size;
 	mhmap->mmng = mmng;
 	mhmap->hmap.hash = hash;
-	return (1);
+	return ((mhmap->hmap.hash_btree =
+		(t_btree*)ft_mbtree_construct(mmng, ft_btree_cmp_addr)));
 }
 
 t_mhmap				*ft_mhmap_construct(t_memanager *mmng, size_t size,
@@ -60,6 +61,7 @@ void				ft_mhmap_empty(t_mhmap *mhmap)
 		++i;
 	}
 	ft_marray_free((t_marray*)mhmap->hmap.array);
+	ft_mbtree_free((t_mbtree*)mhmap->hmap.hash_btree);
 }
 
 void				ft_mhmap_free(t_mhmap *mhmap)

@@ -99,3 +99,13 @@ void						*ft_typemanager_get(t_typemanager *typemanager,
 	else
 		return (ft_typemanager_get_other_typearray(used, typearray));
 }
+
+void						*ft_typemanager_get_typeitem(
+	t_typemanager *typemanager, t_typeused *used, t_typeitem **item)
+{
+	void				*addr;
+
+	addr = ft_typemanager_get(typemanager, used);
+	*item = used->last;
+	return (addr);
+}

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_btree				*ft_hmap_get(t_hmap *hmap, void *item)
+t_btree				*ft_hmap_get_cell(t_hmap *hmap, void *item)
 {
 	return ((t_btree*)ft_array_get(hmap->array,
 		hmap->hash(item, hmap->array->size)));
@@ -24,6 +24,11 @@ int					ft_hmap_contains(t_hmap *hmap, void *item)
 
 	if (!hmap || !item)
 		return (-1);
-	btree = (t_btree*)ft_hmap_get(hmap, item);
+	btree = (t_btree*)ft_hmap_get_cell(hmap, item);
 	return ((btree->root) ? ft_btree_contains(btree, item) : 0);
+}
+
+int					ft_hmap_is_empty(t_hmap *hmap)
+{
+	return (!hmap->hash_btree->root->rank);
 }
