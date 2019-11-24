@@ -25,7 +25,7 @@ int					ft_thmap_remove(t_thmap *thmap, void *item)
 	{
 		if (!tbtree->btree.root->rank)
 		{
-			ft_tbtree_remove(thmap->hmap.hash_btree, tbtree);
+			ft_tbtree_remove((t_tbtree*)thmap->hmap.hash_btree, tbtree);
 			ft_tbtree_refill(tbtree);
 			tbtree->tmng = NULL;
 		}

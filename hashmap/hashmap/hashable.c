@@ -28,12 +28,10 @@ size_t				ft_hmap_hash_ascii(void *s, size_t size)
 size_t				ft_hmap_hash_nbr(void *s, size_t size)
 {
 	size_t			key;
-	size_t			i;
 	size_t			hash;
 
 	key = *(size_t*)s;
 	hash = 5831;
-	i = 0;
 	while (key > 0)
 	{
 		hash = ((hash << 4) + hash) + (key & 0b1111);
@@ -45,12 +43,10 @@ size_t				ft_hmap_hash_nbr(void *s, size_t size)
 size_t				ft_hmap_hash_addr(void *s, size_t size)
 {
 	uintmax_t		key;
-	size_t			i;
 	size_t			hash;
 
 	key = (uintmax_t)s;
 	hash = 5831;
-	i = 0;
 	while (key > 0)
 	{
 		hash = ((hash << 4) + hash) + (key & 0b1111);

@@ -21,7 +21,7 @@ int					ft_thmap_add(t_thmap *thmap, void *item)
 	tbtree = (t_tbtree*)ft_hmap_get_cell((t_hmap*)thmap, item);
 	if (!tbtree->tmng &&
 		!ft_tbtree_initialize(tbtree, thmap->tbnode_mng, ft_btree_cmp_addr) &&
-		(1 > ft_tbtree_add(thmap->hmap.hash_btree, tbtree)))
+		(1 > ft_tbtree_add((t_tbtree*)thmap->hmap.hash_btree, tbtree)))
 		return (0);
 	return (ft_tbtree_add(tbtree, item));
 }

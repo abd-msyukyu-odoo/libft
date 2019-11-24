@@ -25,7 +25,7 @@ int					ft_mhmap_remove(t_mhmap *mhmap, void *item)
 	{
 		if (!mbtree->btree.root->rank)
 		{
-			ft_mbtree_remove(mhmap->hmap.hash_btree, mbtree);
+			ft_mbtree_remove((t_mbtree*)mhmap->hmap.hash_btree, mbtree);
 			ft_mbtree_empty(mbtree);
 			mbtree->mmng = NULL;
 		}

@@ -20,14 +20,14 @@ int					ft_thmap_initialize(t_thmap *thmap,
 		array_tbtree->size < 2)
 		return (-1);
 	thmap->hmap.array = array_tbtree;
-	thmap->hmap.hash_btree = (t_tbtree*)thmap->hmap.array->items;
+	thmap->hmap.hash_btree = (t_btree*)thmap->hmap.array->items;
 	thmap->hmap.array->items =
 		(void*)((char*)thmap->hmap.array->items + sizeof(t_tbtree));
 	thmap->hmap.array->n_items--;
 	thmap->hmap.array->size--;
 	thmap->hmap.hash = hash;
 	thmap->tbnode_mng = tbnode_mng;
-	return (ft_tbtree_initialize(&thmap->hmap.hash_btree, tbnode_mng,
+	return (ft_tbtree_initialize((t_tbtree*)thmap->hmap.hash_btree, tbnode_mng,
 		ft_btree_cmp_addr));
 }
 
@@ -47,5 +47,5 @@ void				ft_thmap_refill(t_thmap *thmap)
 		return ;
 	ft_btree_bnode_iteration(NULL, thmap->hmap.hash_btree->root,
 		ft_thmap_refill_tbtree);
-	ft_tbtree_refill(thmap->hmap.hash_btree);
+	ft_tbtree_refill((t_tbtree*)thmap->hmap.hash_btree);
 }

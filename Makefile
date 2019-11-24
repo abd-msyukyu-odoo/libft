@@ -172,7 +172,7 @@ MBTREE_F	= mbtree \
 			  growth \
 			  initialize
 
-MEMNG_F		= memanager
+MEMNG_F		= memanager2
 
 HMAP_F		= hashable \
 			  search \
