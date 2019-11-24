@@ -45,7 +45,6 @@ typedef struct			s_memjump
 typedef struct			s_memanager
 {
 	t_typeused			sthm_used;
-	t_typeused			thm_used;
 	t_typeused			array_used;
 	t_typeused			items_used;
 	t_tbtree			sthmap_tbt;
@@ -57,5 +56,23 @@ typedef struct			s_memanager
 	t_typemanager		*tbnode_mng;
 	t_array				*memarrays;
 }						t_memanager;
+
+int						ft_memanager_validate_amounts(size_t sizes,
+	size_t addresses, size_t chunk_size, size_t overlap);
+
+void					ft_memanager_free(t_memanager *mmng);
+
+t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
+	size_t chunk_size, size_t overlap);
+
+t_memanager				*ft_memanager_construct_default(void);
+
+t_array					*ft_memanager_extend_size(
+	t_memanager *mmng, size_t chunk_size);
+
+void					*ft_memanager_get(t_memanager *mmng,
+	size_t sizeof_item);
+
+int						ft_memanager_refill(t_memanager *mmng, void *addr);
 
 #endif

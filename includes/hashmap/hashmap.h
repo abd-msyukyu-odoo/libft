@@ -35,6 +35,6 @@ t_btree					*ft_hmap_get_cell(t_hmap *hmap, void *item);
 
 int						ft_hmap_contains(t_hmap *hmap, void *item);
 
-int						ft_hmap_is_empty(t_hmap *hmap, void *item);
+int						ft_hmap_is_empty(t_hmap *hmap);
 
 #endif

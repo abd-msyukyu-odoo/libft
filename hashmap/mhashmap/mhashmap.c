@@ -45,21 +45,22 @@ t_mhmap				*ft_mhmap_construct(t_memanager *mmng, size_t size,
 	return (mhmap);
 }
 
+static int			ft_mhmap_empty_mbtree(void *receiver, void *sent)
+{
+	if (!receiver)
+	{
+		ft_mbtree_empty((t_mbtree*)sent);
+		return (1);
+	}
+	return (0);
+}
+
 void				ft_mhmap_empty(t_mhmap *mhmap)
 {
-	size_t			i;
-	t_mbtree		*mbtree;
-
 	if (!mhmap)
 		return ;
-	i = 0;
-	while (i < mhmap->hmap.array->size)
-	{
-		mbtree = (t_mbtree*)ft_array_get(mhmap->hmap.array, i);
-		if (mbtree->mmng)
-			ft_mbtree_empty(mbtree);
-		++i;
-	}
+	ft_btree_bnode_iteration(NULL, mhmap->hmap.hash_btree->root,
+		ft_mhmap_empty_mbtree);
 	ft_marray_free((t_marray*)mhmap->hmap.array);
 	ft_mbtree_free((t_mbtree*)mhmap->hmap.hash_btree);
 }

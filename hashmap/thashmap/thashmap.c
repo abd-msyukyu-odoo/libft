@@ -31,20 +31,21 @@ int					ft_thmap_initialize(t_thmap *thmap,
 		ft_btree_cmp_addr));
 }
 
+static int			ft_thmap_refill_tbtree(void *receiver, void *sent)
+{
+	if (!receiver)
+	{
+		ft_tbtree_refill((t_tbtree*)sent);
+		return (1);
+	}
+	return (0);
+}
+
 void				ft_thmap_refill(t_thmap *thmap)
 {
-	size_t			i;
-	t_tbtree		*tbtree;
-
 	if (!thmap)
 		return ;
-	i = 0;
-	while (i < thmap->hmap.array->size)
-	{
-		tbtree = (t_tbtree*)ft_array_get(thmap->hmap.array, i);
-		if (tbtree->tmng)
-			ft_tbtree_refill(tbtree);
-		++i;
-	}
+	ft_btree_bnode_iteration(NULL, thmap->hmap.hash_btree->root,
+		ft_thmap_refill_tbtree);
 	ft_tbtree_refill(thmap->hmap.hash_btree);
 }
