@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
 #include <time.h>
-#define CMP_MMNG_INSTANCES 20000
+#define CMP_MMNG_INSTANCES 200000
 #define CMP_MMNG_SIZES 100
 
 clock_t		begin;
