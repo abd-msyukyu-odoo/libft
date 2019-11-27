@@ -21,6 +21,11 @@ int				display_bnode_addr(void *receiver, void *sent)
 	return (1);
 }
 
+int				display_hash_btree(void *receiver, void *sent)
+{
+	return (ft_btree_bnode_iteration(receiver, ((t_btree*)sent)->root, display_bnode_addr));
+}
+
 int				display_bnode_sthmap(void *receiver, void *sent)
 {
 	t_sthmap	*sthmap;
@@ -31,7 +36,7 @@ int				display_bnode_sthmap(void *receiver, void *sent)
 	{
 		printf("---------sthmap---------\n");
 		printf("%zu\n", sthmap->size.key);
-		ft_hmap_bnode_iteration(padding, (t_hmap*)sthmap, display_bnode_addr);
+		ft_hmap_bnode_iteration(padding, (t_hmap*)&sthmap->addr_thmap, display_hash_btree);
 	}
 	return (1);
 }
@@ -52,7 +57,7 @@ int				contains_addr(t_memanager *memanager,
 	sthmap = (t_sthmap*)ft_btree_get((t_btree*)&memanager->sthmap_tbt, &size);
 	if (!sthmap)
 		return (0);
-	return (ft_btree_contains((t_btree*)&sthmap->addr_thmap, addr));
+	return (ft_hmap_contains((t_hmap*)&sthmap->addr_thmap, addr));
 }
 
 void			display_memarray(t_array *memarray, t_memanager *memanager,

@@ -20,8 +20,8 @@ int					ft_mhmap_add(t_mhmap *mhmap, void *item)
 		return (-1);
 	mbtree = (t_mbtree*)ft_hmap_get_cell((t_hmap*)mhmap, item);
 	if (!mbtree->mmng &&
-		!ft_mbtree_initialize(mbtree, mhmap->mmng, ft_btree_cmp_addr) &&
-		(1 > ft_mbtree_add((t_mbtree*)mhmap->hmap.hash_btree, mbtree)))
+		(!ft_mbtree_initialize(mbtree, mhmap->mmng, ft_btree_cmp_addr) ||
+		(1 > ft_mbtree_add((t_mbtree*)mhmap->hmap.hash_btree, mbtree))))
 		return (0);
 	return (ft_mbtree_add(mbtree, item));
 }
