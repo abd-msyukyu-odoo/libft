@@ -14,7 +14,7 @@ NAME		= libft.a
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror -g #O3
+CFLAGS		= -Wall -Wextra -Werror -O3 #g
 
 GLOBALHEAD	= ./includes
 
@@ -172,7 +172,7 @@ MBTREE_F	= mbtree \
 			  growth \
 			  initialize
 
-MEMNG_F		= memanager2
+MEMNG_F		= memanager
 
 HMAP_F		= hashable \
 			  search \

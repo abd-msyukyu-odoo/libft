@@ -13,39 +13,43 @@ int				display_bnode_addr(void *receiver, void *sent)
 	return (1);
 }
 
-int				display_bnode_stbtree(void *receiver, void *sent)
+int				display_hash_btree(void *receiver, void *sent)
 {
-	t_stbtree	*stbtree;
+	return (ft_btree_bnode_iteration(receiver, ((t_btree*)sent)->root, display_bnode_addr));
+}
+
+int				display_bnode_sthmap(void *receiver, void *sent)
+{
+	t_sthmap	*sthmap;
 	static char *padding = "	";
 
-	stbtree = (t_stbtree*)sent;
+	sthmap = (t_sthmap*)sent;
 	if (receiver)
 	{
-		printf("---------stbtree---------\n");
-		printf("%zu\n", stbtree->size.key);
-		ft_btree_bnode_iteration(padding, stbtree->addr_tbt->btree.root,
-			display_bnode_addr);
+		printf("---------sthmap---------\n");
+		printf("%zu\n", sthmap->size.key);
+		ft_hmap_bnode_iteration(padding, (t_hmap*)&sthmap->addr_thmap, display_hash_btree);
 	}
 	return (1);
 }
 
-void			display_stbtree_tbt(t_btree *btree, int verbose)
+void			display_sthmap_tbt(t_btree *btree, int verbose)
 {
 	printf("_________btree display_________________________________\n");
 	ft_btree_bnode_iteration((verbose) ? &verbose : NULL, btree->root,
-		display_bnode_stbtree);
+		display_bnode_sthmap);
 	return ;
 }
 
 int				contains_addr(t_memanager *memanager,
 	void *addr, size_t size)
 {
-	t_stbtree	*stbtree;
+	t_sthmap	*sthmap;
 
-	stbtree = (t_stbtree*)ft_btree_get((t_btree*)memanager->stbtree_tbt, &size);
-	if (!stbtree)
+	sthmap = (t_sthmap*)ft_btree_get((t_btree*)&memanager->sthmap_tbt, &size);
+	if (!sthmap)
 		return (0);
-	return (ft_btree_contains((t_btree*)stbtree->addr_tbt, addr));
+	return (ft_hmap_contains((t_hmap*)&sthmap->addr_thmap, addr));
 }
 
 void			display_memarray(t_array *memarray, t_memanager *memanager,
@@ -86,7 +90,7 @@ void			display_memarrays(t_memanager *memanager, int verbose)
 void			display_memanager(t_memanager *memanager, int verbose)
 {
 	printf("\n=========memanager display=============================\n");
-	display_stbtree_tbt((t_btree*)memanager->stbtree_tbt, verbose);
+	display_sthmap_tbt((t_btree*)&memanager->sthmap_tbt, verbose);
 	display_memarrays(memanager, verbose);
 	printf("\n=========end display===================================\n");
 	return ;
