@@ -91,4 +91,13 @@ void					*ft_memanager_get(t_memanager *mmng,
 
 int						ft_memanager_refill(t_memanager *mmng, void *addr);
 
+/*
+** internal functions
+*/
+void					ft_memanager_get_as_is_refill(t_memanager *mmng,
+	t_tbnode *tbnode_sthmap, t_tbtree *hash_tbt, t_tbnode *tbnode_addr);
+
+void					*ft_memanager_get_as_is_addr(t_memanager *mmng,
+	t_tbnode *tbnode_sthmap, void *addr);
+
 #endif
