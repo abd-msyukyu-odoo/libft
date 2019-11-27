@@ -57,6 +57,13 @@ typedef struct			s_memanager
 	t_array				*memarrays;
 }						t_memanager;
 
+/*
+** general dimensions condition
+** btree condition (at least 1 address per size + 2 non-set childs)
+** underflow condition -> 1st condition : see get_extended (3 jumpers)
+** overflow condition
+** chunk_size is too small compared to sizes & addresses
+*/
 int						ft_memanager_validate_amounts(size_t sizes,
 	size_t addresses, size_t chunk_size, size_t overlap);
 
@@ -70,6 +77,15 @@ t_memanager				*ft_memanager_construct_default(void);
 t_array					*ft_memanager_extend_size(
 	t_memanager *mmng, size_t chunk_size);
 
+/*
+** parcourir les tailles dans le btree
+** des qu'on prend a gauche on enregistre en tampon le dernier parent
+** on trouve -> cours normal
+** on ne trouve pas + pas de parent -> extend size (peut etre custom)
+** on ne trouve pas + parent -> decoupage de pointeur + ajout du reste
+** si reste <= sizeof(t_memjump) -> pas de decoupage
+** dans les 3 cas : retrait de l'addresse (ou non-ajout /!\)
+*/
 void					*ft_memanager_get(t_memanager *mmng,
 	size_t sizeof_item);
 
