@@ -440,3 +440,12 @@ constructeur du "thashmap"
 questions : taille des hashmap, hashmap a supprimer/recreer
 
 
+
+
+probleme : arbre binaire de la hashmap corrompu ou non-initialise
+
+-> rank de left est non-set
+
+causes possibles :
+tbnode_mng 
+left

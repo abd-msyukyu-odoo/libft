@@ -14,7 +14,7 @@ NAME		= libft.a
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror -O3
+CFLAGS		= -Wall -Wextra -Werror -g #O3
 
 GLOBALHEAD	= ./includes
 
