@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-
-
 t_array					*ft_memanager_initialize_memarray(
 	t_memanager *mmng, size_t i_memarray)
 {
