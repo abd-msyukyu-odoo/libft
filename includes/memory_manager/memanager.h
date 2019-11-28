@@ -100,4 +100,14 @@ void					ft_memanager_get_as_is_refill(t_memanager *mmng,
 void					*ft_memanager_get_as_is_addr(t_memanager *mmng,
 	t_tbnode *tbnode_sthmap, void *addr);
 
+t_memanager				*ft_memanager_error(t_memanager *mmng);
+
+t_array					*ft_memanager_initialize_memarray(
+	t_memanager *mmng, size_t i_memarray);
+
+int						ft_memanager_initialize(t_memanager *mmng);
+
+int						ft_memanager_add_addr(t_memanager *mmng,
+	void *addr, size_t sizeof_addr);
+
 #endif

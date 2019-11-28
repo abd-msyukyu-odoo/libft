@@ -172,7 +172,14 @@ MBTREE_F	= mbtree \
 			  growth \
 			  initialize
 
-MEMNG_F		= memanager
+MEMNG_F		= free \
+			  get_as_is \
+			  get \
+			  growth \
+			  initialize \
+			  memanager \
+			  refill \
+			  validate
 
 HMAP_F		= hashable \
 			  search \

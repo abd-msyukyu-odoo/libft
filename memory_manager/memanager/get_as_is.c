@@ -12,6 +12,14 @@
 
 #include "libft.h"
 
+static void				ft_sthmap_refill(t_memanager *mmng, t_sthmap *sthmap)
+{
+	ft_thmap_refill(&sthmap->addr_thmap);
+	ft_typeused_recover(&mmng->array_used, sthmap->array_typeitem);
+	ft_typeused_recover(&mmng->items_used, sthmap->items_typeitem);
+	ft_typeused_recover(&mmng->sthm_used, sthmap->sthm_typeitem);
+}
+
 void					ft_memanager_get_as_is_refill(t_memanager *mmng,
 	t_tbnode *tbnode_sthmap, t_tbtree *hash_tbt, t_tbnode *tbnode_addr)
 {
