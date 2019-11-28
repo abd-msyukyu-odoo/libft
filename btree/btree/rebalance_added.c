@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   growth.c                                           :+:      :+:    :+:   */
+/*   rebalance_added.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
-static void			ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)
+void				ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)
 {
 	t_bnode			*sib;
 	int				spin;
@@ -36,36 +37,4 @@ static void			ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)
 		bn->up->rank++;
 		bn = bn->up;
 	}
-}
-
-int					ft_btree_add(t_btree *btree, t_named *item)
-{
-	t_bnode			*target;
-
-	if (!btree || !item || !item->key)
-		return (-1);
-	target = ft_btree_get_bnode(btree, item->key);
-	if (target->rank)
-		return (-2);
-	if (!ft_btree_construct_leaves(btree, target))
-		return (0);
-	target->named = item;
-	target->rank = 1;
-	ft_btree_rebalance_added(btree, target);
-	return (1);
-}
-
-t_named				*ft_btree_replace(t_btree *btree, t_named *item)
-{
-	t_bnode			*target;
-	t_named			*out;
-
-	if (!btree || !item || !item->key)
-		return (NULL);
-	target = ft_btree_get_bnode(btree, item->key);
-	if (!target->rank)
-		return (NULL);
-	out = target->named;
-	target->named = item;
-	return (out);
 }

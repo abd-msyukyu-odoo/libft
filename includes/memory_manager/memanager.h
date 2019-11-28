@@ -14,123 +14,100 @@
 # define MEMANAGER_H
 # include <stdlib.h>
 # include "array/array.h"
+# include "memory_manager/typemanager.h"
+# include "btree/tbtree.h"
+# include "hashmap/thashmap.h"
+# define MMNG_DEFAULT_SIZE_COUNT	32
+# define MMNG_DEFAULT_ADDR_COUNT	2048
+# define MMNG_DEFAULT_CHUNK_SIZE	262144
+# define MMNG_DEFAULT_OVRLP_SIZE	1024
 
-/*
-** item : pointer to data
-** next : pointer to next memitem
-** next_oldest : cf oldest in t_memused
-** i_memarray : index of the memarray which possess this memitem
-** n_used : countdown of all contiguous memitems with the same memitems in
-** 		a t_memused
-*/
-typedef struct			s_memitem
+typedef struct			s_key_sthmap
 {
-	void				*item;
-	struct s_memitem	*next;
-	struct s_memitem	*next_oldest;
-	struct s_memitem	*next_recovery;
-	unsigned int		i_memarray;
-	unsigned int		n_used;
-}						t_memitem;
+	size_t				key;
+}						t_key_sthmap;
 
-/*
-** memitem : LIFO pointers to used memitems
-** oldest : Taken all contiguous memitems with the same i_memarray, the oldest
-** 		one is an pointer of this LIFO (other elements are oldests with another
-** 		i_memarray)
-*/
-typedef struct			s_memused
+typedef struct			s_sthmap
 {
-	t_memitem			*memitem;
-	t_memitem			*oldest;
-	t_memitem			*recovery;
-	t_memitem			*last;
-}						t_memused;
+	t_key_sthmap		size;
+	t_thmap				addr_thmap;
+	t_typeitem			*sthm_typeitem;
+	t_typeitem			*array_typeitem;
+	t_typeitem			*items_typeitem;
+}						t_sthmap;
 
-/*
-** array : memory allocation for data
-** memitems : memory allocation for memitems
-** unused : LIFO pointers to unused memitems
-** n_unused : length of unused
-*/
-typedef struct			s_memarray
+typedef struct			s_memjump
 {
-	t_array				*array;
-	t_array				*memitems;
-	t_memitem			*unused;
-	unsigned int		n_unused;
-}						t_memarray;
+	struct s_memjump	*next;
+	struct s_memjump	*prev;
+}						t_memjump;
 
-/*
-** memarrays : array of pointers to t_memarray
-** i_available : smallest index in memarrays to t_memarray with n_unused > 0
-*/
 typedef struct			s_memanager
 {
+	t_typeused			sthm_used;
+	t_typeused			array_used;
+	t_typeused			items_used;
+	t_tbtree			sthmap_tbt;
+	size_t				chunk_size;
+	size_t				overlap;
+	t_typemanager		*sthm_mng;
+	t_typemanager		*array_mng;
+	t_typemanager		*items_mng;
+	t_typemanager		*tbnode_mng;
 	t_array				*memarrays;
-	unsigned int		i_available;
 }						t_memanager;
 
 /*
-** free the t_memarray instance and all its content
+** general dimensions condition
+** btree condition (at least 1 address per size + 2 non-set childs)
+** underflow condition -> 1st condition : see get_extended (3 jumpers)
+** overflow condition
+** chunk_size is too small compared to sizes & addresses
 */
-void					ft_memarray_free(t_memarray *memarray);
+int						ft_memanager_validate_amounts(size_t sizes,
+	size_t addresses, size_t chunk_size, size_t overlap);
+
+void					ft_memanager_free(t_memanager *mmng);
+
+t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
+	size_t chunk_size, size_t overlap);
+
+t_memanager				*ft_memanager_construct_default(void);
+
+t_array					*ft_memanager_extend_size(
+	t_memanager *mmng, size_t chunk_size);
 
 /*
-** free the t_memanager instance and all its content
+** parcourir les tailles dans le btree
+** des qu'on prend a gauche on enregistre en tampon le dernier parent
+** on trouve -> cours normal
+** on ne trouve pas + pas de parent -> extend size (peut etre custom)
+** on ne trouve pas + parent -> decoupage de pointeur + ajout du reste
+** si reste <= sizeof(t_memjump) -> pas de decoupage
+** dans les 3 cas : retrait de l'addresse (ou non-ajout /!\)
 */
-void					ft_memanager_free(t_memanager *memanager);
-
-/*
-** create a t_memarray instance
-** return :
-**  t_memarray* : created instance
-**  NULL : memory error
-*/
-t_memarray				*ft_memarray_construct(unsigned int size,
-	size_t sizeof_item, unsigned int memindex);
-
-/*
-** create a t_memanager instance
-** return :
-**  t_memanager* : created instance
-**  NULL : memory error
-*/
-t_memanager				*ft_memanager_construct(unsigned int size,
+void					*ft_memanager_get(t_memanager *mmng,
 	size_t sizeof_item);
 
-/*
-** this function should not be used externaly unless in case of controlled
-** high memory usage
-** extend the number of elements that the memarray is able to store
-** return :
-**  1 : success
-**  0 : memory error
-*/
-int						ft_memanager_extend_size(t_memanager *memanager,
-	unsigned int new_size);
+int						ft_memanager_refill(t_memanager *mmng, void *addr);
 
 /*
-** "free" the previously used items so that the memarray can provide them
-** for ulterior usage without the need for actual free/malloc
-** return :
-**  void
+** internal functions
 */
-int						ft_memanager_refill(t_memanager *memanager,
-	t_memused *used);
+void					ft_memanager_get_as_is_refill(t_memanager *mmng,
+	t_tbnode *tbnode_sthmap, t_tbtree *hash_tbt, t_tbnode *tbnode_addr);
 
-/*
-** ask the memarray for a pointer to the stored data type. If none are
-** available, double the size of the memarray.
-** return :
-**  void* : pointer to a fitting space for the data type handled by the memarray
-*/
-void					*ft_memanager_get(t_memanager *memanager,
-	t_memused *used);
+void					*ft_memanager_get_as_is_addr(t_memanager *mmng,
+	t_tbnode *tbnode_sthmap, void *addr);
 
-void					ft_memused_initialize(t_memused *memused);
+t_memanager				*ft_memanager_error(t_memanager *mmng);
 
-void					ft_memused_recover(t_memused *memused,
-	t_memitem *memitem);
+t_array					*ft_memanager_initialize_memarray(
+	t_memanager *mmng, size_t i_memarray);
+
+int						ft_memanager_initialize(t_memanager *mmng);
+
+int						ft_memanager_add_addr(t_memanager *mmng,
+	void *addr, size_t sizeof_addr);
 
 #endif

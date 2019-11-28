@@ -14,7 +14,7 @@ NAME		= libft.a
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -O3 #g
 
 GLOBALHEAD	= ./includes
 
@@ -141,20 +141,57 @@ READER_F	= reader \
 ARRAY_F		= array \
 			  growth \
 			  search \
+			  shrink \
+			  iterator
+
+MARRAY_F	= marray \
+			  growth
+
+TYPEMNG_F	= typemanager \
+			  typearray \
+			  type_requests \
+			  typeused
+
+BTREE_F		= comparable \
+			  replace \
+			  iterator \
+			  iterator_array \
+			  iterator_mbtree \
+			  iterator_tbtree \
+			  rebalance_deleted \
+			  rebalance_added \
+			  search \
+			  utils
+
+TBTREE_F	= tbtree \
+			  shrink \
+			  growth
+
+MBTREE_F	= mbtree \
+			  shrink \
+			  growth \
+			  initialize
+
+MEMNG_F		= free \
+			  get_as_is \
+			  get \
+			  growth \
+			  initialize \
+			  memanager \
+			  refill \
+			  validate
+
+HMAP_F		= hashable \
+			  search \
+			  iterator
+
+MHMAP_F		= growth \
+			  mhashmap \
 			  shrink
 
-MEMANAGER_F	= memanager \
-			  memarray \
-			  memory_requests \
-			  memused
-
-BTREE_F		= btree \
-			  growth \
-			  iterator \
-			  rebalance_deleted \
-			  search \
-			  shrink \
-			  utils
+THMAP_F		= growth \
+			  thashmap \
+			  shrink
 
 O_FILES		= $(addsuffix .o, \
 					$(addprefix ./basic_functions/, \
@@ -173,11 +210,19 @@ O_FILES		= $(addsuffix .o, \
 					$(addprefix ./ft_read/, \
 						$(addprefix reader/, $(READER_F))) \
 					$(addprefix ./array/, \
-						$(addprefix array/, $(ARRAY_F))) \
+						$(addprefix array/, $(ARRAY_F)) \
+						$(addprefix marray/, $(MARRAY_F))) \
 					$(addprefix ./memory_manager/, \
-						$(addprefix memanager/, $(MEMANAGER_F))) \
-					$(addprefix ./btree_ascii/, \
-						$(addprefix btree/, $(BTREE_F))))
+						$(addprefix typemanager/, $(TYPEMNG_F)) \
+						$(addprefix memanager/, $(MEMNG_F))) \
+					$(addprefix ./hashmap/, \
+						$(addprefix hashmap/, $(HMAP_F)) \
+						$(addprefix thashmap/, $(THMAP_F)) \
+						$(addprefix mhashmap/, $(MHMAP_F))) \
+					$(addprefix ./btree/, \
+						$(addprefix btree/, $(BTREE_F)) \
+						$(addprefix tbtree/, $(TBTREE_F)) \
+						$(addprefix mbtree/, $(MBTREE_F))))
 
 END_E		= \033[00m
 RED_E		= \033[01;31m
@@ -189,7 +234,7 @@ WHITE_E		= \033[01;37m
 BOLD_E		= \033[1m
 UNDERLINE_E	= \033[4m
 
-$(NAME):	$(O_FILES)
+$(NAME):	@$(O_FILES)
 			@ar -rcs $@ $^
 			@echo "$(GREEN_E)end compilation$(END_E)"
 

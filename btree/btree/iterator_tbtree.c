@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   named.h                                            :+:      :+:    :+:   */
+/*   iterator_tbtree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 11:40:16 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/06/25 11:40:18 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 19:00:39 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 19:00:40 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NAMED_H
-# define NAMED_H
+#include "libft.h"
 
-typedef struct					s_named
+static int			ft_tbtree_add_typecast(void *receiver, void *sent)
 {
-	char						*key;
-}								t_named;
+	return (ft_tbtree_add((t_tbtree*)receiver, sent));
+}
 
-#endif
+int					ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt)
+{
+	return (ft_btree_bnode_iteration(new_tbt, old->root,
+		ft_tbtree_add_typecast));
+}

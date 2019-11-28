@@ -23,8 +23,8 @@
 typedef struct			s_array
 {
 	char				*items;
-	unsigned int		n_items;
-	unsigned int		size;
+	size_t				n_items;
+	size_t				size;
 	size_t				sizeof_item;
 }						t_array;
 
@@ -34,23 +34,8 @@ typedef struct			s_array
 ** 	t_array* : created instance
 ** 	NULL : error
 */
-t_array					*ft_array_construct(unsigned int size,
+t_array					*ft_array_construct(size_t size,
 	size_t sizeof_item);
-
-/*
-** use an existing t_array instance to store pointers.
-** WARNING : must use ft_array_free_extmem to free
-** return :
-**  1 : success
-**  0 : memory error
-*/
-int						ft_array_construct_extmem(t_array *array,
-	unsigned int size);
-
-/*
-** free all non-external memory of the t_array instance
-*/
-void					ft_array_free_extmem(t_array *array);
 
 /*
 ** free the t_array instance, but not the items
@@ -66,7 +51,7 @@ void					ft_array_free(t_array *array);
 **  0 : memory error
 */
 int						ft_array_extend_size(t_array *array,
-	unsigned int new_size);
+	size_t new_size);
 
 /*
 ** add at the end of the array
@@ -86,7 +71,7 @@ int						ft_array_add(t_array *array, void *item);
 ** 	-1 : array was not modified
 ** 	0 : error
 */
-int						ft_array_insert(t_array *array, unsigned int index,
+int						ft_array_insert(t_array *array, size_t index,
 							void *item);
 
 /*
@@ -95,7 +80,7 @@ int						ft_array_insert(t_array *array, unsigned int index,
 ** 	1 : item was removed
 ** 	0 : array does not contain item
 */
-int						ft_array_remove(t_array *array, unsigned index,
+int						ft_array_remove(t_array *array, size_t index,
 	void *removed);
 
 /*
@@ -104,7 +89,7 @@ int						ft_array_remove(t_array *array, unsigned index,
 ** 	unsigned int : index of item
 ** 	array->n_items : array does not contain item
 */
-unsigned int			ft_array_index(t_array *array, void *item);
+size_t					ft_array_index(t_array *array, void *item);
 
 /*
 ** get the item at index
@@ -112,7 +97,7 @@ unsigned int			ft_array_index(t_array *array, void *item);
 ** 	void* : item at index
 ** 	NULL : error
 */
-void					*ft_array_get(t_array *array, unsigned int index);
+void					*ft_array_get(t_array *array, size_t index);
 
 /*
 ** check if array contains item
@@ -139,5 +124,8 @@ int						ft_array_remove_first(t_array *array, void *item);
 ** 	NULL : error
 */
 void					*ft_array_inject(t_array *array);
+
+int						ft_array_iteration(void *receiver, t_array *source,
+	int (*f)(void *receiver, void *sent));
 
 #endif

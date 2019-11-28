@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memused.c                                          :+:      :+:    :+:   */
+/*   shrink.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/29 19:26:40 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/09/29 19:26:41 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 21:43:07 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 21:43:08 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_memused_initialize(t_memused *memused)
+int					ft_mhmap_remove(t_mhmap *mhmap, void *item)
 {
-	memused->memitem = NULL;
-	memused->oldest = NULL;
-	memused->recovery = NULL;
-	memused->last = NULL;
-}
+	t_mbtree		*mbtree;
 
-void				ft_memused_recover(t_memused *memused, t_memitem *memitem)
-{
-	memitem->next_recovery = memused->recovery;
-	memused->recovery = memitem;
+	if (!mhmap || !item)
+		return (-1);
+	mbtree = (t_mbtree*)ft_hmap_get_cell((t_hmap*)mhmap, item);
+	if (!mbtree->mmng)
+		return (0);
+	if (ft_mbtree_remove(mbtree, item))
+	{
+		if (!mbtree->btree.root->rank)
+		{
+			ft_mbtree_remove((t_mbtree*)mhmap->hmap.hash_btree, mbtree);
+			ft_mbtree_empty(mbtree);
+			mbtree->mmng = NULL;
+		}
+		return (1);
+	}
+	return (0);
 }

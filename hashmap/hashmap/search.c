@@ -5,38 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/27 14:51:20 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/09/27 14:51:21 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 21:43:02 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 21:43:03 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t				ft_array_index(t_array *array, void *item)
+t_btree				*ft_hmap_get_cell(t_hmap *hmap, void *item)
 {
-	size_t	i;
-
-	if (item == NULL)
-		return (array->n_items);
-	i = 0;
-	while (i < array->n_items)
-	{
-		if (!ft_memcmp(&array->items[i * array->sizeof_item], item,
-			array->sizeof_item))
-			return (i);
-		i++;
-	}
-	return (i);
+	return ((t_btree*)ft_array_get(hmap->array,
+		hmap->hash(item, hmap->array->size)));
 }
 
-int					ft_array_contains(t_array *array, void *item)
+int					ft_hmap_contains(t_hmap *hmap, void *item)
 {
-	return (ft_array_index(array, item) != array->n_items);
+	t_btree		*btree;
+
+	if (!hmap || !item)
+		return (-1);
+	btree = (t_btree*)ft_hmap_get_cell(hmap, item);
+	return ((btree->root) ? ft_btree_contains(btree, item) : 0);
 }
 
-void				*ft_array_get(t_array *array, size_t index)
+int					ft_hmap_is_empty(t_hmap *hmap)
 {
-	if (index >= array->n_items)
-		return (NULL);
-	return (&array->items[index * array->sizeof_item]);
+	return (!hmap->hash_btree->root->rank);
 }

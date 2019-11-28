@@ -5,33 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/27 14:51:25 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/09/27 14:51:26 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 21:43:07 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 21:43:08 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_array_remove(t_array *array, size_t index,
-	void *removed)
+int					ft_thmap_remove(t_thmap *thmap, void *item)
 {
-	if (index >= array->n_items)
+	t_tbtree		*tbtree;
+
+	if (!thmap || !item)
+		return (-1);
+	tbtree = (t_tbtree*)ft_hmap_get_cell((t_hmap*)thmap, item);
+	if (!tbtree->tmng)
 		return (0);
-	if (removed)
-		ft_memmove(removed, &array->items[index * array->sizeof_item],
-			array->sizeof_item);
-	while (++index < array->n_items)
-		ft_memmove(&array->items[(index - 1) * array->sizeof_item],
-			&array->items[index * array->sizeof_item], array->sizeof_item);
-	if (array->n_items > 0)
-		array->n_items = array->n_items - 1;
-	return (1);
-}
-
-int					ft_array_remove_first(t_array *array, void *item)
-{
-	size_t	i;
-
-	i = ft_array_index(array, item);
-	return (ft_array_remove(array, i, NULL) != 0);
+	if (ft_tbtree_remove(tbtree, item))
+	{
+		if (!tbtree->btree.root->rank)
+		{
+			ft_tbtree_remove((t_tbtree*)thmap->hmap.hash_btree, tbtree);
+			ft_tbtree_refill(tbtree);
+			tbtree->tmng = NULL;
+		}
+		return (1);
+	}
+	return (0);
 }

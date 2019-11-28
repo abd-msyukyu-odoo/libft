@@ -12,58 +12,47 @@
 
 #include "libft.h"
 
-void						ft_memanager_free(t_memanager *memanager)
+static int				ft_memanager_internal_construct(t_memanager *mmng,
+	size_t sizes, size_t addresses)
 {
-	unsigned int			i;
+	t_array				**injector;
 
-	if (!memanager)
-		return ;
-	if (memanager->memarrays)
-	{
-		i = 0;
-		while (i < memanager->memarrays->n_items)
-		{
-			ft_memarray_free(
-				*(t_memarray**)ft_array_get(memanager->memarrays, i));
-			++i;
-		}
-		ft_array_free(memanager->memarrays);
-	}
-	free(memanager);
-	return ;
+	return ((mmng->sthm_mng = ft_typemanager_construct(sizes,
+			sizeof(t_sthmap))) &&
+		(mmng->array_mng = ft_typemanager_construct(sizes,
+			sizeof(t_array))) &&
+		(mmng->items_mng = ft_typemanager_construct(sizes,
+			sizeof(t_tbtree) * mmng->overlap)) &&
+		(mmng->tbnode_mng = ft_typemanager_construct(addresses +
+			sizes * mmng->overlap, sizeof(t_tbnode))) &&
+		(mmng->memarrays = ft_array_construct(1, sizeof(t_array*))) &&
+		(injector = (t_array**)ft_array_inject(mmng->memarrays)) &&
+		(*injector = ft_array_construct(mmng->chunk_size, sizeof(char))));
 }
 
-static t_memanager			*ft_memanager_error(t_memanager *memanager)
+t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
+	size_t chunk_size, size_t overlap)
 {
-	ft_memanager_free(memanager);
-	return (NULL);
-}
+	t_memanager			*out;
 
-t_memanager					*ft_memanager_construct(unsigned int size,
-	size_t sizeof_item)
-{
-	t_memanager				*out;
-	t_memarray				**injector;
-
+	if (ft_memanager_validate_amounts(sizes, addresses, chunk_size,
+		overlap) < 0)
+		return (NULL);
 	out = (t_memanager*)malloc(sizeof(t_memanager));
-	if (!out || !(out->memarrays = ft_array_construct(1, sizeof(t_memarray*)))
-		|| !(injector = (t_memarray**)ft_array_inject(out->memarrays))
-		|| !(*injector = ft_memarray_construct(size, sizeof_item, 0)))
+	if (!out)
+		return (NULL);
+	out->chunk_size = chunk_size;
+	out->overlap = overlap;
+	if (!ft_memanager_internal_construct(out, sizes, addresses) ||
+		!ft_memanager_initialize(out))
 		return (ft_memanager_error(out));
-	out->i_available = 0;
 	return (out);
 }
 
-int							ft_memanager_extend_size(t_memanager *memanager,
-	unsigned int new_size)
+t_memanager				*ft_memanager_construct_default(void)
 {
-	t_memarray				**injector;
-
-	injector = (t_memarray**)ft_array_inject(memanager->memarrays);
-	if (!injector || !(*injector = ft_memarray_construct(new_size,
-		(*(t_memarray**)ft_array_get(memanager->memarrays,
-			0))->array->sizeof_item,
-		memanager->memarrays->n_items - 1)))
-		return (0);
-	return (1);
+	return (ft_memanager_construct(MMNG_DEFAULT_ADDR_COUNT,
+		MMNG_DEFAULT_ADDR_COUNT,
+		MMNG_DEFAULT_ADDR_COUNT,
+		MMNG_DEFAULT_OVRLP_SIZE));
 }
