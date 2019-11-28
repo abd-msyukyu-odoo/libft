@@ -234,14 +234,14 @@ WHITE_E		= \033[01;37m
 BOLD_E		= \033[1m
 UNDERLINE_E	= \033[4m
 
-$(NAME):	@$(O_FILES)
+$(NAME):	$(O_FILES)
 			@ar -rcs $@ $^
 			@echo "$(GREEN_E)end compilation$(END_E)"
 
 all:		$(NAME)
 
 %.o:		%.c
-			$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
+			@$(CC) $(CFLAGS) -c -o $@ $< -I$(GLOBALHEAD)
 
 clean:
 			@rm -f $(O_FILES)
