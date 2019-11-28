@@ -123,7 +123,8 @@ int						ft_typemanager_refill(t_typemanager *typemanager,
 ** ask the typearray for a pointer to the stored data type. If none are
 ** available, double the size of the typearray.
 ** return :
-**  void* : pointer to a fitting space for the data type handled by the typearray
+**  void* : pointer to a fitting space for the data type handled by the
+**  typearray
 */
 void					*ft_typemanager_get(t_typemanager *typemanager,
 	t_typeused *used);

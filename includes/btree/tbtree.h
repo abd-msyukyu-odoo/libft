@@ -28,7 +28,7 @@ typedef struct			s_tbnode
 
 /*
 ** cmp is a custom function which make use of the first element of
-** t_tbnode->named to sort the elements 
+** t_tbnode->named to sort the elements
 */
 typedef struct			s_tbtree
 {
@@ -104,7 +104,7 @@ int						ft_tbtree_construct_leaves(t_tbtree *tbtree,
 	t_tbnode *old_leaf);
 t_tbnode				*ft_tbtree_remove_ext_tbnode(t_tbtree *tbtree,
 	t_tbnode *target);
-int						ft_tbtree_add_ext_tbnode(t_tbtree *tbtree, t_tbnode *target,
-	void *item);
+int						ft_tbtree_add_ext_tbnode(t_tbtree *tbtree,
+	t_tbnode *target, void *item);
 
 #endif

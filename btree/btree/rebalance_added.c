@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 void				ft_btree_rebalance_added(t_btree *btree, t_bnode *bn)

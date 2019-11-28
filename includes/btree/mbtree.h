@@ -24,8 +24,8 @@ typedef struct			s_mbtree
 t_mbtree				*ft_mbtree_construct(t_memanager *mmng,
 	int (*cmp)(void *s1, void *s2));
 
-int						ft_mbtree_initialize(t_mbtree *mbtree, t_memanager *mmng,
-	int (*cmp)(void *s1, void *s2));
+int						ft_mbtree_initialize(t_mbtree *mbtree, t_memanager
+	*mmng, int (*cmp)(void *s1, void *s2));
 
 void					ft_mbtree_empty(t_mbtree *mbtree);
 
@@ -40,7 +40,6 @@ int						ft_btree_fill_mcopy(t_btree *old, t_mbtree *new_mbt);
 /*
 ** internal functions
 */
-
 int						ft_mbtree_construct_leaves(t_mbtree *mbtree,
 	t_bnode *old_leaf);
 t_bnode					*ft_mbtree_remove_ext_bnode(t_mbtree *mbtree,

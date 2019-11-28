@@ -21,10 +21,10 @@ typedef struct			s_marray
 	t_memanager			*mmng;
 }						t_marray;
 
-int						ft_marray_initialize(t_marray *marray, t_memanager *mmng,
-	size_t size, size_t sizeof_item);
+int						ft_marray_initialize(t_marray *marray, t_memanager
+	*mmng, size_t size, size_t sizeof_item);
 
-t_marray				*ft_marray_construct(t_memanager *mmng, size_t size, 
+t_marray				*ft_marray_construct(t_memanager *mmng, size_t size,
 	size_t sizeof_item);
 
 void					ft_marray_empty(t_marray *marray);
