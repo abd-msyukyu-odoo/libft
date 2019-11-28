@@ -75,7 +75,7 @@ int					ft_array_insert(t_array *array, size_t index,
 	{
 		if (!ft_array_extend_size_skip(array,
 			2 * array->size, index))
-		return (0);
+			return (0);
 	}
 	else
 		while (i-- > index)

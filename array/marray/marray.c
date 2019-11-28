@@ -36,7 +36,7 @@ int					ft_marray_initialize(t_marray *marray, t_memanager *mmng,
 	return (1);
 }
 
-t_marray			*ft_marray_construct(t_memanager *mmng, size_t size, 
+t_marray			*ft_marray_construct(t_memanager *mmng, size_t size,
 	size_t sizeof_item)
 {
 	t_marray		*marray;

@@ -23,7 +23,7 @@ typedef struct			s_mhmap
 	t_memanager			*mmng;
 }						t_mhmap;
 
-int						ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng, 
+int						ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng,
 	size_t size, size_t (*hash)(void *s, size_t size));
 
 t_mhmap					*ft_mhmap_construct(t_memanager *mmng, size_t size,

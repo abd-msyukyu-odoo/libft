@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int					ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng, 
+int					ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng,
 	size_t size, size_t (*hash)(void *s, size_t size))
 {
 	if (!mhmap || !mmng || !hash)
