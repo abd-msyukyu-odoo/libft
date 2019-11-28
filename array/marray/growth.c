@@ -86,7 +86,7 @@ int					ft_marray_insert(t_marray *marray, size_t index,
 	{
 		if (!ft_marray_extend_size_skip(marray,
 			2 * array->size, index))
-		return (0);
+			return (0);
 	}
 	else
 		while (i-- > index)
