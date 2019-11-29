@@ -20,7 +20,7 @@
 typedef struct			s_hmap_wrapper
 {
 	void				*item;
-	int					(*equals)(void *o1, void *o2);
+	int					(*f)(void *o1, void *o2);
 }						t_hmap_wrapper;
 
 typedef struct			s_hmap
