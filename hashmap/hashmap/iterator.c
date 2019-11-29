@@ -17,3 +17,7 @@ int					ft_hmap_bnode_iteration(void *receiver, t_hmap *source,
 {
 	return (ft_btree_bnode_iteration(receiver, source->hash_btree->root, f));
 }
+
+
+
+

@@ -32,3 +32,7 @@ int					ft_hmap_is_empty(t_hmap *hmap)
 {
 	return (!hmap->hash_btree->root->rank);
 }
+
+
+
+
