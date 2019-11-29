@@ -41,4 +41,6 @@ int						ft_marray_insert(t_marray *marray, size_t index,
 
 void					*ft_marray_inject(t_marray *marray);
 
+int						ft_array_fill_mcopy(t_array *old, t_marray *new_marray);
+
 #endif
