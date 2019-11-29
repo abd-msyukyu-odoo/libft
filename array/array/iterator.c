@@ -27,3 +27,23 @@ int					ft_array_iteration(void *receiver, t_array *source,
 	}
 	return (out);
 }
+
+static int			ft_array_add_typecast(void *receiver, void *sent)
+{
+	return (ft_array_add((t_array*)receiver, sent));
+}
+
+int					ft_array_fill_copy(t_array *old, t_array *new_array)
+{
+	return (ft_array_iteration(new_array, old, ft_array_add_typecast));
+}
+
+static int			ft_marray_add_typecast(void *receiver, void *sent)
+{
+	return (ft_marray_add((t_marray*)receiver, sent));
+}
+
+int					ft_array_fill_mcopy(t_array *old, t_marray *new_marray)
+{
+	return (ft_array_iteration(new_marray, old, ft_marray_add_typecast));
+}

@@ -128,4 +128,8 @@ void					*ft_array_inject(t_array *array);
 int						ft_array_iteration(void *receiver, t_array *source,
 	int (*f)(void *receiver, void *sent));
 
+int						ft_array_fill_copy(t_array *old, t_array *new_array);
+
+int						ft_array_fill_mcopy(t_array *old, t_marray *new_marray);
+
 #endif
