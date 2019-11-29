@@ -51,8 +51,8 @@ t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
 
 t_memanager				*ft_memanager_construct_default(void)
 {
-	return (ft_memanager_construct(MMNG_DEFAULT_ADDR_COUNT,
+	return (ft_memanager_construct(MMNG_DEFAULT_SIZE_COUNT,
 		MMNG_DEFAULT_ADDR_COUNT,
-		MMNG_DEFAULT_ADDR_COUNT,
+		MMNG_DEFAULT_CHUNK_SIZE,
 		MMNG_DEFAULT_OVRLP_SIZE));
 }
