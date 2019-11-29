@@ -42,7 +42,7 @@ void				*ft_hmap_get(t_hmap *hmap, void *key,
 	t_btree			*btree;
 
 	wrapper.item = key;
-	wrapper.equals = equals;
+	wrapper.f = equals;
 	btree = ft_hmap_get_cell(hmap, key);
 	if (!btree->root)
 		wrapper.item = NULL;

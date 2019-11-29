@@ -27,8 +27,8 @@ int					ft_hmap_bnode_iteration(void *receiver, t_hmap *source,
 {
 	t_hmap_wrapper	wrapper;
 
-	wrapper->item = receiver;
-	wrapper->f = f;
+	wrapper.item = receiver;
+	wrapper.f = f;
 	return (ft_btree_bnode_iteration(&wrapper, source->hash_btree->root,
 		ft_hmap_cell_bnode_iteration));
 }
