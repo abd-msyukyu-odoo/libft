@@ -236,7 +236,7 @@ UNDERLINE_E	= \033[4m
 
 $(NAME):	$(O_FILES)
 			@ar -rcs $@ $^
-			@echo "$(GREEN_E)end compilation$(END_E)"
+			@echo "$(GREEN_E)end compilation : $(NAME)$(END_E)"
 
 all:		$(NAME)
 
@@ -245,11 +245,11 @@ all:		$(NAME)
 
 clean:
 			@rm -f $(O_FILES)
-			@echo "$(PURPLE_E)end clean$(END_E)"
+			@echo "$(PURPLE_E)end clean : $(NAME)$(END_E)"
 
 fclean:		clean
 			@rm -f $(NAME)
-			@echo "$(RED_E)end fclean$(END_E)"
+			@echo "$(RED_E)end fclean : $(NAME)$(END_E)"
 
 re:			fclean all
 
