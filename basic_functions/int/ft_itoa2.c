@@ -34,3 +34,29 @@ char			*ft_itoa2(long n)
 {
 	return (ft_strrev(ft_itoa_rec(n, 0)));
 }
+
+static char		*ft_mitoa_rec(intmax_t n, size_t i, t_memanager *mmng)
+{
+	char		*str;
+	size_t		l;
+
+	if (n < (intmax_t)10 && n > (intmax_t)-10)
+	{
+		l = i + ((n < (intmax_t)0) ? 2 : 1);
+		if (!(str = (char*)ft_memanager_get(mmng, (l + 1) * sizeof(char))))
+			return (NULL);
+		str[l] = '\0';
+		if (n < (intmax_t)0)
+			str[i + 1] = '-';
+	}
+	else
+		str = ft_mitoa_rec(n / 10, i + 1, mmng);
+	if (str != NULL)
+		str[i] = ((n < (intmax_t)0) ? -1 : 1) * (n % 10) + '0';
+	return (str);
+}
+
+char			*ft_mitoa(intmax_t n, t_memanager *mmng)
+{
+	return (ft_strrev(ft_mitoa_rec(n, 0, mmng)));
+}
