@@ -24,5 +24,6 @@
 # include "hashmap/hashmap.h"
 # include "hashmap/mhashmap.h"
 # include "hashmap/thashmap.h"
+# include "memory_manager/mbasicft.h"
 
 #endif
