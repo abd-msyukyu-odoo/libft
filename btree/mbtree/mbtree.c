@@ -39,7 +39,7 @@ void				ft_mbtree_free(t_mbtree *mbtree)
 static int			ft_mbtree_construct_leaf(t_mbtree *mbtree,
 	t_bnode *old_leaf, t_bnode **leaf)
 {
-	*leaf = ft_memanager_get(mbtree->mmng, sizeof(t_bnode));
+	*leaf = (t_bnode*)ft_memanager_get(mbtree->mmng, sizeof(t_bnode));
 	if (!*leaf)
 		return (0);
 	ft_mbtree_initialize_leaf(*leaf, old_leaf);
