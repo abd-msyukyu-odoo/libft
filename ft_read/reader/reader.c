@@ -27,7 +27,7 @@ static unsigned char	ft_read_input(t_string *out, ssize_t *len, size_t sread)
 			return (0);
 		}
 	}
-	return (1);
+	return ((nread) ? 1 : 0);
 }
 
 static char				*ft_read_until(char end, char *rmn)
