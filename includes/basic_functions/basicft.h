@@ -14,6 +14,7 @@
 # define BASICFT_H
 # include <string.h>
 # include <sys/types.h>
+# include <stdint.h>
 # include <limits.h>
 # ifdef _WIN32
 #  include <crtdefs.h>
