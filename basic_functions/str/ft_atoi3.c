@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi2.c                                         :+:      :+:    :+:   */
+/*   ft_atoi3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-long		ft_atoi2(const char *str)
+intmax_t		ft_atoi3(const char *str)
 {
-	long		result;
+	intmax_t	result;
 	size_t		i;
 	char		sign;
-	long		tmp;
+	intmax_t	tmp;
 
 	result = 0;
 	i = 0;
@@ -31,10 +31,10 @@ long		ft_atoi2(const char *str)
 	{
 		tmp = result;
 		result = result * 10 + sign * (str[i++] - '0');
-		if (tmp != (long)0 && (tmp ^ result) < (long)0)
-			return ((result < (long)0) ?
-					(long)((~((unsigned long)0)) >> 1) :
-					(long)(~((~((unsigned long)0)) >> 1)));
+		if (tmp != (intmax_t)0 && (tmp ^ result) < (intmax_t)0)
+			return ((result < (intmax_t)0) ?
+					(intmax_t)((~((uintmax_t)0)) >> 1) :
+					(intmax_t)(~((~((uintmax_t)0)) >> 1)));
 	}
 	return (result);
 }
