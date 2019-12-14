@@ -1,0 +1,661 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 32.22      1.55     1.55                             _mcount_private
+ 24.12      2.71     1.16                             __fentry__
+  4.16      2.91     0.20                             ft_typemanager_get_same_typearray
+  3.53      3.08     0.17 65969205     0.00     0.00  ft_typemanager_get
+  2.70      3.21     0.13  7995285     0.00     0.00  ft_hmap_hash_addr
+  2.29      3.32     0.11 47977606     0.00     0.00  ft_typemanager_refill
+  2.08      3.42     0.10 29985900     0.00     0.00  ft_btree_get_bnode
+  1.87      3.51     0.09                             ft_btree_rebalance_deleted_to_leaf
+  1.66      3.59     0.08                             ft_tbtree_initialize_leaf
+  1.46      3.66     0.07 67975247     0.00     0.00  ft_array_get
+  1.46      3.73     0.07                             ft_sthmap_construct
+  1.46      3.80     0.07                             ft_tbtree_cut_leaf
+  1.35      3.87     0.07 17991632     0.00     0.00  ft_tbtree_add_ext_tbnode
+  1.25      3.92     0.06  5997188     0.00     0.00  ft_array_iteration
+  1.14      3.98     0.06 11994444     0.00     0.00  ft_tbtree_add
+  1.04      4.03     0.05        1    50.00    50.00  basic_malloc
+  1.04      4.08     0.05                             ft_memanager_set_cut
+  1.04      4.13     0.05                             ft_tbtree_construct_leaf
+  0.94      4.17     0.04 47977624     0.00     0.00  ft_typeused_recover
+  0.83      4.21     0.04 11994377     0.00     0.00  ft_tbtree_initialize
+  0.83      4.25     0.04  5997256     0.00     0.00  ft_thmap_add
+  0.83      4.29     0.04        1    40.00   221.95  basic_memanager
+  0.62      4.33     0.03 16093214     0.00     0.00  ft_btree_cmp_size
+  0.62      4.36     0.03 11994376     0.00     0.00  ft_typemanager_get_typeitem
+  0.52      4.38     0.03  5997256     0.00     0.00  ft_memanager_add_addr
+  0.42      4.40     0.02 54097840     0.00     0.00  ft_tbtree_construct_leaves
+  0.42      4.42     0.02 18117898     0.00     0.00  ft_btree_bnode_referent
+  0.42      4.44     0.02 17991632     0.00     0.00  ft_btree_rebalance_added
+  0.42      4.46     0.02 17991626     0.00     0.00  ft_btree_rebalance_deleted
+  0.42      4.48     0.02 17991626     0.00     0.00  ft_tbtree_remove_ext_tbnode
+  0.42      4.50     0.02  7995323     0.00     0.00  ft_btree_cmp_addr
+  0.42      4.52     0.02  7995285     0.00     0.00  ft_hmap_get_cell
+  0.42      4.54     0.02  5997188     0.00     0.00  ft_thmap_initialize
+  0.42      4.56     0.02  5997186     0.00     0.00  ft_btree_bnode_iteration
+  0.42      4.58     0.02  5997186     0.00     0.00  ft_hmap_is_empty
+  0.42      4.60     0.02  5997186     0.00     0.00  ft_tbtree_remove
+  0.42      4.62     0.02  5997186     0.00     0.00  ft_thmap_refill
+  0.42      4.64     0.02                             clock
+  0.42      4.66     0.02                             ft_memanager_get_as_is
+  0.42      4.68     0.02                             ft_memanager_refill_left
+  0.42      4.70     0.02                             ft_memanager_refill_right
+  0.42      4.72     0.02                             ft_tbtree_cut_branch
+  0.21      4.73     0.01 47977636     0.00     0.00  ft_tbtree_refill
+  0.21      4.74     0.01 27988752     0.00     0.00  ft_memanager_get
+  0.21      4.75     0.01  8074495     0.00     0.00  ft_bnode_sibling_spin
+  0.21      4.76     0.01  5997254     0.00     0.00  ft_memanager_get_as_is_refill
+  0.21      4.77     0.01  4000000     0.00     0.00  ft_btree_get_min_equal_or_greater_bnode
+  0.21      4.78     0.01  2000000     0.00     0.00  ft_memanager_refill
+  0.21      4.79     0.01                             ft_array_tbtree_initialize_root
+  0.21      4.80     0.01                             ft_sthmap_refill
+  0.10      4.80     0.01 11994380     0.00     0.00  ft_typeused_initialize
+  0.10      4.81     0.01      507     0.01     0.01  ft_memanager_extend_size
+  0.00      4.81     0.00 47977641     0.00     0.00  ft_bnode_has_two_leaves
+  0.00      4.81     0.00 17991626     0.00     0.00  ft_btree_fill_tcopy
+  0.00      4.81     0.00 13992032     0.00     0.00  ft_memanager_get_as_is_addr
+  0.00      4.81     0.00  5997186     0.00     0.00  ft_memanager_error
+  0.00      4.81     0.00  4000000     0.00     0.00  ft_memanager_construct_default
+  0.00      4.81     0.00   126272     0.00     0.00  ft_btree_rotate
+  0.00      4.81     0.00    61478     0.00     0.00  ft_btree_get_min_bnode
+  0.00      4.81     0.00     4928     0.00     0.00  ft_array_inject
+  0.00      4.81     0.00      521     0.00     0.00  ft_array_construct
+  0.00      4.81     0.00      521     0.00     0.00  ft_array_free
+  0.00      4.81     0.00      509     0.00     0.00  ft_memanager_initialize_memarray
+  0.00      4.81     0.00        9     0.00     0.00  ft_array_extend_size
+  0.00      4.81     0.00        9     0.00     0.00  ft_memmove
+  0.00      4.81     0.00        4     0.00     0.00  ft_typearray_construct
+  0.00      4.81     0.00        4     0.00     0.00  ft_typearray_free
+  0.00      4.81     0.00        4     0.00     0.00  ft_typemanager_construct
+  0.00      4.81     0.00        4     0.00     0.00  ft_typemanager_extend_size
+  0.00      4.81     0.00        4     0.00     0.00  ft_typemanager_free
+  0.00      4.81     0.00        2     0.00     0.00  ft_memanager_initialize
+  0.00      4.81     0.00        2     0.00     0.00  ft_memcpy
+  0.00      4.81     0.00        1     0.00   271.95  basic_test
+  0.00      4.81     0.00        1     0.00     0.00  ft_memanager_construct
+  0.00      4.81     0.00        1     0.00     0.00  ft_memanager_free
+  0.00      4.81     0.00        1     0.00     0.00  ft_memanager_validate_amounts
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.21% of 4.81 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     32.2    1.55    0.00                 _mcount_private [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     24.1    1.16    0.00                 __fentry__ [2]
+-----------------------------------------------
+                0.00    0.00       1/5997256     ft_memanager_initialize_first_memarray [64]
+                0.01    0.16 2000000/5997256     ft_memanager_refill [14]
+                0.02    0.31 3997255/5997256     ft_memanager_set_cut [5]
+[3]     10.2    0.03    0.47 5997256         ft_memanager_add_addr [3]
+                0.04    0.35 5997256/5997256     ft_thmap_add [4]
+                0.02    0.01 5997188/17991632     ft_tbtree_add_ext_tbnode [21]
+                0.02    0.01 5997256/29985900     ft_btree_get_bnode [16]
+                0.00    0.01 5997188/27988752     ft_memanager_get [35]
+-----------------------------------------------
+                0.04    0.35 5997256/5997256     ft_memanager_add_addr [3]
+[4]      8.1    0.04    0.35 5997256         ft_thmap_add [4]
+                0.06    0.13 11994444/11994444     ft_tbtree_add [13]
+                0.02    0.10 5997256/7995285     ft_hmap_get_cell [15]
+                0.02    0.03 5997188/11994377     ft_tbtree_initialize [22]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      7.8    0.05    0.33                 ft_memanager_set_cut [5]
+                0.02    0.31 3997255/5997256     ft_memanager_add_addr [3]
+-----------------------------------------------
+                0.02    0.01 5997188/65969205     ft_sthmap_construct [9]
+                0.03    0.02 11994376/65969205     ft_typemanager_get_typeitem [28]
+                0.03    0.02 11994377/65969205     ft_tbtree_initialize [22]
+                0.09    0.07 35983264/65969205     ft_tbtree_construct_leaf [11]
+[6]      6.2    0.17    0.13 65969205         ft_typemanager_get [6]
+                0.08    0.01 35983234/47977606     ft_typemanager_refill [18]
+                0.04    0.00 35983234/67975247     ft_array_get [32]
+-----------------------------------------------
+                0.00    0.27       1/1           main [8]
+[7]      5.7    0.00    0.27       1         basic_test [7]
+                0.04    0.18       1/1           basic_memanager [10]
+                0.05    0.00       1/1           basic_malloc [38]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      5.7    0.00    0.27                 main [8]
+                0.00    0.27       1/1           basic_test [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      5.5    0.07    0.19                 ft_sthmap_construct [9]
+                0.03    0.05 11994376/11994376     ft_typemanager_get_typeitem [28]
+                0.02    0.05 5997188/5997188     ft_thmap_initialize [33]
+                0.02    0.01 5997188/65969205     ft_typemanager_get [6]
+                0.00    0.01 5997188/27988752     ft_memanager_get [35]
+-----------------------------------------------
+                0.04    0.18       1/1           basic_test [7]
+[10]     4.6    0.04    0.18       1         basic_memanager [10]
+                0.01    0.16 2000000/2000000     ft_memanager_refill [14]
+                0.00    0.01 4000000/27988752     ft_memanager_get [35]
+                0.00    0.00       1/1           ft_memanager_free [63]
+                0.00    0.00       1/1           ft_memanager_construct [66]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     4.4    0.05    0.16                 ft_tbtree_construct_leaf [11]
+                0.09    0.07 35983264/65969205     ft_typemanager_get [6]
+                0.00    0.00 35983264/47977641     ft_bnode_has_two_leaves [70]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     4.2    0.20    0.00                 ft_typemanager_get_same_typearray [12]
+-----------------------------------------------
+                0.06    0.13 11994444/11994444     ft_thmap_add [4]
+[13]     3.8    0.06    0.13 11994444         ft_tbtree_add [13]
+                0.04    0.03 11994444/17991632     ft_tbtree_add_ext_tbnode [21]
+                0.04    0.02 11994444/29985900     ft_btree_get_bnode [16]
+-----------------------------------------------
+                0.01    0.16 2000000/2000000     basic_memanager [10]
+[14]     3.6    0.01    0.16 2000000         ft_memanager_refill [14]
+                0.01    0.16 2000000/5997256     ft_memanager_add_addr [3]
+                0.00    0.00 4000000/4000000     ft_memanager_construct_default [73]
+-----------------------------------------------
+                0.00    0.03 1998029/7995285     ft_memanager_get_as_is_addr [26]
+                0.02    0.10 5997256/7995285     ft_thmap_add [4]
+[15]     3.3    0.02    0.14 7995285         ft_hmap_get_cell [15]
+                0.13    0.00 7995285/7995285     ft_hmap_hash_addr [17]
+                0.01    0.00 7995285/67975247     ft_array_get [32]
+-----------------------------------------------
+                0.01    0.00 1998029/29985900     ft_memanager_get_as_is_addr [26]
+                0.01    0.00 1999492/29985900     ft_memanager_refill_left [41]
+                0.01    0.00 1999493/29985900     ft_memanager_refill_right [45]
+                0.02    0.01 5997186/29985900     ft_tbtree_remove [34]
+                0.02    0.01 5997256/29985900     ft_memanager_add_addr [3]
+                0.04    0.02 11994444/29985900     ft_tbtree_add [13]
+[16]     2.9    0.10    0.04 29985900         ft_btree_get_bnode [16]
+                0.02    0.00 7995323/7995323     ft_btree_cmp_addr [53]
+                0.02    0.00 10077367/16093214     ft_btree_cmp_size [44]
+-----------------------------------------------
+                0.13    0.00 7995285/7995285     ft_hmap_get_cell [15]
+[17]     2.7    0.13    0.00 7995285         ft_hmap_hash_addr [17]
+-----------------------------------------------
+                0.03    0.00 11994372/47977606     ft_tbtree_refill [42]
+                0.08    0.01 35983234/47977606     ft_typemanager_get [6]
+[18]     2.5    0.11    0.01 47977606         ft_typemanager_refill [18]
+                0.01    0.00 11994372/67975247     ft_array_get [32]
+-----------------------------------------------
+                0.00    0.04 1997761/5997254     ft_memanager_get_as_is_addr [26]
+                0.01    0.07 3999493/5997254     ft_memanager_get_as_is [20]
+[19]     2.5    0.01    0.11 5997254         ft_memanager_get_as_is_refill [19]
+                0.02    0.05 5997186/5997186     ft_tbtree_remove [34]
+                0.02    0.00 5997186/5997186     ft_hmap_is_empty [51]
+                0.01    0.01 5997186/17991626     ft_tbtree_remove_ext_tbnode [43]
+                0.01    0.00 5997254/47977624     ft_typeused_recover [40]
+                0.00    0.00 5997186/47977636     ft_tbtree_refill [42]
+                0.00    0.00 5997186/5997186     ft_memanager_error [72]
+-----------------------------------------------
+                                                 <spontaneous>
+[20]     2.2    0.02    0.09                 ft_memanager_get_as_is [20]
+                0.01    0.07 3999493/5997254     ft_memanager_get_as_is_refill [19]
+                0.00    0.00 3999493/17991626     ft_tbtree_remove_ext_tbnode [43]
+-----------------------------------------------
+                0.02    0.01 5997188/17991632     ft_memanager_add_addr [3]
+                0.04    0.03 11994444/17991632     ft_tbtree_add [13]
+[21]     2.2    0.07    0.04 17991632         ft_tbtree_add_ext_tbnode [21]
+                0.02    0.01 17991632/17991632     ft_btree_rebalance_added [46]
+                0.01    0.01 17991632/54097840     ft_tbtree_construct_leaves [37]
+-----------------------------------------------
+                0.00    0.00       1/11994377     ft_memanager_initialize [65]
+                0.02    0.03 5997188/11994377     ft_thmap_add [4]
+                0.02    0.03 5997188/11994377     ft_thmap_initialize [33]
+[22]     2.1    0.04    0.06 11994377         ft_tbtree_initialize [22]
+                0.03    0.02 11994377/65969205     ft_typemanager_get [6]
+                0.00    0.00 11994377/11994380     ft_typeused_initialize [58]
+                0.00    0.00 11994377/47977641     ft_bnode_has_two_leaves [70]
+-----------------------------------------------
+                0.06    0.04 5997188/5997188     ft_array_tbtree_initialize [24]
+[23]     2.0    0.06    0.04 5997188         ft_array_iteration [23]
+                0.00    0.02 11994376/27988752     ft_memanager_get [35]
+                0.01    0.00 11994376/67975247     ft_array_get [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     2.0    0.00    0.10                 ft_array_tbtree_initialize [24]
+                0.06    0.04 5997188/5997188     ft_array_iteration [23]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     2.0    0.09    0.00                 ft_btree_rebalance_deleted_to_leaf [25]
+                0.00    0.00 4012927/8074495     ft_bnode_sibling_spin [54]
+-----------------------------------------------
+                0.00    0.00     268/13992032     ft_memanager_refill_right [45]
+                0.00    0.00     507/13992032     ft_memanager_get_extended [56]
+                0.00    0.01 1997761/13992032     ft_memanager_refill_left [41]
+                0.00    0.03 4000000/13992032     ft_memanager_get [35]
+                0.00    0.05 7993496/13992032     ft_memanager_get_cut [36]
+[26]     1.9    0.00    0.09 13992032         ft_memanager_get_as_is_addr [26]
+                0.00    0.03 1998029/7995285     ft_hmap_get_cell [15]
+                0.00    0.04 1997761/5997254     ft_memanager_get_as_is_refill [19]
+                0.01    0.00 1998029/29985900     ft_btree_get_bnode [16]
+                0.00    0.00 1997761/17991626     ft_tbtree_remove_ext_tbnode [43]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     1.8    0.07    0.02                 ft_tbtree_cut_leaf [27]
+                0.02    0.00 17991626/47977624     ft_typeused_recover [40]
+-----------------------------------------------
+                0.03    0.05 11994376/11994376     ft_sthmap_construct [9]
+[28]     1.8    0.03    0.05 11994376         ft_typemanager_get_typeitem [28]
+                0.03    0.02 11994376/65969205     ft_typemanager_get [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     1.7    0.08    0.00                 ft_tbtree_initialize_leaf [29]
+-----------------------------------------------
+                                                 <spontaneous>
+[30]     1.6    0.02    0.06                 ft_tbtree_cut_branch [30]
+                0.02    0.00 17991626/17991626     ft_btree_rebalance_deleted [49]
+                0.02    0.00 17991626/18117898     ft_btree_bnode_referent [48]
+                0.01    0.01 18053104/54097840     ft_tbtree_construct_leaves [37]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     1.5    0.01    0.06                 ft_sthmap_refill [31]
+                0.02    0.03 5997186/5997186     ft_thmap_refill [39]
+                0.02    0.00 17991558/47977624     ft_typeused_recover [40]
+-----------------------------------------------
+                0.00    0.00       1/67975247     ft_memanager_initialize_first_memarray [64]
+                0.00    0.00       4/67975247     ft_typemanager_free [69]
+                0.00    0.00     507/67975247     ft_memanager_get_extended [56]
+                0.00    0.00     508/67975247     ft_memanager_free [63]
+                0.00    0.00    2032/67975247     ft_memanager_initialize_memarray [62]
+                0.00    0.00    4928/67975247     ft_array_inject [60]
+                0.01    0.00 7995285/67975247     ft_hmap_get_cell [15]
+                0.01    0.00 11994372/67975247     ft_typemanager_refill [18]
+                0.01    0.00 11994376/67975247     ft_array_iteration [23]
+                0.04    0.00 35983234/67975247     ft_typemanager_get [6]
+[32]     1.5    0.07    0.00 67975247         ft_array_get [32]
+-----------------------------------------------
+                0.02    0.05 5997188/5997188     ft_sthmap_construct [9]
+[33]     1.4    0.02    0.05 5997188         ft_thmap_initialize [33]
+                0.02    0.03 5997188/11994377     ft_tbtree_initialize [22]
+-----------------------------------------------
+                0.02    0.05 5997186/5997186     ft_memanager_get_as_is_refill [19]
+[34]     1.4    0.02    0.05 5997186         ft_tbtree_remove [34]
+                0.02    0.01 5997186/29985900     ft_btree_get_bnode [16]
+                0.01    0.01 5997186/17991626     ft_tbtree_remove_ext_tbnode [43]
+                0.01    0.00 5997186/47977624     ft_typeused_recover [40]
+-----------------------------------------------
+                0.00    0.01 4000000/27988752     basic_memanager [10]
+                0.00    0.01 5997188/27988752     ft_sthmap_construct [9]
+                0.00    0.01 5997188/27988752     ft_memanager_add_addr [3]
+                0.00    0.02 11994376/27988752     ft_array_iteration [23]
+[35]     1.2    0.01    0.05 27988752         ft_memanager_get [35]
+                0.00    0.03 4000000/13992032     ft_memanager_get_as_is_addr [26]
+                0.01    0.01 4000000/4000000     ft_btree_get_min_equal_or_greater_bnode [47]
+-----------------------------------------------
+                                                 <spontaneous>
+[36]     1.1    0.00    0.05                 ft_memanager_get_cut [36]
+                0.00    0.05 7993496/13992032     ft_memanager_get_as_is_addr [26]
+-----------------------------------------------
+                0.01    0.01 17991632/54097840     ft_tbtree_add_ext_tbnode [21]
+                0.01    0.01 18053104/54097840     ft_tbtree_cut_branch [30]
+                0.01    0.01 18053104/54097840     ft_tbtree_remove_ext_tbnode [43]
+[37]     1.0    0.02    0.03 54097840         ft_tbtree_construct_leaves [37]
+                0.01    0.02 35983264/47977636     ft_tbtree_refill [42]
+-----------------------------------------------
+                0.05    0.00       1/1           basic_test [7]
+[38]     1.0    0.05    0.00       1         basic_malloc [38]
+-----------------------------------------------
+                0.02    0.03 5997186/5997186     ft_sthmap_refill [31]
+[39]     0.9    0.02    0.03 5997186         ft_thmap_refill [39]
+                0.02    0.00 5997186/5997186     ft_btree_bnode_iteration [50]
+                0.00    0.00 5997186/47977636     ft_tbtree_refill [42]
+-----------------------------------------------
+                0.01    0.00 5997186/47977624     ft_tbtree_remove [34]
+                0.01    0.00 5997254/47977624     ft_memanager_get_as_is_refill [19]
+                0.02    0.00 17991558/47977624     ft_sthmap_refill [31]
+                0.02    0.00 17991626/47977624     ft_tbtree_cut_leaf [27]
+[40]     0.9    0.04    0.00 47977624         ft_typeused_recover [40]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.9    0.02    0.02                 ft_memanager_refill_left [41]
+                0.00    0.01 1997761/13992032     ft_memanager_get_as_is_addr [26]
+                0.01    0.00 1999492/29985900     ft_btree_get_bnode [16]
+-----------------------------------------------
+                0.00    0.00 5997186/47977636     ft_memanager_get_as_is_refill [19]
+                0.00    0.00 5997186/47977636     ft_thmap_refill [39]
+                0.01    0.02 35983264/47977636     ft_tbtree_construct_leaves [37]
+[42]     0.8    0.01    0.03 47977636         ft_tbtree_refill [42]
+                0.03    0.00 11994372/47977606     ft_typemanager_refill [18]
+-----------------------------------------------
+                0.00    0.00 1997761/17991626     ft_memanager_get_as_is_addr [26]
+                0.00    0.00 3999493/17991626     ft_memanager_get_as_is [20]
+                0.01    0.01 5997186/17991626     ft_memanager_get_as_is_refill [19]
+                0.01    0.01 5997186/17991626     ft_tbtree_remove [34]
+[43]     0.8    0.02    0.02 17991626         ft_tbtree_remove_ext_tbnode [43]
+                0.01    0.01 18053104/54097840     ft_tbtree_construct_leaves [37]
+                0.00    0.00   61478/61478       ft_btree_get_min_bnode [74]
+-----------------------------------------------
+                0.01    0.00 6015847/16093214     ft_btree_get_min_equal_or_greater_bnode [47]
+                0.02    0.00 10077367/16093214     ft_btree_get_bnode [16]
+[44]     0.6    0.03    0.00 16093214         ft_btree_cmp_size [44]
+-----------------------------------------------
+                                                 <spontaneous>
+[45]     0.6    0.02    0.01                 ft_memanager_refill_right [45]
+                0.01    0.00 1999493/29985900     ft_btree_get_bnode [16]
+                0.00    0.00     268/13992032     ft_memanager_get_as_is_addr [26]
+-----------------------------------------------
+                0.02    0.01 17991632/17991632     ft_tbtree_add_ext_tbnode [21]
+[46]     0.5    0.02    0.01 17991632         ft_btree_rebalance_added [46]
+                0.01    0.00 4061568/8074495     ft_bnode_sibling_spin [54]
+                0.00    0.00  126272/126272      ft_btree_rotate [59]
+-----------------------------------------------
+                0.01    0.01 4000000/4000000     ft_memanager_get [35]
+[47]     0.4    0.01    0.01 4000000         ft_btree_get_min_equal_or_greater_bnode [47]
+                0.01    0.00 6015847/16093214     ft_btree_cmp_size [44]
+-----------------------------------------------
+                0.00    0.00  126272/18117898     ft_btree_rotate [59]
+                0.02    0.00 17991626/18117898     ft_tbtree_cut_branch [30]
+[48]     0.4    0.02    0.00 18117898         ft_btree_bnode_referent [48]
+-----------------------------------------------
+                0.02    0.00 17991626/17991626     ft_tbtree_cut_branch [30]
+[49]     0.4    0.02    0.00 17991626         ft_btree_rebalance_deleted [49]
+                0.00    0.00 17991626/17991626     ft_btree_fill_tcopy [71]
+-----------------------------------------------
+                0.02    0.00 5997186/5997186     ft_thmap_refill [39]
+[50]     0.4    0.02    0.00 5997186         ft_btree_bnode_iteration [50]
+-----------------------------------------------
+                0.02    0.00 5997186/5997186     ft_memanager_get_as_is_refill [19]
+[51]     0.4    0.02    0.00 5997186         ft_hmap_is_empty [51]
+-----------------------------------------------
+                                                 <spontaneous>
+[52]     0.4    0.02    0.00                 clock [52]
+-----------------------------------------------
+                0.02    0.00 7995323/7995323     ft_btree_get_bnode [16]
+[53]     0.4    0.02    0.00 7995323         ft_btree_cmp_addr [53]
+-----------------------------------------------
+                0.00    0.00 4012927/8074495     ft_btree_rebalance_deleted_to_leaf [25]
+                0.01    0.00 4061568/8074495     ft_btree_rebalance_added [46]
+[54]     0.2    0.01    0.00 8074495         ft_bnode_sibling_spin [54]
+-----------------------------------------------
+                                                 <spontaneous>
+[55]     0.2    0.01    0.00                 ft_array_tbtree_initialize_root [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[56]     0.1    0.00    0.01                 ft_memanager_get_extended [56]
+                0.01    0.00     507/507         ft_memanager_extend_size [57]
+                0.00    0.00     507/13992032     ft_memanager_get_as_is_addr [26]
+                0.00    0.00     507/67975247     ft_array_get [32]
+-----------------------------------------------
+                0.01    0.00     507/507         ft_memanager_get_extended [56]
+[57]     0.1    0.01    0.00     507         ft_memanager_extend_size [57]
+                0.00    0.00     507/509         ft_memanager_initialize_memarray [62]
+                0.00    0.00     507/4928        ft_array_inject [60]
+                0.00    0.00     507/521         ft_array_construct [75]
+-----------------------------------------------
+                0.00    0.00       3/11994380     ft_memanager_initialize [65]
+                0.00    0.00 11994377/11994380     ft_tbtree_initialize [22]
+[58]     0.1    0.01    0.00 11994380         ft_typeused_initialize [58]
+-----------------------------------------------
+                0.00    0.00  126272/126272      ft_btree_rebalance_added [46]
+[59]     0.0    0.00    0.00  126272         ft_btree_rotate [59]
+                0.00    0.00  126272/18117898     ft_btree_bnode_referent [48]
+-----------------------------------------------
+                0.00    0.00       1/4928        ft_memanager_internal_construct [67]
+                0.00    0.00       4/4928        ft_typemanager_construct [68]
+                0.00    0.00     507/4928        ft_memanager_extend_size [57]
+                0.00    0.00    4416/4928        ft_typearray_configure_items [61]
+[60]     0.0    0.00    0.00    4928         ft_array_inject [60]
+                0.00    0.00    4928/67975247     ft_array_get [32]
+                0.00    0.00       9/9           ft_array_extend_size [77]
+-----------------------------------------------
+                                                 <spontaneous>
+[61]     0.0    0.00    0.00                 ft_typearray_configure_items [61]
+                0.00    0.00    4416/4928        ft_array_inject [60]
+-----------------------------------------------
+                0.00    0.00       1/509         ft_memanager_initialize_first_memarray [64]
+                0.00    0.00       1/509         ft_memanager_initialize [65]
+                0.00    0.00     507/509         ft_memanager_extend_size [57]
+[62]     0.0    0.00    0.00     509         ft_memanager_initialize_memarray [62]
+                0.00    0.00    2032/67975247     ft_array_get [32]
+-----------------------------------------------
+                0.00    0.00       1/1           basic_memanager [10]
+[63]     0.0    0.00    0.00       1         ft_memanager_free [63]
+                0.00    0.00     508/67975247     ft_array_get [32]
+                0.00    0.00       4/4           ft_typemanager_free [69]
+                0.00    0.00     509/521         ft_array_free [76]
+-----------------------------------------------
+                                                 <spontaneous>
+[64]     0.0    0.00    0.00                 ft_memanager_initialize_first_memarray [64]
+                0.00    0.00       1/5997256     ft_memanager_add_addr [3]
+                0.00    0.00       1/509         ft_memanager_initialize_memarray [62]
+                0.00    0.00       1/67975247     ft_array_get [32]
+-----------------------------------------------
+                0.00    0.00       2/2           ft_memanager_construct [66]
+[65]     0.0    0.00    0.00       2         ft_memanager_initialize [65]
+                0.00    0.00       1/11994377     ft_tbtree_initialize [22]
+                0.00    0.00       1/509         ft_memanager_initialize_memarray [62]
+                0.00    0.00       3/11994380     ft_typeused_initialize [58]
+-----------------------------------------------
+                0.00    0.00       1/1           basic_memanager [10]
+[66]     0.0    0.00    0.00       1         ft_memanager_construct [66]
+                0.00    0.00       2/2           ft_memanager_initialize [65]
+                0.00    0.00       1/1           ft_memanager_validate_amounts [83]
+-----------------------------------------------
+                                                 <spontaneous>
+[67]     0.0    0.00    0.00                 ft_memanager_internal_construct [67]
+                0.00    0.00       4/4           ft_typemanager_construct [68]
+                0.00    0.00       1/4928        ft_array_inject [60]
+                0.00    0.00       2/521         ft_array_construct [75]
+-----------------------------------------------
+                0.00    0.00       4/4           ft_memanager_internal_construct [67]
+[68]     0.0    0.00    0.00       4         ft_typemanager_construct [68]
+                0.00    0.00       4/4928        ft_array_inject [60]
+                0.00    0.00       4/521         ft_array_construct [75]
+                0.00    0.00       4/4           ft_typearray_construct [79]
+-----------------------------------------------
+                0.00    0.00       4/4           ft_memanager_free [63]
+[69]     0.0    0.00    0.00       4         ft_typemanager_free [69]
+                0.00    0.00       4/67975247     ft_array_get [32]
+                0.00    0.00       4/4           ft_typearray_free [80]
+                0.00    0.00       4/521         ft_array_free [76]
+-----------------------------------------------
+                0.00    0.00 11994377/47977641     ft_tbtree_initialize [22]
+                0.00    0.00 35983264/47977641     ft_tbtree_construct_leaf [11]
+[70]     0.0    0.00    0.00 47977641         ft_bnode_has_two_leaves [70]
+-----------------------------------------------
+                0.00    0.00 17991626/17991626     ft_btree_rebalance_deleted [49]
+[71]     0.0    0.00    0.00 17991626         ft_btree_fill_tcopy [71]
+-----------------------------------------------
+                0.00    0.00 5997186/5997186     ft_memanager_get_as_is_refill [19]
+[72]     0.0    0.00    0.00 5997186         ft_memanager_error [72]
+-----------------------------------------------
+                0.00    0.00 4000000/4000000     ft_memanager_refill [14]
+[73]     0.0    0.00    0.00 4000000         ft_memanager_construct_default [73]
+-----------------------------------------------
+                0.00    0.00   61478/61478       ft_tbtree_remove_ext_tbnode [43]
+[74]     0.0    0.00    0.00   61478         ft_btree_get_min_bnode [74]
+-----------------------------------------------
+                0.00    0.00       2/521         ft_memanager_internal_construct [67]
+                0.00    0.00       4/521         ft_typemanager_construct [68]
+                0.00    0.00       8/521         ft_typearray_construct [79]
+                0.00    0.00     507/521         ft_memanager_extend_size [57]
+[75]     0.0    0.00    0.00     521         ft_array_construct [75]
+-----------------------------------------------
+                0.00    0.00       4/521         ft_typemanager_free [69]
+                0.00    0.00       8/521         ft_typearray_free [80]
+                0.00    0.00     509/521         ft_memanager_free [63]
+[76]     0.0    0.00    0.00     521         ft_array_free [76]
+-----------------------------------------------
+                0.00    0.00       9/9           ft_array_inject [60]
+[77]     0.0    0.00    0.00       9         ft_array_extend_size [77]
+                0.00    0.00       9/9           ft_memmove [78]
+-----------------------------------------------
+                0.00    0.00       9/9           ft_array_extend_size [77]
+[78]     0.0    0.00    0.00       9         ft_memmove [78]
+                0.00    0.00       2/2           ft_memcpy [82]
+-----------------------------------------------
+                0.00    0.00       4/4           ft_typemanager_construct [68]
+[79]     0.0    0.00    0.00       4         ft_typearray_construct [79]
+                0.00    0.00       8/521         ft_array_construct [75]
+                0.00    0.00       4/4           ft_typemanager_extend_size [81]
+-----------------------------------------------
+                0.00    0.00       4/4           ft_typemanager_free [69]
+[80]     0.0    0.00    0.00       4         ft_typearray_free [80]
+                0.00    0.00       8/521         ft_array_free [76]
+-----------------------------------------------
+                0.00    0.00       4/4           ft_typearray_construct [79]
+[81]     0.0    0.00    0.00       4         ft_typemanager_extend_size [81]
+-----------------------------------------------
+                0.00    0.00       2/2           ft_memmove [78]
+[82]     0.0    0.00    0.00       2         ft_memcpy [82]
+-----------------------------------------------
+                0.00    0.00       1/1           ft_memanager_construct [66]
+[83]     0.0    0.00    0.00       1         ft_memanager_validate_amounts [83]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [2] __fentry__             [59] ft_btree_rotate        [21] ft_tbtree_add_ext_tbnode
+   [1] _mcount_private        [15] ft_hmap_get_cell       [11] ft_tbtree_construct_leaf (tbtree.c)
+  [38] basic_malloc           [17] ft_hmap_hash_addr      [37] ft_tbtree_construct_leaves
+  [10] basic_memanager        [51] ft_hmap_is_empty       [30] ft_tbtree_cut_branch (shrink.c)
+   [7] basic_test              [3] ft_memanager_add_addr  [27] ft_tbtree_cut_leaf (shrink.c)
+  [52] clock                  [66] ft_memanager_construct [22] ft_tbtree_initialize
+  [75] ft_array_construct     [73] ft_memanager_construct_default [29] ft_tbtree_initialize_leaf (tbtree.c)
+  [77] ft_array_extend_size   [72] ft_memanager_error     [42] ft_tbtree_refill
+  [76] ft_array_free          [57] ft_memanager_extend_size [34] ft_tbtree_remove
+  [32] ft_array_get           [63] ft_memanager_free      [43] ft_tbtree_remove_ext_tbnode
+  [60] ft_array_inject        [35] ft_memanager_get        [4] ft_thmap_add
+  [23] ft_array_iteration     [20] ft_memanager_get_as_is (get.c) [33] ft_thmap_initialize
+  [55] ft_array_tbtree_initialize_root (growth.c) [26] ft_memanager_get_as_is_addr [39] ft_thmap_refill
+  [70] ft_bnode_has_two_leaves [19] ft_memanager_get_as_is_refill [79] ft_typearray_construct
+  [54] ft_bnode_sibling_spin  [65] ft_memanager_initialize [80] ft_typearray_free
+  [50] ft_btree_bnode_iteration [62] ft_memanager_initialize_memarray [68] ft_typemanager_construct
+  [48] ft_btree_bnode_referent [14] ft_memanager_refill   [81] ft_typemanager_extend_size
+  [53] ft_btree_cmp_addr      [41] ft_memanager_refill_left (refill.c) [69] ft_typemanager_free
+  [44] ft_btree_cmp_size      [45] ft_memanager_refill_right (refill.c) [6] ft_typemanager_get
+  [71] ft_btree_fill_tcopy     [5] ft_memanager_set_cut (get.c) [12] ft_typemanager_get_same_typearray (type_requests.c)
+  [16] ft_btree_get_bnode     [83] ft_memanager_validate_amounts [28] ft_typemanager_get_typeitem
+  [74] ft_btree_get_min_bnode [82] ft_memcpy              [18] ft_typemanager_refill
+  [47] ft_btree_get_min_equal_or_greater_bnode [78] ft_memmove [58] ft_typeused_initialize
+  [46] ft_btree_rebalance_added [9] ft_sthmap_construct (growth.c) [40] ft_typeused_recover
+  [49] ft_btree_rebalance_deleted [31] ft_sthmap_refill (get_as_is.c)
+  [25] ft_btree_rebalance_deleted_to_leaf (rebalance_deleted.c) [13] ft_tbtree_add

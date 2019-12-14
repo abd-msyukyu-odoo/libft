@@ -49,7 +49,8 @@ void			basic_memanager()
 	test = malloc(sizeof(char*) * (CMP_MMNG_INSTANCES));
 	printf("memanager :\n");
 	begin = clock();
-	mng = ft_memanager_construct_default();
+	//mng = ft_memanager_construct_default();
+	mng = ft_memanager_construct(32, 2048, 262144, 1);
 	end = clock();
 	sum = (double)(end - begin);
 	printf("time init : %f\n", sum / CLOCKS_PER_SEC);
