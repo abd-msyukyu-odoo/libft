@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mhashmap.c                                         :+:      :+:    :+:   */
+/*   mhashmap2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+static int			ft_array_mbtree_initialize_root(void *receiver, void *sent)
+{
+	((t_mbtree*)sent)->btree.root = NULL;
+	return (!receiver);
+}
+
 int					ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng,
 	size_t size, size_t (*hash)(void *s, size_t size))
 {
@@ -21,8 +27,9 @@ int					ft_mhmap_initialize(t_mhmap *mhmap, t_memanager *mmng,
 		sizeof(t_mbtree));
 	if (!mhmap->hmap.array)
 		return (0);
-	ft_bzero(mhmap->hmap.array->items, size * sizeof(t_mbtree));
 	mhmap->hmap.array->n_items = size;
+	ft_array_iteration(NULL, mhmap->hmap.array,
+		ft_array_mbtree_initialize_root);
 	mhmap->mmng = mmng;
 	mhmap->hmap.hash = hash;
 	return (NULL != (mhmap->hmap.hash_btree =
@@ -43,30 +50,4 @@ t_mhmap				*ft_mhmap_construct(t_memanager *mmng, size_t size,
 		return (NULL);
 	}
 	return (mhmap);
-}
-
-static int			ft_mhmap_empty_mbtree(void *receiver, void *sent)
-{
-	if (!receiver)
-	{
-		ft_mbtree_empty((t_mbtree*)sent);
-		return (1);
-	}
-	return (0);
-}
-
-void				ft_mhmap_empty(t_mhmap *mhmap)
-{
-	if (!mhmap)
-		return ;
-	ft_btree_bnode_iteration(NULL, mhmap->hmap.hash_btree->root,
-		ft_mhmap_empty_mbtree);
-	ft_marray_free((t_marray*)mhmap->hmap.array);
-	ft_mbtree_free((t_mbtree*)mhmap->hmap.hash_btree);
-}
-
-void				ft_mhmap_free(t_mhmap *mhmap)
-{
-	ft_mhmap_empty(mhmap);
-	ft_memanager_refill(mhmap->mmng, mhmap);
 }

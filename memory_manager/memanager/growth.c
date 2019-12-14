@@ -12,12 +12,19 @@
 
 #include "libft.h"
 
-static void				ft_tarray_tbtree_initialize(t_array *array, size_t size)
+static int				ft_array_tbtree_initialize_root(void *receiver,
+	void *sent)
+{
+	((t_tbtree*)sent)->btree.root = NULL;
+	return (!receiver);
+}
+
+static void				ft_array_tbtree_initialize(t_array *array, size_t size)
 {
 	array->n_items = size;
 	array->size = size;
 	array->sizeof_item = sizeof(t_tbtree);
-	ft_bzero(array->items, size * array->sizeof_item);
+	ft_array_iteration(NULL, array, ft_array_tbtree_initialize_root);
 }
 
 static t_sthmap			*ft_sthmap_construct(t_memanager *mmng, size_t size)
@@ -37,7 +44,7 @@ static t_sthmap			*ft_sthmap_construct(t_memanager *mmng, size_t size)
 		!(array->items = ft_typemanager_get_typeitem(mmng->items_mng,
 		&mmng->items_used, &sthmap->items_typeitem)))
 		return (NULL);
-	ft_tarray_tbtree_initialize(array, mmng->overlap);
+	ft_array_tbtree_initialize(array, mmng->overlap);
 	ft_thmap_initialize(&sthmap->addr_thmap, mmng->tbnode_mng, array,
 		ft_hmap_hash_addr);
 	return (sthmap);

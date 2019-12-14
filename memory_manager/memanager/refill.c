@@ -87,9 +87,9 @@ int						ft_memanager_refill(t_memanager *mmng, void *addr)
 	left->next = right;
 	right->prev = left;
 	addr = (void*)((char*)left + sizeof(t_memjump));
-	i_memarray_p = *(size_t*)((char*)left - sizeof(size_t));
 	if (!left->prev && !right->next && mmng->memarrays->n_items > 1)
 	{
+		i_memarray_p = *(size_t*)((char*)left - sizeof(size_t));
 		ft_memanager_free_empty_memarray(mmng, i_memarray_p);
 		return (2);
 	}

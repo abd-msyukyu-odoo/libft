@@ -188,6 +188,7 @@ HMAP_F		= hashable \
 
 MHMAP_F		= growth \
 			  mhashmap \
+			  mhashmap2 \
 			  shrink
 
 THMAP_F		= growth \
@@ -235,6 +236,7 @@ WHITE_E		= \033[01;37m
 BOLD_E		= \033[1m
 UNDERLINE_E	= \033[4m
 
+#debug @gcc -g -o $(NAME) $(O_FILES)
 $(NAME):	$(O_FILES)
 			@ar -rcs $@ $^
 			@echo "$(GREEN_E)end compilation : $(NAME)$(END_E)"

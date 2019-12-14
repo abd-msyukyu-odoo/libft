@@ -19,7 +19,7 @@ int					ft_thmap_remove(t_thmap *thmap, void *item)
 	if (!thmap || !item)
 		return (-1);
 	tbtree = (t_tbtree*)ft_hmap_get_cell((t_hmap*)thmap, item);
-	if (!tbtree->tmng)
+	if (!tbtree->btree.root)
 		return (0);
 	if (ft_tbtree_remove(tbtree, item))
 	{
@@ -27,7 +27,7 @@ int					ft_thmap_remove(t_thmap *thmap, void *item)
 		{
 			ft_tbtree_remove((t_tbtree*)thmap->hmap.hash_btree, tbtree);
 			ft_tbtree_refill(tbtree);
-			tbtree->tmng = NULL;
+			tbtree->btree.root = NULL;
 		}
 		return (1);
 	}
