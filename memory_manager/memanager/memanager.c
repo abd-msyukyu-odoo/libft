@@ -30,6 +30,10 @@ static int				ft_memanager_internal_construct(t_memanager *mmng,
 		(*injector = ft_array_construct(mmng->chunk_size, sizeof(char))));
 }
 
+/*
+** overlap + 1 because the first element of each hashmap array will be used
+** as the global btree for the hashmap (see ft_thmap_initialize)
+*/
 t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
 	size_t chunk_size, size_t overlap)
 {
@@ -42,7 +46,7 @@ t_memanager				*ft_memanager_construct(size_t sizes, size_t addresses,
 	if (!out)
 		return (NULL);
 	out->chunk_size = chunk_size;
-	out->overlap = overlap;
+	out->overlap = overlap + 1;
 	if (!ft_memanager_internal_construct(out, sizes, addresses) ||
 		!ft_memanager_initialize(out))
 		return (ft_memanager_error(out));

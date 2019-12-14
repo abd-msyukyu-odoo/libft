@@ -15,8 +15,8 @@
 int						ft_memanager_validate_amounts(size_t sizes,
 	size_t addresses, size_t chunk_size, size_t overlap)
 {
-	if (!sizes || addresses < sizes || chunk_size < addresses ||
-		overlap < addresses / sizes || overlap > addresses)
+	if (!sizes || addresses < sizes || chunk_size < addresses || overlap < 1 ||
+		overlap > addresses)
 		return (-1);
 	if (addresses / 3 < sizes)
 		return (-2);
