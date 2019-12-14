@@ -21,11 +21,6 @@ int				display_bnode_addr(void *receiver, void *sent)
 	return (1);
 }
 
-int				display_hash_btree(void *receiver, void *sent)
-{
-	return (ft_btree_bnode_iteration(receiver, ((t_btree*)sent)->root, display_bnode_addr));
-}
-
 int				display_bnode_sthmap(void *receiver, void *sent)
 {
 	t_sthmap	*sthmap;
@@ -36,7 +31,7 @@ int				display_bnode_sthmap(void *receiver, void *sent)
 	{
 		printf("---------sthmap---------\n");
 		printf("%zu\n", sthmap->size.key);
-		ft_hmap_bnode_iteration(padding, (t_hmap*)&sthmap->addr_thmap, display_hash_btree);
+		ft_hmap_bnode_iteration(padding, (t_hmap*)&sthmap->addr_thmap, display_bnode_addr);
 	}
 	return (1);
 }

@@ -59,8 +59,7 @@ void					*ft_memanager_get_as_is_addr(t_memanager *mmng,
 	tbnode_addr = (t_tbnode*)ft_btree_get_bnode((t_btree*)hash_tbt, addr);
 	if (!tbnode_addr->bnode.rank)
 		return (NULL);
-	tbnode_addr = ft_tbtree_remove_ext_tbnode(hash_tbt,
-		(t_tbnode*)hash_tbt->btree.root);
+	tbnode_addr = ft_tbtree_remove_ext_tbnode(hash_tbt, tbnode_addr);
 	ft_memanager_get_as_is_refill(mmng, tbnode_sthmap, hash_tbt,
 		tbnode_addr);
 	return (addr);

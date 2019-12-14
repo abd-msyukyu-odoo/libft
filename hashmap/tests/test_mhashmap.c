@@ -13,11 +13,6 @@ int				display_bnode_addr(void *receiver, void *sent)
 	return (1);
 }
 
-int				display_hash_btree(void *receiver, void *sent)
-{
-	return (ft_btree_bnode_iteration(receiver, ((t_btree*)sent)->root, display_bnode_addr));
-}
-
 int				display_bnode_sthmap(void *receiver, void *sent)
 {
 	t_sthmap	*sthmap;
@@ -28,7 +23,7 @@ int				display_bnode_sthmap(void *receiver, void *sent)
 	{
 		printf("---------sthmap---------\n");
 		printf("%zu\n", sthmap->size.key);
-		ft_hmap_bnode_iteration(padding, (t_hmap*)&sthmap->addr_thmap, display_hash_btree);
+		ft_hmap_bnode_iteration(padding, (t_hmap*)&sthmap->addr_thmap, display_bnode_addr);
 	}
 	return (1);
 }
@@ -181,21 +176,25 @@ void			test_mhmap(void)
 			saved = named;
 		named->key = &(in[i]);
 		ft_marray_add(marray, &named);
+		//display_memanager(mmng, 1);
 		printf("added : %s || status : %d\n\n", named->key,
 			ft_mhmap_add(m, named));
 		printf("------------------------------\n\n");
 	}
 	display_mhmap(m);
+	display_memanager(mmng, 1);
 
 	for (int i = 0; i < 26; i++)
 	{
 		named = *(t_named**)ft_array_get((t_array*)marray, i);
+		//display_memanager(mmng, 1);
 		printf("removing : %p || status : %d\n\n", named,
 			ft_mhmap_remove(m, named));
 		printf("------------------------------\n\n");
 	}
 
 	display_mhmap(m);
+	display_memanager(mmng, 1);
 
 	printf("contains %s ? %d \n", saved->key, ft_hmap_contains((t_hmap*)m, saved));
 
@@ -206,6 +205,7 @@ void			test_mhmap(void)
 			saved = named;
 		named->key = &(in[i]);
 		ft_marray_add(marray, &named);
+		//display_memanager(mmng, 1);
 		printf("added : %s || status : %d\n\n", named->key,
 			ft_mhmap_add(m, named));
 		printf("------------------------------\n\n");
@@ -222,5 +222,6 @@ void			test_mhmap(void)
 int				main(void)
 {
 	test_mhmap();
+	printf("test finished properly\n");
 	return (0);
 }
