@@ -26,7 +26,7 @@ void					ft_memanager_get_as_is_refill(t_memanager *mmng,
 	t_sthmap			*sthmap;
 
 	sthmap = (t_sthmap*)tbnode_sthmap->bnode.named;
-	if (!hash_tbt->btree.root->rank)
+	if (ft_btree_is_empty((t_btree*)hash_tbt))
 	{
 		ft_tbtree_remove((t_tbtree*)sthmap->addr_thmap.hmap.hash_btree,
 			hash_tbt);

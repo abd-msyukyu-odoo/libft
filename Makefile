@@ -162,7 +162,8 @@ BTREE_F		= comparable \
 			  rebalance_deleted \
 			  rebalance_added \
 			  search \
-			  utils
+			  utils \
+			  status
 
 TBTREE_F	= tbtree \
 			  shrink \

@@ -23,7 +23,7 @@ int					ft_thmap_remove(t_thmap *thmap, void *item)
 		return (0);
 	if (ft_tbtree_remove(tbtree, item))
 	{
-		if (!tbtree->btree.root->rank)
+		if (ft_btree_is_empty((t_btree*)tbtree))
 		{
 			ft_tbtree_remove((t_tbtree*)thmap->hmap.hash_btree, tbtree);
 			ft_tbtree_refill(tbtree);

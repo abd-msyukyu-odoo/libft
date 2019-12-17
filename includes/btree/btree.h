@@ -88,6 +88,8 @@ int						ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 ** @return: 0 : memory error
 ** @return: -1 : param error
 */
+int						ft_btree_is_empty(t_btree *btree);
+
 int						ft_btree_fill_array(t_btree *btree, t_array *array);
 
 int						ft_btree_cmp_ascii(void *s1, void *s2);
