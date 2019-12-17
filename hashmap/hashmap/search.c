@@ -32,7 +32,7 @@ int					ft_hmap_is_empty(t_hmap *hmap)
 {
 	if (!hmap)
 		return (-1);
-	return (!hmap->hash_btree->root->rank);
+	return (ft_btree_is_empty(hmap->hash_btree));
 }
 
 void				*ft_hmap_get(t_hmap *hmap, void *key,
