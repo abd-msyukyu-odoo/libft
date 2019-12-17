@@ -146,7 +146,8 @@ ARRAY_F		= array \
 			  iterator
 
 MARRAY_F	= marray \
-			  growth
+			  growth \
+			  iterator
 
 TYPEMNG_F	= typemanager \
 			  typearray \
@@ -156,9 +157,6 @@ TYPEMNG_F	= typemanager \
 BTREE_F		= comparable \
 			  replace \
 			  iterator \
-			  iterator_array \
-			  iterator_mbtree \
-			  iterator_tbtree \
 			  rebalance_deleted \
 			  rebalance_added \
 			  search \
@@ -167,12 +165,14 @@ BTREE_F		= comparable \
 
 TBTREE_F	= tbtree \
 			  shrink \
-			  growth
+			  growth \
+			  iterator
 
 MBTREE_F	= mbtree \
 			  shrink \
 			  growth \
-			  initialize
+			  initialize \
+			  iterator
 
 MEMNG_F		= free \
 			  get_as_is \
@@ -190,7 +190,8 @@ HMAP_F		= hashable \
 MHMAP_F		= growth \
 			  mhashmap \
 			  mhashmap2 \
-			  shrink
+			  shrink \
+			  iterator
 
 THMAP_F		= growth \
 			  thashmap \

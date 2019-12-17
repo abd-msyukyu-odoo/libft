@@ -130,4 +130,6 @@ int						ft_array_iteration(void *receiver, t_array *source,
 
 int						ft_array_fill_copy(t_array *old, t_array *new_array);
 
+int						ft_array_add_typecast(void *receiver, void *sent);
+
 #endif

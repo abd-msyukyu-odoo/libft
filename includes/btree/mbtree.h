@@ -35,6 +35,8 @@ int						ft_mbtree_add(t_mbtree *mbtree, void *item);
 
 void					*ft_mbtree_remove(t_mbtree *mbtree, void *key);
 
+int						ft_mbtree_add_typecast(void *receiver, void *sent);
+
 int						ft_btree_fill_mcopy(t_btree *old, t_mbtree *new_mbt);
 
 /*

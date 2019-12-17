@@ -26,3 +26,9 @@ int					ft_btree_bnode_iteration(void *receiver, t_bnode *sent,
 		out = ft_btree_bnode_iteration(receiver, sent->right, f);
 	return (out);
 }
+
+int					ft_btree_fill_array(t_btree *btree, t_array *array)
+{
+	return (ft_btree_bnode_iteration(array, btree->root,
+		ft_array_add_typecast));
+}

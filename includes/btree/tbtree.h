@@ -97,6 +97,8 @@ void					*ft_tbtree_remove(t_tbtree *tbtree, void *key);
 */
 int						ft_btree_fill_tcopy(t_btree *old, t_tbtree *new_tbt);
 
+int						ft_tbtree_add_typecast(void *receiver, void *sent);
+
 /*
 ** internal functions
 */

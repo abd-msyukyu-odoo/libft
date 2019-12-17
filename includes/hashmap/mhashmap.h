@@ -37,4 +37,6 @@ int						ft_mhmap_add(t_mhmap *mhmap, void *item);
 
 int						ft_mhmap_remove(t_mhmap *mhmap, void *item);
 
+int						ft_hmap_fill_marray(t_hmap *hmap, t_marray *marray);
+
 #endif

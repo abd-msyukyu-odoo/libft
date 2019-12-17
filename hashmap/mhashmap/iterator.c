@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator_array.c                                   :+:      :+:    :+:   */
+/*   iterator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 19:00:31 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/11/20 19:00:33 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/11/20 21:42:58 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/11/20 21:42:59 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_array_add_typecast(void *receiver, void *sent)
+int					ft_hmap_fill_marray(t_hmap *hmap, t_marray *marray)
 {
-	return (ft_array_add((t_array*)receiver, sent));
-}
-
-int					ft_btree_fill_array(t_btree *btree, t_array *array)
-{
-	return (ft_btree_bnode_iteration(array, btree->root,
-		ft_array_add_typecast));
+	return (ft_hmap_bnode_iteration(marray, hmap, ft_marray_add_typecast));
 }
