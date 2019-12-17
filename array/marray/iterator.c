@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator_mbtree.c                                  :+:      :+:    :+:   */
+/*   iterator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabeloos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 19:00:44 by dabeloos          #+#    #+#             */
-/*   Updated: 2019/11/20 19:00:45 by dabeloos         ###   ########.fr       */
+/*   Created: 2019/09/27 14:51:16 by dabeloos          #+#    #+#             */
+/*   Updated: 2019/09/27 14:51:17 by dabeloos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_mbtree_add_typecast(void *receiver, void *sent)
+int					ft_marray_add_typecast(void *receiver, void *sent)
 {
-	return (ft_mbtree_add((t_mbtree*)receiver, sent));
+	return (ft_marray_add((t_marray*)receiver, sent));
 }
 
-int					ft_btree_fill_mcopy(t_btree *old, t_mbtree *new_mbt)
+int					ft_array_fill_mcopy(t_array *old, t_marray *new_marray)
 {
-	return (ft_btree_bnode_iteration(new_mbt, old->root,
-		ft_mbtree_add_typecast));
+	return (ft_array_iteration(new_marray, old, ft_marray_add_typecast));
 }
