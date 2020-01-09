@@ -20,11 +20,12 @@
 # define MMNG_DEFAULT_SIZE_COUNT	32
 # define MMNG_DEFAULT_ADDR_COUNT	2048
 # define MMNG_DEFAULT_CHUNK_SIZE	262144
-/*
-** bad implementation for hmap usage in memanager (dont use more than 1)
-*/
 # define MMNG_DEFAULT_OVRLP_SIZE	1
 
+/*
+** MMNG_DEFAULT_OVRLP_SIZE
+** bad implementation for hmap usage in memanager (dont use more than 1)
+*/
 typedef struct			s_key_sthmap
 {
 	size_t				key;

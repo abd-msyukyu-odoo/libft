@@ -19,7 +19,7 @@ static int			ft_hmap_cell_bnode_iteration(void *receiver, void *sent)
 
 	wrapper = (t_hmap_wrapper*)receiver;
 	btree = (t_btree*)sent;
-	return(ft_btree_bnode_iteration(wrapper->item, btree->root, wrapper->f));
+	return (ft_btree_bnode_iteration(wrapper->item, btree->root, wrapper->f));
 }
 
 int					ft_hmap_bnode_iteration(void *receiver, t_hmap *source,
