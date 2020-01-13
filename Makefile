@@ -137,7 +137,8 @@ POLYADIC_F	= pf_boot \
 
 READER_F	= reader \
 			  remain_editor \
-			  str_realloc_join
+			  str_realloc_join \
+			  get_next_line
 
 ARRAY_F		= array \
 			  growth \

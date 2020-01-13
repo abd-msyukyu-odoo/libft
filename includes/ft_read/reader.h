@@ -30,6 +30,12 @@
 # ifndef YINPUT
 #  define YINPUT 0
 # endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
+# ifndef BUFF_SIZE
+#  define BUFF_SIZE 1024
+# endif
 
 /*
 ** s : string
@@ -74,5 +80,10 @@ unsigned char			ft_find_n(t_fe fe, ssize_t *len, ssize_t n);
 ** reader.c
 */
 char					*ft_read(ssize_t n, char *end);
+
+/*
+** get_next_line.c
+*/
+int						get_next_line(const int fd, char **line);
 
 #endif
