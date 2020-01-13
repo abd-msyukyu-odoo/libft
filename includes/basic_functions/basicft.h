@@ -19,6 +19,8 @@
 # ifdef _WIN32
 #  include <crtdefs.h>
 # endif
+# define INTMAX_POS (intmax_t)((~((uintmax_t)0)) >> 1)
+# define INTMAX_NEG (intmax_t)(~((~((uintmax_t)0)) >> 1))
 
 typedef struct		s_list
 {

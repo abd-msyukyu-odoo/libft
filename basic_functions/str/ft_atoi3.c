@@ -23,7 +23,7 @@ intmax_t		ft_atoi3(const char *str)
 	i = 0;
 	sign = 1;
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
 		++i;
 	if (str[i] == '+' || (str[i] == '-' && (sign = -1)))
 		++i;
@@ -32,9 +32,7 @@ intmax_t		ft_atoi3(const char *str)
 		tmp = result;
 		result = result * 10 + sign * (str[i++] - '0');
 		if (tmp != (intmax_t)0 && (tmp ^ result) < (intmax_t)0)
-			return ((result < (intmax_t)0) ?
-					(intmax_t)((~((uintmax_t)0)) >> 1) :
-					(intmax_t)(~((~((uintmax_t)0)) >> 1)));
+			return ((result < (intmax_t)0) ? INTMAX_POS : INTMAX_NEG);
 	}
 	return (result);
 }
